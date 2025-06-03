@@ -1,0 +1,313 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TO BE CHANGED BY THE USER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+    % document class:
+    \documentclass[a4paper,11pt,oneside,openany]{report}
+        % alternatively: twoside/oneside, openright/openany
+    % document format/page layout:
+    \usepackage[a4paper,width=160mm,top=25mm,bottom=25mm]{geometry}
+        % Nils BA: a4paper,width=170mm,top=20mm,bottom=20mm,bindingoffset=15mm
+        % Praktikum: a4paper,width=160mm,top=25mm,bottom=25mm
+%%                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PACKAGES & SETUP %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% read in config (from config.csv)
+% support to read in csv config file:
+\usepackage{datatool} % used in tools/dtl.tex
+% set separator of file
+\DTLsetseparator{,}
+% load database from .csv file
+\DTLloaddb{config}{../run/config.csv}
+% defines commands "\cvariable" that return "value" for all defined variables (named "variable") in the config
+\DTLforeach{config}{\Variable=variable,\Value=value} {
+  \cslet{c\Variable}{\Value}
+}
+
+%%% load packages:
+% hyperlinks
+\usepackage[]{hyperref}
+    % alternatively: pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures
+% insert images
+\usepackage{graphicx}
+% foreach capability
+\usepackage{pgffor}
+% if then else capability
+\usepackage{ifthen}
+% appendix utility:
+\usepackage[titletoc,title]{appendix}
+% floatbarrier
+\usepackage{placeins}
+% custom headers and footers
+\usepackage{titleps}
+% physical units
+\usepackage{siunitx}
+% Silbentrennung
+\usepackage[ngerman,english]{babel}
+% remove indent in footnotes
+\usepackage[hang,flushmargin]{footmisc}
+% mathematical expressions
+\usepackage{amsmath}
+% utility for quotation marks
+\usepackage{csquotes}
+% add captions and subcaptions to objects
+\usepackage{caption}
+\usepackage{subcaption}
+% custom headers and footers
+\usepackage{titleps}
+% use lmodern font
+\usepackage{lmodern}
+% enable multirow table columns
+\usepackage{multirow}
+
+%%% bibliography setup
+\ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
+    % bibliography and literature rerferences
+    \usepackage[backend=biber,sorting=none,sortcites,citestyle=numeric-comp]{biblatex}
+    % bibliography setup
+    \addbibresource{../resources/bibliography.bib}
+    % configure back references
+    \ExecuteBibliographyOptions{
+        backref=true,
+    }
+    \DefineBibliographyStrings{english}{
+      backrefpage  = {Cited on page},
+      backrefpages = {Cited on pages},
+    }
+}{}
+
+%%% acronym setup
+\ifthenelse{\cuseacr > -1}{ % if useacr > -1: use acronym package
+    % acronyms package
+    \usepackage{acro}
+    % load defined acronyms
+    \input{../resources/acronyms.sty}
+    % add acronym hyperlinks (if list of acronyms is generated)
+    \ifthenelse{\clistofacronyms > -1}{
+        \acsetup{make-links}
+    }{}
+}{}
+
+%%% command definitions
+% configure chapter headings:
+%  1: vspace from top of page in pt (default: 50)
+%  3: vspace after chapter heading in pt (default: 40)
+%  2: heading above number and chapter name (e.g. "Appendix"), if empty: no extra heading
+\makeatletter
+\newcommand{\configchapterheading}[3]{
+    \renewcommand{\@makechapterhead}[1]{
+      \ifthenelse{\equal{#1}{}}{ \vspace*{50\p@} }{ \vspace*{#1\p@} }
+      {\parindent \z@ \raggedright \normalfont
+        \interlinepenalty\@M
+        \ifthenelse{\equal{#3}{}}{}{
+            \Huge\bfseries  #3 \par\nobreak \vskip 20\p@
+        }
+        \Huge\bfseries  \thechapter \quad ##1 \par\nobreak
+        \ifthenelse{\equal{#2}{}}{ \vskip 40\p@ }{ \vskip #2\p@ }
+    }}
+}
+\makeatother
+
+%%% other setup
+% also number subsubsections
+\setcounter{secnumdepth}{3}
+% prevent footnote page break
+\interfootnotelinepenalty=10000
+% set image path
+\graphicspath{{../resources/images/}}
+% configure captions
+\captionsetup{
+    font=normal,
+    labelfont=bf,
+    format=hang,
+    justification=centering, %justified,
+    singlelinecheck=false,
+    figurename=Fig., % change fig. label
+    tablename=Tab., % change tab. label
+}
+% remove indent at new paragraph
+\setlength{\parindent}{0pt}
+% hide boxes around hyperlinks
+\hypersetup{hidelinks}
+
+%%% define si units
+\DeclareSIUnit\bar{bar}
+\DeclareSIUnit\barn{b}
+
+%%% \addtag: enable numbering of \[\] eqs. by using the newly defined command
+\newcommand\addtag{\refstepcounter{equation}\tag{\theequation}}
+
+%%% load additional (user-given) packages
+\input{../resources/packages.sty}
+
+%%% PAGE STYLES (headers, footers) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% clear page: "empty"
+% only page numbers at bottom
+\renewpagestyle{plain} {
+    \sethead[][][]{}{}{} % header
+    \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+% chapter name in header without chapter number
+\newpagestyle{chapterheadernonumber}{%
+  \setheadrule{0.5pt} % line
+  \sethead[\chaptertitle][][]{}{}{\chaptertitle} % header
+  \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+% chapter name and number in header
+\newpagestyle{chapterheader}{%
+  \setheadrule{0.5pt} % line
+  \sethead[\thechapter~$\;\;$~\chaptertitle][][]{}{}{\chaptertitle~$\;\;$~\thechapter} % header
+  \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+% section and chapter name and number in header
+\newpagestyle{sectionheader}{%
+  \setheadrule{0.5pt} % line
+  \sethead[\thesection~$\;\;$~\chaptertitle~$-$~\sectiontitle][][]{}{}{\chaptertitle~$-$~\sectiontitle~$\;\;$~\thesection} % header
+  \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+% list of acronyms header
+\newpagestyle{loaheader}{%
+  \setheadrule{0.5pt} % line
+  \sethead[List of Acronyms][][]{}{}{List of Acronyms} % header
+  \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+% acknowledgements header
+\newpagestyle{ackheader}{%
+  \setheadrule{0.5pt} % line
+  \sethead[Acknowledgements][][]{}{}{Acknowledgements} % header
+  \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+% abstract header
+\newpagestyle{abstractheader}{%
+  \setheadrule{0.5pt} % line
+  \sethead[Abstract][][]{}{}{Abstract} % header
+  \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+% bibliography header
+\newpagestyle{bibheader}{%
+  \setheadrule{0.5pt} % line
+  \sethead[Bibliography][][]{}{}{Bibliography} % header
+  \setfoot[\thepage][][]{}{}{\thepage} % footer
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% begin document
+\begin{document}
+% normal chapter heading configuration
+\configchapterheading{\cchaptertopspace}{\cchapterbottomspace}{}
+% no page numbers/headers for title page
+\pagestyle{empty}
+%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman} % change page numbering to letters
+\ifthenelse{\ctitlepage > -1}{ % if titlepage > -1: generate title page
+    { \input{../content/title.tex} }
+}{}
+%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\cabstract > -1}{ % if abstract > -1: generate abstract
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \chapter*{Abstract}
+    \pagestyle{abstractheader}
+    \ifthenelse{\cabstractintoc > -1}{ % if abstractintoc > -1: list abstract in toc
+        \addcontentsline{toc}{chapter}{Abstract}
+    }{}
+    \phantomsection
+    \input{../content/abstract.tex}
+}{}
+
+%%% TABLE OF CONTENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\ctocdepth > -1}{ % if tocdepth > -1: generate toc
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \pagestyle{chapterheadernonumber}
+    \setcounter{tocdepth}{\ctocdepth} % also list subsubsections in table of contents
+    \tableofcontents
+}{}
+
+%%% CHAPTERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+\pagenumbering{arabic} % change page numbering to real numbers
+\pagestyle{sectionheader}
+\ifthenelse{\chighestchapter > -1}{ % if highestchapter > -1: generate chapters
+    % insert chapters content
+    \foreach  \x in {0,...,\chighestchapter} {
+        \ifthenelse{\cusecleardouble > -1 \AND \x > 0}{ \cleardoublepage }{ \clearpage } % clear(double) page
+        \chapter{\csname cchapter\x \endcsname} % call \chapterX command (variable content)
+        \input{../content/chapters/\x.tex}
+    }
+}{}
+
+%%% APPENDIX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
+\phantomsection
+\ifthenelse{\chighestappendix > -1}{ % if highestappendix > -1: generate appendix
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \begin{appendices}
+        \pagestyle{sectionheader}
+        %\addcontentsline{toc}{part}{Appendices}
+        % insert appendix content
+        \foreach  \x in {0,...,\chighestappendix} {
+            \ifthenelse{\cusecleardouble > -1 \AND \x > 0}{ \cleardoublepage }{ \clearpage } % clear(double) page
+            \ifthenelse{\x > 0}
+                { \configchapterheading{\cchaptertopspace}{\cchapterbottomspace}{} } % normal chapter heading configuration for following appendix chapters
+                { \configchapterheading{\cchaptertopspace}{\cchapterbottomspace}{Appendix} } % add "Appendix" to heading of first chapter of appendix
+            \chapter{\csname cappendix\x \endcsname} % call \appendixX command (variable content)
+            \input{../content/appendix/\x.tex}
+        }
+    \end{appendices}
+}{}
+
+%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \chapter*{Bibliography}
+    \addcontentsline{toc}{chapter}{Bibliography}
+    \pagestyle{bibheader}
+    \printbibliography[heading=none]
+}{}
+
+%%% LISTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
+\phantomsection
+%%% list of figures
+\ifthenelse{\clistoffigures > -1}{ % if listoffigures > -1: generate list of figures
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \addcontentsline{toc}{chapter}{List of Figures}
+    \phantomsection
+    \pagestyle{chapterheadernonumber}
+    \listoffigures
+}{}
+%%% list of tables
+\ifthenelse{\clistoftables > -1}{ % if listoftables > -1: generate list of tables
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \addcontentsline{toc}{chapter}{List of Tables}
+    \phantomsection
+    \pagestyle{chapterheadernonumber}
+    \listoftables
+}{}
+%%% list of acronyms
+\ifthenelse{\cuseacr > -1}{ % if useacr > -1
+ \ifthenelse{\clistofacronyms > -1}{ % if listofacronyms > -1: generate list of acronyms
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \addcontentsline{toc}{chapter}{List of Acronyms}
+    \phantomsection
+    \pagestyle{loaheader}
+    \printacronyms[display=used,name=List of Acronyms]
+ }{}
+}{}
+
+%%% ACKNOWLEDGEMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\cacknowledgements > -1}{ % if acknowledgements > -1: generate acknowledgements
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \chapter*{Acknowledgements}
+    \ifthenelse{\cacknowledgementsintoc > -1}{ % if acknowledgementsintoc > -1: list acknowledgements in toc
+        \addcontentsline{toc}{chapter}{Acknowledgements}
+    }{}
+    \phantomsection
+    \pagestyle{ackheader}
+    \input{../content/acknowledgements.tex}
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
