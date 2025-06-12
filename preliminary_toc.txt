@@ -1,0 +1,42 @@
+PRELIMINARY STRUCTURE OF MASTER'S THESIS
+
+Introduction
+    Standard model of particle physics
+    Cosmic particles (especially muons)
+    Particle detection principles
+        Scintillators & SiPMs
+        Gaseous detectors
+    Detector electronics
+        Discrimination
+        Read-out chain
+        FPGAs
+CMS Drift Tube system
+    CMS Detector
+    Drift Tube system
+    Minicrate read-out electonics
+    Standalone track reconstruction
+    DT test stand
+SiPM-based scintillation detector
+    Detector setup
+    Discrimination with FPGA-internal comparators
+        FPGA hardware setup
+        Threshold voltage calibration
+        Channel timing calibration
+    Online coincidence logic
+    lpGBT interface
+        lpGBT Mezzanine PCB
+        Interface to FPGA firmware
+Unified backend electronics
+    Slow control box
+    Firmware modifications
+Detector synchronization
+    Clocking scheme
+    Synchronization with test pulses
+Combined measurement
+    Timing stability
+    Cosmic muon coincidence
+    Recovering DT characteristic distributions
+Outlook and next steps
+
+
+

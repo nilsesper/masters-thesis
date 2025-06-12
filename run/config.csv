@@ -18,11 +18,16 @@ usecleardouble,-1
 chaptertopspace,50
 chapterbottomspace,30
 
-highestchapter,1
-chapter0,Chapter
-chapter1,Chapter
+highestchapter,7
+chapter0,Introduction
+chapter1,CMS Drift Tube system
+chapter2,SiPM-based scintillation detector
+chapter3,lpGBT detector interface
+chapter4,Unified backend electronics
+chapter5,Detector synchronization
+chapter6,First combined measurements
+chapter7,Outlook
 
-highestappendix,1
-appendix0,Chapter
-appendix1,Chapter
+highestappendix,0
+appendix0,Additional details
 
