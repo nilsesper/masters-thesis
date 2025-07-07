@@ -11,8 +11,8 @@ listoftables,0
 listofacronyms,0
 
 tocdepth,3
-abstractintoc,0
-acknowledgementsintoc,0
+abstractintoc,-1
+acknowledgementsintoc,-1
 usecleardouble,-1
 
 chaptertopspace,50
@@ -26,7 +26,7 @@ chapter3,lpGBT detector interface
 chapter4,Unified backend electronics
 chapter5,Detector synchronization
 chapter6,First combined measurements
-chapter7,Outlook
+chapter7,Summary and outlook
 
 highestappendix,0
 appendix0,Additional details
