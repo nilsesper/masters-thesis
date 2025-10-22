@@ -12,6 +12,3 @@ rm *.log
 
 # recompile (multiple times for bibliography)
 pdflatex main.tex && biber main && pdflatex main.tex && pdflatex main.tex
-
-# copy pdf output into REPO_DIR/out/ directory
-cp main.pdf ../out/thesis.pdf
