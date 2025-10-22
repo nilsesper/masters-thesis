@@ -6,8 +6,8 @@ useacr,0
 titlepage,0
 abstract,0
 acknowledgements,0
-listoffigures,0
-listoftables,0
+listoffigures,-1
+listoftables,-1
 listofacronyms,0
 
 tocdepth,3
@@ -20,10 +20,10 @@ chapterbottomspace,30
 
 highestchapter,8
 chapter0,Introduction
-chapter1,Theoretical background
+chapter1,The Standard Model of particle physics and cosmic muons
 chapter2,Principles of particle detection
-chapter3,CMS Drift Tube detector
-chapter4,Drift Tube data analysis and track reconstruction
+chapter3,CMS Drift Tube system
+chapter4,Triggerless Drift Tube data analysis and track reconstruction
 chapter5,SiPM-based scintillation detector
 chapter6,Scintillator data analysis
 chapter7,Combined measurement with both detectors

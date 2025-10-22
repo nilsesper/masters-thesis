@@ -1,26 +1,124 @@
 \section{Detector setup}
-\subsection{Mechanical structure}
-\subsection{SiPM electronics}
+Mention self-development of detector at institute \cite{BSc-Ehlert} \cite{MSc-Ehlert}.
 
-\section{FPGA read-out system}
+\subsection{Mechanical structure}
+\begin{itemize}
+    \item 2x 16 plastic scintillator strips with wavelength-shifting fibers
+    \item Dual SiPM readout for each strip
+\end{itemize}
+
+\subsection{SiPM electronics}
+\begin{itemize}
+    \item SiPM front-end board with preamplifier
+    \item Backbone of detector with bias voltage supply
+    \item Rasperry Pi for backbone control
+\end{itemize}
+
+
+
+\section{FPGA readout system}
+\begin{itemize}
+    \item Mention completely new hardware and firmware development in scope of this thesis, based on previous experience and efforts of our group
+    \item AMD Xilinx UltraScale+ ZynqMPSoC
+    \item Control hardware and firmware from Petalinux running on ARM core of ZynqMPSoC
+    \item Show scheme / overview of readout system
+\end{itemize}
+
 \subsection{Input circuitry}
+\begin{itemize}
+    \item Synchonous testpulse source
+    \item SiPM signal input and testpulse input (AC coupled)
+    \item Individually selectable thresold for all channels
+    \item (Show screenshot from SPICE simulation)
+\end{itemize}
+
 \subsection{FPGA firmware overview}
+Mention fully self-developed readout firmware.
+
 \subsection{Signal sampling with FPGA-internal comparators}
+\begin{itemize}
+    \item Comparators for input signal discrimination, however no conventional, dedicated hardware but FPGA-internal comparators used.
+    \item Use FPGA-internal blocks for deserialization to increase time resolution
+\end{itemize}
+
 \subsubsection{Working principle}
+\begin{itemize}
+    \item FPGA-internal comparators (intended for differential signalling)
+    \item Novel concept: Use FPGA-internal comparators with analog signals \cite{FPGA-MVT-Xi} \cite{FPGA-MVT-Palka} \cite{FPGA-MVT-Eliseev}
+    \item Voltage limits of inputs
+    \item Deserializers for higher time resolution
+\end{itemize}
+
 \subsubsection{Voltage bias calibration}
+\begin{itemize}
+    \item FPGA-internal comparators (on FPGA silicon die) are subject to production uncertainties
+    \item Unfolds in voltage bias on comparator switching point
+    \item Scan input voltage range while keeping other comparator input constant to detemine switching point of comparator (Metastability calibration)
+    \item Account for measured biases when setting thresolds
+\end{itemize}
+
 \subsubsection{Input timing calibration}
+\begin{itemize}
+    \item Bank-specific calibration of deserializers on each power-cycle leads to non-deterministic signal delays
+    \item Use simultaneous testpulses to measure these delays
+    \item Use delay module in firmware to correct for these effects already on the device
+    \item Mention ringing of testpulse signal in circuit, but explain that no negative effect on calibration
+\end{itemize}
+
 \subsection{Online signal processing}
+
 \subsubsection{Timestamp assignment}
-\subsubsection{Online coincidence evaluation}
+\begin{itemize}
+    \item Hit arrival time translated to (absolute) timestamp
+    \item Same format as ODBT hits
+\end{itemize}
+
+%\subsubsection{Online coincidence evaluation}
+%\begin{itemize}
+%    \item 
+%\end{itemize}
+
 \subsubsection{Data funneling}
+\begin{itemize}
+    \item Limited bandwidth: Can not transmit hits of all channels together
+    \item However do not want to lose hits
+    \item Solution: Introduce individual buffer (FiFo) for all channels
+    \item Dynamically cycle through and activate outputs of different channel buffers
+    \item Reduces possible hit rate compared to no funnel
+\end{itemize}
+
+
+
 
 \section{lpGBT Mezzanine PCB}
-\subsection{lpGBT ASIC}
-\subsection{Mezzanine board}
-\subsection{Interface to DT backend}
+\begin{itemize}
+    \item Hardware interface between scintillator readout system and DT backend
+    \item OBDTs use lpGBT as well therefore compatible format
+    \item Synchronous clock (with backend) supplied by lpGBT chip
+\end{itemize}
 
-\subsection{Connection to DT backend}
+\subsection{lpGBT ASIC}
+\begin{itemize}
+    \item Low-power GigaBit Transceiver ASIC developed centrally by CERN
+    \item Key facts: Data transfer rate, clock recovery
+    \item Optical fiber interface to backend
+    \item Electrical link (eLink) interface to frontend FPGA
+    \item Control interface via optical fiber or wired I2C
+\end{itemize}
+
+\subsection{Mezzanine board}
+\begin{itemize}
+    \item Connects eLinks between lpGBT and FPGA
+    \item (Show bit error rates of PRBS7 test)
+    \item Show recovered 40 MHz clock
+    \item Hosts optical transceiver to convert signals to/from optical fiber
+\end{itemize}
+
 \subsection{Backend firmware modifications}
+\begin{itemize}
+    \item Modified data flow in DT backend to accomodate reception of data via slow control link from the lpGBT Mezzanine (OBDT has dedicated trigger links for data)
+    \item (Show received counter data by backend)
+\end{itemize}
 
 
 

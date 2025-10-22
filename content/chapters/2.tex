@@ -1,19 +1,92 @@
 \section{Interaction of particles and matter}
+Particle detector detects the effects due to the particle interaction, not the particle itself.
+
 \subsection{Photon interactions}
+Very brief, since only interested in muon interactions.
+\begin{itemize}
+    \item Photoeffect
+    \item Compton effect
+    \item Pair creation
+\end{itemize}
+
 \subsection{Charged particle interactions}
+\begin{itemize}
+    \item Non-ionizing collisions
+    \item Bethe-Bloch ionization
+    \item Bremsstrahlung
+    \item Other effects (transition radiation, Cherenkov radiation)
+\end{itemize}
+
+
 
 \section{Scintillators and photon detection}
+\begin{itemize}
+    \item Scintillator: Photon emission due to energy deposition of particle
+    \item Sensitive photon detection: PMT, SiPM (discussed in detail)
+\end{itemize}
+
 \subsection{Scintillators}
+\begin{itemize}
+    \item Organic and anorganic scintillators
+    \item Plastic scintillator (that is used in this thesis)
+\end{itemize}
+
 \subsection{Silicon photomultipliers}
+\begin{itemize}
+    \item Geiger-Avalance Photodiode array
+    \item Sensitivity and performance
+    \item Output signal shape
+    \item Characteristic noise spectrum
+\end{itemize}
+
+
+
 
 \section{Gaseous detectors}
-\subsection{Operation modes of gaseous detectors}
-\subsection{Proportional gaseous detectors}
 
-\section{Modern read-out electronics}
-\subsection{General aspects of detector read-out}
+\subsection{Operation modes of gaseous detectors}
+\begin{itemize}
+    \item Ionization chamber
+    \item Proportional mode
+    \item Nonlinear amplification mode
+    \item Geiger mode
+\end{itemize}
+
+\subsection{Drift chamber}
+\begin{itemize}
+    \item Proportional mode
+    \item Constant electric field and drift velocity
+    \item Correlation of charge travelling time and initial ionization position
+    \item Drift chamber legacy in Aachen
+\end{itemize}
+
+
+
+\section{Modern readout electronics}
+
+\subsection{General aspects of detector readout}
+\begin{itemize}
+    \item Quantity to read out: E.g. voltage / current
+    \item Discrimination of hits by amplitude
+    \item Good time resolution
+    \item More advanded: Resolution of signal amplitiude and length, large number of channels
+\end{itemize}
+
 \subsection{FPGA devices}
+\begin{itemize}
+    \item Brief history of FPGAs
+    \item Fully programmable logic (difference to CPU)
+    \item In particle physics: Fast, synchronized readout and processing of many channels
+\end{itemize}
+
 \subsection{Basics of logic circuit development}
+\begin{itemize}
+    \item Description of logic circuitry implemented on FPGA
+    \item Combinatorial logic
+    \item Sequential / clocked logic
+    \item Hardware Description Language
+    \item IP cores
+\end{itemize}
 
 
 

@@ -2,6 +2,8 @@ Master's Thesis table of contents:
 
 -  Abstract
 -  Declaration of AI use?
+-  (List of other contributions / publications)
+-  Unit convention?
 
 1. Introduction
 2. The Standard Model of particle physics and cosmic muons
@@ -16,7 +18,7 @@ Master's Thesis table of contents:
 -  Bibliography
 -  List of figures / tables / acronyms
 -  Appendix
--  Acknowledgements
+-  Acknowledgements (maybe to beginning?)
 
 
 

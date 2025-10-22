@@ -1,14 +1,71 @@
-\section{Timing calibration with testpulses}
+\section{Intra-channel timing calibration with testpulses}
+\begin{itemize}
+    \item Importance of timing calibration in DT
+    \item Refer to CMS DT calibration procedure
+    \item Show testpulse response
+    \item Discuss different testpulse cable length in theta SL
+    \item Show derived timing corrections for individual channels
+\end{itemize}
 
 \section{Drift cell hits}
+\begin{itemize}
+    \item Show hit occupancies of all wires
+    \item Give list of masked (noisy) and dead wires
+    \item Discuss rate
+    \item Highlight and discuss feature of secondary hits in range 0-400 ns
+    \item Apply dead time for individual channels
+\end{itemize}
 
 \section{Superlayer hit clustering}
+\begin{itemize}
+    \item Triggerless reconstruction: Need to consider all recorded hits as potential muon signature
+    \item Cluster hits within maximum drift time window
+    \item Pattern rate discussion
+    \item Compare to rates of fake patterns (to estimate noise influence)
+\end{itemize}
 
 \section{Superlayer cluster fitting}
+\begin{itemize}
+    \item Assume constant drift velocity, straight muon track
+    \item Perform linear fit for all laterality combinations with parameters: Arrival time, position in cell, track inclination
+    \item Select laterality combination with best goodness of fit
+    \item Discuss fit results
+    \item Apply appropriate goodness of fit cut
+\end{itemize}
 
 \section{Superlayer relative time alignment}
+\begin{itemize}
+    \item Mention relative alignment problem of OBDTs
+    \item Show double peak in time difference between SL fits
+    \item Establish relative time correction
+\end{itemize}
+
+\section{Grouping of superlayer cluster fits}
+\begin{itemize}
+    \item Clustering algorithm creates multiple clusters in case of additional nearby hits
+    \item Cope this by grouping together clusters within certain time window within same superlayer
+\end{itemize}
 
 \section{Global track building}
+\begin{itemize}
+    \item Select cluster groups within time window from all superlayers
+    \item Only use cluster groups with no ambiguity (only one cluster per SL)
+    \item Ensure matching tracks in both phi superlayers
+    \item Calculate 3D track from 2D projections from theta and phi superlayers
+\end{itemize}
 
-\section{Discussion}
+\section{Reconstructed muon tracks}
+\begin{itemize}
+    \item Discuss muon rate
+    \item Show angular distributions (with solid angle correction)
+\end{itemize}
+
+\section{Acceptance correction and angular distributions}
+\begin{itemize}
+    \item Establish geometric simulation of DT chamber with simulated muon tracks
+    \item Derive (rudimentary) geometric acceptance correction from simulation
+    \item Apply acceptance correction to data
+    \item Compare to expected cosmic muon angular distributions
+\end{itemize}
+
 
