@@ -18,15 +18,16 @@ usecleardouble,-1
 chaptertopspace,50
 chapterbottomspace,30
 
-highestchapter,7
+highestchapter,8
 chapter0,Introduction
-chapter1,CMS Drift Tube system
-chapter2,SiPM-based scintillation detector
-chapter3,lpGBT detector interface
-chapter4,Unified backend electronics
-chapter5,Detector synchronization
-chapter6,First combined measurements
-chapter7,Summary and outlook
+chapter1,Theoretical background
+chapter2,Principles of particle detection
+chapter3,CMS Drift Tube detector
+chapter4,Drift Tube data analysis and track reconstruction
+chapter5,SiPM-based scintillation detector
+chapter6,Scintillator data analysis
+chapter7,Combined measurement with both detectors
+chapter8,Summary and Outlook
 
 highestappendix,0
 appendix0,Additional details
