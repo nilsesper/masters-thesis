@@ -21,7 +21,7 @@ The \ac{SM} is the state-of-the-art theory model used in particle physics, descr
 %    \item Quarks
 %    \item Leptons
 %\end{itemize}
-All matter particles in the \ac{SM} are fermions which have half-integer spin and obey Fermi-Dirac statistics \cite{FermiDirac-Dirac,FermiDirac-Fermi}. The species of a matter particle is referred to as flavor. The \ac{SM} predicts three generations of spin-$\frac{1}{2}$ fermions, with four particles in each generation. Per generation there are two quarks (one up-type quark with electric charge $\frac{2}{3}e$ and one down-type quark with electric charge $-\frac{1}{3}e$) and two leptons (one charged lepton with electric charge $-1e$ and one electrically neutral and massless neutrino)\footnote{$e$ is the elementary charge, i.e. the absolute value of the electron charge.}. While the particle masses increase with increasing fermion generation, other properties of the quarks and leptons from different generations are similar. The first generation fermions form stable matter, i.e. atoms consisting of protons, neutrons\footnote{Protons and neutrons are composite particles of first generation quarks. Note that the free neutron is not a stable particle, however when bound an a nucleus it does not decay.} and electrons, while higher generation fermions decay subsequently decay into lighter particles of the first generation. For all matter particles, there exists a corresponding antiparticle with similar properties except inverted charge (inverted sign of quantum numbers). Antiparticles are denoted with a bar over the particle symbol or their electric charge (with the index $^\pm$) \cite{Book-Thomson,SM-Gaillard}.
+All matter particles in the \ac{SM} are fermions which have half-integer spin and obey Fermi-Dirac statistics \cite{FermiDirac-Dirac,FermiDirac-Fermi}. The species of a matter particle is referred to as flavor. The \ac{SM} predicts three generations of spin-$\frac{1}{2}$ fermions, with four particles in each generation. Per generation there are two quarks (one up-type quark with electric charge $\frac{2}{3}e$ and one down-type quark with electric charge $-\frac{1}{3}e$) and two leptons (one charged lepton with electric charge $-1e$ and one electrically neutral and massless neutrino)\footnote{$e=\SI{1.602e-19}{\coulomb}$ is the elementary charge, i.e. the absolute value of the electron charge \cite{PDG2024}.}. While the particle masses increase with increasing fermion generation, other properties of the quarks and leptons from different generations are similar. The first generation fermions form stable matter, i.e. atoms consisting of protons, neutrons\footnote{Protons and neutrons are composite particles of first generation quarks. Note that the free neutron is not a stable particle, however when bound an a nucleus it does not decay.} and electrons, while higher generation fermions decay subsequently decay into lighter particles of the first generation. For all matter particles, there exists a corresponding antiparticle with similar properties except inverted charge (inverted sign of quantum numbers). Antiparticles are denoted with a bar over the particle symbol or their electric charge (with the index $^\pm$) \cite{Book-Thomson,SM-Gaillard}.
 
 \subsection{Bosons}
 %\begin{itemize}
@@ -52,17 +52,17 @@ While all particles predicted by the \ac{SM} have now been observed \cite{SM-Gai
 
 \section{Properties of the muon}
 This thesis focuses on the development of a readout system for a muon detector. Therefore the properties of the particle of interest should be presented in this section in short.
-\newline The muon ($\mu$) is the second generation charged fermion. It has a mass of $m_\mu=\SI{105.658}{\mega\electronvolt/c^2}$ and is therefore $\approx 207\times$ heavier than its first generation relative, the electron \cite{PDG2024}. Since the muon is lighter than the lightest existing hadron (the $\pi^0$ meson \cite{PDG2024}), it can only decay leptonically:
+\newline The muon ($\mu^-$) is the second generation charged fermion. It has an electric charge of $-1e$ and a mass of $m_\mu=\SI{105.658}{\mega\electronvolt/c^2}$. It is therefore $\approx 207\times$ heavier than its first generation relative, the electron ($e^-$). Since the muon is lighter than the lightest existing hadron (the $\pi^0$ meson), it can only decay leptonically \cite{PDG2024}:\footnote{Decays with an associated photon or an additional electron-position pair ($e^+e^-$) are possible but strongly suppressed with branching fractions $\leq\mathcal{O}(10^{-5}$). Therefore shown decay mode is by far the dominating one \cite{PDG2024}.}
 \[
 \begin{minipage}{0.5\linewidth}
-    \begin{equation*}
-        \mu^- \rightarrow e^- + \bar{\nu_e} + \nu_\mu
-    \end{equation*}
+    \begin{align*}
+        \mu^- &\rightarrow e^- + \bar{\nu_e} + \nu_\mu
+    \end{align*}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
-    \begin{equation*}
-        \mu^+ \rightarrow e^+ + \nu_e + \bar{\nu_\mu}
-    \end{equation*}
+    \begin{align*}
+        \mu^+ &\rightarrow e^+ + \nu_e + \bar{\nu_\mu}
+    \end{align*}
 \end{minipage}
 \]
 The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}. Due to time dilation, high-energy muons can travel significant distances (e.g. in Earth's atmosphere, as discussed in sec.\ \ref{sec:AtmosphericMuons}).
@@ -73,6 +73,7 @@ The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}.
 \section{Atmospheric muons}
 \label{sec:AtmosphericMuons}
 %\cite{Book-Grieder}
+Since in this work the muon detector and its developed readout is only operated with atmospheric muons rather than with some other particle source, the creation and properties of atmospheric muons should be briefly described in this section.
 
 \subsection{Cosmic radiation}
 %\begin{itemize}
@@ -80,6 +81,21 @@ The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}.
 %    \item First observation of cosmic rays \cite{Cosmics-Hess}
 %    \item Cosmic ray energy spectrum and particle types \cite{Cosmics-Grupen}
 %\end{itemize}
+Cosmic rays are particles reaching the Earth from space. The first indication of cosmic ratiation was through balloon flight experiments of Hess in 1912, who discovered an increasing intensity of ionizing radiation with altitude \cite{Cosmics-Hess,Cosmics-Grupen}.
+\newline Cosmic rays mainly consist of protons, alpha particles and heavier nuclei of a wide range of energies \cite{PDG2022,Cosmics-Gaisser,Book-Grieder}. These particles can have many different origins, ranging our solar system to our galaxy to extragalactic sources. The understanding of cosmic ray sources is still an active field of research today \cite{Cosmics-Gaisser,Cosmics-Bindi}. The flux of cosmic rays is highest for particle energies $\mathcal{O}(\SI{1}{\giga\electronvolt})$ but the tail towards high energies extends beyond $\mathcal{O}(\SI{1}{Z\electronvolt})$ \cite{PDG2024}. The energy spectrum of cosmic rays is observed to approximately follow a power law with an energy-dependent spectral index $\gamma$ \cite{PDG2024}:
+\begin{equation*}
+    I(E)\propto E^{-\gamma},
+    \quad\text{where } \gamma \approx 
+    \left\{
+        \begin{array}{@{}l  r @{} c @{} l}
+            \; 2.7, & \mathcal{O}(\SI{1}{\giga\electronvolt})\; & \leq E \leq & \;\mathcal{O}(\SI{1}{\peta\electronvolt}) \\
+            \; 3.0, & \mathcal{O}(\SI{1}{\peta\electronvolt})\; & \leq E \leq & \;\mathcal{O}(\SI{100}{\peta\electronvolt}) \\
+            \; 3.3, & \mathcal{O}(\SI{100}{\peta\electronvolt})\; & \leq E \leq & \;\mathcal{O}(\SI{1}{\exa\electronvolt}) \\
+            \; 2.5, & \mathcal{O}(\SI{1}{\exa\electronvolt})\; & \leq E & \\
+        \end{array}
+    \right.
+\end{equation*}
+\newline Interactions of the primary cosmic rays with Earth's atmosphere lead to energy loss of the cosmic particles and to a change in particle composition. In strong interactions, secondary particles can be prodced. The most common secondary particles are pions ($\pi^\pm$, $\pi^0$), however there are also many other particles produced, such as kaons ($K^\pm$, $K^0$), hyperons and nucleons \cite{Book-Grieder}. Notably, cosmic rays can create large air showers in the atmosphere through cascades of interactions. This was first observed by Auger in 1939 through concidences of particle detectors on the surface at far distances \cite{Cosmics-Auger}.
 
 \subsection{Atmospheric creation of muons}
 %\begin{itemize}
@@ -87,7 +103,45 @@ The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}.
 %    \item Discussion / criticism of terminology "cosmic muon"
 %    \item Energy spectrum and angular distribution of cosmic muons \cite{CosmicMuon-Shukla}
 %\end{itemize}
+Although their fraction in primary cosmic particles from space is neglible, muons have the largest fraction of charged particles arriving on Earth's surface \cite{PDG2022}. These muons originate from the decay of the secondary particles created in Earth's atmosphere. Charged pions and kaons have lifetimes of $\mathcal{O}(10^{-8}\;\si{\second})$ \cite{PDG2024} which is too short to reach Earth's surface, even when accounting for time dilation. The charged pions decay to muons with a branching fraction of $\approx 0.999$ \cite{PDG2024}:\footnote{There are also suppressed decay modes with associated photons \cite{PDG2024}.}
+\[
+\begin{minipage}{0.5\linewidth}
+    \begin{align*}
+        \pi^- &\rightarrow \mu^- + \bar{\nu_\mu}
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \begin{align*}
+        \pi^+ &\rightarrow \mu^+ + \nu_\mu
+    \end{align*}
+\end{minipage}
+\]
+Similarly the charged kaons can decay to muons with a branching fraction of $\approx 0.635$ \cite{PDG2024}:\footnote{There are also semileptonic decay modes with associated pions with a branching fraction of $\approx 0.033$. As before, decays with associated photons are also possible but strongly suppressed \cite{PDG2024}.}
+\[
+\begin{minipage}{0.5\linewidth}
+    \begin{align*}
+         K^- &\rightarrow \mu^- + \bar{\nu_\mu}
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \begin{align*}
+        K^+ &\rightarrow \mu^+ + \nu_\mu
+    \end{align*}
+\end{minipage}
+\]
+Most muons are produced at altitudes of $\approx 10-15\;\si{\kilo\meter}$ and lose $\approx\SI{2}{\giga\electronvolt}$ before reaching the surface \cite{PDG2022,CosmicMuon-Shukla}.
 
+%%% spherical coordinate terminology:
+% azimut angle = phi (0, 2pi)
+% zenith angle = theta (0, pi)
+
+\subsection{Energy spectrum and angular distribution}
+In the following, the energy spectrum and angular distribution of cosmic muons on Earth's surface should be breifly presented, as they are the baseline to calculate the expected detector response for the measurements presented in this thesis. In principle, calculations of these quantities is quite complex, due to the variety of decay processes and energy loss mechanisms that can occur. However there are useful parametrizations of the measured muon spectra which allow for a simplified model to be used for simulations or approximate predictions \cite{CosmicMuon-Shukla}.
+\newline A good approximation of the energy spectrum of the vertical ($\theta=0$) atmospheric muons gives the following formula \cite{CosmicMuon-Shukla}:
+\begin{equation*}
+    I(E,\theta=0)=I_0N(E_0+E)^{-n}\left(1+\frac{E}{\epsilon}\right)^{-1}
+\end{equation*}
+In this formula, $I_0$ is the integrated muon flux over all energies for vertical muons. $E_0$ is the energy loss of the muon from the point of its creation to the surface, and assumed constant. This is of course an approximation, especially for lower muon energies, as the energy loss through ionization is not really independent of the particle energy (see sec.\ \ref{sec:Interactions-Ionization}). Before the meson decays into the muon, it also loses energy on its way towards the surface. When the energy of this particle (and consequently of the resulting muon) is higher, the meson can lose more energy before it decays. This effect is accounted for with the factor $\epsilon>1$. The dependence of the muon flux on the azimut angle is small and will therefore be neglected here \cite{CosmicMuon-Shukla}.
 
 
 
