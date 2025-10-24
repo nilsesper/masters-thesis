@@ -1,4 +1,5 @@
 \section{The Standard Model of particle physics}
+\label{sec:SM-Model}
 %\begin{itemize}
 %    \item Introduction to SM \cite{SM-Weinberg} \cite{SM-Gaillard}
 %    \item Particle zoo scheme \cite{SM-Wikimedia}
@@ -51,6 +52,7 @@ While all particles predicted by the \ac{SM} have now been observed \cite{SM-Gai
 
 
 \section{Properties of the muon}
+\label{sec:SM-Muon}
 This thesis focuses on the development of a readout system for a muon detector. Therefore the properties of the particle of interest should be presented in this section in short.
 \newline The muon ($\mu^-$) is the second generation charged fermion. It has an electric charge of $-1e$ and a mass of $m_\mu=\SI{105.658}{\mega\electronvolt/c^2}$. It is therefore $\approx 207\times$ heavier than its first generation relative, the electron ($e^-$). Since the muon is lighter than the lightest existing hadron (the $\pi^0$ meson), it can only decay leptonically \cite{PDG2024}:\footnote{Decays with an associated photon or an additional electron-position pair ($e^+e^-$) are possible but strongly suppressed with branching fractions $\leq\mathcal{O}(10^{-5}$). Therefore shown decay mode is by far the dominating one \cite{PDG2024}.}
 \[
@@ -75,13 +77,19 @@ The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}.
 %\cite{Book-Grieder}
 Since in this work the muon detector and its developed readout is only operated with atmospheric muons rather than with some other particle source, the creation and properties of atmospheric muons should be briefly described in this section.
 
-\subsection{Cosmic radiation}
+\subsection{Cosmic rays and muons}
 \label{sec:AtmosphericMuons-Cosmics}
 %\begin{itemize}
 %    \item Origin of cosmic radiation \cite{Cosmics-Lingenfelter}
 %    \item First observation of cosmic rays \cite{Cosmics-Hess}
 %    \item Cosmic ray energy spectrum and particle types \cite{Cosmics-Grupen}
 %\end{itemize}
+%\begin{itemize}
+%    \item Formation of muons from primary cosmic rays in Earth's atmosphere
+%    \item Discussion / criticism of terminology "cosmic muon"
+%    \item Energy spectrum and angular distribution of cosmic muons \cite{CosmicMuon-Shukla}
+%\end{itemize}
+
 Cosmic rays are particles reaching the Earth from space. The first indication of cosmic ratiation was through balloon flight experiments of Hess in 1912, who discovered an increasing intensity of ionizing radiation with altitude \cite{Cosmics-Hess,Cosmics-Grupen}. Cosmic rays mainly consist of protons, alpha particles and heavier nuclei of a wide range of energies \cite{PDG2022,Cosmics-Gaisser,Book-Grieder}. These particles can have many different origins, ranging our solar system to our galaxy to extragalactic sources. The understanding of cosmic ray sources is still an active field of research today \cite{Cosmics-Gaisser,Cosmics-Bindi}. The flux of cosmic rays is highest for particle energies $\mathcal{O}(\SI{1}{\giga\electronvolt})$ but the tail towards high energies extends beyond $\mathcal{O}(\SI{1}{Z\electronvolt})$ \cite{PDG2024}. The energy spectrum of cosmic rays is observed to approximately follow a power law with an energy-dependent spectral index $\gamma$ \cite{PDG2024}:
 \begin{equation*}
     I(E)\propto E^{-\gamma},
@@ -91,20 +99,12 @@ Cosmic rays are particles reaching the Earth from space. The first indication of
             \; 2.7, & \mathcal{O}(\SI{1}{\giga\electronvolt})\; & \leq E \leq & \;\mathcal{O}(\SI{1}{\peta\electronvolt}) \\
             \; 3.0, & \mathcal{O}(\SI{1}{\peta\electronvolt})\; & \leq E \leq & \;\mathcal{O}(\SI{100}{\peta\electronvolt}) \\
             \; 3.3, & \mathcal{O}(\SI{100}{\peta\electronvolt})\; & \leq E \leq & \;\mathcal{O}(\SI{1}{\exa\electronvolt}) \\
-            \; 2.5, & \mathcal{O}(\SI{1}{\exa\electronvolt})\; & \leq E & \\
+            \; 2.5, & \mathcal{O}(\SI{1}{\exa\electronvolt})\; & \leq E \\
         \end{array}
     \right.
 \end{equation*}
 \newline Interactions of the primary cosmic rays with Earth's atmosphere lead to energy loss of the cosmic particles and to a change in particle composition. In strong interactions, secondary particles can be prodced. The most common secondary particles are pions ($\pi^\pm$, $\pi^0$), however there are also many other particles produced, such as kaons ($K^\pm$, $K^0$), hyperons and nucleons \cite{Book-Grieder}. Notably, cosmic rays can create large air showers in the atmosphere through cascades of interactions. This was first observed by Auger in 1939 through concidences of particle detectors on the surface at far distances \cite{Cosmics-Auger}.
-
-\subsection{Atmospheric creation of muons}
-\label{sec:AtmosphericMuons-MuonCreation}
-%\begin{itemize}
-%    \item Formation of muons from primary cosmic rays in Earth's atmosphere
-%    \item Discussion / criticism of terminology "cosmic muon"
-%    \item Energy spectrum and angular distribution of cosmic muons \cite{CosmicMuon-Shukla}
-%\end{itemize}
-Although their fraction in primary cosmic particles from space is neglible, muons have the largest fraction of charged particles arriving on Earth's surface \cite{PDG2022}. These muons originate from the decay of the secondary particles created in Earth's atmosphere. Charged pions and kaons have lifetimes of $\mathcal{O}(10^{-8}\;\si{\second})$ \cite{PDG2024} which is too short to reach Earth's surface, even when accounting for time dilation. The charged pions decay to muons with a branching fraction of $\approx 0.999$ \cite{PDG2024}:\footnote{There are also suppressed decay modes with associated photons \cite{PDG2024}.}
+\newline Although their fraction in primary cosmic particles from space is neglible, muons have the largest fraction of charged particles arriving on Earth's surface \cite{PDG2022}. These muons originate from the decay of the secondary particles created in Earth's atmosphere. Charged pions and kaons have lifetimes of $\mathcal{O}(10^{-8}\;\si{\second})$ \cite{PDG2024} which is too short to reach Earth's surface, even when accounting for time dilation. The charged pions decay to muons with a branching fraction of $\approx 0.999$ \cite{PDG2024}:\footnote{There are also suppressed decay modes with associated photons \cite{PDG2024}.}
 \[
 \begin{minipage}{0.5\linewidth}
     \begin{align*}

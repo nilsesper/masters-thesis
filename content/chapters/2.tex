@@ -1,6 +1,9 @@
 \section{Interaction of particles and matter}
 \label{sec:Interactions}
-Particle detector detects the effects due to the particle interaction, not the particle itself.
+%Particle detector detects the effects due to the particle interaction, not the particle itself.
+
+Understanding particle interactions with matter is essential when constructing and roperating particle detectors. This is because detectors are never sensitive to elementary particles themselves, but to the signatures that the particles leave in the detector through interactions with the detector material \cite{Book-KolanoskiWermes}.
+\newline The topic of particle interactions is quite rich, as different particles can undergo different interactions and the interaction types depend on the particle energy. Since in this thesis a muon detector is discussed, the topic is restricted to interactions of muons. Note that in this field one considers muons as "heavy" charged particles, as they carry an electric charge and have a mass significantly above the electron mass $m_\mu \gg m_e$ (see sec.\ \ref{sec:SM-Muon}).
 
 %\subsection{Photon interactions}
 %Very brief, since only interested in muon interactions.
@@ -10,17 +13,58 @@ Particle detector detects the effects due to the particle interaction, not the p
 %    \item Pair creation
 %\end{itemize}
 
-\subsection{Charged particle interactions}
+\subsection{Interactions of heavy charged particles}
 %\begin{itemize}
 %    \item Non-ionizing collisions
 %    \item Bethe-Bloch ionization
 %    \item Bremsstrahlung
 %    \item Other effects (transition radiation, Cherenkov radiation)
 %\end{itemize}
-\subsubsection{Non-ionizing collisions}
-\subsubsection{Loss through ionization}
+
+Particles passing through matter interact with it in various ways and thereby lose energy. A quantity commonly used in this context is the mean particle energy loss per path length in the material $-\left\langle dE/dx \right\rangle$ which also called stopping power \cite{Book-KolanoskiWermes}\footnote{Since the interactions also depend on the material density $\rho$, one usually weights the path length $l$ with this quantity: $x=l\rho$. This gives the stopping power the unit $\si{\mega\electronvolt \; \centi\meter^2 \gram^{-1}}$ \cite{Book-KolanoskiWermes}.}. Fig.\ \ref{fig:Interactions-MuonInteractions} shows the muon stopping power for different particle momenta for an example of antimuons ($\mu^+$) in copper. In the following subsections, the different regimes are discussed.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Interactions-MuELoss.png}
+    \caption{Stopping power for antimuons ($\mu^+$) in copper depending on the momentum \cite{PDG2024}.}
+    \label{fig:Interactions-MuonInteractions}
+\end{figure}
+
+\subsubsection{Ionization}
 \label{sec:Interactions-Ionization}
-\subsubsection{Emission of Bremsstrahlung}
+Charged particles can lose energy in matter through ionization and excitation of the atoms of the medium, more concretely of the shell electrons. This effect is the dominant process of energy loss for charged particles, until radiative effects become relevant at high energies (see sec.\ \ref{sec:Interactions-Bremsstrahlung}). Generally, the stopping power can be described with the integral over all possible energy transfers for the collisions between the charged particle and the shell electrons \cite{Book-KolanoskiWermes}:
+\begin{equation}
+    -\left\langle \frac{dE}{dx} \right\rangle = n_e\int_{T_\text{min}}^{T_\text{max}} T \; \frac{d\sigma_a}{dT}(M,\beta,T)\;dT
+    \label{eq:Interactions-Integral}
+\end{equation}
+Here $n_e$ is the target electron density, $T$ is the transferred kinetic energy in a collision and $T_\text{min}$ ($T_\text{max}$) the minimum (maximum) allowed energy transfer. The differential cross section $d\sigma_a/dT(M,\beta,T)$ is a measure of the probability of the collision process of given energy transfer $T$ for a particle with velocity\footnote{$c=\SI{2.998e8}{\meter/\second}$ is the speed of light \cite{PDG2024}.} $\beta=v/c$ and particle mass $M$. Respecting the fact that the minimum energy transfer can not be arbitrarily small in due to the quantized electron energy levels in the atom and allowing approximations for heavy particles ($M \gg m_e$) one obtains \cite{Book-KolanoskiWermes,PDG2024}
+\[
+\begin{minipage}{0.5\linewidth}
+    \begin{align*}
+        T_\text{min}= \frac{I^2}{2m_e c^2\beta^2}
+    \end{align*}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \begin{align*}
+        T_\text{max}= \frac{2 m_e c^2\beta^2\gamma^2}{1+2\gamma m_e/M+m_e^2/M^2}
+    \end{align*}
+\end{minipage}
+\]
+where $I\approx 1.7 Z^{0.85} \;\si{\electronvolt}$ is the mean excitation energy of the atom with atomic number $Z$, $\gamma=1/\sqrt{1-\beta^2}$ is the Lorentz factor of the heavy particle and $m_e=\SI{511}{\kilo\electronvolt}$ the electron mass \cite{PDG2024}. Computing the integral from eq.\ \ref{eq:Interactions-Integral} with the Mott cross section (which takes into account the spin of both the electron and the heavy charged particle) yields the Bethe-Bloch formula for the stopping power of heavy charged particles in matter \cite{Book-KolanoskiWermes,PDG2024}:
+\begin{equation}
+    -\left\langle \frac{dE}{dx} \right\rangle = K\frac{Z}{A}\frac{z^2}{\beta^2}\left[ \frac{1}{2}\ln\frac{2m_ec^2\beta^2\gamma^2T_\text{max}}{I^2}-\beta^2-\frac{\delta(\beta\gamma)}{2}-\frac{C(\beta\gamma,\;I)}{Z} \right]
+    \label{eq:Interactions-BetheBloch}
+\end{equation}
+Here, $A$ is the atomic mass number of the medium, $z$ the charge of the interacting heavy particle and $K= N_Ae^4/(4\pi \epsilon_0 m_ec^2)$ a factor including various constants. The formula is able to describe the stopping power of heavy particles with velocities $0.1 \lesssim \beta\gamma \lesssim 1000$ \cite{PDG2024}. Eq.\ \ref{eq:Interactions-BetheBloch} contains two additional correction terms ($\delta$ and $C$) which should be discussed in the following paragraphs.
+\newline A
+
+\subsubsection{Bremsstrahlung}
+\label{sec:Interactions-Bremsstrahlung}
+
+\subsubsection{Coulomb scattering}
+\label{sec:Interactions-CoulombScattering}
+
+\subsubsection{Other effects}
+\label{sec:Interactions-OtherEffects}
 
 
 
