@@ -54,7 +54,7 @@ While all particles predicted by the \ac{SM} have now been observed \cite{SM-Gai
 \section{Properties of the muon}
 \label{sec:SM-Muon}
 This thesis focuses on the development of a readout system for a muon detector. Therefore the properties of the particle of interest should be presented in this section in short.
-\newline The muon ($\mu^-$) is the second generation charged fermion. It has an electric charge of $-1e$ and a mass of $m_\mu=\SI{105.658}{\mega\electronvolt/c^2}$. It is therefore $\approx 207\times$ heavier than its first generation relative, the electron ($e^-$). Since the muon is lighter than the lightest existing hadron (the $\pi^0$ meson), it can only decay leptonically \cite{PDG2024}\footnote{Decays with an associated photon or an additional electron-position pair ($e^+e^-$) are possible but strongly suppressed with branching fractions $\leq\mathcal{O}(10^{-5}$). Therefore shown decay mode is by far the dominating one \cite{PDG2024}.}:
+\paragraph{Basic properties} The muon ($\mu^-$) is the second generation charged fermion. It has an electric charge of $-1e$ and a mass of $m_\mu=\SI{105.658}{\mega\electronvolt/c^2}$. It is therefore $\approx 207\times$ heavier than its first generation relative, the electron ($e^-$). Since the muon is lighter than the lightest existing hadron (the $\pi^0$ meson), it can only decay leptonically \cite{PDG2024}\footnote{Decays with an associated photon or an additional electron-position pair ($e^+e^-$) are possible but strongly suppressed with branching fractions $\leq\mathcal{O}(10^{-5}$). Therefore shown decay mode is by far the dominating one \cite{PDG2024}.}:
 \[
 \begin{minipage}{0.5\linewidth}
     \begin{align*}
@@ -68,7 +68,7 @@ This thesis focuses on the development of a readout system for a muon detector. 
 \end{minipage}
 \]
 The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}. Due to time dilation, high-energy muons can travel significant distances (e.g. in Earth's atmosphere, as discussed in sec.\ \ref{sec:AtmosphericMuons}).
-\newline The muon was initially discovered in cloud chamber experiments with cosmic rays in 1937, where a charged particle more massive than the electron other than the proton was postulated \cite{MuonDiscovery-Anderson,MuonDiscovery-Street}. However, it was initially labeled "$\mu$-meson" and confused with the charged pions ($\pi^\pm$ mesons). These mesons have masses in the same order of magnitudeas the muon and were thought to be the mediator particle in Yukawa's theory of strong interactions \cite{MuonDiscovery-Yukawa}. The leptonic nature of the muon and the distinction from the pions was only revealed later, when a decay of pions into muons could be observed \cite{MuonDiscovery-Lee}.
+\paragraph{History of discovery} The muon was initially discovered in cloud chamber experiments with cosmic rays in 1937, where a charged particle more massive than the electron other than the proton was postulated \cite{MuonDiscovery-Anderson,MuonDiscovery-Street}. However, it was initially labeled "$\mu$-meson" and confused with the charged pions ($\pi^\pm$ mesons). These mesons have masses in the same order of magnitudeas the muon and were thought to be the mediator particle in Yukawa's theory of strong interactions \cite{MuonDiscovery-Yukawa}. The leptonic nature of the muon and the distinction from the pions was only revealed later, when a decay of pions into muons could be observed \cite{MuonDiscovery-Lee}.
 
 
 
@@ -90,7 +90,9 @@ Since in this work the muon detector and its developed readout is only operated 
 %    \item Energy spectrum and angular distribution of cosmic muons \cite{CosmicMuon-Shukla}
 %\end{itemize}
 
-Cosmic rays are particles reaching the Earth from space. The first indication of cosmic ratiation was through balloon flight experiments of Hess in 1912, who discovered an increasing intensity of ionizing radiation with altitude \cite{Cosmics-Hess,Cosmics-Grupen}. Cosmic rays mainly consist of protons, alpha particles and heavier nuclei of a wide range of energies \cite{PDG2022,Cosmics-Gaisser,Book-Grieder}. These particles can have many different origins, ranging our solar system to our galaxy to extragalactic sources. The understanding of cosmic ray sources is still an active field of research today \cite{Cosmics-Gaisser,Cosmics-Bindi}. The flux of cosmic rays is highest for particle energies $\mathcal{O}(\SI{1}{\giga\electronvolt})$ but the tail towards high energies extends beyond $\mathcal{O}(\SI{1}{Z\electronvolt})$ \cite{PDG2024}. The energy spectrum of cosmic rays is observed to approximately follow a power law with an energy-dependent spectral index $\gamma$ \cite{PDG2024}:
+Cosmic rays are particles reaching the Earth from space. The first indication of cosmic ratiation was through balloon flight experiments of Hess in 1912, who discovered an increasing intensity of ionizing radiation with altitude \cite{Cosmics-Hess,Cosmics-Grupen}. Cosmic rays mainly consist of protons, alpha particles and heavier nuclei of a wide range of energies \cite{PDG2022,Cosmics-Gaisser,Book-Grieder}. These particles can have many different origins, ranging our solar system to our galaxy to extragalactic sources. The understanding of cosmic ray sources is still an active field of research today \cite{Cosmics-Gaisser,Cosmics-Bindi}.
+\paragraph{Cosmic ray spectrum}
+The flux of cosmic rays is highest for particle energies $\mathcal{O}(\SI{1}{\giga\electronvolt})$ but the tail towards high energies extends beyond $\mathcal{O}(\SI{1}{Z\electronvolt})$ \cite{PDG2024}. The energy spectrum of cosmic rays is observed to approximately follow a power law with an energy-dependent spectral index $\gamma$ \cite{PDG2024}:
 \begin{equation*}
     I(E)\propto E^{-\gamma},
     \quad\text{where } \gamma \approx 
@@ -103,8 +105,10 @@ Cosmic rays are particles reaching the Earth from space. The first indication of
         \end{array}
     \right. .
 \end{equation*}
-\newline Interactions of the primary cosmic rays with Earth's atmosphere lead to energy loss of the cosmic particles and to a change in particle composition. In strong interactions, secondary particles can be prodced. The most common secondary particles are pions ($\pi^\pm$, $\pi^0$), however there are also many other particles produced, such as kaons ($K^\pm$, $K^0$), hyperons and nucleons \cite{Book-Grieder}. Notably, cosmic rays can create large air showers in the atmosphere through cascades of interactions. This was first observed by Auger in 1939 through concidences of particle detectors on the surface at far distances \cite{Cosmics-Auger}.
-\newline Although their fraction in primary cosmic particles from space is neglible, muons have the largest fraction of charged particles arriving on Earth's surface \cite{PDG2022}. These muons originate from the decay of the secondary particles created in Earth's atmosphere. Charged pions and kaons have lifetimes of $\mathcal{O}(10^{-8}\;\si{\second})$ \cite{PDG2024} which is too short to reach Earth's surface, even when accounting for time dilation. The charged pions decay to muons with a branching fraction of $\approx 0.999$ \cite{PDG2024}:\footnote{There are also suppressed decay modes with associated photons \cite{PDG2024}.}
+\paragraph{Interactions with Earth's atmosphere}
+Interactions of the primary cosmic rays with Earth's atmosphere lead to energy loss of the cosmic particles and to a change in particle composition. In strong interactions, secondary particles can be prodced. The most common secondary particles are pions ($\pi^\pm$, $\pi^0$), however there are also many other particles produced, such as kaons ($K^\pm$, $K^0$), hyperons and nucleons \cite{Book-Grieder}. Notably, cosmic rays can create large air showers in the atmosphere through cascades of interactions. This was first observed by Auger in 1939 through concidences of particle detectors on the surface at far distances \cite{Cosmics-Auger}.
+\paragraph{Atmospheric muons}
+Although their fraction in primary cosmic particles from space is neglible, muons have the largest fraction of charged particles arriving on Earth's surface \cite{PDG2022}. These muons originate from the decay of the secondary particles created in Earth's atmosphere. Charged pions and kaons have lifetimes of $\mathcal{O}(10^{-8}\;\si{\second})$ \cite{PDG2024} which is too short to reach Earth's surface, even when accounting for time dilation. The charged pions decay to muons with a branching fraction of $\approx 0.999$ \cite{PDG2024}:\footnote{There are also suppressed decay modes with associated photons \cite{PDG2024}.}
 \[
 \begin{minipage}{0.5\linewidth}
     \begin{align*}
@@ -138,14 +142,16 @@ Most muons are produced at altitudes of $\approx 10-15\;\si{\kilo\meter}$ and lo
 
 \subsection{Energy spectrum and angular distribution}
 \label{sec:AtmosphericMuons-Dependencies}
-{ \color{red} Needs to be reworked and extended \newline }
+%{ \color{red} Needs to be reworked and extended \newline }
 In the following, the energy spectrum and angular distribution of cosmic muons on Earth's surface should be breifly presented, as they are the baseline to calculate the expected detector response for the measurements presented in this thesis. In principle, calculations of these quantities is quite complex, due to the variety of decay processes and energy loss mechanisms that can occur. However there are useful parametrizations of the measured muon spectra which allow for a simplified model to be used for simulations or approximate predictions \cite{CosmicMuon-Shukla}.
-\newline A good approximation of the flux of the vertical (zenith angle $\theta=0$) atmospheric muons is provided by the following formula \cite{CosmicMuon-Shukla}:
+\paragraph{Energy spectrum}
+A good approximation of the flux of the vertical (zenith angle $\theta=0$) atmospheric muons is provided by the following formula \cite{CosmicMuon-Shukla}:
 \begin{equation*}
     I(E,\;\theta=0) \propto (E_0+E)^{-n}\left(1+\frac{E}{\epsilon}\right)^{-1}.
 \end{equation*}
 In this formula, $E_0$ is the energy loss of the muon from the point of its creation to the surface, and assumed constant. This is of course an approximation, especially for lower muon energies, as the energy loss is not really independent of the particle energy (see sec.\ \ref{sec:Interactions}). Before the meson decays into the muon, it also loses energy on its way towards the surface. When the energy of this particle (and consequently of the resulting muon) is higher, the meson can lose more energy before it decays. This effect is accounted for with the factor $\epsilon>1$ \cite{CosmicMuon-Shukla}.
-\newline The dependence of the muon flux on the azimut angle $\phi$ is small and will therefore be neglected here. However there is a dependence on the zenith angle $\theta$ which can be parametrized as follows \cite{CosmicMuon-Shukla}:
+\paragraph{Azimut angle dependence}
+The dependence of the muon flux on the azimut angle $\phi$ is small and will therefore be neglected here. However there is a dependence on the zenith angle $\theta$ which can be parametrized as follows \cite{CosmicMuon-Shukla}:
 \begin{equation*}
     I(E,\;\theta)\propto (E_0+E)^{-n}\left(1+\frac{E}{\epsilon}\right)^{-1}D(\theta)^{-(n-1)},
 \end{equation*}
@@ -161,7 +167,8 @@ This yields the more commonly known approximation of the atmospheric muon angula
     I(E,\;\theta)\propto (E_0+E)^{-n}\left(1+\frac{E}{\epsilon}\right)^{-1}\cos^{(n-1)}\theta.
     \label{eq:AtmosphericMuon-Depedence}
 \end{equation}
-\newline Using available values for the parameters of the presented approximation, the expected muon rate which is measured in this thesis should now be estimated. The available parameters in \cite{CosmicMuon-Shukla} are obtained from data measured in Hamburg, Germany ($53.56^\circ$ N, $10^\circ$ E, altitude: \SI{}{\meter}) which is considered reasonably close to Aachen ($53.56^\circ$ N, $10^\circ$ E, altitude: \SI{}{\meter}) to use similar values. The obtained energy and zenith angle dependency are plotted in fig.\ \ref{fig:AtmosphericMuon-DependencePlots}.
+\paragraph{Parameter values for Aachen}
+Using available values for the parameters of the presented approximation, the expected muon rate which is measured in this thesis should now be estimated. The available parameters in \cite{CosmicMuon-Shukla} are obtained from data measured in Hamburg, Germany ($53.56^\circ$ N, $10^\circ$ E, altitude: \SI{}{\meter}) which is considered reasonably close to Aachen ($53.56^\circ$ N, $10^\circ$ E, altitude: \SI{}{\meter}) to use similar values. The obtained energy and zenith angle dependency are plotted in fig.\ \ref{fig:AtmosphericMuon-DependencePlots}.
 \begin{table}[htbp]
     \centering
     \begin{tabular}{ |c|c|c|c| } 
@@ -188,10 +195,12 @@ This yields the more commonly known approximation of the atmospheric muon angula
     \caption{Distributions for the atmospheric muon energy ($E$) and zenith angle ($\theta$) dependence according to eq.\ \ref{eq:AtmosphericMuon-Depedence} for the parameters in tab.\ \ref{tab:AtmosphericMuon-FitData}.}
     \label{fig:AtmosphericMuon-DependencePlots}
 \end{figure}
-\newline The expected muon rate for a detector with area $A$ can now be obtained by integration over energy, solid angle and area
+\paragraph{Prediction of detector rate}
+The expected muon rate for a detector with area $A$ can now be obtained by integration over energy, solid angle and area
 \begin{equation*}
     \dot{N} = \int_{E_\text{thres}}^{\infty} dE \; \int d\Omega \; \int dA\; I(E,\;\theta). %\approx \SI{136.5}{\meter^{-2} \second^{-1}}
 \end{equation*}
-For this calculation, the energy detection thresold $E_\text{thres}$ should be taken into account. Note that the solution of the solid angle and area integrals is not trivial for arbitrary detector geometries, since the effective detector area might be a function of the solid angle. %Typically one divides 
+For this calculation, the energy detection threshold $E_\text{thres}$ should be taken into account. Note that the solution of the solid angle and area integrals is not trivial for arbitrary detector geometries, since the effective detector area might be a function of the solid angle. %Typically one divides 
+\newline {\color{red} Optimize this section}
 
 
