@@ -122,7 +122,7 @@ One of the two detectors used in this work is a scintillation detector. Therefor
 %    \item Organic and anorganic scintillators
 %    \item Plastic scintillator (that is used in this thesis)
 %\end{itemize}
-A scintillator is a material which emits (optical) photons when a passing particle deposits energy in it. The emitted light follows a characteristic spectrum caused by the material properties, one also speaks of luminescence \cite{Book-KolanoskiWermes}. Scintillation detectors played an important role in the early days of particle physics, as they were used in the Rutherford scattering experiments of $\alpha$-particles with nuclei. While the scintillation light was initially observed with the bare eye, the invention of the \ac{PMT} and in more recent days the \ac{SiPM} allowed scintillators to be used in modern experiments \cite{Book-Leo}.
+A scintillator is a material which emits (optical) photons when a passing particle deposits energy in it. The emitted light follows a characteristic spectrum caused by the material properties, one also speaks of luminescence \cite{Book-KolanoskiWermes}. Scintillation detectors played an important role in the early days of particle physics, as they were used in the Rutherford scattering experiments of $\alpha$-particles with nuclei. While the scintillation light was initially observed with the bare eye, the invention of the \ac{PMT} and in more recent days the \ac{SiPM} (sec.\ \ref{sec:Scintillators-SiPMs}) allowed scintillators to be used in modern experiments \cite{Book-Leo}.
 \paragraph{Scintillator properties}
 Generally, a scintillator should exhibit a high efficiency for conversion of deposited energy into scintillation light, as well as a linearity between the number of scintillation photons and the deposited energy. Also the time between energy absorption and photon emission should be short in order to have a fast detector. Apart from this, the optical properties of the scintillator should be such that the scintillator is transparent for its own scintillation light and the optical coupling to the photon readout does not cause large losses \cite{Book-KolanoskiWermes}.
 \paragraph{Scintillator types}
@@ -158,6 +158,9 @@ As a semiconductor detector, the \ac{SiPM} is subject to thermal noise. Thermall
 
 \section{Gaseous detectors}
 \label{sec:GaseousDetectors}
+The second detector type used in this thesis is a gas-filled detector, also called gaseous detector. These detectors also rely on ionization, however the detector material is a gas. A passing particle loses energy in the gas while ionizing gas atoms, creating electon-ion-pairs. When applying an electric field to the gas volume, the created charges are separated and a current is measured \cite{Book-KolanoskiWermes}.
+\paragraph{Brief history of gaseous detectors}
+Gaseous detectors have a long history in particle physics, marking the first step from scintillation detectors read out manually "by eye" (sec.\ \ref{sec:Scintillators-Scintillators}) towards detectors producing electronic signals \cite{GaseousDetectors-HilkeRiegler}. The first gaseous detector was described by Rutherford and Geiger in 1908 and was able to detect $\alpha$-particles from a radioactive source \cite{GaseousDetectors-RutherfordGeiger}. The Geiger-Müller tube introduced in 1928 showcased much stronger gas amplification \cite{GaseousDetectors-GeigerMüller}. The introduction of \ac{MWPC} by Charpak in 1968 opened new application fields of gaseous detectors \cite{GaseousDetectors-Charpak}. The discovery of the $W^\pm$ and $Z^0$ bosons at the $Sp\bar{p}S$ collider at \acs{CERN} in 1983 \cite{W-Z-Discovery} was enabled by the UA-1 detector \cite{UA1-Main} consisting of a gaseous drift chamber for tracking and drift tube muon chambers.\footnote{The UA-1 muon drift chambers, which played a crucial role in the boson discoveries, were developed at Physics Institute III A in Aachen under coordination of Prof.\ H.\ Faissner \cite{UA1-Faissner}.} While semiconductor detectors nowadays showcase better energy and spatial resolution and have therefore replaced gaseous detectors in particle tracking detectors in many cases, gaseous detectors continue to be used in numerous applications. This is especially the case for applications which require large detector areas, where gaseous detectors captivate with reasonable prices \cite{Book-KolanoskiWermes}. An example for this are the muon systems of both the \acs{CMS} \cite{CMS-Main} and \acs{ATLAS} \cite{ATLAS-Main} experiments at \acs{CERN} which consist solely of gaseous detectors. Also, research in the field of gaseous detectors is ongoing, which already led to novel high-performance micropattern gaseous detectors technologies \cite{GaseousDetectors-HilkeRiegler}.
 
 \subsection{Operation modes of gaseous detectors}
 \label{sec:GaseousDetectors-OperationModes}
@@ -167,6 +170,20 @@ As a semiconductor detector, the \ac{SiPM} is subject to thermal noise. Thermall
 %    \item Nonlinear amplification mode
 %    \item Geiger mode
 %\end{itemize}
+Depending on the voltage applied to the detector and the resulting field strength, the gas detector operated in different modes, which should be described in this section.
+\newline {\color{red} Add gaseous detector operation modes plot}
+\paragraph{Recombination region}
+When no voltage or very low voltages are applied to the gas detector, the electron-ion-pairs created by the passing ionizing particle can recombine before they can be collected by the readout electrodes \cite{Book-KolanoskiWermes}. This mode is therefore of no use for a particle detector. 
+\paragraph{Ionization chamber}
+For medium voltages, the primary electron-ion-pairs are collected by the electrodes. Since the energy loss of particles in gases is rather low, the number of collected charges per particle is also small.\footnote{In argon a \ac{MiP} generates only $\mathcal{O}(100)$ electron-ion-pairs per \si{\centi\meter}, equivalent to created charges in the \si{\femto\coulomb} range which are (almost) impossible to detect without amplification \cite{Book-KolanoskiWermes}.} Therefore ionization chambers are rather suited for particle flux measurements than for single-particle detection \cite{Book-KolanoskiWermes}.
+\paragraph{Proportional region}
+When the electric field strengths become larger with increasing voltages, the effect of gas amplification starts to play a role. The drifting electrons gain sufficient energy to ionize gas atoms themselves, leading to secondary electron-ion-pairs which themselves can again trigger ionization processes. For a wide voltage range, the resulting charge collected at the electrode remains proportional to the initially deposited charge. The gain $G$ is defined as ration of initial and final number of charge carriers and reaches values of $G\approx 10^3-10^5$ in the proportional region \cite{Book-KolanoskiWermes}.
+\paragraph{Region of limited proportionality}
+When the voltage is further increased, the proportionality between initial and final number of charges becomes invalid. This is due to space charge effects, i.e.\ clouds of slower moving ions which shield the electric field \cite{Book-KolanoskiWermes}.
+\paragraph{Geiger region}
+In the Geiger region, the output signal becomes independent of the number of primary charges. Such a detector can be used for particle counting purposes, however the ability to estimate the particle's energy loss with the deposited charge due to ionization is lost. In the Geiger mode, the gas discharge is not confined towards the electrode, but extends over the whole gas volume. Such a detector needs to be quenched (i.e.\ the discharge needs to be stopped) with an external resistor in order to become sensitive again to detect the next particle. The amplification in this mode can reach values of $G\approx 10^8-10^9$ \cite{Book-KolanoskiWermes}.
+\paragraph{Discharge region}
+When the voltage is increased even beyond the Geiger region, gas discharges occur where both electrodes become connected via a plasma channel. This discharge can be triggered by ionizing particles or spontaneously. With measures to suppress the complete gas discharge, this mode can also be used for a particle detector, e.g.\ in so-called streamer chambers \cite{Book-KolanoskiWermes}.
 
 \subsection{Drift chamber}
 \label{sec:GaseousDetectors-DriftChamber}
@@ -176,6 +193,8 @@ As a semiconductor detector, the \ac{SiPM} is subject to thermal noise. Thermall
 %    \item Correlation of charge travelling time and initial ionization position
 %    \item Drift chamber legacy in Aachen
 %\end{itemize}
+As the gaseous detector used in this work is a drift chamber, the general working principle of this flavor of gaseous detectors is briefly introduced in this section.
+\paragraph{}
 
 
 
