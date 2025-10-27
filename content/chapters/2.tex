@@ -1,10 +1,6 @@
-\section{Interaction of particles and matter}
+\section{Interaction of heavy charged particles with matter}
 \label{sec:Interactions}
 %Particle detector detects the effects due to the particle interaction, not the particle itself.
-
-Understanding particle interactions with matter is essential when constructing and roperating particle detectors. This is because detectors are never sensitive to elementary particles themselves, but to the signatures that the particles leave in the detector through interactions with the detector material \cite{Book-KolanoskiWermes}.
-\newline The topic of particle interactions is quite rich, as different particles can undergo different interactions and the interaction types depend on the particle energy. Since in this thesis a muon detector is discussed, the topic is restricted to interactions of muons. Note that in this field one considers muons as "heavy" charged particles, as they carry an electric charge and have a mass significantly above the electron mass $m_\mu \gg m_e$ (see sec.\ \ref{sec:SM-Muon}).
-
 %\subsection{Photon interactions}
 %Very brief, since only interested in muon interactions.
 %\begin{itemize}
@@ -12,8 +8,6 @@ Understanding particle interactions with matter is essential when constructing a
 %    \item Compton effect
 %    \item Pair creation
 %\end{itemize}
-
-\subsection{Interactions of heavy charged particles}
 %\begin{itemize}
 %    \item Non-ionizing collisions
 %    \item Bethe-Bloch ionization
@@ -21,51 +15,81 @@ Understanding particle interactions with matter is essential when constructing a
 %    \item Other effects (transition radiation, Cherenkov radiation)
 %\end{itemize}
 
-Particles passing through matter interact with it in various ways and thereby lose energy. A quantity commonly used in this context is the mean particle energy loss per path length in the material $-\left\langle dE/dx \right\rangle$ which also called stopping power \cite{Book-KolanoskiWermes}\footnote{Since the interactions also depend on the material density $\rho$, one usually weights the path length $l$ with this quantity: $x=l\rho$. This gives the stopping power the unit $\si{\mega\electronvolt \; \centi\meter^2 \gram^{-1}}$ \cite{Book-KolanoskiWermes}.}. Fig.\ \ref{fig:Interactions-MuonInteractions} shows the muon stopping power for different particle momenta for an example of antimuons ($\mu^+$) in copper. In the following subsections, the different regimes are discussed.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Interactions-MuELoss.png}
-    \caption{Stopping power for antimuons ($\mu^+$) in copper depending on the momentum \cite{PDG2024}.}
-    \label{fig:Interactions-MuonInteractions}
-\end{figure}
+Understanding particle interactions with matter is essential when constructing and operating particle detectors. This is because detectors are never sensitive to elementary particles themselves, but to the signatures that the particles leave in the detector through interactions with the detector material \cite{Book-KolanoskiWermes}.
+\newline The topic of particle interactions is quite rich, as different particles can undergo different interactions and the interaction types depend on the particle energy. Since in this thesis a muon detector is discussed, the topic is restricted to interactions of heavy charged particles (which include the muon). Particles passing through matter interact with it in various ways and thereby lose energy. A quantity commonly used in this context is the mean particle energy loss per path length in the material $-\left\langle dE/dx \right\rangle$ which also called stopping power \cite{Book-KolanoskiWermes}\footnote{Since the interactions also depend on the material density $\rho$, one usually weights the path length $l$ with this quantity: $x=l\rho$. This gives the stopping power the unit $\si{\mega\electronvolt \; \centi\meter^2 \gram^{-1}}$ \cite{Book-KolanoskiWermes}.}.
+%Fig.\ \ref{fig:Interactions-MuonInteractions} shows the stopping power for different particle momenta for an example of antimuons ($\mu^+$) in copper. In the following subsections, the different regimes are discussed.
+%\begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{Interactions-MuELoss.png}
+%    \caption{Stopping power for antimuons ($\mu^+$) in copper depending on the momentum \cite{PDG2024}.}
+%    \label{fig:Interactions-MuonInteractions}
+%\end{figure}
 
-\subsubsection{Ionization}
+\subsection{Ionization and excitation}
 \label{sec:Interactions-Ionization}
-Charged particles can lose energy in matter through ionization and excitation of the atoms of the medium, more concretely of the shell electrons. This effect is the dominant process of energy loss for charged particles, until radiative effects become relevant at high energies (see sec.\ \ref{sec:Interactions-Bremsstrahlung}). Generally, the stopping power can be described with the integral over all possible energy transfers for the collisions between the charged particle and the shell electrons \cite{Book-KolanoskiWermes}:
+Charged particles can ionize and excite atoms of the medium thereby losing energy. This effect is the dominant process of energy loss for charged particles, until radiative effects become relevant at high energies (sec.\ \ref{sec:Interactions-Bremsstrahlung}). Generally, the stopping power can be described with an integral over all possible energy transfers $T$ for the collisions between the charged particle and the shell electrons \cite{Book-KolanoskiWermes}:
 \begin{equation}
-    -\left\langle \frac{dE}{dx} \right\rangle = n_e\int_{T_\text{min}}^{T_\text{max}} T \; \frac{d\sigma_a}{dT}(M,\beta,T)\;dT
+    -\left\langle \frac{dE}{dx} \right\rangle = n_e\int_{T_\text{min}}^{T_\text{max}} T \; \frac{d\sigma_a}{dT}(M,\beta,T)\;dT.
     \label{eq:Interactions-Integral}
 \end{equation}
-Here $n_e$ is the target electron density, $T$ is the transferred kinetic energy in a collision and $T_\text{min}$ ($T_\text{max}$) the minimum (maximum) allowed energy transfer. The differential cross section $d\sigma_a/dT(M,\beta,T)$ is a measure of the probability of the collision process of given energy transfer $T$ for a particle with velocity\footnote{$c=\SI{2.998e8}{\meter/\second}$ is the speed of light \cite{PDG2024}.} $\beta=v/c$ and particle mass $M$. Respecting the fact that the minimum energy transfer can not be arbitrarily small in due to the quantized electron energy levels in the atom and allowing approximations for heavy particles ($M \gg m_e$) one obtains \cite{Book-KolanoskiWermes,PDG2024}
+Here, $n_e$ is the target electron density and $T_\text{min}$ ($T_\text{max}$) the minimum (maximum) allowed energy transfer. The differential cross section $d\sigma_a/dT(M,\beta,T)$ is a measure of the probability of the collision process of given energy transfer $T$ for a particle with mass $M$ and velocity $\beta=v/c$ ($c=\SI{2.998e8}{\meter/\second}$ is the speed of light \cite{PDG2024}). Respecting the fact that the minimum energy transfer can not be arbitrarily small in due to the quantized electron energy levels in the atom and allowing approximations for heavy particles $M \gg m_e$ (which is the case for muons, see sec.\ \ref{sec:SM-Muon}), one obtains \cite{Book-KolanoskiWermes,PDG2024}
 \[
 \begin{minipage}{0.5\linewidth}
     \begin{align*}
-        T_\text{min}= \frac{I^2}{2m_e c^2\beta^2}
+        T_\text{min}= \frac{I^2}{2m_e c^2\beta^2},
     \end{align*}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{align*}
-        T_\text{max}= \frac{2 m_e c^2\beta^2\gamma^2}{1+2\gamma m_e/M+m_e^2/M^2}
+        T_\text{max}= \frac{2 m_e c^2\beta^2\gamma^2}{1+2\gamma m_e/M+m_e^2/M^2},
     \end{align*}
 \end{minipage}
 \]
-where $I\approx 1.7 Z^{0.85} \;\si{\electronvolt}$ is the mean excitation energy of the atom with atomic number $Z$, $\gamma=1/\sqrt{1-\beta^2}$ is the Lorentz factor of the heavy particle and $m_e=\SI{511}{\kilo\electronvolt}$ the electron mass \cite{PDG2024}. Computing the integral from eq.\ \ref{eq:Interactions-Integral} with the Mott cross section (which takes into account the spin of both the electron and the heavy charged particle) yields the Bethe-Bloch formula for the stopping power of heavy charged particles in matter \cite{Book-KolanoskiWermes,PDG2024}:
+where $I\approx 1.7 \cdot Z^{0.85} \;\si{\electronvolt}$ is the mean excitation energy of the atom with atomic number $Z$, $\gamma=1/\sqrt{1-\beta^2}$ is the Lorentz factor of the heavy particle and $m_e=\SI{511}{\kilo\electronvolt}$ the electron mass \cite{PDG2024}. Computing the integral from eq.\ \ref{eq:Interactions-Integral} with the Mott cross section (which takes into account the spin of both the electron and the heavy charged particle) yields the Bethe-Bloch formula for the stopping power \cite{Book-KolanoskiWermes,PDG2024}:
 \begin{equation}
-    -\left\langle \frac{dE}{dx} \right\rangle = K\frac{Z}{A}\frac{z^2}{\beta^2}\left[ \frac{1}{2}\ln\frac{2m_ec^2\beta^2\gamma^2T_\text{max}}{I^2}-\beta^2-\frac{\delta(\beta\gamma)}{2}-\frac{C(\beta\gamma,\;I)}{Z} \right]
+    -\left\langle \frac{dE}{dx} \right\rangle = K\frac{Z}{A}\frac{z^2}{\beta^2}\left[ \frac{1}{2}\ln\frac{2m_ec^2\beta^2\gamma^2T_\text{max}}{I^2}-\beta^2-\frac{\delta(\beta\gamma)}{2}-\frac{C(\beta\gamma,\;I)}{Z} \right].
     \label{eq:Interactions-BetheBloch}
 \end{equation}
-Here, $A$ is the atomic mass number of the medium, $z$ the charge of the interacting heavy particle and $K= N_Ae^4/(4\pi \epsilon_0 m_ec^2)$ a factor including various constants. The formula is able to describe the stopping power of heavy particles with velocities $0.1 \lesssim \beta\gamma \lesssim 1000$ \cite{PDG2024}. Eq.\ \ref{eq:Interactions-BetheBloch} contains two additional correction terms ($\delta$ and $C$) which should be discussed in the following paragraphs.
-\newline A
+Here, $A$ is the atomic mass number of the medium, $z$ the charge of the interacting heavy particle and $K= N_Ae^4/(4\pi \epsilon_0 m_e c^2)$ a factor including the Avogadro constant $N_A=\SI{6.022e23}{\mole^{-1}}$ and $\epsilon_0=\SI{8.854e-12}{\farad\meter^{-1}}$ the vacuum permittivity \cite{PDG2024}. The formula is able to describe the stopping power for heavy charged particles in the velocity range $0.1 \lesssim \beta\gamma \lesssim 1000$ \cite{PDG2024}. Generally, the stopping power curve behaves like $\propto 1/\beta^2$ for lower velocities and then reaches a minimum at around $\beta\gamma\approx 3.5$. Particles in this stopping power minimum are called \acp{MiP}. For higher velocities, the stopping power increases logarithmically $\propto\ln\gamma$ \cite{Book-KolanoskiWermes,PDG2024}. Eq.\ \ref{eq:Interactions-BetheBloch} contains two additional correction terms ($\delta$ and $C$) which should be discussed in the following.
+\newline When the velocity of the heavy charged particle is as low as the shell electron velocities, the approximative description of the energy loss with the mean excitation energy is no longer valid, since quamtum mechanical interference effects start to become relevant. The stopping power deviates from the $\propto 1/\beta^2$ behavior and decreases again towards lower velocities. This so-called shell correction is described by the $C(\beta\gamma,\; I)/Z$ term and increases the validity range of eq.\ \ref{eq:Interactions-BetheBloch} to velocity ranges below $\beta\gamma < 0.1$ \cite{Book-KolanoskiWermes,PDG2024}.
+\newline For high particle velocities, the stopping power also deviates from the $\propto\ln\gamma$ behavior, due to polarization effects of the material and the fact that the electric field changes its shape for relativistic particle velocities. The density correction $\delta(\beta\gamma)$ accounts for this effect, leading to a flattened rise of the stopping power curve \cite{Book-KolanoskiWermes,PDG2024}.
+\newline The Bethe-Bloch formula (with its corrections) describes only the mean value of the energy loss per unit length, statistically the energy loss follows a Landau distribution. Larger energy transfers can lead to high-energy electrons, which are referred to as $\delta$-electrons \cite{Book-KolanoskiWermes,PDG2024}.
 
-\subsubsection{Bremsstrahlung}
+\subsection{Bremsstrahlung and other radiative losses}
 \label{sec:Interactions-Bremsstrahlung}
+According to electrodynamics, accelerated charges emit photon radiation. In the case of charged particles in matter, the electic field is the Coulomb field of the material atom's nucelei. The radiated photons are referred to as Bremsstrahlung and lead to energy loss of the deflected particle. The energy loss due to Bremsstrahlung becomes dominating for particles with high velocities $\beta\gamma \gtrsim 1000$ and can be described as follows \cite{Book-KolanoskiWermes,PDG2024}:
+\begin{equation}
+    -\left\langle \frac{dE}{dx} \right\rangle =-\frac{E}{X_0}.
+    \label{eq:Interactions-Bremsstrahlung}
+\end{equation}
+Here, $X_0$ is the radiation length, i.e.\ the path after which a particle has only left $1/e$ of its initial energy due to the radiative energy loss. Calculation of the radiation length is extensive and usually includes approximations. From eq.\ \ref{eq:Interactions-Bremsstrahlung} is is clear that the particle energy decreases exponentially when radiating Bremsstrahlung photons \cite{Book-KolanoskiWermes}:
+\begin{equation*}
+    E(x)=E_0 \; e^{-x/X_0}.
+\end{equation*}
+Note that the description above is for electrons. Of course, heavy charged particles (such as muons) show radiative losses as well, however at even higher energies, since radiative losses are heavily dependent on the particle mass $dE/dx \propto 1/M^2$ \cite{Book-KolanoskiWermes}. Apart from photon radiation, other effects such as $e^+e^-$ pair production taking place directly in the Coulomb field and photonuclear interactions have to be taken into account for such calculations \cite{Interactions-MuonStoppingPower}.
+\newline The energy at which the radiative losses exceed the ionization losses is called critical energy and depends on the particle type as well as the material. Due to the mass scaling of radiative losses, the critical energy of electrons $E_c=\mathcal{O}(\SI{10}{\mega\electronvolt})$ is significantly smaller than the critical energy of muons $E_{\mu,c}=\mathcal{O}(\SI{100}{\giga\electronvolt})$ \cite{Book-KolanoskiWermes}.
 
-\subsubsection{Coulomb scattering}
+\subsection{Coulomb scattering}
 \label{sec:Interactions-CoulombScattering}
+Charged particles can experience Rutherford scattering on the Coulomb field of the atom's nucleus. Scattering is also possible in the field of the shell electrons, however this contribution is neglectable for high particle  energies $E\gg m_e c^2$. The Rutherford cross section can describe a single scattering process at angle $\theta$ for a particle with momentum $p$ \cite{Book-KolanoskiWermes}:
+\begin{equation*}
+    \frac{d\sigma}{d\Omega} \propto z^2 Z^2 \frac{1}{p^2 \beta^2} \frac{1}{\sin^4\frac{\theta}{2}}.
+\end{equation*}
+Several scattering processes occur when the particle passes through a material of thickness $x$. The total scattering angle distribution resulting from the consecutive scattering processes can be approximated with a Gaussian distribution $f(\theta)$ centered around $\theta=0$. The width $\theta_0$ of the distribution of scattering angles can be estimated with \cite{Book-KolanoskiWermes}
+\begin{equation*}
+    \theta_0 \approx \frac{\sqrt{2\pi} m_e c}{\sqrt{\alpha}} \frac{1}{p \beta} \sqrt{\frac{x}{X_0}}
+\end{equation*}
+where $X_0$ is the radiation length of the material (see sec.\ \ref{sec:Interactions-Bremsstrahlung}) and $\alpha \approx 1/137$ is the electromagnetic fine structure constant \cite{PDG2024}.
 
-\subsubsection{Other effects}
+\subsection{Other effects}
 \label{sec:Interactions-OtherEffects}
-
+Charged particles can experience additional processes when passing through matter, which however are of less importance in the scope of this thesis. For completeness, they should still be mentioned here.
+\newline Charged particles passing through matter with a velocity exceeding the velocity of light in the medium emit so-called Cherenkov photons. The energy loss due to this process is neglible, however some particle detectors exploit the process by detecting the emitted photons. The angle $\theta_c$ at which the photons are emitted in this process depends on the refraction index of the medium $n$ and the particle velocity $\beta$ \cite{Book-KolanoskiWermes,PDG2024}
+\begin{equation*}
+    \cos\theta_c=\frac{1}{n\beta},
+\end{equation*}
+allowing for velocity measurements of non-relativistic particles with this process.
+\newline Another effect is transition radiation, which implies the emission of photons when a charged particle crosses the boundary of different media. Also this process does not contribute significantly to energy loss. Note however that the radiated energy depends on the particle's Lorentz factor $\gamma$, allowing to exploit this effect for velocity measurements of relativistic particles \cite{Book-KolanoskiWermes,PDG2024}.
 
 
 \section{Scintillators and photon detection}
