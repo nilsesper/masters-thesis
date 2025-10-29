@@ -196,7 +196,7 @@ When the voltage is increased even beyond the Geiger region, gas discharges occu
 A drift chamber is a gaseous detector which not only allows detection of ionizing particles, but enables estimations of the traversing particle's position within the gas volume. It is usually operated in proportional mode, however the amplification region where the gas amplification takes place is localized and there exists a significant volume where the created charges drift without any amplification. They can be seen as further development of the \ac{MWPC} detector type. Drift chambers are famously used in muon detection systems which usually are located on the outer shell of a general-purpose particle detector experiment and therefore require large detector areas while still demanding good spatial resolution \cite{Book-KolanoskiWermes}.
 \newline {\color{red} Add picture of drift chamber and drift cell}
 \paragraph{Drift region}
-The drift region is considered the sensitive region of the detector and usually comprises most of its volume. When a passing particle creates electon-ion-pairs in this region, the charges are separated through an applied electric field. In the drift region, the field strengths are not high enough to trigger gas amplification. Instead, the charges drift with a constant drift velocity $v_D$, experiencing a force equillibrium between the electic force and a decellarating force due to scattering processes with other gas atoms. Note that this drift velocity depends on the electic field, the gas mixture as well as the particle type.\footnote{The drift velocity of electrons is significantly higher than the velocity of ions \cite{Book-KolanoskiWermes}.} Typical drift velocities for drift chambers lie in the range $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$ \cite{Book-KolanoskiWermes}.
+The drift region is considered the sensitive region of the detector and usually comprises most of its volume. When a passing particle creates electon-ion-pairs in this region, the charges are separated through an applied electric field. In the drift region, the field strengths are not high enough to trigger gas amplification. Instead, the charges drift with a constant drift velocity $v_D$, experiencing a force equillibrium between the electic force and a decellarating force due to scattering processes with other gas atoms. Note that this drift velocity depends on the electic field, the gas mixture as well as the particle type.\footnote{The drift velocity of electrons is significantly higher than the velocity of ions \cite{Book-KolanoskiWermes}.} Typical electron drift velocities for drift chambers lie in the range $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$ \cite{Book-KolanoskiWermes}.
 \newline At some point the drifting charges reach the electrode and are collected. One should note that the drift with a known velocity $v_D$ allows to estimate the drift distance of the charges and thus the initial position of the passing particle \cite{Book-KolanoskiWermes}:
 \begin{equation*}
     x_D = \int_{t_\text{start}}^{t_\text{stop}}v_D(t)\;dt.
@@ -211,7 +211,7 @@ This is possible with only a time measurement, which is however required to have
 \label{sec:ReadoutElectronics}
 Since a major part of the work for this thesis was the development of an electronic readout system for a particle detector, this section should give an introduction into this topic. Emphasis is put on \acf{FPGA} devices which provide a suitable hardware base for synchronous, fast readout systems. 
 
-\subsection{General aspects of detector readout}
+\subsection{General aspects}
 \label{sec:ReadoutElectronics-General}
 %\begin{itemize}
 %    \item Quantity to read out: E.g. voltage / current
@@ -219,6 +219,21 @@ Since a major part of the work for this thesis was the development of an electro
 %    \item Good time resolution
 %    \item More advanded: Resolution of signal amplitiude and length, large number of channels
 %\end{itemize}
+While early particle detecors were based on photographic or human readout "by eye", most modern detectors use electronic readout systems. Apart from the fact that electronic readout is suited for high particle rates which exceed the range considered possible with the human eye, it allows integration of the detector directly into a \ac{DAQ} system which automatically processes the data and stores them in a digital format \cite{Book-KolanoskiWermes}.
+\paragraph{Frontend electronics}
+The so-called frontend electronics receive the output signals from the detector itself. Particle detector outputs are usually in the form of a charge, current or voltage. Since their amplitude is often very small, amplification of the signal is required. For this purpose, frontend electronics frequently house a so-called preamplifier, which can amplify the signals as well as convert them into a voltage if necessary \cite{Book-Leo}. Preamplifiers should have have low noise rates and behave linearly. Often, there are additional filtering elements in the frontend electronics which provide pulse shaping. Depending on the detector type and application, the frontend electronics either output an analog pulse or may include additional components to already convert them into digital signals \cite{Book-KolanoskiWermes}.
+\paragraph{Signal discrimination}
+In order to distinguish real signals from noise, one usually implements a discrimination stage in the electronics chain. A discriminator has a digital output, that is, it converts the analog input pulse into a digital signal which has the binary states low or high and not amplitude information anymore. Only when an input pulse with an amplitude above a defined threshold amplitude is present at the input, the digital output of the discriminator is switched to high. To filter noise in this way, one of course needs to assume that noise hits are typically of lower amplitudes. Discriminator outputs are used to trigger other parts of the electonic readout chain or as direct part of the \ac{DAQ} chain (if amplitude information is not recorded) \cite{Book-KolanoskiWermes}.
+\paragraph{Amplitude measurement}
+Discriminators only provide binary information whether an input signal was above a set thresold amplitude or not. Many applications however require the measurement of the signal amplitude, e.g.\ energy measurements. Since modern \ac{DAQ} systems operate digitally, it is necessary to convert the analog amplitude into a digital form, which is done by \acfp{ADC}. These devices convert an input signal within a defined amplitude range into a digital output value, which contains the amplitude information with respect to a given digitization step size which is typically in the order $\mathcal{O}(0.1-1\;\si{\milli\volt})$ \cite{Book-KolanoskiWermes}.
+\paragraph{Time measurement}
+In many applications, the measurement and digitization of the arrival time of the signal is also required. This is especially critical in so-called \ac{ToF} measurements where particle propagation times are directly measured. For drift chambers, an accurate time measurement is also important, since the measured drift time yields the position of the initial particle hit. A device which performs conversion of a time (difference) into a digital format is called \ac{TDC}. Achievable time resolutions can be below $\mathcal{O}(\SI{100}{\pico\second})$ for advanced applications \cite{Book-KolanoskiWermes}.
+\paragraph{Data processing}
+After signal amplification, shaping and discrimination or digitization, the data from the detector is processed by the \ac{DAQ}. The resulting high data rate (of course depending on the experiment) presents a challenge to the readout system. One important concept is the so-called trigger, which decides whether the detector data from this event is stored or not. While simple triggers may only be the output of a discriminator which triggers the conversion of an \ac{ADC}, modern readout systems feature elaborated trigger algorithms where data is being processed within few $\SI{100}{\nano\second}$ and event readout is decided based on this \cite{Book-KolanoskiWermes}. Usually the analysis of the recorded data is done later "offline" with computers, however few steps may also be computed already at the time of data recording by the \ac{DAQ} "online".
+\paragraph{Slow control}
+Apart from signal readout, particle detectors often require infrastructure to operate, such as low-voltage, high-voltage, gas or cooling systems. Signals to control this periphery are often referred to as "slow control", as these signals are usually exchanged at lower data rates as the signal readout \cite{Book-KolanoskiWermes}.
+\paragraph{Synchronization}
+For increasingly complex detectors and readout electronics, the synchronization of the full system becomes nontrivial. As soon as the system has several detector channels and multiple readout devices, this is a relevant problem. It must be ensured that the recorded signals from all detector channels can be assigned to the correct event. Note that synchronization has additional weight at collider experiments, where the detector readout should be time-aligned with the particle collisions produced by the accelerator \cite{Book-KolanoskiWermes}.
 
 \subsection{FPGA devices}
 \label{sec:ReadoutElectronics-FPGAs}
@@ -227,6 +242,11 @@ Since a major part of the work for this thesis was the development of an electro
 %    \item Fully programmable logic (difference to CPU)
 %    \item In particle physics: Fast, synchronized readout and processing of many channels
 %\end{itemize}
+\acfp{FPGA} are devices which can be programmed to realize user-defined logic circuits.
+
+\paragraph{Historic overview}
+\paragraph{Main components}
+\paragraph{Application in particle physics}
 
 \subsection{Basics of logic circuit development}
 \label{sec:ReadoutElectronics-LogicCircuits}
@@ -237,7 +257,7 @@ Since a major part of the work for this thesis was the development of an electro
 %    \item Hardware Description Language
 %    \item IP cores
 %\end{itemize}
-
-
-
+\paragraph{Combinatorial logic}
+\paragraph{Sequential logic}
+\paragraph{Hardware description language}
 
