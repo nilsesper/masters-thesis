@@ -121,7 +121,7 @@
 \graphicspath{{../resources/images/}}
 % configure captions
 \captionsetup{
-    font=normal,
+    font=small, % fontsize of captions
     labelfont=bf,
     format=hang,
     justification=centering, %justified,
@@ -134,9 +134,15 @@
 % hide boxes around hyperlinks
 \hypersetup{hidelinks}
 
-%%% define si units
+%%% thousands separator for siunitx
+\sisetup{group-separator = {,}}
+
+%%% define previously undefined units
 \DeclareSIUnit\bar{bar}
 \DeclareSIUnit\barn{b}
+
+%%% define previously undefined math operators
+\DeclareMathOperator{\artanh}{artanh}
 
 %%% \addtag: enable numbering of \[\] eqs. by using the newly defined command
 \newcommand\addtag{\refstepcounter{equation}\tag{\theequation}}

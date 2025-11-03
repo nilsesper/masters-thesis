@@ -1,73 +1,194 @@
+This chapter should describe the gaseous detector used in this work, which is a spare drift chamber from the \acf{CMS} experiment \cite{CMS-Main}. After a brief description of the experiment and its context, emphasis is put on the description of the \ac{CMS} drift tube chambers and their readout chain.
+
+
+
 \section{Compact Muon Solenoid experiment}
+\label{sec:CMS-Experiment}
 
 \subsection{Large Hadron Collider}
-\begin{itemize}
-    \item Image of CERN accelerator complex
-    \item Key facts: Luminisity, collision center-of-mass energy
-\end{itemize}
+\label{sec:CMS-LHC}
+%\begin{itemize}
+%    \item Image of CERN accelerator complex
+%    \item Key facts: Luminisity, collision center-of-mass energy
+%\end{itemize}
+The particle accelerator which provides the collisions recorded by \ac{CMS} and other experiments is the \acf{LHC} \cite{LHC-Main}. It is located at the \acs{CERN} laboratory complex in the region of Geneva, Switzerland. Fig.\ \ref{fig:LHC-AcceleratorComplex} presents an overview of the accelerators and experiments at \acs{CERN}.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{LHC-AcceleratorComplex.png}
+    \caption{Overview of the patrticle accelerators and experiments at \acs{CERN} \cite[adapted]{LHC-AcceleratorComplex}.}
+    \label{fig:LHC-AcceleratorComplex}
+\end{figure}
+\paragraph{Particle collisions}
+An accelerator collides particles which were accelerated a certain energy. The \ac{COME} $\sqrt{s}$ is the energy in the central collision reference frame. Due to energy conservation, the sum of the masses of all created particles in a collision can not exceed this value. In a circular symmetric accelerator where both particles have the same energy $E_p$, the \ac{COME} can be approximated as \cite{Accelerators-Wiedemann}:
+\begin{equation}
+    \sqrt{s}=2 E_p
+    \label{eq:LHC-COME}
+\end{equation}
+Therefore having higher \acp{COME} enables the discovery of higher-mass particles. Another important quantity in an accelerator is the instantaneous luminosity $\mathcal{L}$. It determines the number of events emerging from the collision \cite{Book-KolanoskiWermes}:
+\begin{equation}
+    \dot{N}=\mathcal{L}\sigma
+    \label{eq:LHC-Lumi}
+\end{equation}
+Here, $\sigma$ is the cross section of the interaction process, which is a measure of probability for the process. An increased luminosity is therefore advantageous to collect more statistics of rare interactions.
+\paragraph{LHC accelerator}
+The \ac{LHC} is the largest and most powerful particle accelerator in the world. It is a circular proton-proton collider, creating collisions with a \ac{COME} of up to $\sqrt{s}=\SI{14}{\tera\electronvolt}$. The accelerator has a circumference of \SI{27}{\kilo\meter} and was constructed in the tunnel originally used for the \ac{LEP} \cite{LEP-Main}, which lies around \SI{100}{\meter} below the surface. In order to guide the particles, the machine uses superconducting magnets with field strengths above \SI{8}{\tesla}. Particle accelaration is provided by superconducting cavities. Particle collisions take place with a bunch-crossing frequency of \SI{40}{\mega\hertz}. Originally, the \ac{LHC} was designed to provide an instantaneous luminosity of $\mathcal{L}=10^{34}\;\si{\centi\meter^{-2} \second^{-1}}$ at the interaction points. In the context of the \ac{HLLHC} project, the accelerator will be upgraded to reach instantaneous luminosities of $\mathcal{L}=\num{5e34}\;\si{\centi\meter^{-2} \second^{-1}}$ \cite{HLLHC-TDR}. It should be noted that the \ac{LHC} is not only capable of accelerating protons but also heavy ions \cite{LHC-Main}.
+\paragraph{Pre-accelerators}
+The \ac{LHC} does not accelerate protons starting at rest, but is supplied with pre-accelerated particles from the \acs{CERN} accelerator complex (see fig.\ \ref{fig:LHC-AcceleratorComplex}). Protons are extracted from a hydrogen bottle and first accelerated in a linear accelerator (LINAC 4) to \SI{160}{\mega\electronvolt} \cite{LINAC4-Main}. Then they are injected in a series of circular accelerators (Booster, Proton Synchrotron, Super Proton Synchrotron) and finally injected into the \ac{LHC} at an energy of \SI{450}{\giga\electronvolt} \cite{LHC-Main}.
+\paragraph{LHC operation}
+The accelerator operation can be divided into so-called runs, each spanning several years. Run-1 from $2010$ to $2013$ was the initial operation period at lower \ac{COME} \cite{LHC-Run1}, which already led to the discovery of the Higgs boson \cite{HiggsDiscovery-CMS,HiggsDiscovery-ATLAS}. Run-2 lasted from $2015$ to $2018$ \cite{LHC-Run2}. Run-3 started in $2022$ and should last until the summer of $2026$. After this run, the \ac{HLLHC} upgrade program will be implemented in the \ac{LS3} \cite{LHC-Run3}.
 
 \subsection{Experiment overview}
-\begin{itemize}
-    \item CMS rendering
-    \item Brief listing of all subdetectors
-\end{itemize}
+\label{sec:CMS-Overview}
+%\begin{itemize}
+%    \item CMS rendering
+%    \item Brief listing of all subdetectors
+%\end{itemize}
+The \ac{CMS} experiment \cite{CMS-Main} is one of two multipurpose particle detectors operated at the \ac{LHC}. It is located approximately \SI{100}{\meter} underground close to the French village Cessy. It consists of a cylindrical barrel with five wheels and two disk-shaped endcaps. The detector measures \SI{21.6}{\meter} in length and \SI{14.6}{\meter} in diameter, which is significantly more compact than the second multipurpose detector at the \ac{LHC}, named \ac{ATLAS} \cite{ATLAS-Main}. Apart from the compactness, the detector was designed to provide good performance especially in the detection of muons. Both of these aspects are represented in the name of the experiment. The \ac{CMS} assembly has a total mass of around \SI{12500}{\tonne} \cite{CMS-Main}. Fig.\ \ref{fig:CMS-RenderingRun2} shows a rendering of the \ac{CMS} detector in its configuration after Run-2, the different subdetector systems are labeled in the image.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{CMS-RenderingRun2.pdf}
+    \caption{Rendering of the \acs{CMS} detector in its configuration during Run-2, with all its subsystems and a human to scale {\color{red} Correct/remove text in illustration} \cite{CMS-RenderingRun2}.}
+    \label{fig:CMS-RenderingRun2}
+\end{figure}
+\paragraph{Phase-2 upgrade}
+With the \ac{HLLHC} project (sec.\ \ref{sec:CMS-LHC}), the luminosity of the accelerator will be significantly increased. This implies significantly stronger radiation doses, especially to the inner and forward subdetectors. Also, the pileup, i.e.\ the number of collisions within one bunch crossing, will increase up to $200$, imposing a challenge to the detectors. All subdetectors need to evaluate the longevity and radiation hardness of their components. Also, the readout systems and trigger algorithms need to be revised to maintain acceptable physics performance under these conditions \cite{CMS-Phase2}.
+\paragraph{Coordinate frame}
+Before the subdetectors are described, the coordinate frame used in \ac{CMS} should be introduced. The center of the frame is the nominal interaction point, where the two proton beams are expected to collide. The $x$-axis points towards the \ac{LHC} center, and the $y$-axis points upwards. The $z$-axis points along the beam line. Frequently, spherical coordinates $(r,\;\theta,\;\phi)$ are used, with the azimutal angle $\phi$ in the $x$-$y$-plane and the zenith angle $\theta$ measured from the $z$-axis \cite{CMS-Main}. Instead of the zenith angle, the so-called pseudorapidity $\eta$ is frequently used, which relates to the angle as follows \cite{Book-KolanoskiWermes}:
+\begin{equation}
+    \eta=-\ln\tan\frac{\theta}{2}.
+\end{equation}
+This definition is convenient since in the high-energy limit $E_z \gg M$ the Lorentz-invariant rapidity $y=\artanh(v_z/c)$ of a particle can be approximated with the pseudorapidity $\eta$ \cite{Book-KolanoskiWermes}.
+
+\subsection{Subdetectors}
+\label{sec:CMS-Subdetectors}
+In the following paragraphs, the subdetectors of \ac{CMS} should be briefly described. It should be noted that the detector has already been upgraded multiple times and parts were exchanged. Since this work is in the context of the Phase-2 upgrade (sec.\ \ref{sec:CMS-Overview}), the subdetectors should be described in their foreseen state after this upgrade.
+\paragraph{Tracker}
+The particle tracking system is the innermost subdetector of \ac{CMS}. Charged particles leave hits in multiple layers of this subdetector, which allows the reconstruction of tracks. The system can be divided in the \ac{IT} and the \ac{OT}. The \ac{IT} is composed of silicon pixel detectors with segmentation in the order of $50\times 50\;\si{\micro\meter^2}$. It has around $2$ billion individual channels \cite{CMS-Phase2Tracker-ConferenceReport}. The \ac{OT} uses both silicon strip and pixel-strip modules and has a total of $213$ million readout channels \cite{CMS-Phase2Tracker-ConferenceReport}. With the Phase-2 tracker, information from the subdetector is introduced in the \ac{CMS} trigger for the first time. This is done measuring particle hits in two adjacent silicon sensors and determining the particle transverse momentum ($p_T$) by the track curvature. The acceptance of the tracking system is $\left| \eta \right|\leq 4$ \cite{CMS-Phase2Tracker}.
+\paragraph{Electromagnetic calorimeter}
+The \ac{ECAL} measures the energy of particles which undergo electromagnetic showers, namely electrons and photons. In the barrel region it consists of \num{61200} lead tungstate (PbWO$_4$) scintillator crystals which are read out by \acp{APD} \cite{CMS-Main}. In the endcaps, the current sampling calorimeter will be replaced with the so-called \ac{HGCAL}. This calorimeter consists of silicon modules as well plastic scintillators read out by \acp{SiPM}. The \ac{HGCAL} will be able to resolve the particle showers along the propagation axis. The high granularity is reflected in the number of channels, which is about $6.1$ million. The \ac{ECAL} can measure particles in the angular range $\left| \eta \right|\leq 3$ \cite{CMS-Phase2BarrelCalo,CMS-Phase2EndcapCalo,CMS-Phase2}.
+\paragraph{Hadronic calorimeter}
+Particles which produce hadronic showers are detected in the \ac{HCAL}. The barrel region consists of a sampling calorimeter made from \num{70000} scintillator tiles and brass absorbers, read out by \acp{SiPM} \cite{CMS-Main}. The existing endcap calorimeter will be replaced as well by the \ac{HGCAL}, which not only features electromagnetic but also hadronic calometry capabilities \cite{CMS-Phase2BarrelCalo,CMS-Phase2EndcapCalo}.
+\paragraph{Superconducting solenoid}
+The magnetic field in the detector is generated by a large \SI{6}{\meter}-diameter superconducting solenoid, which is located outside the tracker and calorimeters.\footnote{Strictly speaking, the \ac{HO} is located outside of the solenoid, but in this coarse overview of the \ac{CMS} detector this is not relevant \cite{CMS-Main}.} Approximately \SI{20}{\kilo\ampere} of current flowing through the chilled NbTi superconductor generate a central magnetic field of up to \SI{4}{\tesla}. Through the bending of charged particles in the field, the particle momentum and charge can be determined. The magnetic flux is returned through a \SI{10000}{\tonne} iron yoke assembly which comprises both the outer barrel and endcap region \cite{CMS-Main}.
+\paragraph{Muon detectors}
+The \ac{CMS} detector in its Phase-2 configuration will consist of four types of muon detectors, all of which are gaseous detectors. In the barrel region (angular range $\left| \eta \right|\leq 1.2$), four layers of \ac{DT} chambers perfirm muon detection and tracking. In the endcap region, \acp{CSC} are used which cover a pseudorapidity of $0.9\leq \left| \eta \right|\leq 2.4$. In both the barrel and endcap, \ac{RPC} detectors are redundantly used. In the context of the Phase-2 upgrade, \ac{GEM} detectors are introduced to \ac{CMS}, namely the ME0 station which will extend the overall muon acceptance to $\left| \eta \right|\leq 2.8$.\footnote{Technically the GE1/1 \ac{GEM} station was already introduced to \ac{CMS} before the Phase-2 upgrade \cite{PhD-Mocellin}.} The muon system has a total detector area of \SI{25000}{\meter^2}, making it by far the largest subdetector in \ac{CMS} \cite{CMS-Main,CMS-Phase2Muon}
+\paragraph{Data acquisition and trigger}
+The bunch crossing frequency of the \ac{LHC} of \SI{40}{\mega\hertz} is orders of magnitude higher than the rate of events that can be stored. Therefore, rate reduction of events is inevitable. \ac{CMS} implements a two-stage trigger system, consisting of the \ac{L1T} and the \ac{HLT}. With the Phase-2 upgrade, the \ac{L1T} acceptance rate is significantly increased from \SI{100}{\kilo\hertz} to \SI{750}{\kilo\hertz}, increasing the input data rate to approximately \SI{63}{\tera\bit/\second}. The \ac{L1T} logic is running on \acp{FPGA} to achieve the desired performance. Depending on the \ac{L1T} accept signal, the readout of the full detector is executed and the data is further evaluated by the \ac{HLT}. \ac{HLT} algorithms are executed mostly on microprocessors in a computing farm. The final rate of events to be stored by the \ac{DAQ} and analyzed offline is estimated to be up to \SI{7.5}{\kilo\hertz} \cite{CMS-Main,CMS-Phase2L1Trigger,CMS-Phase2DAQHLT}.
+
+
 
 
 
 \section{Drift Tube system}
+\label{sec:CMS-DT}
 
-\subsection{Subdetector setup}
-\begin{itemize}
-    \item DT chambers in CMS: Wheels, sectors, stations
-    \item Components of one DT chamber: 2-3 superlayers, 4 layers, drift cells
-    \item Gas mixture, HV values
-\end{itemize}
+\subsection{Setup}
+\label{sec:CMS-DTSetup}
+%\begin{itemize}
+%    \item DT chambers in CMS: Wheels, sectors, stations
+%    \item Components of one DT chamber: 2-3 superlayers, 4 layers, drift cells
+%    \item Gas mixture, HV values
+%\end{itemize}
+The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{CMS}, covering the angular range $\left| \eta \right|\leq 1.2$. It consists of $250$ drift chambers in total. The chambers are arranged along the five wheels and $12$ sectors per wheel. Each sector features four stations of chambers, which are named MB1/2/3/4 respectively (where MB stands for "muon barrel"). In total the \ac{DT} system has \num{172000} readout channels \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:DT-Layout} shows the positions of the drift chambers in one of the five wheels.
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{DT-Wheel.png}
+        \caption{Schematic drawing of the \ac{DT} chamber positions in one wheel (in cyan) \cite{CMS-Main}.}
+        \label{fig:DT-Wheel}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{DT-MuonTrack.png}
+        \caption{Photo of the real \ac{CMS} detector with an overlayed dimuon event (in white) \cite{DT-MuonTrack}.}
+        \label{fig:DT-MuonTrack}
+    \end{subfigure}
+    \caption{Layout of the \ac{DT} chambers in 12 sectors and four stations in one wheel of the \ac{CMS} barrel.}
+    \label{fig:DT-Layout}
+\end{figure}
+
+\paragraph{Chamber setup}
+A drift chamber measures around $2\times 2.5 \;\si{\meter^2}$ in area, with the outer chambers being slightly larger. Most chambers consist of three so-called \acp{SL}. These \acp{SL} are themselves constructed from four layers of drift cells, which are staggered by half the cell width for adjacent layers. The drift cell wires of \acp{SL} one and three are oriented along the beam axis, giving sensitivity along the $r$-$\phi$-direction. The second \ac{SL} is rotated by $90^\circ$, giving sensitivity along the $z$-$\theta$-direction.\footnote{The MB4 chambers only have two \acp{SL}, which are both oriented along the $r$-$\phi$-direction \cite{CMS-Main}.} The number of channels per chamber lies in $\mathcal{O}(700)$ and varies with the chamber size \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. Fig.\ \ref{fig:DT-Chamber} shows an exposed view of one \ac{DT} chamber, highlighting its structure.
+\begin{figure}[htbp]
+    \centering
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{DT-Chamber.png}
+        \caption{Setup of one \ac{DT} chamber consisting of three \acp{SL} \cite[adapted]{DT-Chamber}.}
+        \label{fig:DT-Chamber}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.6\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{DT-Cell.pdf}
+        \caption{Sketch of a single \ac{DT} cell \cite[adapted]{DT-Cell}.}
+        \label{fig:DT-Cell}
+    \end{subfigure}
+    \hfill
+    \caption{Detail view of the \ac{DT} chamber components.}
+    \label{fig:DT-Components}
+\end{figure}
+\paragraph{Drift cell}
+A close-up view of one drift cell is presented in fig.\ \ref{fig:DT-Cell}. It measures $42\times 13\;\si{\milli\meter^2}$ along its cross section. The cell length is determined by the chamber dimensions. The cell walls are the so-called I-beams, which are aluminum structures. These structures not only hold the cathode electrodes, but also provide structural integrity to the chamber. In the center of the cell is the anode wire, which is made from gold-plated steel with a diameter of \SI{50}{\micro\meter}. Two additional electrodes are located on the walls above and below the wire, to shape the electric field. The gas mixture used in the \ac{DT} system is composed of 85\% Argon and 15\% CO$_2$. The voltages applied to the electrodes are as follows: $+3.6\;\si{\kilo\volt}$ to the wire, $-1.2\;\si{\kilo\volt}$ to the cathode strips and $+1.8\;\si{\kilo\volt}$ to the field-shaping electrodes \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. The drift velocity for electrons with this configuration is approximately $v_D\approx\SI{54.5}{\micro\meter/\nano\second}$ \cite{DT-CosmicsCalibrationVelocity}.
 
 \subsection{Detector impact and performance}
-\begin{itemize}
-    \item Relevance of muon detection (e.g. dimuon Higgs decay)
-    \item DT performance (efficiency and active channels)
-    \item DT system resolution
-\end{itemize}
+\label{sec:CMS-DTPerformance}
+%\begin{itemize}
+%    \item Relevance of muon detection (e.g. dimuon Higgs decay)
+%    \item DT performance (efficiency and active channels)
+%    \item DT system resolution
+%\end{itemize}
+\paragraph{Cell efficiency}
+\paragraph{Reliability}
+\paragraph{Resolution}
+\paragraph{Physics impact}
+
+
+
 
 
 
 \section{Phase-2 DT readout electronics}
-
-\subsection{Motivation for upgrade}
-\begin{itemize}
-    \item High-Luminisity LHC
-    \item Increased pileup and tightened radiation environment
-\end{itemize}
+\label{sec:CMS-Phase2Readout}
 
 \subsection{Minicrate electronics}
-\begin{itemize}
-    \item Minicrate location on chamber
-    \item Minicrate functionalities
-    \item On-Board Electronics for Drift Tubes boards
-\end{itemize}
+\label{sec:CMS-Phase2Minicrate}
+%\begin{itemize}
+%    \item Minicrate location on chamber
+%    \item Minicrate functionalities
+%    \item On-Board Electronics for Drift Tubes boards
+%\end{itemize}
 
 \subsection{HTG-940 backend}
-\begin{itemize}
-    \item Prototype backend (AMD Xilinx Virtex UltraScale+ FPGA)
-    \item Production backend: Serenity and BMTL1 (not available yet)
-    \item Backend firmware (mention own modifications)
-\end{itemize}
+\label{sec:CMS-Phase2Backend}
+%\begin{itemize}
+%    \item Prototype backend (AMD Xilinx Virtex UltraScale+ FPGA)
+%    \item Production backend: Serenity and BMTL1 (not available yet)
+%    \item Backend firmware (mention own modifications)
+%\end{itemize}
+
+
+
 
 
 
 
 \section{DT test stand in Aachen}
-\subsection{MB1 DT chamber}
-\begin{itemize}
-    \item MB1 DT chamber from production in 2000s
-    \item Reactivated infrastructure
-\end{itemize}
+\label{sec:CMS-AachenTestStand}
+%\subsection{MB1 DT chamber}
+%\begin{itemize}
+%    \item MB1 DT chamber from production in 2000s
+%    \item Reactivated infrastructure
+%\end{itemize}
 \subsection{Installation of Phase-2 minicrate}
-\begin{itemize}
-    \item Minicrate on DT chamber
-    \item Detailed setup and channel mapping
-\end{itemize}
+\label{sec:CMS-AachenMinicrateInstallation}
+%\begin{itemize}
+%    \item Minicrate on DT chamber
+%    \item Detailed setup and channel mapping
+%\end{itemize}
 
 
 

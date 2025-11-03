@@ -276,7 +276,7 @@ While early particle detecors were based on photographic or human readout "by ey
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{ReadOut-Schematic.pdf}
-    \caption{Schematic overview of an electronic readout chain of a particle detector. The detector output signal is shaped and amplified in the preamplifier. After that, several components can be connected. The discriminator outputs a digital signal if the detector signal is above a certain thresold. The digital signal can then be converted to a timestamp with a \acs{TDC}. Alternatively, the analog signal can be digitized with an \acs{ADC} \cite[adapted]{Book-KolanoskiWermes}.}
+    \caption{Schematic example of an electronic readout chain of a particle detector. The detector output signal is shaped and amplified in the preamplifier. After that, several components can be connected. The discriminator outputs a digital signal if the detector signal is above a certain thresold. The digital signal can then be converted to a timestamp with a \acs{TDC}. Alternatively, the analog signal can be digitized with an \acs{ADC} \cite[adapted]{Book-KolanoskiWermes}.}
     \label{fig:ReadOut-Schematic}
 \end{figure}
 \paragraph{Frontend electronics}
@@ -331,7 +331,7 @@ Sequential logic circuits enable the realization of more complex functionalties.
 In principle all logic circuits can be described with logic diagrams that can be drawn "by hand". However circuits soon become large and complex to oversee. A \ac{HDL} overcomes this issue by using a text-based language to describe the logic circuitry. The standardized description of circuits with a \ac{HDL} allows the usage of common computer tools for logic simulation and development. The two dominant languages in use today are called Verilog and \ac{VHDL}, the latter of which was used for logic development in this work \cite{FPGA-LogicCircuitsVHDL}.
 \newline Units of logic circuitry which serve a specific function are frequently packaged into so-called \acp{IP core}. This is a unified format for logic units which allows their sale, exchange and reuse within a variety of logic development tools.
 \paragraph{FPGA design flow}
-A
+The first step is always to formulate requirements on the logic circuits and then design it. This usually means writing the logic circuit in a text-based hierarchichal \ac{HDL}, but may also include interconnecting logic blocks in a visual interface called "block design". After the circuit is defined, the next step is synthesis of the design. In this step, the logic circuit is simplified as far as possible and translated into a list of building blocks contained in the \ac{FPGA}. However the exact mapping and interconnections on the chip is not defined yet. This is done in the last step referred to as implementation, which also takes into account the user-defined pin mapping by constraining logic signals to the respective \acp{IOB}. The placement of the logic on the chip is calculated to respect the timing constraints given by the clock frequencies and gate response times \cite{PhD-Eliseev}.
 
 
 
