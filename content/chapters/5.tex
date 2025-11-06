@@ -1,7 +1,12 @@
+\FloatBarrier
+\label{sec:Scint}
+
+\FloatBarrier
 \section{Detector setup}
 \label{sec:Scint-Setup}
 %Mention self-development of detector at institute \cite{BSc-Ehlert} \cite{MSc-Ehlert}.
 
+\FloatBarrier
 \subsection{Mechanical structure}
 %\begin{itemize}
 %    \item 2x 16 plastic scintillator strips with wavelength-shifting fibers
@@ -9,6 +14,7 @@
 %\end{itemize}
 \label{sec:Scint-MechanicalSetup}
 
+\FloatBarrier
 \subsection{SiPM electronics}
 %\begin{itemize}
 %    \item SiPM front-end board with preamplifier
@@ -18,7 +24,7 @@
 \label{sec:Scint-SiPMElectronics}
 
 
-
+\FloatBarrier
 \section{FPGA readout system}
 %\begin{itemize}
 %    \item Mention completely new hardware and firmware development in scope of this thesis, based on previous experience and efforts of our group
@@ -28,6 +34,7 @@
 %\end{itemize}
 \label{sec:Scint-Readout}
 
+\FloatBarrier
 \subsection{Input circuitry}
 %\begin{itemize}
 %    \item Synchonous testpulse source
@@ -37,10 +44,12 @@
 %\end{itemize}
 \label{sec:Scint-ReadoutInput}
 
+\FloatBarrier
 \subsection{FPGA firmware overview}
 \label{sec:Scint-ReadoutFirmware}
 %Mention fully self-developed readout firmware.
 
+\FloatBarrier
 \subsection{Signal sampling with FPGA-internal comparators}
 %\begin{itemize}
 %    \item Comparators for input signal discrimination, however no conventional, dedicated hardware but FPGA-internal comparators used.
@@ -48,6 +57,7 @@
 %\end{itemize}
 \label{sec:Scint-ReadoutFirmware-Sampling}
 
+\FloatBarrier
 \subsubsection{Working principle}
 %\begin{itemize}
 %    \item FPGA-internal comparators (intended for differential signalling)
@@ -57,6 +67,7 @@
 %\end{itemize}
 \label{sec:Scint-ReadoutFirmware-Sampling-Principle}
 
+\FloatBarrier
 \subsubsection{Voltage bias calibration}
 %\begin{itemize}
 %    \item FPGA-internal comparators (on FPGA silicon die) are subject to production uncertainties
@@ -66,6 +77,7 @@
 %\end{itemize}
 \label{sec:Scint-ReadoutFirmware-Sampling-VoltageBias}
 
+\FloatBarrier
 \subsubsection{Input timing calibration}
 %\begin{itemize}
 %    \item Bank-specific calibration of deserializers on each power-cycle leads to non-deterministic signal delays
@@ -73,11 +85,13 @@
 %    \item Use delay module in firmware to correct for these effects already on the device
 %    \item Mention ringing of testpulse signal in circuit, but explain that no negative effect on calibration
 %\end{itemize}
-\label{sec:Scint-ReadoutFirmware-Sampling-Principle}
+\label{sec:Scint-ReadoutFirmware-Sampling-TimingBias}
 
+\FloatBarrier
 \subsection{Online signal processing}
 \label{sec:Scint-ReadoutFirmware-Processing}
 
+\FloatBarrier
 \subsubsection{Timestamp assignment}
 %\begin{itemize}
 %    \item Hit arrival time translated to (absolute) timestamp
@@ -90,6 +104,7 @@
 %    \item 
 %\end{itemize}
 
+\FloatBarrier
 \subsubsection{Data funneling}
 %\begin{itemize}
 %    \item Limited bandwidth: Can not transmit hits of all channels together
@@ -102,7 +117,7 @@
 
 
 
-
+\FloatBarrier
 \section{lpGBT Mezzanine PCB}
 %\begin{itemize}
 %    \item Hardware interface between scintillator readout system and DT backend
@@ -111,6 +126,7 @@
 %\end{itemize}
 \label{sec:Scint-lpGBTMezzanine}
 
+\FloatBarrier
 \subsection{lpGBT ASIC}
 %\begin{itemize}
 %    \item Low-power GigaBit Transceiver ASIC developed centrally by CERN
@@ -121,6 +137,7 @@
 %\end{itemize}
 \label{sec:Scint-lpGBTMezzanine-lpGBT}
 
+\FloatBarrier
 \subsection{Mezzanine board}
 %\begin{itemize}
 %    \item Connects eLinks between lpGBT and FPGA
@@ -130,6 +147,7 @@
 %\end{itemize}
 \label{sec:Scint-lpGBTMezzanine-Mezzanine}
 
+\FloatBarrier
 \subsection{Backend firmware modifications}
 %\begin{itemize}
 %    \item Modified data flow in DT backend to accomodate reception of data via slow control link from the lpGBT Mezzanine (OBDT has dedicated trigger links for data)

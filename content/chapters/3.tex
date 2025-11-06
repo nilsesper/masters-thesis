@@ -1,10 +1,14 @@
+\FloatBarrier
+\label{sec:DT}
+
 This chapter should describe the gaseous detector used in this work, which is a spare drift chamber from the \acf{CMS} experiment \cite{CMS-Main}. After a brief description of the experiment and its context, emphasis is put on the description of the \ac{CMS} drift tube chambers and their readout chain.
 
 
-
+\FloatBarrier
 \section{Compact Muon Solenoid experiment}
 \label{sec:CMS-Experiment}
 
+\FloatBarrier
 \subsection{Large Hadron Collider}
 \label{sec:CMS-LHC}
 %\begin{itemize}
@@ -12,7 +16,7 @@ This chapter should describe the gaseous detector used in this work, which is a 
 %    \item Key facts: Luminisity, collision center-of-mass energy
 %\end{itemize}
 The particle accelerator which provides the collisions recorded by \ac{CMS} and other experiments is the \acf{LHC} \cite{LHC-Main}. It is located at the \ac{CERN} laboratory complex in the region of Geneva, Switzerland. Fig.\ \ref{fig:LHC-AcceleratorComplex} presents an overview of the accelerators and experiments at \acs{CERN}.
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{LHC-AcceleratorComplex.png}
     \caption{Overview of the patrticle accelerators and experiments at \acs{CERN} \cite[adapted]{LHC-AcceleratorComplex}.}
@@ -30,13 +34,17 @@ The particle accelerator which provides the collisions recorded by \ac{CMS} and 
 %    \label{eq:LHC-Lumi}
 %\end{equation}
 %Here, $\sigma$ is the cross section of the interaction process, which is a measure of probability for the process. An increased luminosity is therefore advantageous to collect more statistics of rare interactions.
+\FloatBarrier
 \paragraph{LHC accelerator}
 The \ac{LHC} is the largest and most powerful particle accelerator in the world. It is a circular proton-proton collider, creating collisions with a \ac{COME} of up to $\sqrt{s}=\SI{14}{\tera\electronvolt}$. The accelerator has a circumference of \SI{27}{\kilo\meter} and was constructed in the tunnel originally used for the \ac{LEP} \cite{LEP-Main}, which lies around \SI{100}{\meter} below the surface. In order to guide the particles, the machine uses superconducting magnets with field strengths above \SI{8}{\tesla}. Particle accelaration is provided by superconducting cavities. Particle collisions take place with a bunch-crossing frequency of \SI{40}{\mega\hertz}. Originally, the \ac{LHC} was designed to provide an instantaneous luminosity of $\mathcal{L}=10^{34}\;\si{\centi\meter^{-2} \second^{-1}}$ at the interaction points. In the context of the \ac{HLLHC} project, the accelerator will be upgraded to reach instantaneous luminosities of $\mathcal{L}=\num{5e34}\;\si{\centi\meter^{-2} \second^{-1}}$ \cite{HLLHC-TDR}. It should be noted that the \ac{LHC} is not only capable of accelerating protons but also heavy ions \cite{LHC-Main}.
+\FloatBarrier
 \paragraph{Pre-accelerators}
 The \ac{LHC} does not accelerate protons starting at rest, but is supplied with pre-accelerated particles from the \acs{CERN} accelerator complex (see fig.\ \ref{fig:LHC-AcceleratorComplex}). Protons are extracted from a hydrogen bottle and first accelerated in a linear accelerator (LINAC 4) to \SI{160}{\mega\electronvolt} \cite{LINAC4-Main}. Then they are injected in a series of circular accelerators (Booster, Proton Synchrotron, Super Proton Synchrotron) and finally injected into the \ac{LHC} at an energy of \SI{450}{\giga\electronvolt} \cite{LHC-Main}.
+\FloatBarrier
 \paragraph{LHC operation}
 The accelerator operation can be divided into different run periods, each spanning several years. Run-1 from $2010$ to $2013$ was the initial operation period at lower \ac{COME} \cite{LHC-Run1}, which already led to the discovery of the Higgs boson \cite{HiggsDiscovery-CMS,HiggsDiscovery-ATLAS}. Run-2 lasted from $2015$ to $2018$ \cite{LHC-Run2}. Run-3 started in $2022$ and should last until the summer of $2026$. After this run, the \ac{HLLHC} upgrade program will be implemented in the \ac{LS3} \cite{LHC-Run3}.
 
+\FloatBarrier
 \subsection{Experiment overview}
 \label{sec:CMS-Overview}
 %\begin{itemize}
@@ -44,14 +52,16 @@ The accelerator operation can be divided into different run periods, each spanni
 %    \item Brief listing of all subdetectors
 %\end{itemize}
 The \ac{CMS} experiment \cite{CMS-Main} is one of two multipurpose particle detectors operated at the \ac{LHC}. It is located approximately \SI{100}{\meter} underground close to the French village Cessy. It consists of a cylindrical barrel with five wheels and two disk-shaped endcaps. The detector measures \SI{21.6}{\meter} in length and \SI{14.6}{\meter} in diameter, which is significantly more compact than the second multipurpose detector at the \ac{LHC}, named \ac{ATLAS} \cite{ATLAS-Main}. Apart from the compactness, the detector was designed to provide good performance especially in the detection of muons. Both of these aspects are represented in the name of the experiment. The \ac{CMS} assembly has a total mass of around \SI{12500}{\tonne} \cite{CMS-Main}. Fig.\ \ref{fig:CMS-RenderingRun2} shows a rendering of the \ac{CMS} detector in its configuration after Run-2, the different subdetector systems are labeled in the image.
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{CMS-RenderingRun2.pdf}
     \caption{Rendering of the \acs{CMS} detector in its configuration during Run-2, with all its subsystems and a human to scale \cite[adapted]{CMS-RenderingRun2}.}
     \label{fig:CMS-RenderingRun2}
 \end{figure}
+\FloatBarrier
 \paragraph{Phase-2 upgrade}
 With the \ac{HLLHC} project (sec.\ \ref{sec:CMS-LHC}), the luminosity of the accelerator will be significantly increased. This implies significantly stronger radiation doses, especially to the inner and forward subdetectors. Also, the pileup, i.e.\ the number of collisions within one bunch crossing, will increase up to $200$, imposing a challenge to the detectors. All subdetectors need to evaluate the longevity and radiation hardness of their components. Also, the readout systems and trigger algorithms need to be revised to maintain acceptable physics performance under these conditions \cite{CMS-Phase2}.
+\FloatBarrier
 \paragraph{Coordinate frame}
 Before the subdetectors are described, the coordinate frame used in \ac{CMS} should be introduced. The center of the frame is the nominal interaction point, where the two proton beams are expected to collide. The $x$-axis points towards the \ac{LHC} center, and the $y$-axis points upwards. The $z$-axis points along the beam line. Frequently, spherical coordinates $(r,\;\theta,\;\phi)$ are used, with the azimutal angle $\phi$ in the $x$-$y$-plane and the zenith angle $\theta$ measured from the $z$-axis \cite{CMS-Main}. Instead of the zenith angle, the so-called pseudorapidity $\eta$ is frequently used, which relates to the angle as follows \cite{Book-KolanoskiWermes}:
 \begin{equation}
@@ -59,29 +69,36 @@ Before the subdetectors are described, the coordinate frame used in \ac{CMS} sho
 \end{equation}
 This definition is convenient since in the high-energy limit $E_z \gg M$ the Lorentz-invariant rapidity $y=\artanh(v_z/c)$ of a particle can be approximated with the pseudorapidity $\eta$ \cite{Book-KolanoskiWermes}.
 
+\FloatBarrier
 \subsection{Subdetectors}
 \label{sec:CMS-Subdetectors}
 In the following paragraphs, the subdetectors of \ac{CMS} should be briefly described. It should be noted that the detector has already been upgraded multiple times and parts were exchanged. Since this work is in the context of the Phase-2 upgrade (sec.\ \ref{sec:CMS-Overview}), the subdetectors should be described in their foreseen state after this upgrade.
+\FloatBarrier
 \paragraph{Tracker}
 The particle tracking system is the innermost subdetector of \ac{CMS}. Charged particles leave hits in multiple layers of this subdetector, which allows the reconstruction of tracks. The system can be divided in the \ac{IT} and the \ac{OT}. The \ac{IT} is composed of silicon pixel detectors with segmentation in the order of $50\times 50\;\si{\micro\meter^2}$. It has around $2$ billion individual channels \cite{CMS-Phase2Tracker-ConferenceReport}. The \ac{OT} uses both silicon strip and pixel-strip modules and has a total of $213$ million readout channels \cite{CMS-Phase2Tracker-ConferenceReport}. With the Phase-2 tracker, information from the subdetector is introduced in the \ac{CMS} trigger for the first time. This is done measuring particle hits in two adjacent silicon sensors and determining the particle transverse momentum ($p_T$) by the track curvature. The acceptance of the tracking system is $\left| \eta \right|\leq 4$ \cite{CMS-Phase2Tracker}.
+\FloatBarrier
 \paragraph{Electromagnetic calorimeter}
 The \ac{ECAL} measures the energy of particles which undergo electromagnetic showers, namely electrons and photons. In the barrel region it consists of \num{61200} lead tungstate (PbWO$_4$) scintillator crystals which are read out by \acp{APD} \cite{CMS-Main}. In the endcaps, the current sampling calorimeter will be replaced with the so-called \ac{HGCAL}. This calorimeter consists of silicon modules as well plastic scintillators read out by \acp{SiPM}. The \ac{HGCAL} will be able to resolve the particle showers along the propagation axis. The high granularity is reflected in the number of channels, which is about $6.1$ million. The \ac{ECAL} can measure particles in the angular range $\left| \eta \right|\leq 3$ \cite{CMS-Phase2BarrelCalo,CMS-Phase2EndcapCalo,CMS-Phase2}.
+\FloatBarrier
 \paragraph{Hadronic calorimeter}
 Particles which produce hadronic showers are detected in the \ac{HCAL}. The barrel region consists of a sampling calorimeter made from \num{70000} scintillator tiles and brass absorbers, read out by \acp{SiPM} \cite{CMS-Main}. The existing endcap calorimeter will be replaced as well by the \ac{HGCAL}, which not only features electromagnetic but also hadronic calometry capabilities \cite{CMS-Phase2BarrelCalo,CMS-Phase2EndcapCalo}.
 \paragraph{Superconducting solenoid}
 The magnetic field in the detector is generated by a large \SI{6}{\meter}-diameter superconducting solenoid, which is located outside the tracker and calorimeters.\footnote{Strictly speaking, the \ac{HO} is located outside of the solenoid, but in this coarse overview of the \ac{CMS} detector this is not relevant \cite{CMS-Main}.} Approximately \SI{20}{\kilo\ampere} of current flowing through the chilled NbTi superconductor generate a central magnetic field of up to \SI{4}{\tesla}. Through the bending of charged particles in the field, the particle momentum and charge can be determined. The magnetic flux is returned through a \SI{10000}{\tonne} iron yoke assembly which comprises both the outer barrel and endcap region \cite{CMS-Main}.
+\FloatBarrier
 \paragraph{Muon detectors}
-The \ac{CMS} detector in its Phase-2 configuration will consist of four types of muon detectors, all of which are gaseous detectors. In the barrel region (angular range $\left| \eta \right|\leq 1.2$), four layers of \ac{DT} chambers perfirm muon detection and tracking. In the endcap region, \acp{CSC} are used which cover a pseudorapidity of $0.9\leq \left| \eta \right|\leq 2.4$. In both the barrel and endcap, \ac{RPC} detectors are redundantly used. In the context of the Phase-2 upgrade, \ac{GEM} detectors are introduced to \ac{CMS}, namely the ME0 station which will extend the overall muon acceptance to $\left| \eta \right|\leq 2.8$.\footnote{Technically the GE1/1 \ac{GEM} station was already introduced to \ac{CMS} before the Phase-2 upgrade \cite{PhD-Mocellin}.} The muon system has a total detector area of \SI{25000}{\meter^2}, making it by far the largest subdetector in \ac{CMS} \cite{CMS-Main,CMS-Phase2Muon}
+The \ac{CMS} detector in its Phase-2 configuration will consist of four types of muon detectors, all of which are gaseous detectors. In the barrel region (angular range $\left| \eta \right|\leq 1.2$), four layers of \ac{DT} chambers perfirm muon detection and tracking. In the endcap region, \acp{CSC} are used which cover a pseudorapidity of $0.9\leq \left| \eta \right|\leq 2.4$. In both the barrel and endcap, \ac{RPC} detectors are redundantly used. In the context of the Phase-2 upgrade, \ac{GEM} detectors are introduced to \ac{CMS}, namely the ME0 station which will extend the overall muon acceptance to $\left| \eta \right|\leq 2.8$.\footnote{Technically the GE1/1 \ac{GEM} station was already introduced to \ac{CMS} before the Phase-2 upgrade \cite{PhD-Mocellin}.} The muon system has a total detector area of \SI{25000}{\meter^2}, making it by far the largest subdetector in \ac{CMS} \cite{CMS-Main,CMS-Phase2Muon}.
+\FloatBarrier
 \paragraph{Data acquisition and trigger}
 The bunch crossing frequency of the \ac{LHC} of \SI{40}{\mega\hertz} is orders of magnitude higher than the rate of events that can be stored. Therefore, rate reduction of events is inevitable. \ac{CMS} implements a two-stage trigger system, consisting of the \ac{L1T} and the \ac{HLT}. With the Phase-2 upgrade, the \ac{L1T} acceptance rate is significantly increased from \SI{100}{\kilo\hertz} to \SI{750}{\kilo\hertz}, increasing the input data rate to approximately \SI{63}{\tera\bit/\second}. The \ac{L1T} logic is running on \acp{FPGA} to achieve the desired performance. Depending on the \ac{L1T} accept signal, the readout of the full detector is executed and the data is further evaluated by the \ac{HLT}. \ac{HLT} algorithms are executed mostly on microprocessors in a computing farm. The final rate of events to be stored by the \ac{DAQ} and analyzed offline is estimated to be up to \SI{7.5}{\kilo\hertz} \cite{CMS-Main,CMS-Phase2L1Trigger,CMS-Phase2DAQHLT}.
 
 
 
 
-
+\FloatBarrier
 \section{Drift Tube system}
 \label{sec:CMS-DT}
 
+\FloatBarrier
 \subsection{Setup}
 \label{sec:CMS-DTSetup}
 %\begin{itemize}
@@ -90,7 +107,7 @@ The bunch crossing frequency of the \ac{LHC} of \SI{40}{\mega\hertz} is orders o
 %    \item Gas mixture, HV values
 %\end{itemize}
 The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{CMS}, covering the angular range $\left| \eta \right|\leq 1.2$. It consists of $250$ drift chambers in total. The chambers are arranged along the five wheels and $12$ sectors per wheel. Each sector features four stations of chambers, which are named MB1/2/3/4 respectively (where MB stands for "muon barrel"). In total, the \ac{DT} system has \num{172000} readout channels \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:DT-Layout} shows a schematic of the \ac{DT} chamber layout in one of the five wheels and a photo of a real chamber.
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \hfill
     \begin{subfigure}{0.49\textwidth}
@@ -110,8 +127,10 @@ The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{
     \caption{Schematic and photo of the \ac{DT} chambers in the \ac{CMS} detector.}
     \label{fig:DT-Layout}
 \end{figure}
+\FloatBarrier
 \paragraph{Chamber setup}
 A drift chamber measures around $2\times 2.5 \;\si{\meter^2}$ in area, with the outer chambers being slightly larger. Most chambers consist of three so-called \acp{SL}. These \acp{SL} are themselves constructed from four layers of drift cells, which are staggered by half the cell width for adjacent layers. The drift cell wires of \acp{SL} one and three are oriented along the beam axis, giving sensitivity along the $r$-$\phi$-direction. The second \ac{SL} is rotated by $90^\circ$, giving sensitivity along the $z$-$\theta$-direction.\footnote{The MB4 chambers only have two \acp{SL}, which are both oriented along the $r$-$\phi$-direction \cite{CMS-Main}.} The number of channels per chamber lies in $\mathcal{O}(700)$ and varies with the chamber size \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. Fig.\ \ref{fig:DT-Chamber} shows an exposed view of one \ac{DT} chamber, highlighting its structure.
+\FloatBarrier
 \paragraph{Drift cell}
 A close-up view of one drift cell is presented in fig.\ \ref{fig:DT-Cell}. It measures $42\times 13\;\si{\milli\meter^2}$ along its cross section. The cell length is determined by the chamber dimensions. The cell walls are the so-called I-beams, which are aluminum structures. These structures not only hold the cathode electrodes, but also provide structural integrity to the chamber. In the center of the cell is the anode wire, which is made from gold-plated steel with a diameter of \SI{50}{\micro\meter}. Two additional electrodes are located on the walls above and below the wire, to shape the electric field. The gas mixture used in the \ac{DT} system is composed of 85\% Argon and 15\% CO$_2$. The voltages applied to the electrodes are as follows: $+3.6\;\si{\kilo\volt}$ to the wire, $-1.2\;\si{\kilo\volt}$ to the cathode strips and $+1.8\;\si{\kilo\volt}$ to the field-shaping electrodes \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. The drift velocity for electrons with this configuration is approximately \cite{DT-CosmicsCalibrationVelocity}
 \begin{equation}
@@ -123,7 +142,7 @@ With the half-width of $d/2\approx\SI{21}{\mm}$ of a cell, the maximum electron 
     t_\text{max}=\frac{d/2}{v_D}\approx\SI{385}{\nano\second}.
     \label{eq:DT-MaxDriftTime}
 \end{equation}
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \hfill
     \begin{subfigure}{0.3\textwidth}
@@ -144,6 +163,7 @@ With the half-width of $d/2\approx\SI{21}{\mm}$ of a cell, the maximum electron 
     \label{fig:DT-Components}
 \end{figure}
 
+\FloatBarrier
 \subsection{Performance}
 \label{sec:CMS-DTPerformance}
 %\begin{itemize}
@@ -158,26 +178,29 @@ The \ac{DT} system provides essential muon detection and reconstruction capabili
 
 
 
-
+\FloatBarrier
 \section{Phase-2 DT readout electronics}
 \label{sec:CMS-Phase2Readout}
 In the context of the Phase-2 upgrade of \ac{CMS}, the readout electronics of the \ac{DT} system will be almost completely exchanged \cite{CMS-Phase2Muon}. The new readout chain should be described in this section, as with this system the \ac{DT} chamber data in this thesis was recorded.
 \newline Fig.\ \ref{fig:DT-Phase2Readout} shows an overview of the Phase-2 readout chain of the \ac{DT} system. The components presented in this plot and their interconnections will be described in detail the following sections.
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.4\textwidth]{DT-Phase2-Schematic.pdf}
     \caption{Overview of the Phase-2 readout chain of the \ac{DT} system \cite[adapted]{DT-Phase2Upgrade}.}
     \label{fig:DT-Phase2Readout}
 \end{figure}
 
+\FloatBarrier
 \subsection{Frontend electronics}
 \label{sec:CMS-DTFrontend}
 The frontend electronics of the \ac{DT} system are located inside of the chamber gas volume. They amplify the analog pulse from the drift cell wire and compare it to an amplitude thresold, providing a digital pulse on the output \cite{CMS-Main,CMS-Muon}. Because of their sufficient radiation hardness and their limited accessibility, these are the only electronics to not be exchanged in the course of the Phase-2 upgrade \cite{CMS-Phase2Muon}.
+\FloatBarrier
 \paragraph{MAD chip}
 A custom \ac{ASIC} called "The MAD" \cite{DT-MADChip} was developed for the frontend electronics, which houses the analog amplification and signal shaping circuits. One chip has inputs for four \ac{DT} wire signals. The charge to voltage conversion gain of the mounted chip is around \SI{3.4}{\milli\volt/\femto\coulomb}. The MAD chip also includes a discriminator stage (sec.\ \ref{sec:ReadoutElectronics-General}), which converts the analog signal into a digital pulse. The thresold of the discriminator can be set externally and usually is in the range $\mathcal{O}(\SI{30}{\milli\volt})$. Note that the digital output of the MAD chip is not single-ended but in the form of a \ac{LVDS} pulse \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:MAD-DieShot} shows a die shot of the MAD chip.
+\FloatBarrier
 \paragraph{Frontend board}
 The \ac{FEB} is the \ac{PCB} which hosts the MAD chips. It connects the \ac{DT} wire pins with the MAD inputs and the \ac{LVDS} outputs of the MAD to the \acp{FEC} located on the casing of the \ac{DT} chamber. The \ac{FEB} is also connected to so-called testpulse connectors on the chamber casing. These are coupled to the inputs of the MAD to emulate a wire hit, when a testpulse signal is received. This testpulse capability is required for precise timing calibration between all channels (sec.\ \ref{sec:DTData-Testpulse}). A photo of one \ac{FEB} is shown in fig.\ \ref{fig:DT-Frontend}.
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \hfill
     \begin{subfigure}{0.35\textwidth}
@@ -198,6 +221,7 @@ The \ac{FEB} is the \ac{PCB} which hosts the MAD chips. It connects the \ac{DT} 
     \label{fig:DT-Frontend}
 \end{figure}
 
+\FloatBarrier
 \subsection{Minicrate electronics}
 %\begin{itemize}
 %    \item Minicrate location on chamber
@@ -206,39 +230,39 @@ The \ac{FEB} is the \ac{PCB} which hosts the MAD chips. It connects the \ac{DT} 
 %\end{itemize}
 \label{sec:CMS-DTMinicrate}
 The so-called minicrate electronics are the digital readout electronics of the \ac{DT} system. They are mounted directly on the outside frame of the chamber. The minicrates perform the data acquisition and timestamp assignment of the \ac{LVDS} hits coming from the \acp{FEB} in the chamber. While the legacy minicrates already performed hit selection for the \ac{L1T}, the Phase-2 electronics eliminate this additional complexity, as all trigger tasks are handled by the backend. Apart from hit data acquisition, the minicrates also have slow control capabilities to interface \ac{DT} and \ac{RPC} infrastructure, including \ac{FEB} channel masking, gas pressure monitoring and control of the muon alignment system hardware \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}.
+\FloatBarrier
 \paragraph{On-Board Electronics for Drift Tubes}
-The \ac{OBDT} boards are the heart of the Phase-2 minicrates. They receive the \ac{LVDS} pulses from the chamber and assign timestamps to all hits \cite{CMS-Phase2Muon,CMS-Phase2}. There exist two flavors of boards, mainly due to the different \ac{FEC} types used on the differently oriented \acp{SL} \cite{DT-Phase2Upgrade}: The \ac{OBDT} phi \cite{DT-Phase2Upgrade}, developed at \ac{INFN} Padova, Italy and the \ac{OBDT} theta \cite{OBDT-theta-1,OBDT-theta-2}, developed at \ac{CIEMAT} Madrid, Spain. Both boards are designed around a raditation-tolerant Microsemi PolarFire\textsuperscript{\textregistered} \ac{FPGA} \cite{PolarFire-FPGA}. Fig.\ \ref{fig:DT-OBDTs} shows a photo of both \ac{OBDT} flavors.
+The \ac{OBDT} boards are the heart of the Phase-2 minicrates. They receive the \ac{LVDS} pulses from the chamber and assign timestamps to all hits \cite{CMS-Phase2Muon,CMS-Phase2}. There exist two flavors of boards, mainly due to the different \ac{FEC} types used on the differently oriented \acp{SL} \cite{DT-Phase2Upgrade}: The \ac{OBDT} phi \cite{DT-Phase2Upgrade}, developed at \ac{INFN} Padova, Italy and the \ac{OBDT} theta \cite{OBDT-theta-1,OBDT-theta-2}, developed at \ac{CIEMAT} Madrid, Spain. Both boards are designed around a raditation-tolerant Microsemi PolarFire\textsuperscript{\textregistered} \ac{FPGA} \cite{PolarFire-FPGA}. Figs.\ \ref{fig:OBDT-phi} and \ref{fig:OBDT-theta} show a photos of both \ac{OBDT} flavors.
 \newline The \acp{OBDT} of all minicrates run synchronously with a clock received from the backend system via an optical link. Slow control command and clock reception is handled by the \ac{lpGBT} \ac{ASIC} \cite{lpGBT-Main} (sec.\ \ref{sec:Scint-lpGBTMezzanine-lpGBT}) which is mounted on the \ac{OBDT} \ac{PCB}. Note that the \acs{OBDT} have a secondard slow control interface which does not rely on the \ac{lpGBT} \ac{ASIC} itself, but rather on duplicated logic directly on the \ac{FPGA}, which provides reduncancy for the system. The \ac{OBDT} also hosts the \ac{SCA} \ac{ASIC} \cite{SCA-Main} which provides communication and analog-to-digital services for the slow control peripherals connected to the minicrate. The assignment of timestamps to the hits is achieved with a \ac{TDC} logic (sec.\ \ref{sec:ReadoutElectronics-General}) running on a the \ac{FPGA} with a time granularity of $25/32\;\si{\nano\second}\approx\SI{0.78}{\nano\second}$. Each \ac{OBDT} board can receive inputs of 240 channels. In contrast to the legacy minicrate system, in Phase-2 all \ac{DT} cell hits are transferred to the backend. The time-tagged hits are streamed out to the backend via two duplicated \SI{10.24}{\giga\bit/\second} optical links in the transmission protocol of the \ac{lpGBT} \cite{CMS-Phase2Muon,CMS-Phase2}.
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
-    \begin{subfigure}{1\textwidth}
-        \centering
-        \includegraphics[height=2.8cm]{OBDT-Phi.png}
-        \caption{\ac{OBDT} phi. The \acp{FEC} are located on the right side of the \ac{PCB}, the testpulse output on the bottom edge towards the left. Power and optical connections are on the left.}
-        \label{fig:OBDT-phi}
-    \end{subfigure}
-    \begin{subfigure}{1\textwidth}
-        \centering
-        \includegraphics[height=2.8cm]{OBDT-Theta.png}
-        \caption{\ac{OBDT} theta with testpulse board monted on the right next to it. The \acp{FEC} are located on the top and bottom edge of the \ac{PCB}. Power and optical connections are on the right \cite[adapted]{DT-Phase2Upgrade}.}
-        \label{fig:OBDT-theta}
-    \end{subfigure}
-    \caption{Images of the two flavors of \ac{OBDT} boards.}
-    \label{fig:DT-OBDTs}
+    \includegraphics[height=2.8cm]{OBDT-Phi.png}
+    \caption{\ac{OBDT} phi. The \acp{FEC} are located on the right side of the \ac{PCB}, the testpulse output on the bottom edge towards the left. Power and optical connections are on the left.}
+    \label{fig:OBDT-phi}
 \end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[height=2.8cm]{OBDT-Theta.png}
+    \caption{\ac{OBDT} theta with testpulse board monted on the right next to it. The \acp{FEC} are located on the top and bottom edge of the \ac{PCB}. Power and optical connections are on the right \cite[adapted]{DT-Phase2Upgrade}.}
+    \label{fig:OBDT-theta}
+\end{figure}
+\FloatBarrier
 \paragraph{Testpulse generation}
 The \acp{OBDT} are responsible for testpulse generation of the \acp{FEC} they are connected to. The testpulses are required to have deterministic behavior, i.e.\ be issued synchronously to all channels, with offsets below \SI{1}{\nano\second}.\footnote{Due to different testpulse generation circuitry in \ac{OBDT} phi and \ac{OBDT} theta, there exists a constant timing offset between issued testpulses of the two boards. Since this offset is constant and can be measured beforehand, it does not affect the calibration negatively (sec.\ \ref{sec:DTData-Testpulse}).} The testpulse generation circuit on the \ac{OBDT} phi is located on the \ac{PCB} itself. For the \ac{OBDT} theta, there exists an auxiliary board for this purpose which was developed at Physics Institute III A in Aachen \cite{DT-Phase2Upgrade}.
+\FloatBarrier
 \paragraph{Safety system}
 The \ac{MONSA} system is the interface of the central \ac{CMS} detector safety system to the \ac{DT} minicrate electronics and is developed by \ac{INFN} Torino, Italy. The system can monitor and disable each \ac{OBDT} of all minicrates individually. The \ac{OBDT} boards feature a custom interface for the \ac{MONSA}, which connects to the \ac{MONSA} backend services via the existing copper cables in the muon barrel which were used for the legacy minicrates and are no longer needed for other purposes in the Phase-2 system \cite{DT-Phase2Upgrade}.
+\FloatBarrier
 \paragraph{Minicrate assembly}
 The \acp{OBDT} as well as all cables and periphery are housed in an aluminum frame, which resembles the actual minicrate. The minicrate is mounted on one side of the \ac{DT} chamber, in a gap between both phi-oriented \acp{SL}. The connections between the minicrate and the backend infrastructure that are required to operate it are the following: Low voltage supply, slow control optical fiber, hit data optical fibers, \ac{MONSA} cables. All other connections are only between the minicrate and the respective \ac{DT} chamber it is mounted to \cite{DT-Phase2Upgrade,CMS-Phase2Muon}. Fig.\ \ref{fig:Minicrate-MB1} shows a picture of an assembled minicrate for an MB1 chamber. Note that because of the different chamber sizes in different stations, there exist several types of minicrates, equipped with different numbers of \acp{OBDT}.
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=1\textwidth]{Minicrate-MB1.png}
     \caption{Picture of an assembled Phase-2 minicrate for an MB1 \ac{DT} chamber, consisting of two \ac{OBDT} phi and one \ac{OBDT} theta.}
     \label{fig:Minicrate-MB1}
 \end{figure}
 
+\FloatBarrier
 \subsection{Backend electronics}
 \label{sec:CMS-DTBackend}
 %\begin{itemize}
@@ -247,13 +271,15 @@ The \acp{OBDT} as well as all cables and periphery are housed in an aluminum fra
 %    \item Backend firmware (mention own modifications)
 %\end{itemize}
 With the Phase-2 upgrade, not only the minicrate electronics will be exchanged, but also the complete backend system, which should be described briefly in this section.
+\FloatBarrier
 \paragraph{Backend structure}
 The Phase-2 backend system is located in the service cavern of \ac{CMS} in \ac{ATCA} crates. It can be divided into two systems: The timing and slow control system is responsible for clock distribution to the minicrateas as well as \ac{OBDT} configuration and control commands. The hardware platform used is the Serenity board \cite{Serenity-Main}. The hit data reception is handled by \ac{BMTL1} boards \cite{BMTL1-Main}. They run the barrel trigger primitive generation algorithms with data inputs from both \ac{DT} and \ac{RPC} detectors. Also, they forward the hit data to the \ac{CMS} \ac{DAQ} when a \ac{L1T} accept signal is present \cite{DT-Phase2Upgrade,CMS-Phase2Muon}. Both boards rely on an AMD Xilinx Virtex\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} VU13P \ac{FPGA} \cite{UltraScale-FPGA}. The described backend system structure was already depicted in fig.\ \ref{fig:DT-Phase2Readout} above.
+\FloatBarrier
 \paragraph{HTG-940 backend prototype}
 Since the Serenity and \ac{BMTL1} hardware is not yet available, a protyping platform is used as intermediate backend system. This platform is not only used for firmware development, but also for the quality control of the minicrates at the different \ac{DT} minicrate assembly sites. As this backend was available in Aachen, the \ac{DT} chamber data presented in this work was also recorded with this system.
 \newline The hardware platform used is the \ac{HTG-940} \ac{FPGA} evaluation board \cite{HTG-940} which hosts an AMD Xilinx Virtex\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} VU9P \ac{FPGA} \cite{UltraScale-FPGA}. The similarity in \ac{FPGA} family and performance enables this module to be used as the prototype backend platform. The backend device build around this \ac{FPGA} evaluation board is referred to as \ac{SCTbox}. Fig.\ \ref{fig:DT-Backend} shows a picture of both the evaluation board and the \ac{SCTbox}.
 \newline The \ac{OBDT} optical links are connected to the backend via \ac{QSFP+} modules \cite{QSFP+-Main} hosted by an \ac{FMC} \cite{FMC-Main} which is plugged into the \ac{HTG-940} \ac{FPGA} board. The backend is connected to a computer via an optical \SI{10}{\giga\bit} ethernet connection. The computer can control all devices connected to the box and receives the streamed-out hit data. The \ac{FPGA} firmware and corresponding software \cite{obdt-backend-Main} is developed at \ac{INFN} Padova, Italy. In the context of this work, the backend firmware was modified to integrate the scintillation detector readout to the backend (sec.\ \ref{sec:Scint-lpGBTMezzanine-BackendFirmware}).
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \hfill
     \begin{subfigure}{0.49\textwidth}
@@ -267,7 +293,7 @@ Since the Serenity and \ac{BMTL1} hardware is not yet available, a protyping pla
         \centering
         \includegraphics[height=2.7cm]{DTBackend-Box.png}
         \caption{Image of the \ac{SCTbox} with optics patch panel.}
-        \label{fig:DT-FEB}
+        \label{fig:DT-BackendBox}
     \end{subfigure}
     \hfill
     \caption{Images of the \ac{DT} prototype backend electronics.}
@@ -275,7 +301,7 @@ Since the Serenity and \ac{BMTL1} hardware is not yet available, a protyping pla
 \end{figure}
 
 
-
+\FloatBarrier
 \section{DT test stand in Aachen}
 \label{sec:CMS-AachenTestStand}
 %\subsection{MB1 DT chamber}
@@ -291,25 +317,119 @@ Since the Serenity and \ac{BMTL1} hardware is not yet available, a protyping pla
 %%\end{itemize}
 The recorded and presented data in this work was taken with one MB1 \ac{DT} chamber, not with the full \ac{CMS} \ac{DT} system which was described above. The setup which was used for the measurements in this work should finally be described in this section.
 
+\FloatBarrier
 \subsection{Overview}
 \paragraph{Chamber construction in Aachen}
 The development and construction of gaseous detectors has a long history at Physics Institute III A in Aachen. The institute was already active in one of the first larger collaborations in experimental particle physics at \acs{CERN}, the UA-1 collaboration \cite{UA1-Main}. This detector contributed to the discovery of the $W^\pm$ and $Z^0$ bosons at the $Sp\bar{p}S$ collider in 1983 \cite{W-Z-Discovery}. The muon drift chambers were developed and constructed in Aachen \cite{UA1-Faissner}. The central drift chamber of the L3 experiment at the next large collider at \acs{CERN}, the \ac{LEP}, also originates from Aachen \cite{L3-Main}. In the \ac{CMS} collaboration \cite{CMS-Main}, the institute took over the responsibility of constructing about one quarter of the required \ac{DT} chambers \cite{RWTH-History}.
+\FloatBarrier
 \paragraph{Cosmic test stand}
 The \ac{CMS} \ac{DT} chamber construction did not only include the mechanical assembly, but also quality control and testing responsibilities. For this purpose, a cosmic test stand was constructed, which allowed the constructed chambers to be tested with atmospheric muons. After the chamber construction was completed in 2005 \cite{RWTH-History}, the test stand was initially abandoned. One fully equipped \ac{DT} chamber was kept in Aachen. Over the last years, all relevant infrastructure to operate this \ac{DT} chamber, including the high-voltage and gas system, was reactivated or installed \cite{PrivateComm-Eliseev}. The data taking in this thesis was done with this chamber at the test stand. Fig.\ \ref{fig:DT-Teststand} shows a picture of the test stand as it was used for the measurements in this thesis.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{MB1Chamber-Teststand.pdf}
+    \caption{Photo of the \ac{DT} teststand as it was used in this work. The backend rack is visible in the foreground. The \ac{DT} chamber is mounted a metal structure in the top left. In the top right the infrastructure racks are visible, containing high-voltage, gas and other systems.}
+    \label{fig:DT-Teststand}
+\end{figure}
 
 \subsection{Setup with Phase-2 electronics}
 The first hardware of the Phase-2 electronics became available during the period of this work, therefore one MB1 minicrate was assembled for use with the chamber in Aachen. The minicrate was connected to the chamber and infrastructure at the test stand. The available prototype backend was connected to the minicrate for control and readout. In the following, the detailed setup and mapping regarding the \ac{DT} chamber used in this work should be documented.
+\FloatBarrier
 \paragraph{DT chamber}
-The \ac{DT} chamber (sec.\ \ref{sec:CMS-DTSetup}) is of the type MB1, meaning it would be located in the innermost \ac{DT} station in the \ac{CMS} detector. It measures $2 \times 2.5\;\si{\milli\meter^2}$ in area and $\SI{1}{\milli\meter}$ in height. The numbering of drift cells (wires) in all layers of the chamber is given in tab.\ \ref{tab:MB1Chamber-Cells}.
-\newline The chamber is oriented horizontally in the teststand.  A local coordinate system is defined for the analysis of the \ac{DT} data: The $x$ axis is chosen parallel to the \ac{SL} theta wires, the $y$ axis parallel to the \ac{SL} phi wires. The $z$ axis is chosen to point upwards. The origin of the coordinate frame is chosen as the lower corner of the \ac{DT} chamber where the wire number of all layers is lowest. Fig.\ \ref{fig:MB1Chamber-CoordinateFrame} illustrates the coordinate frame used in this work.
-\newline The \ac{SL} order starting from the \ac{SL} closest to the floor (smallest $z$ coordinate) is as follows: \ac{SL} 1 (phi), \ac{SL} 2 (theta), \ac{SL} 3 (phi). The four layers in each \ac{SL} are numbered towards increasing $z$ coordinate as $0-3$. The wires in each layer are numbered starting from $0$.\footnote{Layer $3$ of each \ac{SL} does not have a wire $0$, therefore the wire numbering starts at $1$ for this layer only.}
+The \ac{DT} chamber (sec.\ \ref{sec:CMS-DTSetup}) is of the type MB/W/1/S (MB1), meaning it would be located in the innermost \ac{DT} station in the \ac{CMS} detector. It measures $2180 \times 2511\;\si{\milli\meter^2}$ in area and $\SI{362}{\milli\meter}$ in height. Information on the used chamber is given in tab.\ \ref{tab:MB1Chamber-Cells}.
+\newline The \ac{SL} order starting from the \ac{SL} closest to the floor is as follows: \ac{SL} 1 (phi), \ac{SL} 2 (theta), \ac{SL} 3 (phi). The four layers in each \ac{SL} are numbered towards increasing $z$ coordinate as $0-3$. The wires in each layer are numbered starting from $0$.\footnote{Layer $3$ of each \ac{SL} does not have a wire $0$, therefore the wire numbering starts at $1$ for this layer only.}
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|} 
+        \hline
+        & \acp{SL} 1, 3 (phi) & \ac{SL} 2 (theta) \\ \hline
+        Wire length & \SI{2379}{\milli\meter} & \SI{2038}{\milli\meter} \\
+        No.\ wires & 196 & 228 \\ 
+        in layer 0 & 49 & 57 \\
+        in layer 1 & 50 & 58 \\ 
+        in layer 2 & 49 & 57 \\ 
+        in layer 3 & 48 & 56 \\ 
+        No.\ \acp{FEC} & 13 & 15 \\\hline
+    \end{tabular}
+    \caption{Information on the MB1 \ac{DT} chamber \cite{CMS-Main}.}
+    \label{tab:MB1Chamber-Cells}
+\end{table}
+\FloatBarrier
 \paragraph{Minicrate}
-The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OBDT} theta board (sec.\ \ref{sec:CMS-DTMinicrate}). A picture of an MB1 minicrate was already shown above in fig.\ \ref{fig:Minicrate-MB1}. One \ac{OBDT} is used for the readout of each superlayer. The mapping between the \ac{DT} chamber \acp{FEC} and the \ac{OBDT} input connectors is presented in tab.\ \ref{tab:MB1Minicrate-FECMapping}.
+The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OBDT} theta board (sec.\ \ref{sec:CMS-DTMinicrate}). Fig.\ \ref{fig:MB1Minicrate-Mounted} shows a picture of the minicrate mounted onto the chamber at the test stand. Note that a photo of the minicrate before installation on the chamber was already shown above in fig.\ \ref{fig:Minicrate-MB1}. One \ac{OBDT} is used for the readout of each superlayer. The mapping between the \ac{DT} chamber \acp{FEC} (which are labeled 1A, 1B, 2A, ...) and the \ac{OBDT} input connectors is presented in tab.\ \ref{tab:MB1Minicrate-FECMapping}. The two unused \acp{FEC} on the \ac{OBDT} phi boards (J26, J27) were masked in order to pervent the injection of noise through these unconnected inputs.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{MB1Minicrate-Mounted.pdf}
+    \caption{Photo of the minicrate mounted on the \ac{DT} chamber at the test stand.}
+    \label{fig:MB1Minicrate-Mounted}
+\end{figure}
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|} 
+        \hline
+        & \multicolumn{2}{c|}{\ac{SL} 1 (phi)} & \multicolumn{2}{c|}{\ac{SL} 2 (theta)} & \multicolumn{2}{c|}{\ac{SL} 3 (phi)} \\ \hline
+        \ac{DT} \ac{FEC} & \ac{OBDT} & \ac{OBDT} \ac{FEC} & \ac{OBDT} & \ac{OBDT} \ac{FEC} & \ac{OBDT} & \ac{OBDT} \ac{FEC}\\ \hline
+        1A & 1 (phi) & J33 & 2 (theta) & Jin5a & 3 (phi) & J33 \\
+        1B & 1 (phi) & J34 & 2 (theta) & Jin5b & 3 (phi) & J34 \\
+        2A & 1 (phi) & J35 & 2 (theta) & Jin6a & 3 (phi) & J35 \\
+        2B & 1 (phi) & J36 & 2 (theta) & Jin6b & 3 (phi) & J36 \\
+        3A & 1 (phi) & J37 & 2 (theta) & Jin1a & 3 (phi) & J37 \\
+        3B & 1 (phi) & J32 & 2 (theta) & Jin1b & 3 (phi) & J32 \\
+        4A & 1 (phi) & J31 & 2 (theta) & Jin2a & 3 (phi) & J31 \\
+        4B & 1 (phi) & J30 & 2 (theta) & Jin2b & 3 (phi) & J30 \\
+        5A & 1 (phi) & J29 & 2 (theta) & Jin7a & 3 (phi) & J29 \\
+        5B & 1 (phi) & J28 & 2 (theta) & Jin7b & 3 (phi) & J28 \\
+        6A & 1 (phi) & J23 & 2 (theta) & Jin4a & 3 (phi) & J23 \\
+        6B & 1 (phi) & J24 & 2 (theta) & Jin4b & 3 (phi) & J24 \\
+        7A & 1 (phi) & J25 & 2 (theta) & Jin3a & 3 (phi) & J25 \\
+        7B &         &     & 2 (theta) & Jin3b &         &     \\
+        8A &         &     & 2 (theta) & Jin8a &         &     \\ \hline
+    \end{tabular}
+    \caption{Mapping of the \ac{DT} chamber \acp{FEC} to the \ac{OBDT} numbering and input connectors.}
+    \label{tab:MB1Minicrate-FECMapping}
+\end{table}
+\FloatBarrier
 \paragraph{Backend}
-The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which was moved to the test stand and connected to the minicrate. The mapping of the backend slow control and readout channels, i.e.\ the optical fiber link numbers are given in tab.\ \ref{tab:MB1Backend-ReadoutChannelMapping}. The \ac{SCTbox} is connected to a server inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
-
-
-
+The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which was moved to the test stand and connected to the minicrate. The backend rack is prominently visible in fig.\ \ref{fig:DT-Teststand} above. The mapping of the backend slow control and readout channels, i.e.\ the optical fiber link numbers are given in tab.\ \ref{tab:MB1Backend-ReadoutChannelMapping}. The \ac{SCTbox} is connected to a server inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|} 
+        \hline
+        \ac{SL} & \ac{OBDT} & Slow control & Hit data \\ \hline
+        1 (phi) & 1 (phi) & 4 & 8, 9 \\
+        2 (theta) & 2 (theta) & 5 & 10, 11 \\
+        3 (phi) & 3 (phi) & 7 & 14, 15 \\ \hline
+    \end{tabular}
+    \caption{Mapping of all \ac{OBDT} optical link numbers to the backend. Note that slow control and data links have two separate numbering schemes. The data links are duplicated in the \acp{OBDT}.}
+    \label{tab:MB1Backend-ReadoutChannelMapping}
+\end{table}
+\subsection{Coordinate frame and timestamp format}
+As a hit reconstruction is performed, establishing a coordinate frame convention in this work is required. It should be briefly introduced here, together with the format of the hit timestamps with the Phase-2 electronics.
+\FloatBarrier
+\paragraph{Coordinate frame}
+The \ac{DT} chamber is oriented horizontally in the teststand.  A local coordinate system is defined for the analysis of the \ac{DT} data: The $x$-axis is chosen parallel to the \ac{SL} theta wires, the $y$-axis parallel to the \ac{SL} phi wires. The $z$-axis is chosen to point upwards. The origin of the coordinate frame is chosen as the lower corner of the \ac{DT} chamber where the wire number of all layers is lowest. Fig.\ \ref{fig:ThisCoordinateFrame} illustrates the coordinate frame used in this work.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ThisCoordinateFrame.pdf}
+    \caption{Illustration of the coordinate frame convention in this work. The \ac{SL}, layer (Ly) and wire (Wi) numbering is also marked \cite[adapted]{DT-LocalReco}.}
+    \label{fig:ThisCoordinateFrame}
+\end{figure}
+\FloatBarrier
+\paragraph{Timestamp format}
+The \acp{OBDT} naturally send out the hits with a timestamp consisting of two parts:
+\begin{itemize}
+    \item \textbf{TDC value:} It is the conversion result of the 5-bit \ac{TDC} running on the \ac{OBDT}. The conversion runs on the scope of \SI{25}{\nano\second}, resulting in the mentioned time granularity of $25/2^{5}\;\si{\nano\second}=25/32\;\si{\nano\second}\approx\SI{0.78}{\nano\second}$ (sec.\ \ref{sec:CMS-DTMinicrate}).
+    \item \textbf{BX value:} In the context of the \ac{CMS} experiment, the $BX$ value is the bunch crossing number of the collider. With the crossing frequency of \SI{40}{\mega\hertz} (sec.\ \ref{sec:CMS-LHC}), one $BX$ unit corresponds to the crossing period of \SI{25}{\nano\second}. The $BX$ value has a range of $0-3563$, as this corresponds to the \ac{LHC} accelerator filling scheme.
+\end{itemize}
+The backend firmware assigns an additional, higher level timestamp to the hits received from the \acp{OBDT}:
+\begin{itemize}
+    \item \textbf{OC value:} The abbreviation $OC$ refers to orbit count and corresponds to the \ac{LHC} orbit in the context of \ac{CMS}. It counts up one unit when the $BX$ value overflows. One $OC$ unit corresponds to \SI{89.1}{\micro\second}. The backend firmware allows for orbit counter values of up to $2^{26}$.
+\end{itemize}
+From these three time informations, one integer timestamp value $TS$ is constructed in the offline code, which is used in the following to describe the timing of recorded hits:
+\begin{equation}
+    TS = TDC + 32\cdot BX +  32\cdot 3564\cdot OC
+    \label{eq:Timestamp}
+\end{equation}
+One \ac{TU} corresponds to the same time as one $TDC$ unit, i.e. \SI{0.78}{\nano\second}.
 
 
 
