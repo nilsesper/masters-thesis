@@ -11,31 +11,31 @@ This chapter should describe the gaseous detector used in this work, which is a 
 %    \item Image of CERN accelerator complex
 %    \item Key facts: Luminisity, collision center-of-mass energy
 %\end{itemize}
-The particle accelerator which provides the collisions recorded by \ac{CMS} and other experiments is the \acf{LHC} \cite{LHC-Main}. It is located at the \acs{CERN} laboratory complex in the region of Geneva, Switzerland. Fig.\ \ref{fig:LHC-AcceleratorComplex} presents an overview of the accelerators and experiments at \acs{CERN}.
+The particle accelerator which provides the collisions recorded by \ac{CMS} and other experiments is the \acf{LHC} \cite{LHC-Main}. It is located at the \ac{CERN} laboratory complex in the region of Geneva, Switzerland. Fig.\ \ref{fig:LHC-AcceleratorComplex} presents an overview of the accelerators and experiments at \acs{CERN}.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{LHC-AcceleratorComplex.png}
+    \includegraphics[width=0.8\textwidth]{LHC-AcceleratorComplex.png}
     \caption{Overview of the patrticle accelerators and experiments at \acs{CERN} \cite[adapted]{LHC-AcceleratorComplex}.}
     \label{fig:LHC-AcceleratorComplex}
 \end{figure}
-\paragraph{Particle collisions}
-An accelerator collides particles which were accelerated a certain energy. The \ac{COME} $\sqrt{s}$ is the energy in the central collision reference frame. Due to energy conservation, the sum of the masses of all created particles in a collision can not exceed this value. In a circular symmetric accelerator where both particles have the same energy $E_p$, the \ac{COME} can be approximated as \cite{Accelerators-Wiedemann}:
-\begin{equation}
-    \sqrt{s}=2 E_p
-    \label{eq:LHC-COME}
-\end{equation}
-Therefore having higher \acp{COME} enables the discovery of higher-mass particles. Another important quantity in an accelerator is the instantaneous luminosity $\mathcal{L}$. It determines the number of events emerging from the collision \cite{Book-KolanoskiWermes}:
-\begin{equation}
-    \dot{N}=\mathcal{L}\sigma
-    \label{eq:LHC-Lumi}
-\end{equation}
-Here, $\sigma$ is the cross section of the interaction process, which is a measure of probability for the process. An increased luminosity is therefore advantageous to collect more statistics of rare interactions.
+%\paragraph{Particle collisions}
+%An accelerator collides particles which were accelerated a certain energy. The \ac{COME} $\sqrt{s}$ is the energy in the central collision reference frame. Due to energy conservation, the sum of the masses of all created particles in a collision can not exceed this value. In a circular symmetric accelerator where both particles have the same energy $E_p$, the \ac{COME} can be approximated as \cite{Accelerators-Wiedemann}:
+%\begin{equation}
+%    \sqrt{s}=2 E_p
+%    \label{eq:LHC-COME}
+%\end{equation}
+%Therefore having higher \acp{COME} enables the discovery of higher-mass particles. Another important quantity in an accelerator is the instantaneous luminosity $\mathcal{L}$. It determines the number of events emerging from the collision \cite{Book-KolanoskiWermes}:
+%\begin{equation}
+%    \dot{N}=\mathcal{L}\sigma
+%    \label{eq:LHC-Lumi}
+%\end{equation}
+%Here, $\sigma$ is the cross section of the interaction process, which is a measure of probability for the process. An increased luminosity is therefore advantageous to collect more statistics of rare interactions.
 \paragraph{LHC accelerator}
 The \ac{LHC} is the largest and most powerful particle accelerator in the world. It is a circular proton-proton collider, creating collisions with a \ac{COME} of up to $\sqrt{s}=\SI{14}{\tera\electronvolt}$. The accelerator has a circumference of \SI{27}{\kilo\meter} and was constructed in the tunnel originally used for the \ac{LEP} \cite{LEP-Main}, which lies around \SI{100}{\meter} below the surface. In order to guide the particles, the machine uses superconducting magnets with field strengths above \SI{8}{\tesla}. Particle accelaration is provided by superconducting cavities. Particle collisions take place with a bunch-crossing frequency of \SI{40}{\mega\hertz}. Originally, the \ac{LHC} was designed to provide an instantaneous luminosity of $\mathcal{L}=10^{34}\;\si{\centi\meter^{-2} \second^{-1}}$ at the interaction points. In the context of the \ac{HLLHC} project, the accelerator will be upgraded to reach instantaneous luminosities of $\mathcal{L}=\num{5e34}\;\si{\centi\meter^{-2} \second^{-1}}$ \cite{HLLHC-TDR}. It should be noted that the \ac{LHC} is not only capable of accelerating protons but also heavy ions \cite{LHC-Main}.
 \paragraph{Pre-accelerators}
 The \ac{LHC} does not accelerate protons starting at rest, but is supplied with pre-accelerated particles from the \acs{CERN} accelerator complex (see fig.\ \ref{fig:LHC-AcceleratorComplex}). Protons are extracted from a hydrogen bottle and first accelerated in a linear accelerator (LINAC 4) to \SI{160}{\mega\electronvolt} \cite{LINAC4-Main}. Then they are injected in a series of circular accelerators (Booster, Proton Synchrotron, Super Proton Synchrotron) and finally injected into the \ac{LHC} at an energy of \SI{450}{\giga\electronvolt} \cite{LHC-Main}.
 \paragraph{LHC operation}
-The accelerator operation can be divided into so-called runs, each spanning several years. Run-1 from $2010$ to $2013$ was the initial operation period at lower \ac{COME} \cite{LHC-Run1}, which already led to the discovery of the Higgs boson \cite{HiggsDiscovery-CMS,HiggsDiscovery-ATLAS}. Run-2 lasted from $2015$ to $2018$ \cite{LHC-Run2}. Run-3 started in $2022$ and should last until the summer of $2026$. After this run, the \ac{HLLHC} upgrade program will be implemented in the \ac{LS3} \cite{LHC-Run3}.
+The accelerator operation can be divided into different run periods, each spanning several years. Run-1 from $2010$ to $2013$ was the initial operation period at lower \ac{COME} \cite{LHC-Run1}, which already led to the discovery of the Higgs boson \cite{HiggsDiscovery-CMS,HiggsDiscovery-ATLAS}. Run-2 lasted from $2015$ to $2018$ \cite{LHC-Run2}. Run-3 started in $2022$ and should last until the summer of $2026$. After this run, the \ac{HLLHC} upgrade program will be implemented in the \ac{LS3} \cite{LHC-Run3}.
 
 \subsection{Experiment overview}
 \label{sec:CMS-Overview}
@@ -46,7 +46,7 @@ The accelerator operation can be divided into so-called runs, each spanning seve
 The \ac{CMS} experiment \cite{CMS-Main} is one of two multipurpose particle detectors operated at the \ac{LHC}. It is located approximately \SI{100}{\meter} underground close to the French village Cessy. It consists of a cylindrical barrel with five wheels and two disk-shaped endcaps. The detector measures \SI{21.6}{\meter} in length and \SI{14.6}{\meter} in diameter, which is significantly more compact than the second multipurpose detector at the \ac{LHC}, named \ac{ATLAS} \cite{ATLAS-Main}. Apart from the compactness, the detector was designed to provide good performance especially in the detection of muons. Both of these aspects are represented in the name of the experiment. The \ac{CMS} assembly has a total mass of around \SI{12500}{\tonne} \cite{CMS-Main}. Fig.\ \ref{fig:CMS-RenderingRun2} shows a rendering of the \ac{CMS} detector in its configuration after Run-2, the different subdetector systems are labeled in the image.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{CMS-RenderingRun2.pdf}
+    \includegraphics[width=0.8\textwidth]{CMS-RenderingRun2.pdf}
     \caption{Rendering of the \acs{CMS} detector in its configuration during Run-2, with all its subsystems and a human to scale \cite[adapted]{CMS-RenderingRun2}.}
     \label{fig:CMS-RenderingRun2}
 \end{figure}
@@ -89,9 +89,10 @@ The bunch crossing frequency of the \ac{LHC} of \SI{40}{\mega\hertz} is orders o
 %    \item Components of one DT chamber: 2-3 superlayers, 4 layers, drift cells
 %    \item Gas mixture, HV values
 %\end{itemize}
-The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{CMS}, covering the angular range $\left| \eta \right|\leq 1.2$. It consists of $250$ drift chambers in total. The chambers are arranged along the five wheels and $12$ sectors per wheel. Each sector features four stations of chambers, which are named MB1/2/3/4 respectively (where MB stands for "muon barrel"). In total, the \ac{DT} system has \num{172000} readout channels \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:DT-Layout} shows the positions of the drift chambers in one of the five wheels.
+The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{CMS}, covering the angular range $\left| \eta \right|\leq 1.2$. It consists of $250$ drift chambers in total. The chambers are arranged along the five wheels and $12$ sectors per wheel. Each sector features four stations of chambers, which are named MB1/2/3/4 respectively (where MB stands for "muon barrel"). In total, the \ac{DT} system has \num{172000} readout channels \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:DT-Layout} shows a schematic of the \ac{DT} chamber layout in one of the five wheels and a photo of a real chamber.
 \begin{figure}[htbp]
     \centering
+    \hfill
     \begin{subfigure}{0.49\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{DT-Wheel.png}
@@ -101,16 +102,27 @@ The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{
     \hfill
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \includegraphics[width=1\textwidth]{DT-MuonTrack.png}
-        \caption{Photo of the real \ac{CMS} detector with an overlayed dimuon event (in white) \cite{DT-MuonTrack}.}
-        \label{fig:DT-MuonTrack}
+        \includegraphics[width=1\textwidth]{DT-ChamberInsertion.jpg}
+        \caption{Photo of a \ac{DT} chamber being mounted inside the \ac{CMS} yoke \cite{DT-ChamberInsertion}.}
+        \label{fig:DT-ChamberInsertion}
     \end{subfigure}
-    \caption{Layout of the \ac{DT} chambers in 12 sectors and four stations in one wheel of the \ac{CMS} barrel.}
+    \hfill
+    \caption{Schematic and photo of the \ac{DT} chambers in the \ac{CMS} detector.}
     \label{fig:DT-Layout}
 \end{figure}
-
 \paragraph{Chamber setup}
 A drift chamber measures around $2\times 2.5 \;\si{\meter^2}$ in area, with the outer chambers being slightly larger. Most chambers consist of three so-called \acp{SL}. These \acp{SL} are themselves constructed from four layers of drift cells, which are staggered by half the cell width for adjacent layers. The drift cell wires of \acp{SL} one and three are oriented along the beam axis, giving sensitivity along the $r$-$\phi$-direction. The second \ac{SL} is rotated by $90^\circ$, giving sensitivity along the $z$-$\theta$-direction.\footnote{The MB4 chambers only have two \acp{SL}, which are both oriented along the $r$-$\phi$-direction \cite{CMS-Main}.} The number of channels per chamber lies in $\mathcal{O}(700)$ and varies with the chamber size \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. Fig.\ \ref{fig:DT-Chamber} shows an exposed view of one \ac{DT} chamber, highlighting its structure.
+\paragraph{Drift cell}
+A close-up view of one drift cell is presented in fig.\ \ref{fig:DT-Cell}. It measures $42\times 13\;\si{\milli\meter^2}$ along its cross section. The cell length is determined by the chamber dimensions. The cell walls are the so-called I-beams, which are aluminum structures. These structures not only hold the cathode electrodes, but also provide structural integrity to the chamber. In the center of the cell is the anode wire, which is made from gold-plated steel with a diameter of \SI{50}{\micro\meter}. Two additional electrodes are located on the walls above and below the wire, to shape the electric field. The gas mixture used in the \ac{DT} system is composed of 85\% Argon and 15\% CO$_2$. The voltages applied to the electrodes are as follows: $+3.6\;\si{\kilo\volt}$ to the wire, $-1.2\;\si{\kilo\volt}$ to the cathode strips and $+1.8\;\si{\kilo\volt}$ to the field-shaping electrodes \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. The drift velocity for electrons with this configuration is approximately \cite{DT-CosmicsCalibrationVelocity}
+\begin{equation}
+    v_D\approx\SI{54.5}{\frac{\micro\meter}{\nano\second}}.
+    \label{eq:DT-DriftVelocity}
+\end{equation}
+With the half-width of $d/2\approx\SI{21}{\mm}$ of a cell, the maximum electron drift time is
+\begin{equation}
+    t_\text{max}=\frac{d/2}{v_D}\approx\SI{385}{\nano\second}.
+    \label{eq:DT-MaxDriftTime}
+\end{equation}
 \begin{figure}[htbp]
     \centering
     \hfill
@@ -131,16 +143,6 @@ A drift chamber measures around $2\times 2.5 \;\si{\meter^2}$ in area, with the 
     \caption{Detail view of the \ac{DT} chamber components.}
     \label{fig:DT-Components}
 \end{figure}
-\paragraph{Drift cell}
-A close-up view of one drift cell is presented in fig.\ \ref{fig:DT-Cell}. It measures $42\times 13\;\si{\milli\meter^2}$ along its cross section. The cell length is determined by the chamber dimensions. The cell walls are the so-called I-beams, which are aluminum structures. These structures not only hold the cathode electrodes, but also provide structural integrity to the chamber. In the center of the cell is the anode wire, which is made from gold-plated steel with a diameter of \SI{50}{\micro\meter}. Two additional electrodes are located on the walls above and below the wire, to shape the electric field. The gas mixture used in the \ac{DT} system is composed of 85\% Argon and 15\% CO$_2$. The voltages applied to the electrodes are as follows: $+3.6\;\si{\kilo\volt}$ to the wire, $-1.2\;\si{\kilo\volt}$ to the cathode strips and $+1.8\;\si{\kilo\volt}$ to the field-shaping electrodes \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. The drift velocity for electrons with this configuration is approximately \cite{DT-CosmicsCalibrationVelocity}
-\begin{equation*}
-    v_D\approx\SI{54.5}{\frac{\micro\meter}{\nano\second}}.
-    \label{eq:DT-DriftVelocity}
-\end{equation*}
-With the half-width of $d/2\approx\SI{21}{\mm}$ of a cell, the maximum electron drift time is
-\begin{equation*}
-    t_\text{max}=\frac{d/2}{v_D}\approx\SI{385}{\nano\second}.
-\end{equation*}
 
 \subsection{Performance}
 \label{sec:CMS-DTPerformance}
@@ -163,7 +165,7 @@ In the context of the Phase-2 upgrade of \ac{CMS}, the readout electronics of th
 \newline Fig.\ \ref{fig:DT-Phase2Readout} shows an overview of the Phase-2 readout chain of the \ac{DT} system. The components presented in this plot and their interconnections will be described in detail the following sections.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{DT-Phase2-Schematic.pdf}
+    \includegraphics[width=0.4\textwidth]{DT-Phase2-Schematic.pdf}
     \caption{Overview of the Phase-2 readout chain of the \ac{DT} system \cite[adapted]{DT-Phase2Upgrade}.}
     \label{fig:DT-Phase2Readout}
 \end{figure}
@@ -171,19 +173,23 @@ In the context of the Phase-2 upgrade of \ac{CMS}, the readout electronics of th
 \subsection{Frontend electronics}
 \label{sec:CMS-DTFrontend}
 The frontend electronics of the \ac{DT} system are located inside of the chamber gas volume. They amplify the analog pulse from the drift cell wire and compare it to an amplitude thresold, providing a digital pulse on the output \cite{CMS-Main,CMS-Muon}. Because of their sufficient radiation hardness and their limited accessibility, these are the only electronics to not be exchanged in the course of the Phase-2 upgrade \cite{CMS-Phase2Muon}.
+\paragraph{MAD chip}
+A custom \ac{ASIC} called "The MAD" \cite{DT-MADChip} was developed for the frontend electronics, which houses the analog amplification and signal shaping circuits. One chip has inputs for four \ac{DT} wire signals. The charge to voltage conversion gain of the mounted chip is around \SI{3.4}{\milli\volt/\femto\coulomb}. The MAD chip also includes a discriminator stage (sec.\ \ref{sec:ReadoutElectronics-General}), which converts the analog signal into a digital pulse. The thresold of the discriminator can be set externally and usually is in the range $\mathcal{O}(\SI{30}{\milli\volt})$. Note that the digital output of the MAD chip is not single-ended but in the form of a \ac{LVDS} pulse \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:MAD-DieShot} shows a die shot of the MAD chip.
+\paragraph{Frontend board}
+The \ac{FEB} is the \ac{PCB} which hosts the MAD chips. It connects the \ac{DT} wire pins with the MAD inputs and the \ac{LVDS} outputs of the MAD to the \acp{FEC} located on the casing of the \ac{DT} chamber. The \ac{FEB} is also connected to so-called testpulse connectors on the chamber casing. These are coupled to the inputs of the MAD to emulate a wire hit, when a testpulse signal is received. This testpulse capability is required for precise timing calibration between all channels (sec.\ \ref{sec:DTData-Testpulse}). A photo of one \ac{FEB} is shown in fig.\ \ref{fig:DT-Frontend}.
 \begin{figure}[htbp]
     \centering
     \hfill
-    \begin{subfigure}{0.34\textwidth}
+    \begin{subfigure}{0.35\textwidth}
         \centering
-        \includegraphics[height=2.7cm]{MAD-DieShot.jpg}
+        \includegraphics[height=2.3cm]{MAD-DieShot.jpg}
         \caption{Die shot of the MAD \ac{ASIC} \cite{MAD-DieShot}.}
         \label{fig:MAD-DieShot}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.65\textwidth}
+    \begin{subfigure}{0.6\textwidth}
         \centering
-        \includegraphics[height=2.7cm]{DT-FEB.png}
+        \includegraphics[height=2.3cm]{DT-FEB.png}
         \caption{Image of a \ac{DT} \acs{FEB} with four MAD chips \cite{CMS-Main}.}
         \label{fig:DT-FEB}
     \end{subfigure}
@@ -191,10 +197,6 @@ The frontend electronics of the \ac{DT} system are located inside of the chamber
     \caption{Images of the \ac{DT} frontend electronics.}
     \label{fig:DT-Frontend}
 \end{figure}
-\paragraph{MAD chip}
-A custom \ac{ASIC} called "The MAD" \cite{DT-MADChip} was developed for the frontend electronics, which houses the analog amplification and signal shaping circuits. One chip has inputs for four \ac{DT} wire signals. The charge to voltage conversion gain of the mounted chip is around \SI{3.4}{\milli\volt/\femto\coulomb}. The MAD chip also includes a discriminator stage (sec.\ \ref{sec:ReadoutElectronics-General}), which converts the analog signal into a digital pulse. The thresold of the discriminator can be set externally and usually is in the range $\mathcal{O}(\SI{30}{\milli\volt})$. Note that the digital output of the MAD chip is not single-ended but in the form of a \ac{LVDS} pulse \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:MAD-DieShot} shows a die shot of the MAD chip.
-\paragraph{Frontend board}
-The \ac{FEB} is the \ac{PCB} which hosts the MAD chips. It connects the \ac{DT} wire pins with the MAD inputs and the \ac{LVDS} outputs of the MAD to the \acp{FEC} located on the casing of the \ac{DT} chamber. The \ac{FEB} is also connected to so-called testpulse connectors on the chamber casing. These are coupled to the inputs of the MAD to emulate a wire hit, when a testpulse signal is received. This testpulse capability is required for precise timing calibration between all channels (sec.\ \ref{sec:DTData-Testpulse}). A photo of one \ac{FEB} is shown in fig.\ \ref{fig:DT-Frontend}.
 
 \subsection{Minicrate electronics}
 %\begin{itemize}
@@ -202,7 +204,8 @@ The \ac{FEB} is the \ac{PCB} which hosts the MAD chips. It connects the \ac{DT} 
 %    \item Minicrate functionalities
 %    \item On-Board Electronics for Drift Tubes boards
 %\end{itemize}
-The so-called minicrate electronics are the digital readout electronics of the \ac{DT} system. They are mounted directly on the outside frame of the chamber. The minicrates perform the data acquisition and timestamp assignment of the \ac{LVDS} hits coming from the \acp{FEB} in the chamber. While the legacy minicrates already performed hit selection for the \ac{L1T}, the Phase-2 electronics eliminate this additional complexity, as all trigger tasks are handled by the backend. Apart from hit data acquisition, the minicrate also have slow control capabilities to interface \ac{DT} and \ac{RPC} infrastructure, including \ac{FEB} channel masking, gas pressure monitoring and control of the muon alignment system hardware \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}.
+\label{sec:CMS-DTMinicrate}
+The so-called minicrate electronics are the digital readout electronics of the \ac{DT} system. They are mounted directly on the outside frame of the chamber. The minicrates perform the data acquisition and timestamp assignment of the \ac{LVDS} hits coming from the \acp{FEB} in the chamber. While the legacy minicrates already performed hit selection for the \ac{L1T}, the Phase-2 electronics eliminate this additional complexity, as all trigger tasks are handled by the backend. Apart from hit data acquisition, the minicrates also have slow control capabilities to interface \ac{DT} and \ac{RPC} infrastructure, including \ac{FEB} channel masking, gas pressure monitoring and control of the muon alignment system hardware \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}.
 \paragraph{On-Board Electronics for Drift Tubes}
 The \ac{OBDT} boards are the heart of the Phase-2 minicrates. They receive the \ac{LVDS} pulses from the chamber and assign timestamps to all hits \cite{CMS-Phase2Muon,CMS-Phase2}. There exist two flavors of boards, mainly due to the different \ac{FEC} types used on the differently oriented \acp{SL} \cite{DT-Phase2Upgrade}: The \ac{OBDT} phi \cite{DT-Phase2Upgrade}, developed at \ac{INFN} Padova, Italy and the \ac{OBDT} theta \cite{OBDT-theta-1,OBDT-theta-2}, developed at \ac{CIEMAT} Madrid, Spain. Both boards are designed around a raditation-tolerant Microsemi PolarFire\textsuperscript{\textregistered} \ac{FPGA} \cite{PolarFire-FPGA}. Fig.\ \ref{fig:DT-OBDTs} shows a photo of both \ac{OBDT} flavors.
 \newline The \acp{OBDT} of all minicrates run synchronously with a clock received from the backend system via an optical link. Slow control command and clock reception is handled by the \ac{lpGBT} \ac{ASIC} \cite{lpGBT-Main} (sec.\ \ref{sec:Scint-lpGBTMezzanine-lpGBT}) which is mounted on the \ac{OBDT} \ac{PCB}. Note that the \acs{OBDT} have a secondard slow control interface which does not rely on the \ac{lpGBT} \ac{ASIC} itself, but rather on duplicated logic directly on the \ac{FPGA}, which provides reduncancy for the system. The \ac{OBDT} also hosts the \ac{SCA} \ac{ASIC} \cite{SCA-Main} which provides communication and analog-to-digital services for the slow control peripherals connected to the minicrate. The assignment of timestamps to the hits is achieved with a \ac{TDC} logic (sec.\ \ref{sec:ReadoutElectronics-General}) running on a the \ac{FPGA} with a time granularity of $25/32\;\si{\nano\second}\approx\SI{0.78}{\nano\second}$. Each \ac{OBDT} board can receive inputs of 240 channels. In contrast to the legacy minicrate system, in Phase-2 all \ac{DT} cell hits are transferred to the backend. The time-tagged hits are streamed out to the backend via two duplicated \SI{10.24}{\giga\bit/\second} optical links in the transmission protocol of the \ac{lpGBT} \cite{CMS-Phase2Muon,CMS-Phase2}.
@@ -210,13 +213,13 @@ The \ac{OBDT} boards are the heart of the Phase-2 minicrates. They receive the \
     \centering
     \begin{subfigure}{1\textwidth}
         \centering
-        \includegraphics[height=3.4cm]{OBDT-Phi.png}
+        \includegraphics[height=2.8cm]{OBDT-Phi.png}
         \caption{\ac{OBDT} phi. The \acp{FEC} are located on the right side of the \ac{PCB}, the testpulse output on the bottom edge towards the left. Power and optical connections are on the left.}
         \label{fig:OBDT-phi}
     \end{subfigure}
     \begin{subfigure}{1\textwidth}
         \centering
-        \includegraphics[height=3.4cm]{OBDT-Theta.png}
+        \includegraphics[height=2.8cm]{OBDT-Theta.png}
         \caption{\ac{OBDT} theta with testpulse board monted on the right next to it. The \acp{FEC} are located on the top and bottom edge of the \ac{PCB}. Power and optical connections are on the right \cite[adapted]{DT-Phase2Upgrade}.}
         \label{fig:OBDT-theta}
     \end{subfigure}
@@ -243,14 +246,33 @@ The \acp{OBDT} as well as all cables and periphery are housed in an aluminum fra
 %    \item Production backend: Serenity and BMTL1 (not available yet)
 %    \item Backend firmware (mention own modifications)
 %\end{itemize}
-With the Phase-2 upgrade, not only the minicrate electronics will be exchanged, but also the complete backend system. In this section, the \ac{DT} backend system for \ac{CMS} should be briefly described.
+With the Phase-2 upgrade, not only the minicrate electronics will be exchanged, but also the complete backend system, which should be described briefly in this section.
 \paragraph{Backend structure}
-The Phase-2 backend system is located in the service cavern of \ac{CMS} in \ac{ATCA} crates. It can be divided into two systems: The timing and slow control system is responsible for clock distribution to the minicrateas as well as \ac{OBDT} configuration and sending control commands. The hardware platform used is the Serenity board \cite{Serenity-Main}. The hit data reception is handled by \ac{BMTL1} boards \cite{BMTL1-Main}. These boards do not only run the barrel trigger primitive generation algorithms with data inputs from both \ac{DT} and \ac{RPC} detectors, but also forward the hit data to the \ac{CMS} \ac{DAQ} when a \ac{L1T} accept signal is present \cite{DT-Phase2Upgrade,CMS-Phase2Muon}. Both boards rely on an AMD Xilinx Virtex UltraScale+ VU13P \ac{FPGA}. The described backend system structure was already depicted in fig.\ \ref{fig:DT-Phase2Readout} above.
+The Phase-2 backend system is located in the service cavern of \ac{CMS} in \ac{ATCA} crates. It can be divided into two systems: The timing and slow control system is responsible for clock distribution to the minicrateas as well as \ac{OBDT} configuration and control commands. The hardware platform used is the Serenity board \cite{Serenity-Main}. The hit data reception is handled by \ac{BMTL1} boards \cite{BMTL1-Main}. They run the barrel trigger primitive generation algorithms with data inputs from both \ac{DT} and \ac{RPC} detectors. Also, they forward the hit data to the \ac{CMS} \ac{DAQ} when a \ac{L1T} accept signal is present \cite{DT-Phase2Upgrade,CMS-Phase2Muon}. Both boards rely on an AMD Xilinx Virtex\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} VU13P \ac{FPGA} \cite{UltraScale-FPGA}. The described backend system structure was already depicted in fig.\ \ref{fig:DT-Phase2Readout} above.
 \paragraph{HTG-940 backend prototype}
-The Serenity and \ac{BMTL1} hardware are not yet available, therefore a protyping platform is used as intermediate backend system. This platform is not only used for firmware development, but also for the quality control of the minicrates at the different \ac{DT} minicrate assembly sites. As this backend was available in Aachen for this work, the \ac{DT} chamber data presented in this work was also recorded with this system.
-\newline The hardware platform used is the HighTechGlobal 940 \ac{FPGA} evaluation board.
-
-
+Since the Serenity and \ac{BMTL1} hardware is not yet available, a protyping platform is used as intermediate backend system. This platform is not only used for firmware development, but also for the quality control of the minicrates at the different \ac{DT} minicrate assembly sites. As this backend was available in Aachen, the \ac{DT} chamber data presented in this work was also recorded with this system.
+\newline The hardware platform used is the \ac{HTG-940} \ac{FPGA} evaluation board \cite{HTG-940} which hosts an AMD Xilinx Virtex\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} VU9P \ac{FPGA} \cite{UltraScale-FPGA}. The similarity in \ac{FPGA} family and performance enables this module to be used as the prototype backend platform. The backend device build around this \ac{FPGA} evaluation board is referred to as \ac{SCTbox}. Fig.\ \ref{fig:DT-Backend} shows a picture of both the evaluation board and the \ac{SCTbox}.
+\newline The \ac{OBDT} optical links are connected to the backend via \ac{QSFP+} modules \cite{QSFP+-Main} hosted by an \ac{FMC} \cite{FMC-Main} which is plugged into the \ac{HTG-940} \ac{FPGA} board. The backend is connected to a computer via an optical \SI{10}{\giga\bit} ethernet connection. The computer can control all devices connected to the box and receives the streamed-out hit data. The \ac{FPGA} firmware and corresponding software \cite{obdt-backend-Main} is developed at \ac{INFN} Padova, Italy. In the context of this work, the backend firmware was modified to integrate the scintillation detector readout to the backend (sec.\ \ref{sec:Scint-lpGBTMezzanine-BackendFirmware}).
+\begin{figure}[htbp]
+    \centering
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[height=2.7cm]{HTG-940-Board.png}
+        \caption{\ac{HTG-940} \ac{FPGA} evaluation board \cite{HTG-940}.}
+        \label{fig:HTG-940-Board}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[height=2.7cm]{DTBackend-Box.png}
+        \caption{Image of the \ac{SCTbox} with optics patch panel.}
+        \label{fig:DT-FEB}
+    \end{subfigure}
+    \hfill
+    \caption{Images of the \ac{DT} prototype backend electronics.}
+    \label{fig:DT-Backend}
+\end{figure}
 
 
 
@@ -261,13 +283,30 @@ The Serenity and \ac{BMTL1} hardware are not yet available, therefore a protypin
 %    \item MB1 DT chamber from production in 2000s
 %    \item Reactivated infrastructure
 %\end{itemize}
-
 %\subsection{Installation of Phase-2 minicrate}
 %\label{sec:CMS-AachenMinicrateInstallation}
 %%\begin{itemize}
 %%    \item Minicrate on DT chamber
 %%    \item Detailed setup and channel mapping
 %%\end{itemize}
+The recorded and presented data in this work was taken with one MB1 \ac{DT} chamber, not with the full \ac{CMS} \ac{DT} system which was described above. The setup which was used for the measurements in this work should finally be described in this section.
+
+\subsection{Overview}
+\paragraph{Chamber construction in Aachen}
+The development and construction of gaseous detectors has a long history at Physics Institute III A in Aachen. The institute was already active in one of the first larger collaborations in experimental particle physics at \acs{CERN}, the UA-1 collaboration \cite{UA1-Main}. This detector contributed to the discovery of the $W^\pm$ and $Z^0$ bosons at the $Sp\bar{p}S$ collider in 1983 \cite{W-Z-Discovery}. The muon drift chambers were developed and constructed in Aachen \cite{UA1-Faissner}. The central drift chamber of the L3 experiment at the next large collider at \acs{CERN}, the \ac{LEP}, also originates from Aachen \cite{L3-Main}. In the \ac{CMS} collaboration \cite{CMS-Main}, the institute took over the responsibility of constructing about one quarter of the required \ac{DT} chambers \cite{RWTH-History}.
+\paragraph{Cosmic test stand}
+The \ac{CMS} \ac{DT} chamber construction did not only include the mechanical assembly, but also quality control and testing responsibilities. For this purpose, a cosmic test stand was constructed, which allowed the constructed chambers to be tested with atmospheric muons. After the chamber construction was completed in 2005 \cite{RWTH-History}, the test stand was initially abandoned. One fully equipped \ac{DT} chamber was kept in Aachen. Over the last years, all relevant infrastructure to operate this \ac{DT} chamber, including the high-voltage and gas system, was reactivated or installed \cite{PrivateComm-Eliseev}. The data taking in this thesis was done with this chamber at the test stand. Fig.\ \ref{fig:DT-Teststand} shows a picture of the test stand as it was used for the measurements in this thesis.
+
+\subsection{Setup with Phase-2 electronics}
+The first hardware of the Phase-2 electronics became available during the period of this work, therefore one MB1 minicrate was assembled for use with the chamber in Aachen. The minicrate was connected to the chamber and infrastructure at the test stand. The available prototype backend was connected to the minicrate for control and readout. In the following, the detailed setup and mapping regarding the \ac{DT} chamber used in this work should be documented.
+\paragraph{DT chamber}
+The \ac{DT} chamber (sec.\ \ref{sec:CMS-DTSetup}) is of the type MB1, meaning it would be located in the innermost \ac{DT} station in the \ac{CMS} detector. It measures $2 \times 2.5\;\si{\milli\meter^2}$ in area and $\SI{1}{\milli\meter}$ in height. The numbering of drift cells (wires) in all layers of the chamber is given in tab.\ \ref{tab:MB1Chamber-Cells}.
+\newline The chamber is oriented horizontally in the teststand.  A local coordinate system is defined for the analysis of the \ac{DT} data: The $x$ axis is chosen parallel to the \ac{SL} theta wires, the $y$ axis parallel to the \ac{SL} phi wires. The $z$ axis is chosen to point upwards. The origin of the coordinate frame is chosen as the lower corner of the \ac{DT} chamber where the wire number of all layers is lowest. Fig.\ \ref{fig:MB1Chamber-CoordinateFrame} illustrates the coordinate frame used in this work.
+\newline The \ac{SL} order starting from the \ac{SL} closest to the floor (smallest $z$ coordinate) is as follows: \ac{SL} 1 (phi), \ac{SL} 2 (theta), \ac{SL} 3 (phi). The four layers in each \ac{SL} are numbered towards increasing $z$ coordinate as $0-3$. The wires in each layer are numbered starting from $0$.\footnote{Layer $3$ of each \ac{SL} does not have a wire $0$, therefore the wire numbering starts at $1$ for this layer only.}
+\paragraph{Minicrate}
+The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OBDT} theta board (sec.\ \ref{sec:CMS-DTMinicrate}). A picture of an MB1 minicrate was already shown above in fig.\ \ref{fig:Minicrate-MB1}. One \ac{OBDT} is used for the readout of each superlayer. The mapping between the \ac{DT} chamber \acp{FEC} and the \ac{OBDT} input connectors is presented in tab.\ \ref{tab:MB1Minicrate-FECMapping}.
+\paragraph{Backend}
+The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which was moved to the test stand and connected to the minicrate. The mapping of the backend slow control and readout channels, i.e.\ the optical fiber link numbers are given in tab.\ \ref{tab:MB1Backend-ReadoutChannelMapping}. The \ac{SCTbox} is connected to a server inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
 
 
 
