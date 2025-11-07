@@ -2,7 +2,7 @@
 \label{sec:DTData}
 
 For this work, atmospheric muon data was recorded with the \ac{DT} chamber at the reactivated test stand in Aachen (sec.\ \ref{sec:CMS-AachenTestStand}). This section should present the data and the analysis strategy to reconstruct (potential) muon tracks without an external trigger. The triggerless reconstruction is essential, because the developed readout chain for the scintillation detector should be validated using the \ac{DT} chamber hits as reference, therefore using the scintillator as a trigger for the chamber would imply a bias.
-\newline The reconstruction strategy is guided by the local \ac{CMS} \ac{DT} reconstruction \cite{DT-LocalReco} and calibration \cite{DT-OfflineCalibration}, as well as other developments within the \ac{DT} group \cite{MSc-Alcalde}. However, the strategy was implemented into a custom code framework, which allows the integration of the \ac{DT} chamber data as well as the scintillator data (sec.\ \ref{sec:ScintData}). Integration of the developed scintillator readout system with the central \ac{CMS} \ac{DT} reconstruction framework might be desired in the future, to exploit the evolved algorithms. The aim of this thesis however was a proof-of-concept measurement with the \ac{DT} chamber and the scintillator, and therefore a less evolved reconstruction strategy was considered sufficient.
+\newline The reconstruction strategy is guided by the local \ac{CMS} \ac{DT} reconstruction \cite{DT-LocalReco} and calibration \cite{DT-OfflineCalibration}, as well as other developments within the \ac{DT} group \cite{MSc-Alcalde}. However, the reconstruction was implemented into a custom standalone code framework, which allows the integration of the \ac{DT} chamber data as well as the scintillator data (sec.\ \ref{sec:ScintData}). Integration of the developed scintillator readout system with the central \ac{CMS} \ac{DT} reconstruction framework might be desired in the future, to exploit the evolved algorithms. The aim of this thesis however was a proof-of-concept measurement with the \ac{DT} chamber and the scintillator, and therefore a less evolved reconstruction strategy was considered sufficient.
 
 \FloatBarrier
 \section{Timing calibration with testpulses}
@@ -14,7 +14,55 @@ For this work, atmospheric muon data was recorded with the \ac{DT} chamber at th
 %    \item Show derived timing corrections for individual channels
 %\end{itemize}
 \label{sec:DTData-Testpulse}
-Precise time measurement of the drift cell hits is essential for a successful \ac{DT} reconstruction, as the measured timestamps are directly used to calculate the hit position within the drift volume (sec.\ \ref{sec:GaseousDetectors-DriftChamber}). Therefore it must be ensured that the readout of all channels of the \ac{DT} chamber are actually synchronized. As described, the minicrate can generate synchronous testpulses to the chamber's \acp{FEB}, which sends back a response to the \acp{OBDT} (sec.\ \ref{sec:CMS-Phase2Readout}). Such a testpulse run was recorded to estimate the relative timing corrections for all channels, and to verify that all channels can be read out by the minicrate.
+Precise time measurement of the drift cell hits is essential for a successful \ac{DT} reconstruction, as the measured timestamps are directly used to calculate the hit position within the drift volume (sec.\ \ref{sec:GaseousDetectors-DriftChamber}). Therefore it must be ensured that the readout of all channels of the \ac{DT} chamber is actually synchronized \cite{DT-OfflineCalibration}. 
+
+\FloatBarrier
+\subsection{Testpulse generation}
+\label{sec:DTData-Testpulse-Generation}
+As described, the minicrate can generate synchronous testpulses for the chamber's \acp{FEB}, which sends back a response to the \acp{OBDT} (sec.\ \ref{sec:CMS-DTMinicrate}). The issuing of testpulses is controlled by the \ac{DT} backend. It can send a command to all \acp{OBDT} to generate a testpulse at a given $BX$ time in an orbit (a new orbit starts at $BX=0$ and $TDC=0$, as discussed in sec.\ \ref{sec:CoordinateFrame-TimestampFormat}). Therefore the time when the testpulse is issued is precisely known.
+\FloatBarrier
+\paragraph{Testpulse latency correction}
+The testpulse generators of the \ac{OBDT} phi and theta boards have different analog circuitry which generates the actual testpulses (sec.\ \ref{sec:CMS-Phase2Readout}). This results in a latency difference between the boards, which is however constant. In order to eliminate this timing offset between \ac{OBDT} flavors, a correction should be applied to the recorded testpulse hit timestamps. A measurement of the time difference of the generated output with an oscilloscope yields
+\begin{equation}
+    T_\text{testpulse, theta} - T_\text{testpulse, phi} = (116 \pm 1)\;\si{\nano\second}.
+    \label{eq:DTData-TestpulseLatency}
+\end{equation}
+This latency correction value is applied to the recorded timestamps of the testpulse hits, in order to only calibrate the channels for the timing differences in the testpulse response, and not in the testpulse generation chain.
+\newline Additionally, the testpulse cable lengths from the minicrate to the \acp{FEB} in the chamber are not all the same. To account for latency differences due to the different lengths, the difference in signal propagation time was measured with an oscilloscope and applied to the affected channels as well.
+
+\FloatBarrier
+\subsection{Testpulse response and timing calibration}
+\label{sec:DTData-Testpulse-Calibration}
+A dataset with activated testpulses is recorded, where all \ac{DT} chamber channels are unmasked in the \ac{OBDT} to record the testpulse responses. Since the time of the testpulse generation is fixed w.r.t.\ the orbit counter, one can use the time relative to the beginning of the respective orbit for this analysis, which is defined as
+\begin{equation}
+    T_\text{orbit} = T(OC,\;BX,\;TDC) - T(OC,\;BX=0,\;TDC=0).
+\end{equation}
+For the presented testpulse run, the pulses were commanded to be sent at $BX=50$ of each orbit, translating to $T_\text{orbit}=\SI{1600}{\tu}$. To this timestamp value one has to add the latency of the testpulse generation circuitry, the propagation time via the testpulse cables, as well as the \ac{FEB} response and the cable lengths of the \acp{FEC} going back to the \ac{OBDT}. Therefore one expects the testpulse responsed at $T_\text{orbit}$ values greater than the mentioned value above.
+\newline Fig.\ \ref{fig:DTData-TestpulseResponse} shows the testpulse response for all channels of the \ac{DT} chamber. The presented uncertainties are derived from the digitization step of the \ac{OBDT} and the uncertainty of the latency correction discussed above (sec.\ \ref{sec:DTData-Testpulse-Generation}).
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{dt_tp/t_orbit.pdf}
+    \caption{Mean timestamp $\left\langle T_\text{orbit}(\text{SL, Ly, Wi}) \right\rangle$ of the testpulse responses for all individual channels.}
+    \label{fig:DTData-TestpulseResponse}
+\end{figure}
+\newline One can observe that all read-out channels do actually receive a testpulse response. From this one can conclude that there are no dead channels on the \ac{OBDT} side and the installed minicrate can be used to read out the \ac{DT} chamber hits as foreseen.
+\newline As expected, the testpulse response is recorded at timestamps greater than $T_\text{orbit}=\SI{1600}{\tu}$. The response timestamps lie in the range $T_\text{orbit}\approx 1700-1720 \;\si{\tu}$. While the response timestamps are comparable (ignoring the channel-to-channel variations) for the phi \acp{SL} 1 and 3, the response of all channels of the theta \ac{SL} 2 is systematically later by $\approx 10-15\;\si{\tu}$ ($\approx 7-12 \;\si{\nano\second}$). One possible reason is the length of the \ac{FEC} cables, which contributes to the response timing. Since the minicrate is mounted on the chamber side with the \ac{SL} phi \acp{FEC}, the phi cables are significantly shorter ($\approx 0.3-1.6\;\si{\meter}$) than the theta cables ($\approx 3\;\si{\meter}$). A cable length difference of $\approx\SI{2}{\meter}$ could in fact explain a timing difference of $\approx\SI{6}{\nano\second}$ which is the order of magnitude difference that is observed.\footnote{One usually assumes the electrical signal propagation velocity with $\approx\SI{30}{\centi\meter/\nano\second}$, which is also done in this rough estimation.} Since this difference in cable length is in the signal path, it is right to correct for this in the timing calibration.
+\newline Another observation is the difference in the channel-to-channel variations within the phi and theta \acp{SL}. While the channel timing for \ac{SL} 2 (theta) is contained within a window of \SI{6}{\tu} (\SI{5}{\nano\second}), channels vary by \SI{20}{\tu} (\SI{16}{\nano\second}) for the phi \acp{SL} 1 and 3. Several reasons might contribute to this behavior: First there is the difference in the analog testpulse generation circuitry of the \ac{OBDT} phi and theta boards. (sec.\ \ref{sec:CMS-DTMinicrate}). This may lead to less accurate synchronization of the different testpulses for channels of the same \ac{SL}. For this one needs to understand that each \ac{SL} has several testpulse inputs and therefore potential misalignment in the timing of different testpulse inputs may lead to channel groups with different response times. However this misalignment on the testpulse generation side should generally be less than \SI{1}{\nano\second}. Secondly, there is the possibility of variations in the response of the \acp{FEB} in the chamber, which however also should lie in the same order of magnitude. However, there might be a different reason: If the \ac{TDC} calibration within the \ac{OBDT} would not be ideal, variations within the time scope of the \ac{TDC} conversion, which is \SI{25}{\nano\second} (sec.\ \ref{sec:CMS-DTMinicrate}) could occur. Lastly, the \ac{FEC} cables of the phi \acp{SL} are not uniform in length, as it is the case for the theta (see mentioned values above), which will lead to timing variations in the order of $\approx\SI{5}{\nano\second}$. However these variations due to cable lengths are strictly deterministic and should affect groups of wires for all four layers in the same way. Since one observes significant variations also for the same wires in different layers, this can not be the only reason for the observed deviations.
+\newline In the scope of this work no further investigations on the observed timing fluctuations were possible, therefore the calibration procedure is continued with this recorded testpulse dataset.
+\FloatBarrier
+\paragraph{Extracted timing correction}
+The relative timing correction for all channels can now be calculated. The timestamps of all received testpulses for the respective channel are averaged to obtain one testpulse time value per channel $\left\langle T_\text{orbit}(\text{SL, Ly, Wi}) \right\rangle$. One can estimate a relative timing correction $T_\text{corr}$ for the individual channels by subtracting the channel timestamp by the global average of testpulse times $\left\langle T_\text{orbit} \right\rangle$:
+\begin{equation}
+    T_\text{corr}(\text{SL, Ly, Wi}) = \left\langle T_\text{orbit}(\text{SL, Ly, Wi}) \right\rangle - \left\langle T_\text{orbit} \right\rangle.
+\end{equation}
+Note that because the time differences in the testpulse sources were respected with the latency correction (eq.\ \ref{eq:DTData-TestpulseLatency}), this value is the actual difference in timing between all channels of the \ac{DT} chamber. The extracted corrections are shown in fig.\ \ref{fig:DTData-TestpulseCorrections}.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{dt_tp/t_corr.pdf}
+    \caption{Calculated timing corrections $T_\text{corr}(\text{SL, Ly, Wi})$ for all individual channels.}
+    \label{fig:DTData-TestpulseCorrections}
+\end{figure}
+\newline The obtained timing corrections are in the range of $-9\;\si{\nano\second}$ to $+10\;\si{\nano\second}$. In comparison, the \ac{CMS} \ac{DT} offline calibration note states usual timing calibration values of up to $\pm 9\;\si{\nano\second}$ \cite{DT-OfflineCalibration}. Therefore the result from the testpulse run presented above seems to yield calibration values in the same order of magnitude, even though the systematic observations which were already discussed above are present.
 
 \FloatBarrier
 \section{Drift cell hits}
@@ -26,6 +74,20 @@ Precise time measurement of the drift cell hits is essential for a successful \a
 %    \item Apply dead time for individual channels
 %\end{itemize}
 \label{sec:DTData-CellHits}
+
+\FloatBarrier
+\subsection{Drift cell hits}
+\FloatBarrier
+\paragraph{Cell hit rates}
+\FloatBarrier
+\paragraph{Noisy and dead cells}
+
+\FloatBarrier
+\subsection{Pre- and afterpulses}
+\FloatBarrier
+\paragraph{Pre- and afterpulses}
+\FloatBarrier
+\paragraph{Estimation of drift velocity}
 
 \FloatBarrier
 \section{Superlayer hit clustering}
