@@ -2,7 +2,11 @@
 \label{sec:DTData}
 
 For this work, atmospheric muon data was recorded with the \ac{DT} chamber at the reactivated test stand in Aachen (sec.\ \ref{sec:CMS-AachenTestStand}). This section should present the data and the analysis strategy to reconstruct (potential) muon tracks without an external trigger. The triggerless reconstruction is essential, because the developed readout chain for the scintillation detector should be validated using the \ac{DT} chamber hits as reference, therefore using the scintillator as a trigger for the chamber would imply a bias.
-\newline The reconstruction strategy is guided by the local \ac{CMS} \ac{DT} reconstruction \cite{DT-LocalReco} and calibration \cite{DT-OfflineCalibration}, as well as other developments within the \ac{DT} group \cite{MSc-Alcalde}. However, the reconstruction was implemented into a custom standalone code framework, which allows the integration of the \ac{DT} chamber data as well as the scintillator data (sec.\ \ref{sec:ScintData}). Integration of the developed scintillator readout system with the central \ac{CMS} \ac{DT} reconstruction framework might be desired in the future, to exploit the evolved algorithms. The aim of this thesis however was a proof-of-concept measurement with the \ac{DT} chamber and the scintillator, and therefore a less evolved reconstruction strategy was considered sufficient.
+\newline The reconstruction strategy is guided by the local \ac{CMS} \ac{DT} reconstruction \cite{DT-LocalReco} and calibration \cite{DT-OfflineCalibration}, as well as other developments within the \ac{DT} group \cite{MSc-Alcalde}. However, the reconstruction was implemented into a custom standalone code framework \cite{dt-scint-analysis-tools-Main}, which allows the integration of the \ac{DT} chamber data as well as the scintillator data (sec.\ \ref{sec:ScintData}). Integration of the developed scintillator readout system with the central \ac{CMS} \ac{DT} reconstruction framework might be desired in the future, to exploit the evolved algorithms. The aim of this thesis however was a proof-of-concept measurement with the \ac{DT} chamber and the scintillator, and therefore a less evolved reconstruction strategy was considered sufficient.
+
+
+
+
 
 \FloatBarrier
 \section{Timing calibration with testpulses}
@@ -38,7 +42,9 @@ A dataset with activated testpulses is recorded, where all \ac{DT} chamber chann
     T_\text{orbit} = T(OC,\;BX,\;TDC) - T(OC,\;BX=0,\;TDC=0).
 \end{equation}
 For the presented testpulse run, the pulses were commanded to be sent at $BX=50$ of each orbit, translating to $T_\text{orbit}=\SI{1600}{\tu}$. To this timestamp value one has to add the latency of the testpulse generation circuitry, the propagation time via the testpulse cables, as well as the \ac{FEB} response and the cable lengths of the \acp{FEC} going back to the \ac{OBDT}. Therefore one expects the testpulse responsed at $T_\text{orbit}$ values greater than the mentioned value above.
-\newline Fig.\ \ref{fig:DTData-TestpulseResponse} shows the testpulse response for all channels of the \ac{DT} chamber. The presented uncertainties are derived from the digitization step of the \ac{OBDT} and the uncertainty of the latency correction discussed above (sec.\ \ref{sec:DTData-Testpulse-Generation}).
+\FloatBarrier
+\paragraph{Testpulse response}
+Fig.\ \ref{fig:DTData-TestpulseResponse} shows the testpulse response for all channels of the \ac{DT} chamber. The presented uncertainties are derived from the digitization step of the \ac{OBDT} and the uncertainty of the latency correction discussed above (sec.\ \ref{sec:DTData-Testpulse-Generation}).
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{dt_tp/t_orbit.pdf}
@@ -59,10 +65,14 @@ Note that because the time differences in the testpulse sources were respected w
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{dt_tp/t_corr.pdf}
-    \caption{Calculated timing corrections $T_\text{corr}(\text{SL, Ly, Wi})$ for all individual channels.}
+    \caption{Calculated relative timing corrections $T_\text{corr}(\text{SL, Ly, Wi})$ for all individual channels.}
     \label{fig:DTData-TestpulseCorrections}
 \end{figure}
-\newline The obtained timing corrections are in the range of $-9\;\si{\nano\second}$ to $+10\;\si{\nano\second}$. In comparison, the \ac{CMS} \ac{DT} offline calibration note states usual timing calibration values of up to $\pm 9\;\si{\nano\second}$ \cite{DT-OfflineCalibration}. Therefore the result from the testpulse run presented above seems to yield calibration values in the same order of magnitude, even though the systematic observations which were already discussed above are present.
+\newline The obtained timing corrections are in the range of $-9\;\si{\nano\second}$ to $+10\;\si{\nano\second}$. In comparison, the \ac{CMS} \ac{DT} offline calibration note \cite{DT-OfflineCalibration} states usual timing calibration values of up to $\pm 9\;\si{\nano\second}$. Therefore the result from the testpulse run presented above seems to yield calibration values in the same order of magnitude, even though the systematic observations which were already discussed above are present.
+
+
+
+
 
 \FloatBarrier
 \section{Drift cell hits}
@@ -74,20 +84,47 @@ Note that because the time differences in the testpulse sources were respected w
 %    \item Apply dead time for individual channels
 %\end{itemize}
 \label{sec:DTData-CellHits}
+In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamber at the teststand is presented. Before the reconstruction algorithm is described and its results are showcased, the raw data (which are the drift cell hit timestamps) should be presented and discussed in this section.
 
 \FloatBarrier
-\subsection{Drift cell hits}
+\subsection{Cell occupancy}
+As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise. The data presented here has the timing correction from above (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
 \FloatBarrier
-\paragraph{Cell hit rates}
+\paragraph{Hit rates}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{dt_hits/Chamber_rates.pdf}
+    \caption{Hit rates for all wires of the \ac{DT} chamber.}
+    \label{fig:DTData-ChamberRates}
+\end{figure}
+\FloatBarrier
+\paragraph{Rate uniformity}
+
 \FloatBarrier
 \paragraph{Noisy and dead cells}
 
+
 \FloatBarrier
 \subsection{Pre- and afterpulses}
+
 \FloatBarrier
-\paragraph{Pre- and afterpulses}
+\paragraph{Observation in data}
+
 \FloatBarrier
-\paragraph{Estimation of drift velocity}
+\paragraph{Origin of pre- and afterpulses}
+
+\FloatBarrier
+\subsection{Drift velocity estimation}
+
+\FloatBarrier
+\paragraph{Photo-peak method}
+
+\FloatBarrier
+\paragraph{Drift velocity measurement}
+
+
+
+
 
 \FloatBarrier
 \section{Superlayer hit clustering}
@@ -98,6 +135,10 @@ Note that because the time differences in the testpulse sources were respected w
 %    \item Compare to rates of fake patterns (to estimate noise influence)
 %\end{itemize}
 \label{sec:DTData-SLHitClustering}
+
+
+
+
 
 \FloatBarrier
 \section{Superlayer cluster fitting}
@@ -117,6 +158,10 @@ Note that because the time differences in the testpulse sources were respected w
 %    \item Establish relative time correction
 %\end{itemize}
 
+
+
+
+
 \FloatBarrier
 \section{Grouping of superlayer cluster fits}
 %\begin{itemize}
@@ -124,6 +169,10 @@ Note that because the time differences in the testpulse sources were respected w
 %    \item Cope this by grouping together clusters within certain time window within same superlayer
 %\end{itemize}
 \label{sec:DTData-SLFitGrouping}
+
+
+
+
 
 \FloatBarrier
 \section{Track building}
@@ -134,6 +183,10 @@ Note that because the time differences in the testpulse sources were respected w
 %    \item Calculate 3D track from 2D projections from theta and phi superlayers
 %\end{itemize}
 \label{sec:DTData-TrackBuilding}
+
+
+
+
 
 %\section{Reconstructed muon tracks}
 %\begin{itemize}
