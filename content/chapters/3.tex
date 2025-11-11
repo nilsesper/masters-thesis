@@ -328,7 +328,7 @@ The \ac{CMS} \ac{DT} chamber construction did not only include the mechanical as
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{MB1Chamber-Teststand.pdf}
-    \caption{Photo of the \ac{DT} teststand as it was used in this work. The backend rack is visible in the foreground. The \ac{DT} chamber is mounted a metal structure in the top left. In the top right the infrastructure racks are visible, containing high-voltage, gas and other systems.}
+    \caption{Photo of the \ac{DT} test stand as it was used in this work. The backend rack is visible in the foreground. The \ac{DT} chamber is mounted a metal structure in the top left. In the top right the infrastructure racks are visible, containing high-voltage, gas and other systems.}
     \label{fig:DT-Teststand}
 \end{figure}
 
@@ -353,6 +353,22 @@ The \ac{DT} chamber (sec.\ \ref{sec:CMS-DTSetup}) is of the type MB/W/1/S (MB1),
     \end{tabular}
     \caption{Information on the MB1 \ac{DT} chamber \cite{CMS-Main}.}
     \label{tab:MB1Chamber-Cells}
+\end{table}
+\newline The chamber gas and high voltage is set to similar values as in the \ac{CMS} detector. It also provides all necessary voltages to the \ac{FEB}. Tab.\ \ref{tab:MB1Chamber-Settings} shows the chamber infrastructure configuration used for the measurements in this thesis.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|} 
+        \hline
+        \multirow{2}{*}{Gas mixture} & $85\%$ Argon \\
+        & $15\%$ CO$_2$ \\ \hline
+        Gas flow & \SI{8}{\liter/\hour} \\ \hline \hline
+        Anode wire voltage & \SI{3600}{\volt} \\ \hline
+        Field electrode voltage & \SI{1800}{\volt} \\ \hline \hline
+        Cathode strip voltage & \SI{-1200}{\volt} \\ \hline
+        \ac{FEB} discriminator threshold & \SI{35}{\milli\volt} \\ \hline
+    \end{tabular}
+    \caption{Settings of the \ac{DT} chamber infrastructure used at the test stand.}
+    \label{tab:MB1Chamber-Settings}
 \end{table}
 \FloatBarrier
 \paragraph{Minicrate}
@@ -410,7 +426,7 @@ The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend
 As a hit reconstruction is performed, establishing a coordinate frame convention in this work is required. It should be briefly introduced here, together with the format of the hit timestamps with the Phase-2 electronics.
 \FloatBarrier
 \paragraph{Coordinate frame}
-The \ac{DT} chamber is oriented horizontally in the teststand.  A local coordinate system is defined for the analysis of the \ac{DT} data: The $x$-axis is chosen parallel to the \ac{SL} theta wires, the $y$-axis parallel to the \ac{SL} phi wires. The $z$-axis is chosen to point upwards. The origin of the coordinate frame is chosen as the lower corner of the \ac{DT} chamber where the wire number of all layers is lowest. Fig.\ \ref{fig:ThisCoordinateFrame} illustrates the coordinate frame used in this work.
+The \ac{DT} chamber is oriented horizontally in the test stand.  A local coordinate system is defined for the analysis of the \ac{DT} data: The $x$-axis is chosen parallel to the \ac{SL} theta wires, the $y$-axis parallel to the \ac{SL} phi wires. The $z$-axis is chosen to point upwards. The origin of the coordinate frame is chosen as the lower corner of the \ac{DT} chamber where the wire number of all layers is lowest. Fig.\ \ref{fig:ThisCoordinateFrame} illustrates the coordinate frame used in this work.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{ThisCoordinateFrame.pdf}

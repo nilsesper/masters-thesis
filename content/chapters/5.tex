@@ -42,12 +42,7 @@
 %    \item Individually selectable thresold for all channels
 %    \item (Show screenshot from SPICE simulation)
 %\end{itemize}
-\label{sec:Scint-ReadoutInput}
-
-\FloatBarrier
-\subsection{FPGA firmware overview}
-\label{sec:Scint-ReadoutFirmware}
-%Mention fully self-developed readout firmware.
+\label{sec:Scint-Readout-Input}
 
 \FloatBarrier
 \subsection{Signal sampling with FPGA-internal comparators}
@@ -55,7 +50,7 @@
 %    \item Comparators for input signal discrimination, however no conventional, dedicated hardware but FPGA-internal comparators used.
 %    \item Use FPGA-internal blocks for deserialization to increase time resolution
 %\end{itemize}
-\label{sec:Scint-ReadoutFirmware-Sampling}
+\label{sec:Scint-Readout-Sampling}
 
 \FloatBarrier
 \subsubsection{Working principle}
@@ -65,7 +60,7 @@
 %    \item Voltage limits of inputs
 %    \item Deserializers for higher time resolution
 %\end{itemize}
-\label{sec:Scint-ReadoutFirmware-Sampling-Principle}
+\label{sec:Scint-Readout-Sampling-Principle}
 
 \FloatBarrier
 \subsubsection{Voltage bias calibration}
@@ -75,7 +70,7 @@
 %    \item Scan input voltage range while keeping other comparator input constant to detemine switching point of comparator (Metastability calibration)
 %    \item Account for measured biases when setting thresolds
 %\end{itemize}
-\label{sec:Scint-ReadoutFirmware-Sampling-VoltageBias}
+\label{sec:Scint-Readout-Sampling-VoltageBias}
 
 \FloatBarrier
 \subsubsection{Input timing calibration}
@@ -85,11 +80,11 @@
 %    \item Use delay module in firmware to correct for these effects already on the device
 %    \item Mention ringing of testpulse signal in circuit, but explain that no negative effect on calibration
 %\end{itemize}
-\label{sec:Scint-ReadoutFirmware-Sampling-TimingBias}
+\label{sec:Scint-Readout-Sampling-TimingBias}
 
 \FloatBarrier
-\subsection{Online signal processing}
-\label{sec:Scint-ReadoutFirmware-Processing}
+\subsection{FPGA readout firmware}
+\label{sec:Scint-Readout-Firmware}
 
 \FloatBarrier
 \subsubsection{Timestamp assignment}
@@ -97,7 +92,7 @@
 %    \item Hit arrival time translated to (absolute) timestamp
 %    \item Same format as ODBT hits
 %\end{itemize}
-\label{sec:Scint-ReadoutFirmware-Processing-TimestampAssignment}
+\label{sec:Scint-Readout-Firmware-TimestampAssignment}
 
 %\subsubsection{Online coincidence evaluation}
 %\begin{itemize}
@@ -113,7 +108,7 @@
 %    \item Dynamically cycle through and activate outputs of different channel buffers
 %    \item Reduces possible hit rate compared to no funnel
 %\end{itemize}
-\label{sec:Scint-ReadoutFirmware-Processing-Funneling}
+\label{sec:Scint-Readout-Firmware-Funneling}
 
 
 
