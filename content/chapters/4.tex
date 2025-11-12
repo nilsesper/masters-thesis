@@ -99,10 +99,11 @@ In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamb
 \end{table}
 \FloatBarrier
 \subsection{Cell occupancy}
+\label{sec:DTData-CellHits-Occupancy}
 As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise. The data presented here has the timing correction from above (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
 \FloatBarrier
 \paragraph{Hit rates}
-Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires of the chamber. The cell hit rate lies in the range $\approx 20-30\;\si{\hertz}$ and is relatively uniform for all wires. A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise. Different \ac{CMS} publications also present cell rates which are above this estimation and lie in the range $\approx 30-60\;\si{\hertz}$ \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are similar to the presented data in this work or even higher, which may be because of the older readout electronics that were used at the time, or different choice of the \ac{FEB} threshold voltage. Therefore, it is concluded that the hit rate of the wires is in the expected order of magnitude.
+Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires of the chamber. The cell hit rate lies in the range $\approx 20-30\;\si{\hertz}$ and is relatively uniform for all wires. A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise. Different \ac{CMS} publications also present cell rates which are above this estimation and lie in the range $\approx 30-60\;\si{\hertz}$ \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are slightly higher than what is observed in this work, which may be because of the older readout electronics that were used at the time, or different choice of the \ac{FEB} threshold voltage. One can conclude that the hit rate of the wires observed at the test stand is in the expected order of magnitude.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{dt_hits/Chamber_rates.pdf}
@@ -111,7 +112,7 @@ Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires o
 \end{figure}
 \FloatBarrier
 \paragraph{Noisy and dead cells}
-In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one cell with a higher index than the other layers (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}), this cell is not connected to the readout, which leads to zero occupancy for the highest wire index. Additionally, one can observe that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}).
+In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. In principle, there are two different kinds of differently behaving cells. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one cell with a higher index than the other layers (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}), this cell is not connected to the readout, which leads to zero occupancy for the highest wire index. Additionally, one can observe in fig.\ \ref{fig:DTData-ChamberRates} that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}). In total, 12 dead wires (plus 3 unconnected wires) are observed in the \ac{DT} chamber at the test stand.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|} 
@@ -141,27 +142,74 @@ In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible.
 \end{table}
 
 \FloatBarrier
-\subsection{Pre- and afterpulses}
-\FloatBarrier
-\paragraph{Observation in data}
-Further information can be extracted from the recorded cell hit timestamps, even before starting with the track reconstruction. If one considers at the hits of one single drift cell, sorts them by timestamp and plots the time difference $\Delta T_\text{cell}$ between these hits, one can observe some \ac{DT} characteristic features. Fig.\ \ref{fig:DTData-CellHitDifference} shows the distribution obtained with the prescription above cumulated for all cells. Note that the $x$-axis limit extends far beyond the presented range, however the interesting characteristics are visible the plot.
+\subsection{Secondary hits}
+\label{sec:DTData-CellHits-SecondaryHits}
+Further information can be extracted from the recorded cell hit timestamps, even before starting with the track reconstruction. If one considers at the hits of one single drift cell, sorts them by timestamp and plots the time difference $\Delta T_\text{cell}$ between these hits, one can observe some characteristic features. Fig.\ \ref{fig:DTData-CellHitDifference} shows the distribution obtained with the prescription for $\Delta T_\text{cell}$ above, cumulated for all cells. Note that the $x$-axis limit extends far beyond the presented range, however the interesting characteristics are visible the plot.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{dt_hits/Hit_difference.pdf}
-    \caption{Time difference $\Delta T_\text{cell}$ between hits of a single drift cell, cumulatively plotted for all cells.}
+    \caption{Histogram of the time difference $\Delta T_\text{cell}$ between hits of a single drift cell, cumulatively plotted for all cells.}
     \label{fig:DTData-CellHitDifference}
 \end{figure}
-\newline One can observe that the time difference between hits decreases exponentially. This behavior continues to the right beyond the plotted range. Both cosmic muon hits and noise are random events which can be described by a Poisson distribution. From statistics it is known that the time difference between Poisson events is exponentially distributed. Therefore, this behavior is expected and confirms the random nature of the recorded cell hits.
-\newline In the region $0-400\;\si{\nano\second}$ another feature is visible which dominates over the exponentially decreasing behavior.
+\FloatBarrier
+\paragraph{Poisson background}
+One can observe that the time difference between hits decreases exponentially. This behavior continues to the right beyond the plotted range. Both cosmic muon hits and noise are random events which can be described by a Poisson distribution. From statistics it is known that the time difference between Poisson events is exponentially distributed. Therefore, this behavior is expected and confirms the random nature of the recorded cell hits.
+\FloatBarrier
+\paragraph{Secondary hits}
+In the region $\approx 0-500\;\si{\nano\second}$, another feature is visible which dominates over the exponentially decreasing behavior. Apparently, there are hits which are detected in this short time interval after the initial hit. The observed structure of these secondary hits should be analyzed in the following. For this, the Poissonian background due to random noise events should be subtracted, to analyze the shape of secondary hits in time. For this, an exponential function is fitted to the exponentially decreasing part of the histogram (fit range: $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$). Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} in the appendix shows the fit result.
+\newline Fig.\ \ref{fig:DTData-CellHitDifference-NoBg} shows the resulting distribution after extrapolating the exponential "background" to the left and subtracting it. A structure of two peaks can be observed, where the second peak is relatively narrow, while the first peak is wider. Also note that one can observe a dead time of $\approx\SI{40}{\nano\second}$ in the plot, which might originate from the \acp{FEB} in the chamber or the \ac{OBDT}.
+\newline Note that this structure of secondary peaks was not discovered in this work, but is a known effect. Two \ac{CMS} notes \cite{CMS-NOTE-2008-003,CMS-NOTE-2010-004} also show a distribution of secondary hits which looks similar in shape. In fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} the observed distribution of the secondary hits from one of these publications is shown. The distribution matches well the double-peak structure which is observed in the measurement from this thesis with the background subtracted.
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{dt_hits/Hit_difference_nobg.pdf}
+        \caption{Time distribution of secondary hits after extrapolating and extracting the exponentially decreasing noise background.}
+        \label{fig:DTData-CellHitDifference-NoBg}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Hit_difference_CMSNote.png}
+        \caption{Time distribution of secondary hits measured by \ac{CMS} \cite{CMS-NOTE-2008-003}.}
+        \label{fig:DTData-CellHitDifference-CMSNote}
+    \end{subfigure}
+    \hfill
+    \caption{Time distribution of secondary hits in this work compared to a \ac{CMS} measurement.}
+    \label{fig:DTData-CellHitDifference-SecondaryHits}
+\end{figure}
 \FloatBarrier
 \paragraph{Physical origin}
-\FloatBarrier
+The observation that the secondary peaks lie in the time range of $\approx 0-500\;\si{\nano\second}$ already hints that these hits might have a physical cause, and are not created by reflections in the readout electronics, as the electron drift time in a \ac{DT} cell should lie in this order of magnitude (cf.\ eq.\ \ref{eq:DT-MaxDriftTime}). Two physical effects play a role in the creation of secondary peaks: When the electrons in the drift cell arrive at the wire, an avalanche forms and the charge is amplified and read out. In this avalanche, photons may be created, whose movement is not constrained by the electric field in the cell. Therefore, the photons can hit the chamber walls and create a secondary ionization event through the photoelectric effect. The created electrons from this secondary ionization drift again towards the wire, creating a secondary hit after the first one. Since the drift cell is constrained in size, the timestamps of the secondary hits also have a maximum. The \ac{DT} cell includes two electrodes apart from the anode wire (cf.\ fig.\ \ref{fig:DT-Cell}): The field shaping electrodes which are relatively close to the wire and the cathode strips which are roughly \SI{21}{\milli\meter}, i.e.\ half of the cell width, away from the wire. When secondary ionization happens on one of these electrodes, the photo-electrons can reach the wire and generate a signal. When the ionization takes place somewhere else on the cell wall, the electrons are most likely lost and can not reach the wire, due to the shape of the electric field lines. The two-peak structure observed in the data can be explained with photo-electrons originating from the field shaping electrodes (first wide peak) and the cathode strips (second narrow peak). These peaks are in the following referred to as photo-peaks \cite{CMS-NOTE-2008-003}.
+\newline The second physical effect responsible for secondary hits are so-called $\delta$-electrons (sec.\ \ref{sec:Interactions-Ionization}). The energy loss of the passing muon is Landau-distributed, allowing larger energy losses in few collisions, which lead to high energy electrons in the gas volume. These electrons may ionize the gas themselves, which can also contribute to secondary hits at the wire. Depending on the movement direction of the $\delta$-electron, not only after-pulses, but also pre-pulses may be created. The effect of $\delta$-electrons to the double peak structure is considered small in the \ac{CMS} publication compared to the photo-peaks \cite{CMS-NOTE-2008-003}.
 
-\subsection{Drift velocity estimation}
+\FloatBarrier
+\subsection{Drift velocity estimation with photo-peak}
+\label{sec:DTData-CellHits-DriftVelocityEstimation}
+The second photo-peak can be used to estimate the drift velocity of the electrons in the \ac{DT} cell, without the need of an external trigger or a track reconstruction. This method was introduced in \cite{CMS-NOTE-2008-003}, where it was however only used for relative drift velocity measurements, not the absolute value.
 \FloatBarrier
 \paragraph{Photo-peak method}
+As discussed above, the second (narrower) photo-peak originates from photo-electrons created at the cathode strip, which is located on the cell walls at roughly $d=\SI{21}{\milli\meter}$ distance from the wire. Assuming that the avalanche takes place very close to the wire and neglecting the photon travelling time, one can consider the peak position of the photo-peak as the drift time of the created photo-electron from the cathode strip to the wire. A parabolic fit to the second photo-peak is presented in fig.\ \ref{fig:DTData-CellHitDifference-PeakFit}. From the goodness-of-fit value and the residual plot it is concluded that the peak fit is acceptable, even though it is clear that the peak is asymmetric, and the parabolic fit therefore only is a first-order estimation.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{dt_hits/Hit_difference_nobg_peakfit.pdf}
+    \caption{Parabolic fit to the second narrow peak in the time difference distribution of secondary hits.}
+    \label{fig:DTData-CellHitDifference-PeakFit}
+\end{figure}
+\newline With the obtained photo-peak position $t_\text{pp}=b=(412.12 \pm 0.24)\;\si{\nano\second}$ and an uncertainty on the drift distance of $\sigma_{d/2}\approx\SI{100}{\micro\meter}$ (which was the requirement during the chamber construction \cite{CMS-Main}) one can estimate the drift velocity as
+\begin{equation}
+    v_D=\frac{d/2}{t_\text{pp}}\approx ( 51.0 \pm 0.2 )\;\si{\frac{\micro\meter}{\nano\second}}.
+    \label{eq:PhotoPeak-DriftVelocityEstimation}
+\end{equation}
+Of course this value assumes a constant drift velocity over the full drift distance, which in reality is not the case. Another unregarded fact is that the cathode strip has a height much larger than the wire diameter. This means that photo-electrons may also drift towards the wire from a different height, leading to a longer drift distance than the assumed half cell width $d/2$ and therefore a longer drift time. It therefore becomes clear that with this method one can only measure an effective drift velocity under the assumptions above, and that one needs to correct for the described geometric effect of longer drift distances.
+\newline Within the scope of this thesis, no further simulation studies are performed, which would however be needed to account for this effect and to derive an average (effective) drift distance $x_{D,\text{eff}} > d/2$ which accounts for this and allows the calculation of the drift velocity $v_{D}=x_{D,\text{eff}} / t_\text{pp}$. 
 \FloatBarrier
-\paragraph{Triggerless drift velocity measurement}
+\paragraph{Comparison to CMS}
+The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}) is smaller than the expectation in the \ac{DT} system of \SI{54.5}{\micro\meter/\nano\second} (cf.\ eq.\ \ref{eq:DT-DriftVelocity}). However, the described geometric effects can explain the smaller value, although quantitative studies were not performed yet. Still one can consider the measurement of a drift velocity with this method a success, as the resulting velocity lies in the right order of magnitude of $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$.
+\newline Note that in the CMS Note \cite{CMS-NOTE-2008-003} the photo-peak method was only used to estimate the relative change in drift velocity, never the absolute value. If one roughly estimates the photo-peak position from fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} as $t_\text{pp}\approx\SI{510}{\tu}$ (\SI{398}{\nano\second}), one would obtain a drift velocity of $v_D\approx\SI{52.8}{\micro\meter/\nano\second}$ with the formula in eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}. This value also lower than the \ac{CMS} expectation (cf.\ eq.\ \ref{eq:DT-DriftVelocity}).
+\newline From this one can conclude that the photo-peak method is not capable of measuring the drift velocity in terms of absolute value without calibration. Still, the obtained drift velocities lie in the expected order of magnitude. As discussed, this absolute calibration may include simulation studies for the effective drift distance $x_{D,\text{eff}}$ of the photo-electrons. Studies at the \ac{DT} test stand involving a reference measurement with the \ac{VDC} monitoring hardware could be imagined in the future.
+
 
 
 

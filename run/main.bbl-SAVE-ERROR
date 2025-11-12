@@ -9773,13 +9773,13 @@
            familyi={F\bibinitperiod},
            given={M.C.},
            giveni={M\bibinitperiod}}}%
-        {{hash=24d36b4a554e0d9c2a3af19b094c70eb}{%
-           family={García-Abia},
+        {{hash=15aa18aace9cc98aab64ded9a919a89a}{%
+           family={Garcia-Abia},
            familyi={G\bibinithyphendelim A\bibinitperiod},
            given={P.},
            giveni={P\bibinitperiod}}}%
-        {{hash=dcb37f2eb955d508b48b0df45269c1a4}{%
-           family={García-Raboso},
+        {{hash=0024e7effe2bc99b55ff9a971f608cca}{%
+           family={Garcia-Raboso},
            familyi={G\bibinithyphendelim R\bibinitperiod},
            given={A.},
            giveni={A\bibinitperiod}}}%
@@ -10010,13 +10010,13 @@
            giveni={G\bibinitperiod}}}%
       }
       \strng{namehash}{e2ad358106b28f68769a2ceb1e86589f}
-      \strng{fullhash}{fafd7d777192a149aa5e58238978133a}
-      \strng{fullhashraw}{fafd7d777192a149aa5e58238978133a}
+      \strng{fullhash}{2d59dd9ca084f4e1cbc8cf9bef096ec7}
+      \strng{fullhashraw}{2d59dd9ca084f4e1cbc8cf9bef096ec7}
       \strng{bibnamehash}{e2ad358106b28f68769a2ceb1e86589f}
       \strng{authorbibnamehash}{e2ad358106b28f68769a2ceb1e86589f}
       \strng{authornamehash}{e2ad358106b28f68769a2ceb1e86589f}
-      \strng{authorfullhash}{fafd7d777192a149aa5e58238978133a}
-      \strng{authorfullhashraw}{fafd7d777192a149aa5e58238978133a}
+      \strng{authorfullhash}{2d59dd9ca084f4e1cbc8cf9bef096ec7}
+      \strng{authorfullhashraw}{2d59dd9ca084f4e1cbc8cf9bef096ec7}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -10039,6 +10039,134 @@
       \verb https://www.sciencedirect.com/science/article/pii/S0168900204002451
       \endverb
       \keyw{LHC,CMS,Muon detector,Drift tubes}
+    \endentry
+    \entry{CMS-NOTE-2008-003}{report}{}{}
+      \name{author}{8}{}{%
+        {{hash=3208b88f48de2ce8f54c2fbe9a190cd7}{%
+           family={Fouz-Iglesias},
+           familyi={F\bibinithyphendelim I\bibinitperiod},
+           given={M\bibnamedelima C},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=ce217b418b384e7201f94a53549957a7}{%
+           family={Villanueva},
+           familyi={V\bibinitperiod},
+           given={C},
+           giveni={C\bibinitperiod}}}%
+        {{hash=77f6cc73c52b92dbffc97896021bd068}{%
+           family={Carlin},
+           familyi={C\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+        {{hash=ac92259540ce3865160d8c5c59de507c}{%
+           family={Gasparini},
+           familyi={G\bibinitperiod},
+           given={Ugo},
+           giveni={U\bibinitperiod}}}%
+        {{hash=7e2bf52d5598ba612d0f7bd5f4045b36}{%
+           family={Meneguzzo},
+           familyi={M\bibinitperiod},
+           given={Anna\bibnamedelima Teresa},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=e438ec0def5b5dee96faeae93e46d7ae}{%
+           family={Zanetti},
+           familyi={Z\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a644b92ccbadbd4390207fa2e3422bd0}{%
+           family={Cerminara},
+           familyi={C\bibinitperiod},
+           given={Gianluca},
+           giveni={G\bibinitperiod}}}%
+        {{hash=49625ee09d22759fdf126da659077443}{%
+           family={Bolognesi},
+           familyi={B\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CERN}%
+      }
+      \list{location}{1}{%
+        {Geneva}%
+      }
+      \strng{namehash}{f2601e306c68098254cb5f37e30f8e40}
+      \strng{fullhash}{cebaaafecee689e24df5d0e7076e36b8}
+      \strng{fullhashraw}{cebaaafecee689e24df5d0e7076e36b8}
+      \strng{bibnamehash}{f2601e306c68098254cb5f37e30f8e40}
+      \strng{authorbibnamehash}{f2601e306c68098254cb5f37e30f8e40}
+      \strng{authornamehash}{f2601e306c68098254cb5f37e30f8e40}
+      \strng{authorfullhash}{cebaaafecee689e24df5d0e7076e36b8}
+      \strng{authorfullhashraw}{cebaaafecee689e24df5d0e7076e36b8}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Measurement of Drift Velocity in the CMS Barrel Muon Chambers at the CMS Magnet Test Cosmic Challenge}
+      \field{type}{techreport}
+      \field{year}{2008}
+      \verb{urlraw}
+      \verb https://cds.cern.ch/record/1095040
+      \endverb
+      \verb{url}
+      \verb https://cds.cern.ch/record/1095040
+      \endverb
+    \endentry
+    \entry{CMS-NOTE-2010-004}{report}{}{}
+      \name{author}{5}{}{%
+        {{hash=c3e76ccfe1620c6805651c9dcfcd5758}{%
+           family={Amapane},
+           familyi={A\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+        {{hash=445c44cc0f0886f517dad313c4d1e52a}{%
+           family={Bellan},
+           familyi={B\bibinitperiod},
+           given={Riccardo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=49625ee09d22759fdf126da659077443}{%
+           family={Bolognesi},
+           familyi={B\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a644b92ccbadbd4390207fa2e3422bd0}{%
+           family={Cerminara},
+           familyi={C\bibinitperiod},
+           given={Gianluca},
+           giveni={G\bibinitperiod}}}%
+        {{hash=686203bf22f3fba60037c5c025fdf3e1}{%
+           family={Pelliccioni},
+           familyi={P\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CERN}%
+      }
+      \list{location}{1}{%
+        {Geneva}%
+      }
+      \strng{namehash}{352b412bc2a39299428ddcf8967bee05}
+      \strng{fullhash}{124807210b70e1a631b5dc780e9e00a0}
+      \strng{fullhashraw}{124807210b70e1a631b5dc780e9e00a0}
+      \strng{bibnamehash}{352b412bc2a39299428ddcf8967bee05}
+      \strng{authorbibnamehash}{352b412bc2a39299428ddcf8967bee05}
+      \strng{authornamehash}{352b412bc2a39299428ddcf8967bee05}
+      \strng{authorfullhash}{124807210b70e1a631b5dc780e9e00a0}
+      \strng{authorfullhashraw}{124807210b70e1a631b5dc780e9e00a0}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Test of the CMS Drift Tube Simulation and Local Reconstruction Algorithms on Test-Beam Data}
+      \field{type}{techreport}
+      \field{year}{2009}
+      \verb{urlraw}
+      \verb https://cds.cern.ch/record/1264095
+      \endverb
+      \verb{url}
+      \verb https://cds.cern.ch/record/1264095
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
