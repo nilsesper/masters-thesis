@@ -103,7 +103,7 @@ In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamb
 As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise. The data presented here has the timing correction from above (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
 \FloatBarrier
 \paragraph{Hit rates}
-Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires of the chamber. The cell hit rate lies in the range $\approx 20-30\;\si{\hertz}$ and is relatively uniform for all wires. A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise. Different \ac{CMS} publications also present cell rates which are above this estimation and lie in the range $\approx 30-60\;\si{\hertz}$ \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are slightly higher than what is observed in this work, which may be because of the older readout electronics that were used at the time, or different choice of the \ac{FEB} threshold voltage. One can conclude that the hit rate of the wires observed at the test stand is in the expected order of magnitude.
+Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires of the chamber. The cell hit rate lies in the range $\approx 20-30\;\si{\hertz}$ and is relatively uniform for all wires. A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$ ($\approx\SI{8.5}{\hertz}$) for the phi (theta) \acp{SL}. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise. Different \ac{CMS} publications also present cell rates which are above this estimation and lie in the range $\approx 30-60\;\si{\hertz}$ \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are slightly higher than what is observed in this work, which may be because of the older readout electronics that were used at the time, or different choice of the \ac{FEB} threshold voltage. One can conclude that the hit rate of the wires observed at the test stand is in the expected order of magnitude.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{dt_hits/Chamber_rates.pdf}
@@ -190,7 +190,7 @@ The observation that the secondary peaks lie in the time range of $\approx 0-500
 The second photo-peak can be used to estimate the drift velocity of the electrons in the \ac{DT} cell, without the need of an external trigger or a track reconstruction. This method was introduced in \cite{CMS-NOTE-2008-003}, where it was however only used for relative drift velocity measurements, not the absolute value.
 \FloatBarrier
 \paragraph{Photo-peak method}
-As discussed above, the second (narrower) photo-peak originates from photo-electrons created at the cathode strip, which is located on the cell walls at roughly $d=\SI{21}{\milli\meter}$ distance from the wire. Assuming that the avalanche takes place very close to the wire and neglecting the photon travelling time, one can consider the peak position of the photo-peak as the drift time of the created photo-electron from the cathode strip to the wire. A parabolic fit to the second photo-peak is presented in fig.\ \ref{fig:DTData-CellHitDifference-PeakFit}. From the goodness-of-fit value and the residual plot it is concluded that the peak fit is acceptable, even though it is clear that the peak is asymmetric, and the parabolic fit therefore only is a first-order estimation.
+As discussed above, the second (narrower) photo-peak originates from photo-electrons created at the cathode strip, which is located on the cell walls at roughly $d/2=\SI{21}{\milli\meter}$ distance from the wire. Assuming that the avalanche takes place very close to the wire and neglecting the photon travelling time, one can consider the peak position of the photo-peak as the drift time of the created photo-electron from the cathode strip to the wire. A parabolic fit to the second photo-peak is presented in fig.\ \ref{fig:DTData-CellHitDifference-PeakFit}. From the goodness-of-fit value and the residual plot it is concluded that the peak fit is acceptable, even though it is clear that the peak is asymmetric, and the parabolic fit therefore only is a first-order estimation.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{dt_hits/Hit_difference_nobg_peakfit.pdf}
@@ -206,11 +206,15 @@ Of course this value assumes a constant drift velocity over the full drift dista
 \newline Within the scope of this thesis, no further simulation studies are performed, which would however be needed to account for this effect and to derive an average (effective) drift distance $x_{D,\text{eff}} > d/2$ which accounts for this and allows the calculation of the drift velocity $v_{D}=x_{D,\text{eff}} / t_\text{pp}$. 
 \FloatBarrier
 \paragraph{Comparison to CMS}
-The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}) is smaller than the expectation in the \ac{DT} system of \SI{54.5}{\micro\meter/\nano\second} (cf.\ eq.\ \ref{eq:DT-DriftVelocity}). However, the described geometric effects can explain the smaller value, although quantitative studies were not performed yet. Still one can consider the measurement of a drift velocity with this method a success, as the resulting velocity lies in the right order of magnitude of $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$.
-\newline Note that in the CMS Note \cite{CMS-NOTE-2008-003} the photo-peak method was only used to estimate the relative change in drift velocity, never the absolute value. If one roughly estimates the photo-peak position from fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} as $t_\text{pp}\approx\SI{510}{\tu}$ (\SI{398}{\nano\second}), one would obtain a drift velocity of $v_D\approx\SI{52.8}{\micro\meter/\nano\second}$ with the formula in eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}. This value also lower than the \ac{CMS} expectation (cf.\ eq.\ \ref{eq:DT-DriftVelocity}).
+The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}) is smaller than the expectation in the \ac{DT} system of $\approx\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}). However, the described geometric effects can explain the smaller value, although quantitative studies were not performed yet. Still one can consider the measurement of a drift velocity with this method a success, as the resulting velocity lies in the right order of magnitude of $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$.
+\newline Note that in the CMS Note \cite{CMS-NOTE-2008-003} the photo-peak method was only used to estimate the relative change in drift velocity, never the absolute value. If one roughly estimates the photo-peak position from fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} as $t_\text{pp}\approx\SI{510}{\tu}$ (\SI{398}{\nano\second}), one would obtain a drift velocity of $v_D\approx\SI{52.8}{\micro\meter/\nano\second}$ with the formula in eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}. This value is also lower than the \ac{CMS} expectation (eq.\ \ref{eq:DT-DriftVelocity}).
 \newline From this one can conclude that the photo-peak method is not capable of measuring the drift velocity in terms of absolute value without calibration. Still, the obtained drift velocities lie in the expected order of magnitude. As discussed, this absolute calibration may include simulation studies for the effective drift distance $x_{D,\text{eff}}$ of the photo-electrons. Studies at the \ac{DT} test stand involving a reference measurement with the \ac{VDC} monitoring hardware could be imagined in the future.
 
-
+\FloatBarrier
+\subsection{Cell dead time}
+\label{sec:DTData-CellHits-DeadTime}
+As discussed above, there are occasions where secondary hits in the \ac{DT} cells can occur (sec.\ \ref{sec:DTData-CellHits-SecondaryHits}). If a track reconstruction would be attempted with these hits, one will obtain tracks which do not originate from a passing muon. As these secondary hits usually originate from photons escaping the electron amplification avalanche near the wire, the easiest way to suppress them is to apply a dead time to each individual \ac{DT} cell, which covers the time interval where the secondary hits occur. Of course a dead time is not helpful in the case of $\delta$-electrons, as they also create pre-pulses and not only after-pulses. In the case of a pre-pulse, the dead time would lead to a loss of the "real" hit.
+\newline Since this analysis does not aim at optimized precision but rather at a proof-of-concept measurement of the \ac{DT} chamber in combination with the scintillator readout, this small bias is accepted. In the following, a dead time of \SI{600}{\tu} (\SI{468}{\nano\second}) was applied to all individual cells to suppress the effect of secondary hits.
 
 
 
@@ -224,19 +228,87 @@ The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVel
 %    \item Compare to rates of fake patterns (to estimate noise influence)
 %\end{itemize}
 \label{sec:DTData-SLHitClustering}
+The first step in the reconstruction of tracks in the \ac{DT} chamber is the selection of cell hit candidates, which may be part of a track. Since the reconstruction is triggerless, no external trigger signal can be used for this purpose. Instead, all recorded cell hits must be treated as potential track hit candidates and consecutively filtered out. The first step is the rejection of hits which do not form a plausible geometric shape or do not lie close enough in time.
+\FloatBarrier
+\subsection{Track candidate patterns}
+\label{sec:DTData-SLHitClustering-TrackPatterns}
+\FloatBarrier
+\paragraph{SL track patterns}
+A muon track leaves ionization and consequently a hit in cells of the different layers of the \ac{DT} chamber. Depending on the track angle, different cell hit patterns can be produced. Fig.\ \ref{fig:DTData-SLPatterns} shows possible hit patterns in one \ac{SL}, under the assumption that four cells are triggered. Note that in reality not always all cells are hit due to detector inefficiencies.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{SL-Patterns.pdf}
+    \caption{Possible \ac{SL} hit patterns created by muon tracks. Only the patterns $0-5$ are considered for the analysis in this thesis.}
+    \label{fig:DTData-SLPatterns}
+\end{figure}
+\FloatBarrier
+\paragraph{Pattern timing}
+Depending on the position of the muon track within each cell, the distance from the wire that the electrons need to drift along varies, which results in the hits of the pattern not having the same timestamps. However, one can formulate an upper bound of the timestamp differences of cell hits of a pattern, which might belong to a muon track. This upper bound is given by the maximum drift velocity, since the cell size sets limits the drift times of all cells:
+\begin{equation}
+    \Delta T_\text{max} = \max \left\{ \left | T_{\text{Ly}\; i} - T_{\text{Ly}\; j} \right | ; \; i,j=0,1,2,3 \right\} \leq t_\text{drift,max} \approx \SI{385}{\nano\second}.
+    \label{eq:DTData-PatternTimeWindow}
+\end{equation}
+Here, $T_{\text{Ly}\; i}$ are the hit timestamps of the respective cell hit in layer $i$ of the \ac{SL}. Of course this is only valid if one assumes simultaneous creation of the ionization in all cells. Since the cosmic muons travel approximately with the speed of light and the chamber measures only $\approx\SI{36}{cm}$ in height (sec.\ \ref{sec:CMS-AachenTestStand-Phase2Setup}), this assumption can be justified.
+\FloatBarrier
+\paragraph{Pattern finder algorithm}
+The algorithm which was implemented in the custom analysis framework to identify the patterns from above should be briefly described here. The algorithm is capable of finding patterns in the recorded cell hits over a full \ac{SL} and is event-loop based. First, all hits are sorted by their timestamp. Then, the algorithm loops through the hit list one by one and stores the current hit in a matrix containing the latest hit of each cell. After the matrix was updated with the current hit, the all possible patterns which contain the most recently added hit are checked, i.e.\ the time difference of the latest cell hits of each possible pattern is calculated. If any of the checked patterns shows a maximum time difference between all hits $\Delta T_\text{max}$ which is not larger than the selected maximum timestamp difference $t_\text{drift,max}$, the pattern is accepted, and all hit information is stored.
+\newline Note that because this algorithm checks for new patterns which could be constructed with each new hit, it is possible that multiple patterns are constructed in the event of a noise hit close to the "real" pattern, or in case of high energy particle showers triggering many cells in a region of the chamber. The fact that there in fact may be several different patterns very close in time at the same position in the \ac{SL} is revisited in sec.\ \ref{sec:DTData-SLFitGrouping} later.
+\FloatBarrier
+\paragraph{Applied selection criteria}
+This section should present the pattern selection criteria used in this work. Only \ac{SL} patterns with four hits are accepted and not less. In principle (depending on the assumptions) it is possible to also use three-hit patterns for the analysis, however in this thesis this is not the case. Also, regarding the pattern shape, only the patterns with indices $0-5$ are considered. The patterns $6-7$ introduce additional difficulties in the reconstruction without a trigger, and are therefore neglected here. Tab.\ \ref{tab:DTData-PatternSelection} summarizes the pattern selection criteria used in this work.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|} 
+        \hline
+        Parameter & Selection & Details \\ \hline
+        Pattern type / shape & Patterns $0-5$ & Fig.\ \ref{fig:DTData-SLPatterns} \\
+        Pattern cell hit count & $=4$ & $-$ \\
+        Timestamp difference $\Delta T_\text{max}$ & $\leq t_\text{drift,max}\approx\SI{385}{\nano\second}$ & Eq.\ \ref{eq:DTData-PatternTimeWindow} \\ \hline
+    \end{tabular}
+    \caption{\ac{SL} pattern selection criteria used in this work.}
+    \label{tab:DTData-PatternSelection}
+\end{table}
+\newline The goal of this analysis is to accomplish a track reconstruction algorithm which is simple and can be used for cross-checks with the developed scintillator readout system, and not to conduct precision measurements. Therefore, the reduced selection presented above is considered sufficient. Of course, the algorithm could be extended to both three-hit patterns and different pattern layouts in future contributions.
+\FloatBarrier
+\paragraph{Pattern occupancies}
+Running the pattern finder algorithm on the recorded \ac{DT} dataset yields different occupancies for the different pattern types, which should be discussed in the following.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|} 
+        \hline
+        Pattern type & \ac{SL} 1 (phi) & \ac{SL} 2 (theta) & \ac{SL} 3 (phi) \\ \hline
+        $0$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
+        $1$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
+        $2$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
+        $3$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
+        $4$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
+        $5$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\ \hline
+        Cumulative & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\ \hline
+    \end{tabular}
+    \caption{Observed \ac{SL} pattern rates in the analyzed \ac{DT} dataset.}
+    \label{tab:DTData-PatternOccupancies}
+\end{table}
+\FloatBarrier
+\paragraph{Comparison with cosmic rate}
+The observed cumulated pattern rate per \ac{SL} is higher than this estimation, even higher than the added rate of the two "vertical" patterns $0-1$. Multiple reasons for this observation can be imagined: First it should be noted that the \ac{DT} cells are subject to noise, as already observed in the rates of the single cell hits (sec.\ \ref{sec:DTData-CellHits-Occupancy}). These noise hits can lead to noise-induced patterns.
 
 \FloatBarrier
-\subsection{Track candidate clusters}
+\subsection{Fake patterns}
+\label{sec:DTData-SLHitClustering-FakePatterns}
+This section further investigates the influence of noise on the pattern rate by searching for patterns, i.e.\ patterns that can not originate from muon tracks (except under very extreme circumstances).
+\FloatBarrier
+\paragraph{Influence of noise hits}
+It is clear that the observed noise in the single-cell hits can propagate through the pattern finding algorithm and generate patterns which do not originate from a muon track. A rejection of these patterns is not directly possible, although the patterns may have worse goodness-of-fit values when attempting a track fit.\footnote{One does not expect the timestamps of the cell hits from noise to be correlated in the same manner as track hits, but rather assumes them to be independent.} At this stage however, it is attempted to find out the order of magnitude of these noise-induced patterns.
+\FloatBarrier
+\paragraph{SL fake patterns}
 
 \FloatBarrier
-\subsection{Fake clusters}
-
-
+\paragraph{Fake pattern occupancies}
 
 
 
 \FloatBarrier
-\section{Superlayer cluster fitting}
+\section{Superlayer pattern fitting}
 %\begin{itemize}
 %    \item Assume constant drift velocity, straight muon track
 %    \item Perform linear fit for all laterality combinations with parameters: Arrival time, position in cell, track inclination
@@ -254,15 +326,20 @@ The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVel
 
 \FloatBarrier
 \subsection{Assumptions and strategy}
+\label{sec:DTData-SLClusterFitting-Strategy}
 
 \FloatBarrier
-\subsection{Cluster fit results}
+\subsection{Pattern fit results}
+\label{sec:DTData-SLClusterFitting-Results}
 
+\FloatBarrier
+\subsection{Parameter cuts}
+\label{sec:DTData-SLClusterFitting-Cuts}
 
 
 
 \FloatBarrier
-\section{Grouping of superlayer clusters}
+\section{Grouping of superlayer patterns}
 %\begin{itemize}
 %    \item Clustering algorithm creates multiple clusters in case of additional nearby hits
 %    \item Cope this by grouping together clusters within certain time window within same superlayer
@@ -296,7 +373,7 @@ The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVel
 %\end{itemize}
 
 \FloatBarrier
-\subsection{Matching of superlayer cluster groups}
+\subsection{Matching of superlayer pattern groups}
 
 \FloatBarrier
 \subsection{Global track building}
@@ -304,8 +381,8 @@ The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVel
 \FloatBarrier
 \subsection{Resulting tracks}
 
-\FloatBarrier
-\subsection{Angular distribution}
+%\FloatBarrier
+%\subsection{Angular distribution}
 
 
 

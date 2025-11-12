@@ -181,12 +181,12 @@ The decay of these particles is the main source for atmospheric muons. Most of t
 In the following, the particle flux and its angular distribution of cosmic muons on Earth's surface should be briefly presented, as they are the baseline to calculate the expected detector response for the measurements presented in this thesis.
 \FloatBarrier
 \paragraph{Vertical muon flux}
-The flux of vertical atmospheric muons with energies above \SI{1}{\giga\electronvolt} at sea level can be measured as \cite{PDG2022,Book-Grieder}
+The flux of vertical atmospheric muons $\Phi(\theta=0)$ with energies above \SI{1}{\giga\electronvolt} at sea level can be measured as \cite{PDG2022,Book-Grieder}
 \begin{equation}
-    \int_{\SI{1}{\giga\electronvolt}}^{\infty}dE\; I(E,\;\theta=0)\approx\SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}.
+    \Phi(\theta=0) = \int_{\SI{1}{\giga\electronvolt}}^{\infty}dE\; I(E,\;\theta=0)\approx\SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}.
     \label{eq:CosmicMuon-VerticalFlux}
 \end{equation}
-The value depends not only on the altitude and location of the measurement, but also on the solar activity and atmospheric properties. Also note that different measurements of absolute muon fluxes yield results spreading up to $30\%$, even though individual uncertainties are claimed to be smaller \cite{CosmicMuon-Cecchini}. Therefore, in this work it is decided to assign a relative uncertainty of $20\%$ to the cited vertical flux value in eq.\ \ref{eq:CosmicMuon-VerticalFlux}. This is of course a strong simplification, however the aim of this work is not the precise muon flux measurement, but rather to confirm that the developed detectors and readout systems work as expected.
+The value depends not only on the altitude and location of the measurement, but also on the solar activity and atmospheric properties. %Also note that different measurements of absolute muon fluxes yield results spreading up to $\mathcal{O}(10\%)$, even though individual uncertainties are claimed to be smaller \cite{CosmicMuon-Cecchini}.
 \FloatBarrier
 \paragraph{Energy spectrum}
 The mean energy of atmospheric muons is $\approx\SI{4}{\giga\electronvolt}$. While the muon energy spectrum is almost flat for energies of $\mathcal{O}(\SI{1}{\giga\electronvolt})$, it becomes a similar power law dependence as the primary cosmic rays (eq.\ \ref{eq:Cosmics-Flux}) for the energies up to $\mathcal{O}(\SI{100}{\giga\electronvolt})$. Higher energies have even steeper energy spectra \cite{PDG2022}.
@@ -201,9 +201,10 @@ The exponent $n$ has a value of $n\approx 2$ for $E\approx\SI{3}{\giga\electronv
 \paragraph{Prediction of detector rate}
 The expected muon rate for a detector with area $S$ can be obtained by integration of the differential flux $I$ over energy, solid angle and area
 \begin{equation}
-    \dot{N} = \int_{E_\text{thres}}^{\infty} dE \; \int d\Omega \; \int dS\; I(E,\;\theta). %\approx \SI{136.5}{\meter^{-2} \second^{-1}}
+    \dot{N} = \int_{E_\text{thres}}^{\infty} dE \; \int d\Omega \; \int dS\; I(E,\;\theta) \cdot \varepsilon. %\approx \SI{136.5}{\meter^{-2} \second^{-1}}
 \end{equation}
-For this calculation, the energy detection threshold $E_\text{thres}$ of the detector should be taken into account. Note that the solution of the solid angle and area integrals is not trivial for arbitrary detector geometries, since the effective detector area usually is a function of the solid angle. %Typically one divides 
+For this calculation, the energy detection threshold $E_\text{thres}$ of the detector must be taken into account. Note that the solution of the solid angle and area integrals is generally non-trivial for arbitrary detector geometries, since the effective detector area usually is a function of the solid angle. A detection efficiency $\varepsilon \leq 1$, which may even depend on the solid angle, must be considered as well.
+\newline A very common approximation is the rate per area of a vertical detector as $\dot{N}/A \approx \SI{1}{\min^{-1}\centi\meter^{-2}}$ \cite{PDG2022}, which can roughly be obtained by solid angle integration of the value given in eq.\ \ref{eq:CosmicMuon-VerticalFlux}. Expectation values of cosmic muons will be calculated in different parts of this thesis, where they will be directly compared to the measurement.
 
 
 
