@@ -183,7 +183,7 @@ In the following, the particle flux and its angular distribution of cosmic muons
 \paragraph{Vertical muon flux}
 The flux of vertical atmospheric muons $\Phi(\theta=0)$ with energies above \SI{1}{\giga\electronvolt} at sea level can be measured as \cite{PDG2022,Book-Grieder}
 \begin{equation}
-    \Phi(\theta=0) = \int_{\SI{1}{\giga\electronvolt}}^{\infty}dE\; I(E,\;\theta=0)\approx\SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}.
+    \Phi(E \geq \SI{1}{\giga\electronvolt},\;\theta=0) = \int_{\SI{1}{\giga\electronvolt}}^{\infty}dE\; I(E,\;\theta=0)\approx\SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}.
     \label{eq:CosmicMuon-VerticalFlux}
 \end{equation}
 The value depends not only on the altitude and location of the measurement, but also on the solar activity and atmospheric properties. %Also note that different measurements of absolute muon fluxes yield results spreading up to $\mathcal{O}(10\%)$, even though individual uncertainties are claimed to be smaller \cite{CosmicMuon-Cecchini}.
@@ -199,12 +199,13 @@ The muon flux is both dependent on the azimuth ($\phi$) and zenith angle ($\thet
 The exponent $n$ has a value of $n\approx 2$ for $E\approx\SI{3}{\giga\electronvolt}$ and is slightly energy-dependent \cite{PDG2022}. For higher energies, the azimuthal dependence flattens, until it reaches an $I(E,\;\theta)\propto\text{sec}\,\theta$ relation for muon energies $\mathcal{O}(\SI{1}{\tera\electronvolt})$ \cite{CosmicMuon-Cecchini}.
 \FloatBarrier
 \paragraph{Prediction of detector rate}
-The expected muon rate for a detector with area $S$ can be obtained by integration of the differential flux $I$ over energy, solid angle and area
+The expected muon rate $\dot{N}$ for a detector can be obtained by integration of the differential flux $I$ over energy $E$, solid angle $\Omega$ and area $S$:
 \begin{equation}
-    \dot{N} = \int_{E_\text{thres}}^{\infty} dE \; \int d\Omega \; \int dS\; I(E,\;\theta) \cdot \varepsilon. %\approx \SI{136.5}{\meter^{-2} \second^{-1}}
+    \dot{N} = \int_{E_\text{thres}}^{\infty} dE \; \int d\Omega \; \int dS\; I(E,\;\theta) \cdot \varepsilon = \int d\Omega \; \int dS\; \Phi(E \geq E_\text{thres},\;\theta) \cdot \varepsilon. %\approx \SI{136.5}{\meter^{-2} \second^{-1}}
+    \label{eq:CosmicMuon-DetectorRate}
 \end{equation}
 For this calculation, the energy detection threshold $E_\text{thres}$ of the detector must be taken into account. Note that the solution of the solid angle and area integrals is generally non-trivial for arbitrary detector geometries, since the effective detector area usually is a function of the solid angle. A detection efficiency $\varepsilon \leq 1$, which may even depend on the solid angle, must be considered as well.
-\newline A very common approximation is the rate per area of a vertical detector as $\dot{N}/A \approx \SI{1}{\min^{-1}\centi\meter^{-2}}$ \cite{PDG2022}, which can roughly be obtained by solid angle integration of the value given in eq.\ \ref{eq:CosmicMuon-VerticalFlux}. Expectation values of cosmic muons will be calculated in different parts of this thesis, where they will be directly compared to the measurement.
+\newline A very common approximation is the rate per area of a vertical detector as $\dot{N}/A \approx \SI{1}{\min^{-1}\centi\meter^{-2}}$ \cite{PDG2022}, which can be obtained by factorizing the solid angle and area integral in eq.\ \ref{eq:CosmicMuon-DetectorRate} and using the vertical flux from eq.\ \ref{eq:CosmicMuon-VerticalFlux}. Expectation values of cosmic muons will be calculated in different parts of this thesis, where they will be directly compared to the measurement.
 
 
 

@@ -103,7 +103,8 @@ In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamb
 As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise. The data presented here has the timing correction from above (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
 \FloatBarrier
 \paragraph{Hit rates}
-Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires of the chamber. The cell hit rate lies in the range $\approx 20-30\;\si{\hertz}$ and is relatively uniform for all wires. A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$ ($\approx\SI{8.5}{\hertz}$) for the phi (theta) \acp{SL}. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise. Different \ac{CMS} publications also present cell rates which are above this estimation and lie in the range $\approx 30-60\;\si{\hertz}$ \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are slightly higher than what is observed in this work, which may be because of the older readout electronics that were used at the time, or different choice of the \ac{FEB} threshold voltage. One can conclude that the hit rate of the wires observed at the test stand is in the expected order of magnitude.
+Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires of the chamber. The cell hit rate lies in the range $\approx 20-30\;\si{\hertz}$ and is relatively uniform for all wires. In comparison, different \ac{CMS} publications also present cell rates which are above this estimation and lie in the range $\approx 30-60\;\si{\hertz}$ \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are slightly higher than what is observed in this work, which may be because of the older readout electronics that were used at the time, or a lower selected \ac{FEB} threshold voltage. Note however that the rates both have a similar order of magnitude.
+\newline For comparison with the cosmic expectation, the average rates of drift cells in the phi (theta) \acp{SL} were calculated from the data as $(27.5 \pm 5.2)\;\si{\hertz}$ ($(24.0 \pm 4.9)\;\si{\hertz}$). Note that cells with low occupancy were excluded from this calculation.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{dt_hits/Chamber_rates.pdf}
@@ -112,7 +113,7 @@ Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires o
 \end{figure}
 \FloatBarrier
 \paragraph{Noisy and dead cells}
-In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. In principle, there are two different kinds of differently behaving cells. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one cell with a higher index than the other layers (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}), this cell is not connected to the readout, which leads to zero occupancy for the highest wire index. Additionally, one can observe in fig.\ \ref{fig:DTData-ChamberRates} that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}). In total, 12 dead wires (plus 3 unconnected wires) are observed in the \ac{DT} chamber at the test stand.
+In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. In principle, there are two different kinds of differently behaving cells. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one cell with a higher index than the other layers (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}), this cell is not connected to the readout, which leads to zero occupancy for the highest wire index. Additionally, one can observe in fig.\ \ref{fig:DTData-ChamberRates} that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}). In total, 12 dead wires plus 3 unconnected wires are observed in the \ac{DT} chamber at the test stand.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|} 
@@ -140,11 +141,18 @@ In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible.
     \caption{List of dead wires of the \ac{DT} chamber at the test stand.}
     \label{tab:DTData-DeadWires}
 \end{table}
+\FloatBarrier
+\paragraph{Comparison with cosmic rate} The measured rates should be compared with a coarse estimation of the expected atmospheric muon rate impinging on the cell. To estimate the rate, in principle one would need to solve the solid angle and area integration of the muon flux for particles above the energy detection threshold (cf.\ eq.\ \ref{eq:CosmicMuon-DetectorRate}), as was discussed in sec.\ \ref{sec:AtmosphericMuons-Cosmics}. For non-spherical geometries this is however non-trivial.
+\newline The developed analysis framework includes the possibility to simulate muon tracks and propagate them through the detector. Note that the simulation only includes the chamber geometry and does not consider the track energy, and there are additional simplifications assumed. The generation of cosmic tracks and generation of detector hits with this framework, as well as the used approximations, are discussed in detail in appendix \ref{sec:Simulation}.
+\newline The simulation yields the atmospheric muon rate for a phi (theta) drift cell of $(14.6 \pm 3.8)\;\si{\hertz}$ ($(12.5 \pm 3.5)\;\si{\hertz}$). These values are approximately $50\%$ smaller than the observed cell rates of the \ac{DT} chamber at the test stand (and in CMS). Therefore, one can conclude that the cells are subject to noise which increases the hit rates. Although the simulated expected cell hit rates are smaller, the order of magnitude of $\mathcal{O}(10^1\;\si{\hertz})$ is similar to what is observed in data. Together with the fact that the cell rates cited in \ac{CMS} publications for cosmics are also in a similar order of magnitude it is concluded that the chamber at the test stand seems to operate nominally.
+
+%As discussed in sec.\ \ref{sec:AtmosphericMuons-Cosmics}, the detector rate can be calculated by integration of the muon flux (cf.\ eq.\ \ref{eq:CosmicMuon-DetectorRate}). The solution of the solid angle and area integral is non-trivial, therefore 
+%A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$ ($\approx\SI{8.5}{\hertz}$) for the phi (theta) \acp{SL}. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise.
 
 \FloatBarrier
 \subsection{Secondary hits}
 \label{sec:DTData-CellHits-SecondaryHits}
-Further information can be extracted from the recorded cell hit timestamps, even before starting with the track reconstruction. If one considers at the hits of one single drift cell, sorts them by timestamp and plots the time difference $\Delta T_\text{cell}$ between these hits, one can observe some characteristic features. Fig.\ \ref{fig:DTData-CellHitDifference} shows the distribution obtained with the prescription for $\Delta T_\text{cell}$ above, cumulated for all cells. Note that the $x$-axis limit extends far beyond the presented range, however the interesting characteristics are visible the plot.
+Further information can be extracted from the recorded cell hit timestamps, even before starting with the track reconstruction. If one considers all hits of one single drift cell, sorts them by timestamp and plots the time difference $\Delta T_\text{cell}$ between these hits, one can observe some characteristic features. Fig.\ \ref{fig:DTData-CellHitDifference} shows the distribution obtained with the prescription for $\Delta T_\text{cell}$ above, cumulated for all cells. Note that the $x$-axis limit extends far beyond the presented range, however the interesting characteristics are visible the plot.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{dt_hits/Hit_difference.pdf}
@@ -157,8 +165,8 @@ One can observe that the time difference between hits decreases exponentially. T
 \FloatBarrier
 \paragraph{Secondary hits}
 In the region $\approx 0-500\;\si{\nano\second}$, another feature is visible which dominates over the exponentially decreasing behavior. Apparently, there are hits which are detected in this short time interval after the initial hit. The observed structure of these secondary hits should be analyzed in the following. For this, the Poissonian background due to random noise events should be subtracted, to analyze the shape of secondary hits in time. For this, an exponential function is fitted to the exponentially decreasing part of the histogram (fit range: $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$). Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} in the appendix shows the fit result.
-\newline Fig.\ \ref{fig:DTData-CellHitDifference-NoBg} shows the resulting distribution after extrapolating the exponential "background" to the left and subtracting it. A structure of two peaks can be observed, where the second peak is relatively narrow, while the first peak is wider. Also note that one can observe a dead time of $\approx\SI{40}{\nano\second}$ in the plot, which might originate from the \acp{FEB} in the chamber or the \ac{OBDT}.
-\newline Note that this structure of secondary peaks was not discovered in this work, but is a known effect. Two \ac{CMS} notes \cite{CMS-NOTE-2008-003,CMS-NOTE-2010-004} also show a distribution of secondary hits which looks similar in shape. In fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} the observed distribution of the secondary hits from one of these publications is shown. The distribution matches well the double-peak structure which is observed in the measurement from this thesis with the background subtracted.
+\newline Fig.\ \ref{fig:DTData-CellHitDifference-NoBg} shows the resulting distribution after extrapolating the exponential "background" to the left and subtracting it. A structure of two peaks can be observed, where the second peak is relatively narrow, while the first peak is wider. Also note that one can observe a dead time of $\approx\SI{40}{\nano\second}$ in the plot, which might originate from the \acp{FEB} in the chamber or the \acp{OBDT}.
+\newline Note that this structure of secondary peaks was not discovered in this work, but is a known effect. Two \ac{CMS} Notes \cite{CMS-NOTE-2008-003,CMS-NOTE-2010-004} also show a distribution of secondary hits which looks similar in shape. In fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} the observed distribution of the secondary hits from one of these publications is shown for comparison. The distribution matches well the double-peak structure which is observed in the measurement from this thesis with the background subtracted.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -181,8 +189,8 @@ In the region $\approx 0-500\;\si{\nano\second}$, another feature is visible whi
 \end{figure}
 \FloatBarrier
 \paragraph{Physical origin}
-The observation that the secondary peaks lie in the time range of $\approx 0-500\;\si{\nano\second}$ already hints that these hits might have a physical cause, and are not created by reflections in the readout electronics, as the electron drift time in a \ac{DT} cell should lie in this order of magnitude (cf.\ eq.\ \ref{eq:DT-MaxDriftTime}). Two physical effects play a role in the creation of secondary peaks: When the electrons in the drift cell arrive at the wire, an avalanche forms and the charge is amplified and read out. In this avalanche, photons may be created, whose movement is not constrained by the electric field in the cell. Therefore, the photons can hit the chamber walls and create a secondary ionization event through the photoelectric effect. The created electrons from this secondary ionization drift again towards the wire, creating a secondary hit after the first one. Since the drift cell is constrained in size, the timestamps of the secondary hits also have a maximum. The \ac{DT} cell includes two electrodes apart from the anode wire (cf.\ fig.\ \ref{fig:DT-Cell}): The field shaping electrodes which are relatively close to the wire and the cathode strips which are roughly \SI{21}{\milli\meter}, i.e.\ half of the cell width, away from the wire. When secondary ionization happens on one of these electrodes, the photo-electrons can reach the wire and generate a signal. When the ionization takes place somewhere else on the cell wall, the electrons are most likely lost and can not reach the wire, due to the shape of the electric field lines. The two-peak structure observed in the data can be explained with photo-electrons originating from the field shaping electrodes (first wide peak) and the cathode strips (second narrow peak). These peaks are in the following referred to as photo-peaks \cite{CMS-NOTE-2008-003}.
-\newline The second physical effect responsible for secondary hits are so-called $\delta$-electrons (sec.\ \ref{sec:Interactions-Ionization}). The energy loss of the passing muon is Landau-distributed, allowing larger energy losses in few collisions, which lead to high energy electrons in the gas volume. These electrons may ionize the gas themselves, which can also contribute to secondary hits at the wire. Depending on the movement direction of the $\delta$-electron, not only after-pulses, but also pre-pulses may be created. The effect of $\delta$-electrons to the double peak structure is considered small in the \ac{CMS} publication compared to the photo-peaks \cite{CMS-NOTE-2008-003}.
+The observation that the secondary peaks lie in the time range of $\approx 0-500\;\si{\nano\second}$ already hints that these hits might have a physical cause, and are not created by reflections in the readout electronics, as the electron drift time in a \ac{DT} cell should lie in this order of magnitude (cf.\ eq.\ \ref{eq:DT-MaxDriftTime}). Two physical effects play a role in the creation of secondary peaks: When the electrons in the drift cell arrive at the wire, an avalanche forms and the charge is amplified and read out. In this avalanche, photons may be created, whose movement is not constrained by the electric field in the cell. Therefore, the photons can hit the chamber walls and create a secondary ionization event through the photoelectric effect. The created electrons from this secondary ionization drift again towards the wire, creating a secondary hit after the first one. Since the drift cell is constrained in size, the timestamps of the secondary hits also have a maximum. The \ac{DT} cell includes two electrodes apart from the anode wire (cf.\ fig.\ \ref{fig:DT-Cell}): The field shaping electrodes which are relatively close to the wire, and the cathode strips which are roughly \SI{21}{\milli\meter} (i.e.\ half of the cell width) away from the wire. When secondary ionization happens on one of these electrodes, the photo-electrons can reach the wire and generate a signal. When the ionization takes place somewhere else on the cell wall, the electrons are most likely lost and can not reach the wire, due to the shape of the electric field lines. The two-peak structure observed in the data can be explained with photo-electrons originating from the field shaping electrodes (first wide peak) and the cathode strips (second narrow peak). These peaks are in the following referred to as photo-peaks \cite{CMS-NOTE-2008-003}.
+\newline The second physical effect responsible for secondary hits are so-called $\delta$-electrons. The energy loss of the passing muon is Landau-distributed, allowing larger energy losses in few collisions, which lead to high energy electrons in the gas volume (sec.\ \ref{sec:Interactions-Ionization}). These electrons may ionize the gas themselves, which can also contribute to secondary hits at the wire. Depending on the movement direction of the $\delta$-electron, not only after-pulses, but also pre-pulses may be created. The effect of $\delta$-electrons to the double peak structure is considered small compared to the photo-peaks, according to the \ac{CMS} Note \cite{CMS-NOTE-2008-003}.
 
 \FloatBarrier
 \subsection{Drift velocity estimation with photo-peak}
@@ -202,18 +210,18 @@ As discussed above, the second (narrower) photo-peak originates from photo-elect
     v_D=\frac{d/2}{t_\text{pp}}\approx ( 51.0 \pm 0.2 )\;\si{\frac{\micro\meter}{\nano\second}}.
     \label{eq:PhotoPeak-DriftVelocityEstimation}
 \end{equation}
-Of course this value assumes a constant drift velocity over the full drift distance, which in reality is not the case. Another unregarded fact is that the cathode strip has a height much larger than the wire diameter. This means that photo-electrons may also drift towards the wire from a different height, leading to a longer drift distance than the assumed half cell width $d/2$ and therefore a longer drift time. It therefore becomes clear that with this method one can only measure an effective drift velocity under the assumptions above, and that one needs to correct for the described geometric effect of longer drift distances.
-\newline Within the scope of this thesis, no further simulation studies are performed, which would however be needed to account for this effect and to derive an average (effective) drift distance $x_{D,\text{eff}} > d/2$ which accounts for this and allows the calculation of the drift velocity $v_{D}=x_{D,\text{eff}} / t_\text{pp}$. 
+Of course this value assumes a constant drift velocity over the full drift distance, which in reality is not the case. Another unregarded fact is the spatial extent of the cathode strip. This means that photo-electrons may also drift towards the wire from a different height, leading to a longer drift distance than the assumed half cell width $d/2$ and therefore a longer drift time. It therefore becomes clear that with this method one can only measure an effective drift velocity under the assumptions above, and that one needs to correct for the described geometric effect of longer drift distances.
+\newline Within the scope of this thesis, no further simulation studies are performed, which would however be needed to account for this effect and to derive an average (effective) drift distance $x_{D,\text{eff}} > d/2$ which could average out this geometric effect and would allow the calculation of the drift velocity as $v_{D}=x_{D,\text{eff}} / t_\text{pp}$. 
 \FloatBarrier
 \paragraph{Comparison to CMS}
-The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}) is smaller than the expectation in the \ac{DT} system of $\approx\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}). However, the described geometric effects can explain the smaller value, although quantitative studies were not performed yet. Still one can consider the measurement of a drift velocity with this method a success, as the resulting velocity lies in the right order of magnitude of $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$.
+The obtained value for the drift velocity above (eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}) is smaller than the expectation in the \ac{DT} system of $\approx\SI{54.5}{\micro\meter/\nano\second}$ (cf.\ eq.\ \ref{eq:DT-DriftVelocity}). However, the described geometric effects can explain the smaller value, although quantitative studies were not performed yet. Still one can consider the measurement of a drift velocity with this method a success, as the resulting velocity lies in the right order of magnitude of $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$.
 \newline Note that in the CMS Note \cite{CMS-NOTE-2008-003} the photo-peak method was only used to estimate the relative change in drift velocity, never the absolute value. If one roughly estimates the photo-peak position from fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} as $t_\text{pp}\approx\SI{510}{\tu}$ (\SI{398}{\nano\second}), one would obtain a drift velocity of $v_D\approx\SI{52.8}{\micro\meter/\nano\second}$ with the formula in eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}. This value is also lower than the \ac{CMS} expectation (eq.\ \ref{eq:DT-DriftVelocity}).
-\newline From this one can conclude that the photo-peak method is not capable of measuring the drift velocity in terms of absolute value without calibration. Still, the obtained drift velocities lie in the expected order of magnitude. As discussed, this absolute calibration may include simulation studies for the effective drift distance $x_{D,\text{eff}}$ of the photo-electrons. Studies at the \ac{DT} test stand involving a reference measurement with the \ac{VDC} monitoring hardware could be imagined in the future.
+\newline From this one can conclude that the photo-peak method is not capable of measuring the drift velocity in terms of absolute value without calibration. Still, the obtained drift velocities lie in the expected order of magnitude. As discussed, this absolute calibration may include simulation studies for the effective drift distance $x_{D,\text{eff}}$ of the photo-electrons. Studies at the \ac{DT} test stand involving a reference measurement with the \ac{VDC} monitoring hardware \cite{DT-VDC-System} could be imagined in the future.
 
 \FloatBarrier
 \subsection{Cell dead time}
 \label{sec:DTData-CellHits-DeadTime}
-As discussed above, there are occasions where secondary hits in the \ac{DT} cells can occur (sec.\ \ref{sec:DTData-CellHits-SecondaryHits}). If a track reconstruction would be attempted with these hits, one will obtain tracks which do not originate from a passing muon. As these secondary hits usually originate from photons escaping the electron amplification avalanche near the wire, the easiest way to suppress them is to apply a dead time to each individual \ac{DT} cell, which covers the time interval where the secondary hits occur. Of course a dead time is not helpful in the case of $\delta$-electrons, as they also create pre-pulses and not only after-pulses. In the case of a pre-pulse, the dead time would lead to a loss of the "real" hit.
+As discussed above, there are occasions where secondary hits in the \ac{DT} cells can occur (sec.\ \ref{sec:DTData-CellHits-SecondaryHits}). If a track reconstruction would be attempted with these hits, one will obtain tracks which do not originate from a passing muon. As these secondary hits usually originate from photons escaping the electron amplification avalanche near the wire, the easiest way to suppress them is to apply a dead time to each individual \ac{DT} cell.  The dead time covers the time interval where the secondary hits occur. Of course this is not necessarily helpful in the case of $\delta$-electrons, as they also create pre-pulses and not only after-pulses. In the case of a pre-pulse, the dead time would lead to a loss of the "real" hit and therefore a wrong hit selection.
 \newline Since this analysis does not aim at optimized precision but rather at a proof-of-concept measurement of the \ac{DT} chamber in combination with the scintillator readout, this small bias is accepted. In the following, a dead time of \SI{600}{\tu} (\SI{468}{\nano\second}) was applied to all individual cells to suppress the effect of secondary hits.
 
 
@@ -227,14 +235,14 @@ As discussed above, there are occasions where secondary hits in the \ac{DT} cell
 %    \item Pattern rate discussion
 %    \item Compare to rates of fake patterns (to estimate noise influence)
 %\end{itemize}
-\label{sec:DTData-SLHitClustering}
-The first step in the reconstruction of tracks in the \ac{DT} chamber is the selection of cell hit candidates, which may be part of a track. Since the reconstruction is triggerless, no external trigger signal can be used for this purpose. Instead, all recorded cell hits must be treated as potential track hit candidates and consecutively filtered out. The first step is the rejection of hits which do not form a plausible geometric shape or do not lie close enough in time.
+\label{sec:DTData-SLHitPatterns}
+The first step in the reconstruction of tracks in the \ac{DT} chamber is the selection of cell hit candidates, which may be part of a track. Since the reconstruction is triggerless, no external trigger signal can be used for this purpose. Instead, all recorded cell hits must be treated as potential track hit candidates and consecutively filtered out. Hit selection in this step is based on geometric shape of consecutive hits and their temporal distance.
 \FloatBarrier
 \subsection{Track candidate patterns}
-\label{sec:DTData-SLHitClustering-TrackPatterns}
+\label{sec:DTData-SLHitPatterns-TrackPatterns}
 \FloatBarrier
 \paragraph{SL track patterns}
-A muon track leaves ionization and consequently a hit in cells of the different layers of the \ac{DT} chamber. Depending on the track angle, different cell hit patterns can be produced. Fig.\ \ref{fig:DTData-SLPatterns} shows possible hit patterns in one \ac{SL}, under the assumption that four cells are triggered. Note that in reality not always all cells are hit due to detector inefficiencies.
+A muon track leaves ionization charges and consequently a hit in cells of the different layers of the \ac{DT} chamber. Depending on the track angle, different cell hit patterns can be produced. Fig.\ \ref{fig:DTData-SLPatterns} shows possible hit patterns in one \ac{SL}, under the assumption that four cells are triggered. It is clear that depending on the inclination of the muon track, different patterns can be produced. Note that in reality not always all cells are hit due to detector inefficiencies.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.9\textwidth]{SL-Patterns.pdf}
@@ -243,7 +251,7 @@ A muon track leaves ionization and consequently a hit in cells of the different 
 \end{figure}
 \FloatBarrier
 \paragraph{Pattern timing}
-Depending on the position of the muon track within each cell, the distance from the wire that the electrons need to drift along varies, which results in the hits of the pattern not having the same timestamps. However, one can formulate an upper bound of the timestamp differences of cell hits of a pattern, which might belong to a muon track. This upper bound is given by the maximum drift velocity, since the cell size sets limits the drift times of all cells:
+Depending on the position of the muon track within each cell, the distance from the wire that the electrons need to drift along varies, which results in the hits of the pattern not having the same timestamps (i.e.\ time of collection of the electrons at the wire). However, one can formulate an upper bound of the timestamp differences of cell hits of a pattern, which might belong to a muon track. This upper bound is given by the maximum drift velocity, since the cell size sets limits the drift times of all cells:
 \begin{equation}
     \Delta T_\text{max} = \max \left\{ \left | T_{\text{Ly}\; i} - T_{\text{Ly}\; j} \right | ; \; i,j=0,1,2,3 \right\} \leq t_\text{drift,max} \approx \SI{385}{\nano\second}.
     \label{eq:DTData-PatternTimeWindow}
@@ -252,7 +260,7 @@ Here, $T_{\text{Ly}\; i}$ are the hit timestamps of the respective cell hit in l
 \FloatBarrier
 \paragraph{Pattern finder algorithm}
 The algorithm which was implemented in the custom analysis framework to identify the patterns from above should be briefly described here. The algorithm is capable of finding patterns in the recorded cell hits over a full \ac{SL} and is event-loop based. First, all hits are sorted by their timestamp. Then, the algorithm loops through the hit list one by one and stores the current hit in a matrix containing the latest hit of each cell. After the matrix was updated with the current hit, the all possible patterns which contain the most recently added hit are checked, i.e.\ the time difference of the latest cell hits of each possible pattern is calculated. If any of the checked patterns shows a maximum time difference between all hits $\Delta T_\text{max}$ which is not larger than the selected maximum timestamp difference $t_\text{drift,max}$, the pattern is accepted, and all hit information is stored.
-\newline Note that because this algorithm checks for new patterns which could be constructed with each new hit, it is possible that multiple patterns are constructed in the event of a noise hit close to the "real" pattern, or in case of high energy particle showers triggering many cells in a region of the chamber. The fact that there in fact may be several different patterns very close in time at the same position in the \ac{SL} is revisited in sec.\ \ref{sec:DTData-SLFitGrouping} later.
+\newline Note that because this algorithm checks for new patterns which could be constructed with each new hit, it is possible that multiple patterns are constructed in the event of a noise hit close to the "real" pattern, or in case of high energy particle showers triggering many cells in a region of the chamber. The fact that there may be several patterns very close in time at the same position in the \ac{SL} is revisited in sec.\ \ref{sec:DTData-SLFitGrouping} later.
 \FloatBarrier
 \paragraph{Applied selection criteria}
 This section should present the pattern selection criteria used in this work. Only \ac{SL} patterns with four hits are accepted and not less. In principle (depending on the assumptions) it is possible to also use three-hit patterns for the analysis, however in this thesis this is not the case. Also, regarding the pattern shape, only the patterns with indices $0-5$ are considered. The patterns $6-7$ introduce additional difficulties in the reconstruction without a trigger, and are therefore neglected here. Tab.\ \ref{tab:DTData-PatternSelection} summarizes the pattern selection criteria used in this work.
@@ -271,39 +279,71 @@ This section should present the pattern selection criteria used in this work. On
 \newline The goal of this analysis is to accomplish a track reconstruction algorithm which is simple and can be used for cross-checks with the developed scintillator readout system, and not to conduct precision measurements. Therefore, the reduced selection presented above is considered sufficient. Of course, the algorithm could be extended to both three-hit patterns and different pattern layouts in future contributions.
 \FloatBarrier
 \paragraph{Pattern occupancies}
-Running the pattern finder algorithm on the recorded \ac{DT} dataset yields different occupancies for the different pattern types, which should be discussed in the following.
+Running the pattern finder algorithm on the recorded \ac{DT} dataset yields different occupancies for the different pattern types, which are presented in tab.\ \ref{tab:DTData-PatternOccupancies} and discussed in this paragraph. The observed cumulated pattern rates lie in the range $\mathcal{O}(\SI{700}{\hertz})$ per \ac{SL}. Since the \acp{SL} are approximately similar in area, one would naively expect a similar rate for all of them. Note however due to the distribution of dead cells, some non-uniformity is natural.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|} 
         \hline
-        Pattern type & \ac{SL} 1 (phi) & \ac{SL} 2 (theta) & \ac{SL} 3 (phi) \\ \hline
-        $0$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
-        $1$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
-        $2$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
-        $3$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
-        $4$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\
-        $5$ & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\ \hline
-        Cumulative & \SI{0}{\hertz} & \SI{0}{\hertz} & \SI{0}{\hertz} \\ \hline
+        Pattern & \ac{SL} 1 (phi) & \ac{SL} 2 (theta) & \ac{SL} 3 (phi) \\ \hline
+        $0$ & $(218.3 \pm 14.8)\;\si{\hertz}$ & $(186.5 \pm 13.7)\;\si{\hertz}$ & $(209.1 \pm 14.5)\;\si{\hertz}$ \\
+        $1$ & $(220.7 \pm 14.9)\;\si{\hertz}$ & $(180.1 \pm 13.4)\;\si{\hertz}$ & $(210.7 \pm 14.5)\;\si{\hertz}$ \\
+        $2$ & $(87.3 \pm 9.3)\;\si{\hertz}$ & $(69.7 \pm 8.4)\;\si{\hertz}$ & $(75.3 \pm 8.7)\;\si{\hertz}$ \\
+        $3$ & $(84.8 \pm 9.2)\;\si{\hertz}$ & $(68.3 \pm 8.3)\;\si{\hertz}$ & $(77.3 \pm 8.8)\;\si{\hertz}$ \\
+        $4$ & $(82.1 \pm 9.1)\;\si{\hertz}$ & $(65.9 \pm 8.1)\;\si{\hertz}$ & $(72.8 \pm 8.5)\;\si{\hertz}$ \\
+        $5$ & $(87.3 \pm 9.3)\;\si{\hertz}$ & $(69.8 \pm 8.4)\;\si{\hertz}$ & $(77.4 \pm 8.8)\;\si{\hertz}$ \\ \hline
+        Cumulative & $(780.6 \pm 27.9)\;\si{\hertz}$ & $(640.2 \pm 25.3)\;\si{\hertz}$ & $(722.5 \pm 26.9)\;\si{\hertz}$ \\ \hline
     \end{tabular}
     \caption{Observed \ac{SL} pattern rates in the analyzed \ac{DT} dataset.}
     \label{tab:DTData-PatternOccupancies}
 \end{table}
+\newline It is evident that patterns $(0,1)$, $(2,3)$ and $(4,5)$ exhibit similar rates, which is expected because these patterns are symmetric in their shape. Also, the patterns $(0,1)$ seem to show a significantly higher occupancy as the other pattern types. This can be understood with the angular distribution of atmospheric muons $I\propto\cos^2\theta$, which predicts enhanced vertical muon rates (sec.\ \ref{sec:AtmosphericMuons-Dependencies}).
 \FloatBarrier
 \paragraph{Comparison with cosmic rate}
-The observed cumulated pattern rate per \ac{SL} is higher than this estimation, even higher than the added rate of the two "vertical" patterns $0-1$. Multiple reasons for this observation can be imagined: First it should be noted that the \ac{DT} cells are subject to noise, as already observed in the rates of the single cell hits (sec.\ \ref{sec:DTData-CellHits-Occupancy}). These noise hits can lead to noise-induced patterns.
+The simplified simulation which is discussed in more details in appendix \ref{sec:Simulation} can not only be used to estimate the single cell rate but also to estimate of the expected rates of the different patterns. For this, the simulated \ac{DT} hits are simply analyzed with the same algorithm (as described above) for the chamber data. In the appendix, the expected rates for all analyzed patters are given in tab.\ \ref{tab:Simulation-PatternOccupancies}. Details should not be discussed here, but it is evident that the observed pattern rates in data ($\mathcal{O}(\SI{700}{\hertz})$ cumulated per \ac{SL}) are $\approx 30\%$ higher than expected from the simulation ($\approx\SI{540}{\hertz}$ cumulated per \ac{SL}) This phenomenon was already observed similarly for the single cell rates (sec.\ \ref{sec:DTData-CellHits-Occupancy}).
+\newline This higher rate could also be explained with the noise hits of the single cells, which can lead to noise-induced patterns, if a coincidence of noise takes place. Also note that a noise hit close to a "real" track pattern leads to additional patters being discovered by the pattern finder algorithm (as already discussed above), since it checks for possible patterns after each event when looping though the drift cell hits. The question which of these patterns are the "real" ones can only be resolved during pattern track fitting and grouping (secs.\ \ref{sec:DTData-SLPatternFitting} and \ref{sec:DTData-SLFitGrouping}). The next section discusses the influence of noise-induced patterns in more detail.
 
 \FloatBarrier
 \subsection{Fake patterns}
-\label{sec:DTData-SLHitClustering-FakePatterns}
-This section further investigates the influence of noise on the pattern rate by searching for patterns, i.e.\ patterns that can not originate from muon tracks (except under very extreme circumstances).
+\label{sec:DTData-SLHitPatterns-FakePatterns}
+This section further investigates the influence of noise on the pattern rate by searching for "fake patterns", i.e.\ patterns that can not originate from muon tracks.
 \FloatBarrier
 \paragraph{Influence of noise hits}
-It is clear that the observed noise in the single-cell hits can propagate through the pattern finding algorithm and generate patterns which do not originate from a muon track. A rejection of these patterns is not directly possible, although the patterns may have worse goodness-of-fit values when attempting a track fit.\footnote{One does not expect the timestamps of the cell hits from noise to be correlated in the same manner as track hits, but rather assumes them to be independent.} At this stage however, it is attempted to find out the order of magnitude of these noise-induced patterns.
+It is clear that the observed noise in the single-cell hits can propagate through the pattern finding algorithm and generate patterns which do not originate from a muon track. While for the track-like patterns these noise-induced patterns mix with the "real" muon track patterns, there are also noise-induced patterns which could not originate from a muon track due to the pattern geometry.\footnote{In principle there is the possibility that more exotic patterns are formed from real particle crossings. This may be due to showering of high energy particles or due to Coulomb scattering (sec.\ \ref{sec:Interactions-CoulombScattering}) inside the \ac{SL}. These effects are considered to have a small influence, and therefore the fake patterns discussed here are assumed to be generated only by noise.} Analysis of the rate of these fake patterns could therefore provide information on the order of magnitude of the fraction of noise in the track-like patterns.
 \FloatBarrier
 \paragraph{SL fake patterns}
-
+The selected fake patterns analyzed in this section are presented in fig.\ \ref{fig:DTData-SLFakePatterns}. It is obvious, that one can not create these patters by drawing a straight track through the \ac{SL}.\footnote{In fact, fake patterns $(2,3)$ may originate from a muon track which is diagonal and does not trigger the cells between the two hit clusters. However, this is considered very unlikely and this pattern is also used as a fake pattern here.} The same pattern finding algorithm as before is used on the cell hit data, with the task to now identify these fake patterns.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{SL-FakePatterns.pdf}
+    \caption{Analyzed fake patterns which can not originate from a muon track.}
+    \label{fig:DTData-SLFakePatterns}
+\end{figure}
 \FloatBarrier
 \paragraph{Fake pattern occupancies}
+Tab.\ \ref{tab:DTData-FakePatternOccupancies} lists the obtained rates for the fake patterns from the recorded \ac{DT} data. Generally, the observed fake pattern rates per \ac{SL} are in the order $\mathcal{O}(\SI{40}{\hertz})$, and therefore significantly smaller than the rates of the track-like patterns ($\mathcal{O}(\SI{700}{\hertz})$). This emphasizes that there is actually a track-like signal detected with the \ac{DT} chamber and not only noise is measured.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|} 
+        \hline
+        Fake pattern & \ac{SL} 1 (phi) & \ac{SL} 2 (theta) & \ac{SL} 3 (phi) \\ \hline
+        $0$ & $(8.9 \pm 3.0)\;\si{\hertz}$ & $(5.2 \pm 2.3)\;\si{\hertz}$ & $(6.0 \pm 2.5)\;\si{\hertz}$ \\
+        $1$ & $(2.7 \pm 1.6)\;\si{\hertz}$ & $(1.6 \pm 1.3)\;\si{\hertz}$ & $(1.8 \pm 1.4)\;\si{\hertz}$ \\
+        $2$ & $(11.9 \pm 3.5)\;\si{\hertz}$ & $(7.1 \pm 2.7)\;\si{\hertz}$ & $(7.1 \pm 2.7)\;\si{\hertz}$ \\
+        $3$ & $(12.7 \pm 3.6)\;\si{\hertz}$ & $(8.2 \pm 2.9)\;\si{\hertz}$ & $(8.0 \pm 2.8)\;\si{\hertz}$ \\
+        $4$ & $(8.7 \pm 2.9)\;\si{\hertz}$ & $(5.1 \pm 2.3)\;\si{\hertz}$ & $(6.3 \pm 2.5)\;\si{\hertz}$ \\
+        $5$ & $(8.5 \pm 2.9)\;\si{\hertz}$ & $(5.2 \pm 2.3)\;\si{\hertz}$ & $(6.2 \pm 2.5)\;\si{\hertz}$ \\ \hline
+        Cumulative & $(53.4 \pm 7.3)\;\si{\hertz}$ & $(32.4 \pm 5.7)\;\si{\hertz}$ & $(35.5 \pm 6.0)\;\si{\hertz}$ \\ \hline
+    \end{tabular}
+    \caption{Observed \ac{SL} fake pattern rates in the analyzed \ac{DT} dataset.}
+    \label{tab:DTData-FakePatternOccupancies}
+\end{table}
+\newline As discussed for the track-like patterns, a symmetry in rate for the symmetric fake patterns $(0,1)$, $(2,3)$ and $(4,5)$ is visible, which is expected.
+\FloatBarrier
+\paragraph{Estimation of noise-induced track-like patterns}
+If one assumes the noise to be independent for all drift cells, one can now estimate the fraction of noise in the observed track-like patterns with the results from the fake pattern analysis. With the six fake patterns considered, the noise-induced rate per pattern can be roughly estimated as $\mathcal{O}(\SI{40}{\hertz})/6 \approx \mathcal{O}(\SI{10}{\hertz})$.
+\newline As discussed above, the observed discrepancy between the track-like pattern rates in data and simulation is around $\mathcal{O}(\SI{150}{\hertz})$, cumulated for the six analyzed patterns (cf.\ sec.\ \ref{sec:DTData-SLHitPatterns-TrackPatterns}). This is larger than what can be explained with the influence of noise, at least in the presented estimation with the fake patterns. However, it should be noted that the simulation (appendix \ref{sec:Simulation}) is based significant simplifications and therefore serves more as an order-of-magnitude estimation than a precise tool. To this extent, the comparison between simulation and data is successful, as both track-like pattern rates lie in the same order of magnitude of $\mathcal{O}(10^2\;\si{\hertz})$.
+
+
 
 
 
@@ -316,7 +356,7 @@ It is clear that the observed noise in the single-cell hits can propagate throug
 %    \item Discuss fit results
 %    \item Apply appropriate goodness of fit cut
 %\end{itemize}
-\label{sec:DTData-SLClusterFitting}
+\label{sec:DTData-SLPatternFitting}
 %\section{Superlayer relative time alignment}
 %\begin{itemize}
 %    \item Mention relative alignment problem of OBDTs
@@ -326,15 +366,15 @@ It is clear that the observed noise in the single-cell hits can propagate throug
 
 \FloatBarrier
 \subsection{Assumptions and strategy}
-\label{sec:DTData-SLClusterFitting-Strategy}
+\label{sec:DTData-SLPatternFitting-Strategy}
 
 \FloatBarrier
 \subsection{Pattern fit results}
-\label{sec:DTData-SLClusterFitting-Results}
+\label{sec:DTData-SLPatternFitting-Results}
 
 \FloatBarrier
 \subsection{Parameter cuts}
-\label{sec:DTData-SLClusterFitting-Cuts}
+\label{sec:DTData-SLPatternFitting-Cuts}
 
 
 
@@ -351,7 +391,7 @@ It is clear that the observed noise in the single-cell hits can propagate throug
 
 
 \FloatBarrier
-\section{Track building}
+\section{Global track building}
 %\begin{itemize}
 %    \item Select cluster groups within time window from all superlayers
 %    \item Only use cluster groups with no ambiguity (only one cluster per SL)
