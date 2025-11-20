@@ -1,10 +1,12 @@
 \FloatBarrier
 \label{sec:Scint}
+This chapter focuses on the second muon detector used in this thesis: A scintillation strip detector with \ac{SiPM} photon readout. Apart from the detector assembly itself, the full readout electronics and firmware was newly developed for this work. The readout system was developed with the intention to connect it to the Phase-2 \ac{DT} backend (sec.\ \ref{sec:CMS-Phase2Readout}), in order to read out the scintillator and the \ac{DT} chamber synchronously with one combined system.
 
 \FloatBarrier
 \section{Detector setup}
 \label{sec:Scint-Setup}
 %Mention self-development of detector at institute \cite{BSc-Ehlert} \cite{MSc-Ehlert}.
+The detector itself was developed at Physics Institute III A in Aachen over the course of past Bachelor's and Master's theses \cite{BSc-Ehlert,MSc-Ehlert}. The development of the detector was already completed as this thesis begun, therefore the final product is used here.
 
 \FloatBarrier
 \subsection{Mechanical structure}
@@ -13,16 +15,69 @@
 %    \item Dual SiPM readout for each strip
 %\end{itemize}
 \label{sec:Scint-MechanicalSetup}
+\FloatBarrier
+\paragraph{Detector layout}
+The detector consists of two layers of 16 scintillator strips stacked with perpendicular orientation to each other, each measuring \SI{50}{\centi\meter} in length, \SI{3}{\centi\meter} in width and \SI{0.5}{\centi\meter} in thickness. The assembly gives a sensitive detector area of around $\SI{50}{\centi\meter} \times \SI{50}{\centi\meter}$ divided into $16 \times 16 = 256$ quadratic sectors with a side length of $\SI{3}{\centi\meter}$. The detector material itself is an organic plastic scintillator (sec.\ \ref{sec:Scintillators-Scintillators}) referred to as EJ-200 \cite{Scint-PlasticScint}. The strips are wrapped in Tyvek\textsuperscript{\textregistered} 1442R reflective fabric \cite{Scint-Tyvek}. Light guiding and wavelength shifting fibers are glues into both long edges of each scintillator strip. The casing of the detector does not only provide light isolation from external photons, but also includes walls in between each of the strips, to suppress optical crosstalk between layers \cite{BSc-Ehlert,MSc-Ehlert}. Fig.\ \ref{fig:Scint-Setup-Renderings} shows two renderings of the detector.
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[height=4cm]{Scint-Setup-LayerRendering.png}
+        \caption{3D view of one opened layer with 16 strips}
+        \label{fig:Scint-Setup-LayerRendering}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[height=5cm]{Scint-Setup-TopRendering.png}
+        \caption{Top view of the two stacked layers}
+        \label{fig:Scint-Setup-TopRendering}
+    \end{subfigure}
+    \hfill
+    \caption{Renderings of the scintillation detector consisting of $16 \times 16$ strips \cite{MSc-Ehlert}.}
+    \label{fig:Scint-Setup-Renderings}
+\end{figure}
+\FloatBarrier
+\paragraph{Photon detection}
+The scintillation photons created in the scintillator are read out by 64 \acp{SiPM} (sec.\ \ref{sec:Scintillators-SiPMs}). One \ac{SiPM} is mounted on both ends of each strip, reading out the photons from the two wavelength-shifting fibers. The model of \ac{SiPM} used is the onsemi\textsuperscript{\texttrademark} J-Series 30035 \cite{Scint-OnsemiSiPM}. The optical coupling between the scintillator and the \ac{SiPM} is accomplished with ELASTOSIL\textsuperscript{\textregistered} RT 604 optical silicon rubber pads \cite{Scint-Elastosil}.
 
 \FloatBarrier
-\subsection{SiPM electronics}
+\subsection{SiPM frontend electronics}
 %\begin{itemize}
 %    \item SiPM front-end board with preamplifier
 %    \item Backbone of detector with bias voltage supply
 %    \item Rasperry Pi for backbone control
 %\end{itemize}
 \label{sec:Scint-SiPMElectronics}
-
+\FloatBarrier
+\paragraph{Signal preamplifier} A small frontend \ac{PCB} is mounted directly at the scintillator. The \ac{SiPM} itself is mounted on this \ac{PCB}. Additionally, it features a \SI{22}{\decibel} preamplifier, which amplifies the  \ac{SiPM} output signal to measurable voltage ranges. The setup achieves an output amplitude for one \ac{p.e.} (sec.\ \ref{sec:Scintillators-SiPMs}) of $\approx\SI{5}{\milli\volt}$ for an applied bias voltage of \SI{29}{\volt} \cite{MSc-Ehlert}. In addition, the \ac{PCB} hosts a \ac{LED} which may be used to test the photon readout. In this work this feature is however not used. Fig.\ \ref{fig:Scint-Setup-FrontendPCB} shows a picture of one frontend \ac{PCB}.
+\FloatBarrier
+\paragraph{Frontend infrastructure}
+Around the sides of the detector, a total of eight infrastructure \acp{PCB} (also called "backbones") are mounted. Each infrastructure board directly connects to eight frontend \acp{PCB}, i.e.\ eight \acp{SiPM}. It supplies the bias voltage as well as the operation voltage for the preamplifier. The amplified signals are provided on the infrastructure \ac{PCB} on \ac{MCX} connectors, so it can be further transmitted to the readout system via coaxial cables \cite{MSc-Ehlert}.
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{Scint-Frontend-PCB.png}
+        \caption{Frontend \ac{PCB} with \ac{SiPM} and preamplifier}
+        \label{fig:Scint-Setup-FrontendPCB}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.69\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{Scint-Backbone-PCB.png}
+        \caption{Infrastructure \ac{PCB} for with the 8 \ac{SiPM} signal \ac{MCX} connectors visible on the top}
+        \label{fig:Scint-Setup-BackbonePCB}
+    \end{subfigure}
+    \hfill
+    \caption{Photos of the frontend and infrastructure \acp{PCB} of the scintillation detector \cite{MSc-Ehlert}.}
+    \label{fig:Scint-Setup-FrontendElectronics}
+\end{figure}
+\FloatBarrier
+\paragraph{Operating conditions}
+Due to fabrication tolerances, the internal breakdown voltage of the individual \acp{SiPM} varies as much as \SI{0.5}{\volt} for the used model \cite{Scint-OnsemiSiPM}. As the \ac{SiPM} output amplitude varies with the applied bias voltage, one can in principle correct for these fluctuations between \acp{SiPM} by conducting extensive calibration measurements \cite{MSc-Ehlert}. However, measurements in this work do not aim at characterization of the detector performance or precision determination of the cosmic muon rate. Instead, the goal is the validation of the developed detector readout electronics and firmware and the synchronization with the \ac{DT} chamber readout (sec.\ \ref{sec:DT}). Therefore, these measurements were omitted and a constant bias voltage of \SI{29}{\volt} is used.
 
 \FloatBarrier
 \section{FPGA readout system}
@@ -33,6 +88,16 @@
 %    \item Show scheme / overview of readout system
 %\end{itemize}
 \label{sec:Scint-Readout}
+This section should present the readout electronics and firmware developed over the course of this thesis, which receive the analog \ac{SiPM} signals, assign a timestamp and forward them to the backend.
+\FloatBarrier
+\paragraph{Readout board}
+A new \ac{PCB} was developed to host the readout system. The board is shown in fig.\ \ref{fig:Scint-Readout-CarrierBoard}. It features 32 \ac{MCX} connectors to receive \ac{SiPM} input signals and a AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. The name \acs{SoC} stands for \acl{SoC}. These modules feature both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. Therefore, they allow to combine the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. To forward the acquired data to the backend, another \ac{PCB} was developed, the \ac{lpGBT} Mezzanine, which is discussed in more detail in sec.\ \ref{sec:Scint-lpGBTMezzanine}. The readout board hosts a connector to plug the mezzanine onto it, as can be seen on the top right in fig.\ \ref{fig:Scint-Readout-CarrierBoard}.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Carrier-with-Mezzanine.png}
+    \caption{Photo of the developed readout \ac{PCB} hosting 32 \ac{SiPM} signal inputs (bottom right), a \ac{SoC} module (center left) and the \ac{lpGBT} Mezzanine board (top right).}
+    \label{fig:Scint-Readout-CarrierBoard}
+\end{figure}
 
 \FloatBarrier
 \subsection{Input circuitry}

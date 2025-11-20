@@ -10168,6 +10168,69 @@
       \verb https://cds.cern.ch/record/1264095
       \endverb
     \endentry
+    \entry{DT-VDC-System}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=2647fa445b8c48b377356ad7aac41e16}{%
+           family={Altenhöfer},
+           familyi={A\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=4da69697781c3e623fdd513d58d3f64a}{%
+           family={Hebbeker},
+           familyi={H\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=361952262400648ca2585859a1fa0a5f}{%
+           family={Heidemann},
+           familyi={H\bibinitperiod},
+           given={Carsten},
+           giveni={C\bibinitperiod}}}%
+        {{hash=39fdde24059baf9f110c50726e9a86e9}{%
+           family={Reithler},
+           familyi={R\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod}}}%
+        {{hash=b732c1c660ee51489563b93dc86aa3d3}{%
+           family={Sonnenschein},
+           familyi={S\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bc6c772d9f22c7ffd5c3196396d327dd}{%
+           family={Teyssier},
+           familyi={T\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec791638e053e9c36e511d2b63d1ad9e}
+      \strng{fullhash}{45ecdf49d90d682d48e9ce3bdabcb615}
+      \strng{fullhashraw}{45ecdf49d90d682d48e9ce3bdabcb615}
+      \strng{bibnamehash}{ec791638e053e9c36e511d2b63d1ad9e}
+      \strng{authorbibnamehash}{ec791638e053e9c36e511d2b63d1ad9e}
+      \strng{authornamehash}{ec791638e053e9c36e511d2b63d1ad9e}
+      \strng{authorfullhash}{45ecdf49d90d682d48e9ce3bdabcb615}
+      \strng{authorfullhashraw}{45ecdf49d90d682d48e9ce3bdabcb615}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0168-9002}
+      \field{journaltitle}{Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment}
+      \field{title}{The drift velocity monitoring system of the CMS barrel muon chambers}
+      \field{volume}{888}
+      \field{year}{2018}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.nima.2017.12.032
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0168900217314225
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0168900217314225
+      \endverb
+      \keyw{CMS,Muon detector,Gas quality monitoring}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

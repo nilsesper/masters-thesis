@@ -1,5 +1,16 @@
 
 \FloatBarrier
+\section{Timing calibration with testpulses}
+
+Fig.\ \ref{fig:DTData-Testpulse-LatencyDifference} shows an oscilloscope screenshot of the measurement of the testpulse output latency for both \ac{OBDT} flavors. It is evident that the testpulses are not issued at the same time, although both \acp{OBDT} were programmed to do so. As explained in sec.\ \ref{sec:DTData-Testpulse-Generation}, this is due to the differences in analog testpulse circuitry. From the cursor in the screenshot, the time difference is estimated as $T_\text{testpulse, theta} - T_\text{testpulse, phi} = \SI{116}{\nano\second}$. One conservatively assumes an uncertainty of $\SI{1}{\nano\second}$, given the step size of the cursor of $\SI{2}{\nano\second}$.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.65\textwidth]{DTData-TestpulseLatencyDifference.PNG}
+    \caption{Measurement of the latency between the \ac{OBDT} phi (yellow) and theta (magenta) testpulse output with an oscilloscope. The time difference can be read off from the cursor $\Delta t$ value in the bottom left.}
+    \label{fig:DTData-Testpulse-LatencyDifference}
+\end{figure}
+
+\FloatBarrier
 \section{Drift cell hits}
 
 Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponential fit to the tail of the hit time difference distribution for $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$. From the residual plot and the goodness-of-fit variable (which lies in the order of one) one can conclude that the exponential behavior of the time difference $\Delta T_\text{cell}$ is indeed a valid assumption. The obtained exponential fit is used as "background" estimation for the Poisson noise events, as discussed in sec.\ \ref{sec:DTData-CellHits-SecondaryHits}
@@ -10,7 +21,60 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
     \label{fig:DTData-CellHitDifference-ExpFit}
 \end{figure}
 
+\FloatBarrier
+\section{Superlayer pattern fitting}
 
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|} 
+        \hline
+        Pattern & Combination & $L_{ly=0}$ & $L_{ly=1}$ & $L_{ly=2}$ & $L_{ly=3}$ \\ \hline
+        % pattern: 0 (+a), lateralities: [-1,1,-1,-1], [-1,1,-1,1], [1,1,-1,-1], [1,1,-1,1]
+        \multirow{4}{*}{$0$} & $0$ & $-1$ & $+1$ & $-1$ & $-1$ \\
+                             & $1$ & $-1$ & $+1$ & $-1$ & $+1$ \\
+                             & $2$ & $+1$ & $+1$ & $-1$ & $-1$ \\
+                             & $3$ & $+1$ & $+1$ & $-1$ & $+1$ \\ \hline
+        % pattern: 1 (-a), lateralities: [1,-1,1,1], [1,-1,1,-1], [-1,-1,1,1], [-1,-1,1,-1]
+        \multirow{4}{*}{$1$} & $0$ & $-1$ & $+1$ & $-1$ & $-1$ \\
+                             & $1$ & $-1$ & $+1$ & $-1$ & $+1$ \\
+                             & $2$ & $+1$ & $+1$ & $-1$ & $-1$ \\
+                             & $3$ & $+1$ & $+1$ & $-1$ & $+1$ \\ \hline
+        % pattern: 2 (+b), lateralities: [1,1,1,-1], [-1,1,1,-1], [-1,-1,1,-1]
+        \multirow{3}{*}{$2$} & $0$ & $+1$ & $+1$ & $+1$ & $-1$ \\
+                             & $1$ & $-1$ & $+1$ & $+1$ & $-1$ \\
+                             & $2$ & $-1$ & $-1$ & $+1$ & $-1$ \\ \hline
+        % pattern: 3 (-b), lateralities: [-1,-1,-1,1], [1,-1,-1,1], [1,1,-1,1]
+        \multirow{3}{*}{$3$} & $0$ & $-1$ & $-1$ & $-1$ & $+1$ \\
+                             & $1$ & $+1$ & $-1$ & $-1$ & $+1$ \\
+                             & $2$ & $+1$ & $+1$ & $-1$ & $+1$ \\ \hline
+        % pattern: 4 (+c), lateralities: [1,-1,-1,-1], [1,-1,-1,1], [1,-1,1,1]
+        \multirow{3}{*}{$4$} & $0$ & $+1$ & $-1$ & $-1$ & $-1$ \\
+                             & $1$ & $+1$ & $-1$ & $-1$ & $+1$ \\
+                             & $2$ & $+1$ & $-1$ & $+1$ & $+1$ \\ \hline
+        % pattern: 5 (-c), lateralities: [-1,1,1,1], [-1,1,1,-1], [-1,1,-1,-1]
+        \multirow{3}{*}{$5$} & $0$ & $-1$ & $+1$ & $+1$ & $+1$ \\
+                             & $1$ & $-1$ & $+1$ & $+1$ & $-1$ \\
+                             & $2$ & $-1$ & $+1$ & $-1$ & $-1$ \\ \hline
+    \end{tabular}
+    \caption{Allowed laterality $L_{ly}=\pm 1$ combinations for all analyzed patterns $0-5$. All configurations are tried in the \ac{SL} pattern fit, and the result with the best goodness-of-fit variable is kept.}
+    \label{tab:DTData-SLPatternFit-AllowedLateralities}
+\end{table}
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|} 
+        \hline
+        Pattern & $\alpha_{min}$ & $\alpha_{max}$ \\ \hline
+        $0$ & \SI{-1.02}{\radian} & \SI{0.49}{\radian} \\
+        $1$ & \SI{-0.49}{\radian} & \SI{1.02}{\radian} \\
+        $2$ & \SI{-1.02}{\radian} & \SI{0.00}{\radian} \\
+        $3$ & \SI{0.00}{\radian} & \SI{1.02}{\radian} \\
+        $4$ & \SI{-1.02}{\radian} & \SI{0.00}{\radian} \\
+        $5$ & \SI{0.00}{\radian} & \SI{1.02}{\radian} \\ \hline
+    \end{tabular}
+    \caption{Calculated track angle $\alpha$ range for all track-like patterns. The angles are calculated assuming the track intersection at the height of the wire in each cell.}
+    \label{tab:SLPatternFit-AngularRange}
+\end{table}
 
 
 
