@@ -1,20 +1,12 @@
 \FloatBarrier
 \label{sec:Scint}
-This chapter focuses on the second muon detector used in this thesis: A scintillation strip detector with \ac{SiPM} photon readout. Apart from the detector assembly itself, the full readout electronics and firmware was newly developed for this work. The readout system was developed with the intention to connect it to the Phase-2 \ac{DT} backend (sec.\ \ref{sec:CMS-Phase2Readout}), in order to read out the scintillator and the \ac{DT} chamber synchronously with one combined system.
+This chapter focuses on the second muon detector used in this thesis: A scintillation strip detector with \ac{SiPM} photon readout. The readout electronics and firmware was newly developed for this work, with the intention to connect it to the Phase-2 \ac{DT} backend (sec.\ \ref{sec:CMS-Phase2Readout}). The goal is to read out the scintillator and the \ac{DT} chamber together with this system and to demonstrate that a synchronization was actually achieved (sec.\ \ref{sec:Combined}).
 
 \FloatBarrier
 \section{Detector setup}
 \label{sec:Scint-Setup}
 %Mention self-development of detector at institute \cite{BSc-Ehlert} \cite{MSc-Ehlert}.
-The detector itself was developed at Physics Institute III A in Aachen over the course of past Bachelor's and Master's theses \cite{BSc-Ehlert,MSc-Ehlert}. The development of the detector was already completed as this thesis begun, therefore the final product is used here.
-
-\FloatBarrier
-\subsection{Mechanical structure}
-%\begin{itemize}
-%    \item 2x 16 plastic scintillator strips with wavelength-shifting fibers
-%    \item Dual SiPM readout for each strip
-%\end{itemize}
-\label{sec:Scint-MechanicalSetup}
+The detector itself was developed at Physics Institute III A in Aachen over the course of past Bachelor's and Master's theses \cite{BSc-Ehlert,MSc-Ehlert}. The development of the detector was already completed as this thesis begun, therefore the final product could already be used here.
 \FloatBarrier
 \paragraph{Detector layout}
 The detector consists of two layers of 16 scintillator strips stacked with perpendicular orientation to each other, each measuring \SI{50}{\centi\meter} in length, \SI{3}{\centi\meter} in width and \SI{0.5}{\centi\meter} in thickness. The assembly gives a sensitive detector area of around $\SI{50}{\centi\meter} \times \SI{50}{\centi\meter}$ divided into $16 \times 16 = 256$ quadratic sectors with a side length of $\SI{3}{\centi\meter}$. The detector material itself is an organic plastic scintillator (sec.\ \ref{sec:Scintillators-Scintillators}) referred to as EJ-200 \cite{Scint-PlasticScint}. The strips are wrapped in Tyvek\textsuperscript{\textregistered} 1442R reflective fabric \cite{Scint-Tyvek}. Light guiding and wavelength shifting fibers are glues into both long edges of each scintillator strip. The casing of the detector does not only provide light isolation from external photons, but also includes walls in between each of the strips, to suppress optical crosstalk between layers \cite{BSc-Ehlert,MSc-Ehlert}. Fig.\ \ref{fig:Scint-Setup-Renderings} shows two renderings of the detector.
@@ -41,20 +33,33 @@ The detector consists of two layers of 16 scintillator strips stacked with perpe
 \FloatBarrier
 \paragraph{Photon detection}
 The scintillation photons created in the scintillator are read out by 64 \acp{SiPM} (sec.\ \ref{sec:Scintillators-SiPMs}). One \ac{SiPM} is mounted on both ends of each strip, reading out the photons from the two wavelength-shifting fibers. The model of \ac{SiPM} used is the onsemi\textsuperscript{\texttrademark} J-Series 30035 \cite{Scint-OnsemiSiPM}. The optical coupling between the scintillator and the \ac{SiPM} is accomplished with ELASTOSIL\textsuperscript{\textregistered} RT 604 optical silicon rubber pads \cite{Scint-Elastosil}.
+\FloatBarrier
+\paragraph{Readout chain}
+Fig.\ \ref{fig:Scint-Readout-Chain} shows an overview of the readout chain of the scintillation detector as used in this thesis. The following sections describe the presented elements of the system in detail.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Scintillator-Schematic.pdf}
+    \caption{Illustration of the readout chain of the scintillation detector.}
+    \label{fig:Scint-Readout-Chain}
+\end{figure}
+
+
+
+
 
 \FloatBarrier
-\subsection{SiPM frontend electronics}
+\section{Frontend electronics}
 %\begin{itemize}
 %    \item SiPM front-end board with preamplifier
 %    \item Backbone of detector with bias voltage supply
 %    \item Rasperry Pi for backbone control
 %\end{itemize}
-\label{sec:Scint-SiPMElectronics}
+\label{sec:Scint-Frontend}
 \FloatBarrier
 \paragraph{Signal preamplifier} A small frontend \ac{PCB} is mounted directly at the scintillator. The \ac{SiPM} itself is mounted on this \ac{PCB}. Additionally, it features a \SI{22}{\decibel} preamplifier, which amplifies the  \ac{SiPM} output signal to measurable voltage ranges. The setup achieves an output amplitude for one \ac{p.e.} (sec.\ \ref{sec:Scintillators-SiPMs}) of $\approx\SI{5}{\milli\volt}$ for an applied bias voltage of \SI{29}{\volt} \cite{MSc-Ehlert}. In addition, the \ac{PCB} hosts a \ac{LED} which may be used to test the photon readout. In this work this feature is however not used. Fig.\ \ref{fig:Scint-Setup-FrontendPCB} shows a picture of one frontend \ac{PCB}.
 \FloatBarrier
 \paragraph{Frontend infrastructure}
-Around the sides of the detector, a total of eight infrastructure \acp{PCB} (also called "backbones") are mounted. Each infrastructure board directly connects to eight frontend \acp{PCB}, i.e.\ eight \acp{SiPM}. It supplies the bias voltage as well as the operation voltage for the preamplifier. The amplified signals are provided on the infrastructure \ac{PCB} on \ac{MCX} connectors, so it can be further transmitted to the readout system via coaxial cables \cite{MSc-Ehlert}.
+Around the sides of the detector, a total of eight infrastructure \acp{PCB} (also called "backbones") are mounted. Each infrastructure board directly connects to eight frontend \acp{PCB}, i.e.\ eight \acp{SiPM}. It supplies the bias voltage as well as the operation voltage for the preamplifier. The amplified signals are provided on the infrastructure \ac{PCB} on \ac{MCX} connectors, so it can be further transmitted to the readout system via coaxial cables. A Raspberry Pi \cite{Raspberry-Pi} is used to control the bias voltage levels of all channels \cite{MSc-Ehlert}.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -77,10 +82,15 @@ Around the sides of the detector, a total of eight infrastructure \acp{PCB} (als
 \end{figure}
 \FloatBarrier
 \paragraph{Operating conditions}
-Due to fabrication tolerances, the internal breakdown voltage of the individual \acp{SiPM} varies as much as \SI{0.5}{\volt} for the used model \cite{Scint-OnsemiSiPM}. As the \ac{SiPM} output amplitude varies with the applied bias voltage, one can in principle correct for these fluctuations between \acp{SiPM} by conducting extensive calibration measurements \cite{MSc-Ehlert}. However, measurements in this work do not aim at characterization of the detector performance or precision determination of the cosmic muon rate. Instead, the goal is the validation of the developed detector readout electronics and firmware and the synchronization with the \ac{DT} chamber readout (sec.\ \ref{sec:DT}). Therefore, these measurements were omitted and a constant bias voltage of \SI{29}{\volt} is used.
+Due to fabrication tolerances, the internal breakdown voltage of the individual \acp{SiPM} varies as much as \SI{0.5}{\volt} for the used model \cite{Scint-OnsemiSiPM}. As the \ac{SiPM} output amplitude varies with the applied bias voltage, one can in principle correct for these fluctuations between \acp{SiPM} by conducting extensive calibration measurements \cite{MSc-Ehlert}. However, measurements in this work do not aim at characterization of the detector performance or precision determination of the cosmic muon rate. Therefore, these measurements were omitted and a constant bias voltage of \SI{29}{\volt} is used.
+
+
+
+
+
 
 \FloatBarrier
-\section{FPGA readout system}
+\section{Readout board and circuitry}
 %\begin{itemize}
 %    \item Mention completely new hardware and firmware development in scope of this thesis, based on previous experience and efforts of our group
 %    \item AMD Xilinx UltraScale+ ZynqMPSoC
@@ -88,84 +98,80 @@ Due to fabrication tolerances, the internal breakdown voltage of the individual 
 %    \item Show scheme / overview of readout system
 %\end{itemize}
 \label{sec:Scint-Readout}
-This section should present the readout electronics and firmware developed over the course of this thesis, which receive the analog \ac{SiPM} signals, assign a timestamp and forward them to the backend.
+This section should present the readout electronics and firmware which were developed solely over the course of this thesis.
+
+\FloatBarrier
+\subsection{Overview}
+\FloatBarrier
+\paragraph{General requirements}
+The following requirements were defined for the readout board:
+\newline It should feature 32 input channels for analog \ac{SiPM} signals. These signals should be discriminated with a given threshold voltage (cf.\ sec.\ \ref{sec:ReadoutElectronics-General}). A precise timestamp should be assigned to each hit, with a precision of $\mathcal{O}(\SI{1}{\nano\second})$. For calibration and testing purposes, there should also be the capability to send simultaneous testpulses to all input channels. The board should operate in synchronization with the central clock, assign global timestamps to all recorded hits and transfer them to the \ac{DT} backend. The compatibility to the \ac{DT} backend is essential, as the goal of this work is to read out the scintillator together with the \ac{DT} chamber.
 \FloatBarrier
 \paragraph{Readout board}
-A new \ac{PCB} was developed to host the readout system. The board is shown in fig.\ \ref{fig:Scint-Readout-CarrierBoard}. It features 32 \ac{MCX} connectors to receive \ac{SiPM} input signals and a AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. The name \acs{SoC} stands for \acl{SoC}. These modules feature both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. Therefore, they allow to combine the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. To forward the acquired data to the backend, another \ac{PCB} was developed, the \ac{lpGBT} Mezzanine, which is discussed in more detail in sec.\ \ref{sec:Scint-lpGBTMezzanine}. The readout board hosts a connector to plug the mezzanine onto it, as can be seen on the top right in fig.\ \ref{fig:Scint-Readout-CarrierBoard}.
+A new \ac{PCB} was developed to host the readout system according to the requirements listed above. Fig.\ \ref{fig:Scint-Readout-CarrierBoard} shows a picture of the board. It features 32 \ac{MCX} connectors for the \ac{SiPM} input signals. 
+\newline The hit data is processed with an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. A \ac{SoC} is a module that feature both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. These modules allow to combine the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. The concrete device used is the Trentz Elektronik TE-0820 which features an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} XCZU3EG-1SFVC784E \cite{FPGA-Trentz}.
+\newline To forward the acquired data to the backend and to receive the central clock, another \ac{PCB} was developed, the \ac{lpGBT} mezzanine (sec.\ \ref{sec:Scint-lpGBTMezzanine}). The readout board hosts a \ac{FMC} connector to plug the mezzanine onto it.
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.65\textwidth]{Carrier-with-Mezzanine.png}
-    \caption{Photo of the developed readout \ac{PCB} hosting 32 \ac{SiPM} signal inputs (bottom right), a \ac{SoC} module (center left) and the \ac{lpGBT} Mezzanine board (top right).}
+    \includegraphics[width=0.5\textwidth]{Carrier-with-Mezzanine.png}
+    \caption{Photo of the developed readout \ac{PCB} hosting 32 \ac{SiPM} signal inputs (bottom right), a \ac{SoC} module (center left) and the \ac{lpGBT} mezzanine board plugged into the \ac{FMC} connector (top right).}
     \label{fig:Scint-Readout-CarrierBoard}
 \end{figure}
 
 \FloatBarrier
-\subsection{Input circuitry}
-%\begin{itemize}
-%    \item Synchonous testpulse source
-%    \item SiPM signal input and testpulse input (AC coupled)
-%    \item Individually selectable thresold for all channels
-%    \item (Show screenshot from SPICE simulation)
-%\end{itemize}
-\label{sec:Scint-Readout-Input}
-
-\FloatBarrier
-\subsection{Signal sampling with FPGA-internal comparators}
+\subsection{Discrimination with FPGA-internal comparators}
 %\begin{itemize}
 %    \item Comparators for input signal discrimination, however no conventional, dedicated hardware but FPGA-internal comparators used.
 %    \item Use FPGA-internal blocks for deserialization to increase time resolution
 %\end{itemize}
-\label{sec:Scint-Readout-Sampling}
-
-\FloatBarrier
-\subsubsection{Working principle}
 %\begin{itemize}
 %    \item FPGA-internal comparators (intended for differential signalling)
 %    \item Novel concept: Use FPGA-internal comparators with analog signals \cite{FPGA-MVT-Xi} \cite{FPGA-MVT-Palka} \cite{FPGA-MVT-Eliseev}
 %    \item Voltage limits of inputs
 %    \item Deserializers for higher time resolution
 %\end{itemize}
-\label{sec:Scint-Readout-Sampling-Principle}
+\label{sec:Scint-ReadoutBoard-FPGASampling}
 
 \FloatBarrier
-\subsubsection{Voltage bias calibration}
+\subsection{Analog input circuitry}
 %\begin{itemize}
-%    \item FPGA-internal comparators (on FPGA silicon die) are subject to production uncertainties
-%    \item Unfolds in voltage bias on comparator switching point
-%    \item Scan input voltage range while keeping other comparator input constant to detemine switching point of comparator (Metastability calibration)
-%    \item Account for measured biases when setting thresolds
+%    \item Synchonous testpulse source
+%    \item SiPM signal input and testpulse input (AC coupled)
+%    \item Individually selectable thresold for all channels
+%    \item (Show screenshot from SPICE simulation)
 %\end{itemize}
-\label{sec:Scint-Readout-Sampling-VoltageBias}
+\label{sec:Scint-ReadoutBoard-Input}
 
 \FloatBarrier
-\subsubsection{Input timing calibration}
-%\begin{itemize}
-%    \item Bank-specific calibration of deserializers on each power-cycle leads to non-deterministic signal delays
-%    \item Use simultaneous testpulses to measure these delays
-%    \item Use delay module in firmware to correct for these effects already on the device
-%    \item Mention ringing of testpulse signal in circuit, but explain that no negative effect on calibration
-%\end{itemize}
-\label{sec:Scint-Readout-Sampling-TimingBias}
+\section{FPGA readout firmware}
+\label{sec:Scint-ReadoutFirmware}
 
 \FloatBarrier
-\subsection{FPGA readout firmware}
-\label{sec:Scint-Readout-Firmware}
+\subsection{Hit time digitization}
+\label{sec:Scint-ReadoutFirmware-SamplingTDC}
 
 \FloatBarrier
-\subsubsection{Timestamp assignment}
+\subsection{Programmable delay units}
+\label{sec:Scint-ReadoutFirmware-ProgrammableDelays}
+
+\FloatBarrier
+\subsection{Dead time logic}
+\label{sec:Scint-ReadoutFirmware-DeadTime}
+
+\FloatBarrier
+\subsection{Global timestamp assignment}
 %\begin{itemize}
 %    \item Hit arrival time translated to (absolute) timestamp
 %    \item Same format as ODBT hits
 %\end{itemize}
-\label{sec:Scint-Readout-Firmware-TimestampAssignment}
-
-%\subsubsection{Online coincidence evaluation}
-%\begin{itemize}
-%    \item 
-%\end{itemize}
+\label{sec:Scint-ReadoutFirmware-TimestampAssignment}
 
 \FloatBarrier
-\subsubsection{Data funneling}
+\subsection{Online coincidence evaluation}
+\label{sec:Scint-ReadoutFirmware-Coincidence}
+
+\FloatBarrier
+\subsection{Data buffering and funneling}
 %\begin{itemize}
 %    \item Limited bandwidth: Can not transmit hits of all channels together
 %    \item However do not want to lose hits
@@ -173,7 +179,9 @@ A new \ac{PCB} was developed to host the readout system. The board is shown in f
 %    \item Dynamically cycle through and activate outputs of different channel buffers
 %    \item Reduces possible hit rate compared to no funnel
 %\end{itemize}
-\label{sec:Scint-Readout-Firmware-Funneling}
+\label{sec:Scint-ReadoutFirmware-Funneling}
+
+
 
 
 

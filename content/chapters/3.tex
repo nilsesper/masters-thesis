@@ -284,14 +284,14 @@ Since the Serenity and \ac{BMTL1} hardware is not yet available, a protyping pla
     \hfill
     \begin{subfigure}[c]{0.49\textwidth}
         \centering
-        \includegraphics[height=3cm]{HTG-940-Board.png}
+        \includegraphics[height=3.5cm]{HTG-940-Board.png}
         \caption{\ac{HTG-940} \ac{FPGA} evaluation board \cite{HTG-940}.}
         \label{fig:HTG-940-Board}
     \end{subfigure}
     \hfill
     \begin{subfigure}[c]{0.49\textwidth}
         \centering
-        \includegraphics[height=3cm]{DTBackend-Box.png}
+        \includegraphics[height=3.5cm]{DTBackend-Box.png}
         \caption{Image of the \ac{SCTbox} with optics patch panel.}
         \label{fig:DT-BackendBox}
     \end{subfigure}
@@ -346,11 +346,11 @@ The \ac{DT} chamber (sec.\ \ref{sec:CMS-DTSetup}) is of the type MB/W/1/S (MB1),
         \hline
         & \acp{SL} 1, 3 (phi) & \ac{SL} 2 (theta) \\ \hline
         Wire length & \SI{2379}{\milli\meter} & \SI{2038}{\milli\meter} \\
-        No.\ wires & 196 & 228 \\ 
-        in layer 0 & 49 & 57 \\
-        in layer 1 & 50 & 58 \\ 
-        in layer 2 & 49 & 57 \\ 
-        in layer 3 & 48 & 56 \\ 
+        Total wire count & 196 & 228 \\ 
+        Wires in layer 0 & 49 & 57 \\
+        Wires in layer 1 & 50 & 58 \\ 
+        Wires in layer 2 & 49 & 57 \\ 
+        Wires in layer 3 & 48 & 56 \\ 
         No.\ \acp{FEC} & 13 & 15 \\\hline
     \end{tabular}
     \caption{Information on the MB1 \ac{DT} chamber \cite{CMS-Main}.}
@@ -361,66 +361,38 @@ The \ac{DT} chamber (sec.\ \ref{sec:CMS-DTSetup}) is of the type MB/W/1/S (MB1),
     \centering
     \begin{tabular}{|c|c|} 
         \hline
-        \multirow{2}{*}{Gas mixture} & $85\%$ Argon \\
-        & $15\%$ CO$_2$ \\ \hline
-        Gas flow & \SI{8}{\liter/\hour} \\ \hline \hline
-        Anode wire voltage & \SI{3600}{\volt} \\ \hline
-        Field electrode voltage & \SI{1800}{\volt} \\ \hline \hline
-        Cathode strip voltage & \SI{-1200}{\volt} \\ \hline
+        Gas mixture & $85\%$ Argon, $15\%$ CO$_2$ \\
+        Gas flow & \SI{10}{\liter/\hour} \\ \hline
+        Anode wire voltage & $+3600\;\si{\volt}$ \\
+        Field electrode voltage & $+1800\si{\volt}$ \\
+        Cathode strip voltage & $-1200\;\si{\volt}$ \\ \hline
         \ac{FEB} discriminator threshold & \SI{35}{\milli\volt} \\ \hline
     \end{tabular}
     \caption{Settings of the \ac{DT} chamber infrastructure used at the test stand.}
     \label{tab:MB1Chamber-Settings}
 \end{table}
 \FloatBarrier
+\paragraph{Readout chain at test stand}
+Fig.\ \ref{fig:DT-Teststand-Readout} illustrates the readout chain with all currently available Phase-2 readout electronics at the test stand in Aachen. In comparison to the final Phase-2 system (cf.\ sec.\ \ref{sec:CMS-Phase2Readout}), only the backend systems are different. This is due to the non-availability of the proposed slow control (Serenity) and \ac{DAQ} (\ac{BMTL1}) backend boards as well as missing full \ac{MONSA} backend.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{DT-Teststand-Schematic.pdf}
+    \caption{Overview of the modified Phase-2 readout chain implemented at the test stand.}
+    \label{fig:DT-Teststand-Readout}
+\end{figure}
+\FloatBarrier
 \paragraph{Minicrate}
-The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OBDT} theta board (sec.\ \ref{sec:CMS-DTMinicrate}). Fig.\ \ref{fig:MB1Minicrate-Mounted} shows a picture of the minicrate mounted onto the chamber at the test stand. Note that a photo of the minicrate before installation on the chamber was already shown above in fig.\ \ref{fig:Minicrate-MB1}. One \ac{OBDT} is used for the readout of each \ac{SL}. The mapping between the \ac{DT} chamber \acp{FEC} (which are labeled 1A, 1B, 2A, ...) and the \ac{OBDT} input connectors is presented in tab.\ \ref{tab:MB1Minicrate-FECMapping}. The two unused \acp{FEC} on the \ac{OBDT} phi boards (J26, J27) were masked in order to prevent the injection of noise through these unconnected inputs.
+The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OBDT} theta board (sec.\ \ref{sec:CMS-DTMinicrate}). Fig.\ \ref{fig:MB1Minicrate-Mounted} shows a picture of the minicrate mounted onto the chamber at the test stand. Note that a photo of the minicrate before installation on the chamber was already shown above in fig.\ \ref{fig:Minicrate-MB1}. One \ac{OBDT} is used for the readout of each \ac{SL}. The detailed mapping between the \ac{DT} chamber \acp{FEC} (which are labeled 1A, 1B, 2A, ...) and the \ac{OBDT} input connectors is presented in tab.\ \ref{tab:MB1Minicrate-FECMapping} in the appendix. Note that two unused \acp{FEC} on the \ac{OBDT} phi boards (J26, J27) were masked in order to prevent the injection of noise through these unconnected inputs.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{MB1Minicrate-Mounted.pdf}
     \caption{Photo of the minicrate mounted on the \ac{DT} chamber at the test stand. The splitter board does not belong to the minicrate, but to the chamber infrastructure. It provides voltage to the chamber's \acp{FEB}.}
     \label{fig:MB1Minicrate-Mounted}
 \end{figure}
-\begin{table}[htb]
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|} 
-        \hline
-        & \multicolumn{2}{c|}{\ac{SL} 1 (phi)} & \multicolumn{2}{c|}{\ac{SL} 2 (theta)} & \multicolumn{2}{c|}{\ac{SL} 3 (phi)} \\ \hline
-        \ac{DT} \ac{FEC} & \ac{OBDT} & \ac{OBDT} \ac{FEC} & \ac{OBDT} & \ac{OBDT} \ac{FEC} & \ac{OBDT} & \ac{OBDT} \ac{FEC}\\ \hline
-        1A & 1 (phi) & J33 & 2 (theta) & Jin5a & 3 (phi) & J33 \\
-        1B & 1 (phi) & J34 & 2 (theta) & Jin5b & 3 (phi) & J34 \\
-        2A & 1 (phi) & J35 & 2 (theta) & Jin6a & 3 (phi) & J35 \\
-        2B & 1 (phi) & J36 & 2 (theta) & Jin6b & 3 (phi) & J36 \\
-        3A & 1 (phi) & J37 & 2 (theta) & Jin1a & 3 (phi) & J37 \\
-        3B & 1 (phi) & J32 & 2 (theta) & Jin1b & 3 (phi) & J32 \\
-        4A & 1 (phi) & J31 & 2 (theta) & Jin2a & 3 (phi) & J31 \\
-        4B & 1 (phi) & J30 & 2 (theta) & Jin2b & 3 (phi) & J30 \\
-        5A & 1 (phi) & J29 & 2 (theta) & Jin7a & 3 (phi) & J29 \\
-        5B & 1 (phi) & J28 & 2 (theta) & Jin7b & 3 (phi) & J28 \\
-        6A & 1 (phi) & J23 & 2 (theta) & Jin4a & 3 (phi) & J23 \\
-        6B & 1 (phi) & J24 & 2 (theta) & Jin4b & 3 (phi) & J24 \\
-        7A & 1 (phi) & J25 & 2 (theta) & Jin3a & 3 (phi) & J25 \\
-        7B &         &     & 2 (theta) & Jin3b &         &     \\
-        8A &         &     & 2 (theta) & Jin8a &         &     \\ \hline
-    \end{tabular}
-    \caption{Mapping of the \ac{DT} chamber \acp{FEC} to the \ac{OBDT} numbering and input connectors.}
-    \label{tab:MB1Minicrate-FECMapping}
-\end{table}
 \FloatBarrier
 \paragraph{Backend}
-The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which was moved to the test stand and connected to the minicrate. The backend rack is prominently visible in fig.\ \ref{fig:DT-Teststand} above. The mapping of the backend slow control and readout channels, i.e.\ the optical fiber link numbers are given in tab.\ \ref{tab:MB1Backend-ReadoutChannelMapping}. The \ac{SCTbox} is connected to a server inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
-\begin{table}[htb]
-    \centering
-    \begin{tabular}{|c|c|c|c|} 
-        \hline
-        \ac{SL} & \ac{OBDT} & Slow control & Hit data \\ \hline
-        1 (phi) & 1 (phi) & 4 & 8, 9 \\
-        2 (theta) & 2 (theta) & 7 & 14, 15 \\
-        3 (phi) & 3 (phi) & 5 & 10, 11 \\ \hline
-    \end{tabular}
-    \caption{Mapping of all \ac{OBDT} optical link numbers to the backend. Note that slow control and data links have two separate numbering schemes. The data links are duplicated in the \acp{OBDT}.}
-    \label{tab:MB1Backend-ReadoutChannelMapping}
-\end{table}
+The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which was moved to the test stand and connected to the minicrate. The backend rack is prominently visible in fig.\ \ref{fig:DT-Teststand} above. The mapping of the backend slow control and readout channels, i.e.\ the optical fiber link numbers are given in tab.\ \ref{tab:MB1Backend-ReadoutChannelMapping} in the appendix. The \ac{SCTbox} is connected to a server located inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
+\newline The \ac{MONSA} system (sec.\ \ref{sec:CMS-DTBackend}) backend is also not available in Aachen, therefore a dedicated emulator can execute the functions normally executed by the \ac{MONSA}. This emulator is also controlled by the server.
 
 \FloatBarrier
 \subsection{Coordinate frame and timestamp format}

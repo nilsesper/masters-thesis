@@ -68,7 +68,7 @@ Note that because the time differences in the testpulse sources were respected w
     \caption{Calculated relative timing corrections $T_\text{corr}(\text{SL, Ly, Wi})$ for all individual channels.}
     \label{fig:DTData-TestpulseCorrections}
 \end{figure}
-\newline The obtained timing corrections are in the range of $-6\;\si{\nano\second}$ to $+8\;\si{\nano\second}$. In comparison, the \ac{CMS} \ac{DT} offline calibration note \cite{DT-OfflineCalibration} states usual timing calibration values of up to $\pm 9\;\si{\nano\second}$. Therefore, the result from the testpulse run presented above seems to yield calibration values in the expected range, even though the systematic observations are present, which were already discussed above.
+\newline The obtained timing corrections are in the range of $-6\;\si{\nano\second}$ to $+7\;\si{\nano\second}$. In comparison, the \ac{CMS} \ac{DT} offline calibration note \cite{DT-OfflineCalibration} states usual timing calibration values of up to $\pm 9\;\si{\nano\second}$. Therefore, the result from the testpulse run presented above seems to yield calibration values in the expected range, even though the systematic observations are present, which were already discussed above.
 
 
 
@@ -113,34 +113,7 @@ Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires o
 \end{figure}
 \FloatBarrier
 \paragraph{Noisy and dead cells}
-In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. In principle, there are two different kinds of differently behaving cells. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one cell with a higher index than the other layers (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}), this cell is not connected to the readout, which leads to zero occupancy for the highest wire index. Additionally, one can observe in fig.\ \ref{fig:DTData-ChamberRates} that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}). In total, 12 dead wires plus 3 unconnected wires are observed in the \ac{DT} chamber at the test stand.
-\begin{table}[htb]
-    \centering
-    \begin{tabular}{|c|c|c|c|} 
-        \hline
-        \ac{SL} & Ly & Wi & Type \\ \hline
-        % ro_ch=8 masked chs: 115, 119, 121, 123 (fec 7A, probably higher than use chs)
-        1 (phi) & 1 & 49 & Not connected \\ %\hline
-        % ro_ch=14 masked chs: none
-        2 (theta) & 0 & 2 & Dead \\ 
-        2 (theta) & 0 & 5 & Dead \\ 
-        2 (theta) & 0 & 13 & Dead \\ 
-        2 (theta) & 0 & 50 & Dead \\ 
-        2 (theta) & 0 & 51 & Dead \\ 
-        2 (theta) & 1 & 4 & Dead \\ 
-        2 (theta) & 1 & 5 & Dead \\ 
-        2 (theta) & 1 & 44 & Dead \\ 
-        2 (theta) & 1 & 45 & Dead \\ 
-        2 (theta) & 1 & 57 & Not connected \\ %\hline
-        % ro_ch=10 masked chs: 124 (fec 7A, probably higher than use chs)
-        3 (phi) & 0 & 10 & Dead \\ 
-        3 (phi) & 1 & 41 & Dead \\ 
-        3 (phi) & 1 & 49 & Not connected \\ 
-        3 (phi) & 2 & 26 & Dead \\ \hline
-    \end{tabular}
-    \caption{List of dead wires of the \ac{DT} chamber at the test stand.}
-    \label{tab:DTData-DeadWires}
-\end{table}
+In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. In principle, there are two different kinds of differently behaving cells. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} in the appendix gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one cell with a higher index than the other layers (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}), this cell is not connected to the readout, which leads to zero occupancy for the highest wire index. Additionally, one can observe in fig.\ \ref{fig:DTData-ChamberRates} that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}). In total, 12 dead wires plus 3 unconnected wires are observed in the \ac{DT} chamber at the test stand.
 \FloatBarrier
 \paragraph{Comparison with cosmic rate} The measured rates should be compared with a coarse estimation of the expected atmospheric muon rate impinging on the cell. To estimate the rate, in principle one would need to solve the solid angle and area integration of the muon flux for particles above the energy detection threshold (cf.\ eq.\ \ref{eq:CosmicMuon-DetectorRate}), as was discussed in sec.\ \ref{sec:AtmosphericMuons-Cosmics}. For non-spherical geometries this is however non-trivial.
 \newline The developed analysis framework includes the possibility to simulate muon tracks and propagate them through the detector. Note that the simulation only includes the chamber geometry and does not consider the track energy, and there are additional simplifications assumed. The generation of cosmic tracks and generation of detector hits with this framework, as well as the used approximations, are discussed in detail in appendix \ref{sec:Simulation}.
@@ -270,8 +243,8 @@ This section should present the pattern selection criteria used in this work. On
         \hline
         Parameter & Selection & Details \\ \hline
         Pattern type / shape & Patterns $0-5$ & Fig.\ \ref{fig:DTData-SLPatterns} \\
-        Pattern cell hit count & $=4$ & $-$ \\
-        Timestamp difference $\Delta T_\text{max}$ & $\leq t_\text{drift,max}\approx\SI{385}{\nano\second}$ & Eq.\ \ref{eq:DTData-PatternTimeWindow} \\ \hline
+        Pattern cell hit count $N_\text{hits}$ & $N_\text{hits}=4$ & $-$ \\
+        Timestamp difference $\Delta T_\text{max}$ & $\Delta T_\text{max} \leq t_\text{drift,max}\approx\SI{385}{\nano\second}$ & Eq.\ \ref{eq:DTData-PatternTimeWindow} \\ \hline
     \end{tabular}
     \caption{\ac{SL} pattern selection criteria used in this work.}
     \label{tab:DTData-PatternSelection}
