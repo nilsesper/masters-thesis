@@ -6,7 +6,7 @@ This chapter focuses on the second muon detector used in this thesis: A scintill
 \section{Detector setup}
 \label{sec:Scint-Setup}
 %Mention self-development of detector at institute \cite{BSc-Ehlert} \cite{MSc-Ehlert}.
-The detector itself was developed at Physics Institute III A in Aachen over the course of past Bachelor's and Master's theses \cite{BSc-Ehlert,MSc-Ehlert}. The development of the detector was already completed as this thesis begun, therefore the final product could already be used here.
+The detector itself was developed at Physics Institute III A in Aachen over the course of past Bachelor's and Master's theses \cite{BSc-Ehlert,MSc-Ehlert}. The development of the detector was already completed as this thesis begun. The device should only be briefly described here, as details on the design and construction can be found in the documents cited above.
 \FloatBarrier
 \paragraph{Detector layout}
 The detector consists of two layers of 16 scintillator strips stacked with perpendicular orientation to each other, each measuring \SI{50}{\centi\meter} in length, \SI{3}{\centi\meter} in width and \SI{0.5}{\centi\meter} in thickness. The assembly gives a sensitive detector area of around $\SI{50}{\centi\meter} \times \SI{50}{\centi\meter}$ divided into $16 \times 16 = 256$ quadratic sectors with a side length of $\SI{3}{\centi\meter}$. The detector material itself is an organic plastic scintillator (sec.\ \ref{sec:Scintillators-Scintillators}) referred to as EJ-200 \cite{Scint-PlasticScint}. The strips are wrapped in Tyvek\textsuperscript{\textregistered} 1442R reflective fabric \cite{Scint-Tyvek}. Light guiding and wavelength shifting fibers are glues into both long edges of each scintillator strip. The casing of the detector does not only provide light isolation from external photons, but also includes walls in between each of the strips, to suppress optical crosstalk between layers \cite{BSc-Ehlert,MSc-Ehlert}. Fig.\ \ref{fig:Scint-Setup-Renderings} shows two renderings of the detector.
@@ -98,10 +98,11 @@ Due to fabrication tolerances, the internal breakdown voltage of the individual 
 %    \item Show scheme / overview of readout system
 %\end{itemize}
 \label{sec:Scint-Readout}
-This section should present the readout electronics and firmware which were developed solely over the course of this thesis.
+This section should present the further readout electronics and firmware which were developed solely over the course of this thesis.
 
 \FloatBarrier
 \subsection{Overview}
+\label{sec:Scint-ReadoutBoard-Overview}
 \FloatBarrier
 \paragraph{General requirements}
 The following requirements were defined for the readout board:
@@ -109,7 +110,7 @@ The following requirements were defined for the readout board:
 \FloatBarrier
 \paragraph{Readout board}
 A new \ac{PCB} was developed to host the readout system according to the requirements listed above. Fig.\ \ref{fig:Scint-Readout-CarrierBoard} shows a picture of the board. It features 32 \ac{MCX} connectors for the \ac{SiPM} input signals. 
-\newline The hit data is processed with an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. A \ac{SoC} is a module that feature both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. These modules allow to combine the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. The concrete device used is the Trentz Elektronik TE-0820 which features an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} XCZU3EG-1SFVC784E \cite{FPGA-Trentz}.
+\newline The hit data is processed with an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. A \ac{SoC} is a module that feature both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. These modules allow to combine the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. The concrete device used is the Trentz Elektronik TE-0820 which features an AMD\textsuperscript{\texttrademark} Xilinx XCZU3EG-1SFVC784E \cite{FPGA-Trentz}.
 \newline To forward the acquired data to the backend and to receive the central clock, another \ac{PCB} was developed, the \ac{lpGBT} mezzanine (sec.\ \ref{sec:Scint-lpGBTMezzanine}). The readout board hosts a \ac{FMC} connector to plug the mezzanine onto it.
 \begin{figure}[htb]
     \centering
@@ -131,6 +132,18 @@ A new \ac{PCB} was developed to host the readout system according to the require
 %    \item Deserializers for higher time resolution
 %\end{itemize}
 \label{sec:Scint-ReadoutBoard-FPGASampling}
+As described above (sec.\ \ref{sec:Scint-ReadoutBoard-Overview}), the analog \ac{SiPM} signals should be discriminated with a selectable threshold (sec.\ \ref{sec:ReadoutElectronics-General}), to convert them to a digital signal. To realize a discriminator in electronics, one usually uses a comparator. While it is possible to buy and use such comparators as discrete electronic components, in this thesis a different approach is used.
+\FloatBarrier
+\paragraph{FPGA IOB resources}
+Modern \acp{FPGA} have comparators built into their \acp{IOB} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}). They have the purpose to convert differential two-wire digital signals at the chip inputs, e.g.\ \ac{LVDS} pulses, to single-ended pulses used in the \ac{FPGA} fabric itself. In the case of AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} \acp{FPGA}, the hardware primitive which offers this capability is called \texttt{IBUFDS} \cite{UltraScale-FPGA-SelectIO-Resources}.
+\FloatBarrier
+\paragraph{Analog signal sampling}
+Our group is among the first to employ these \ac{FPGA}-internal comparator resources to sample analog signals \cite{FPGA-MVT-Eliseev,FPGA-MVT-Palka,FPGA-MVT-Xi}. An open-source \ac{IP core} has been developed by our group (preceding this work), which offers \ac{ADC} capabilities using this method \cite{FPGA-MVT-Eliseev}.
+\newline Using the \ac{FPGA}-internal comparators for sampling can offer several advantages: First, the input circuitry is simplified by eliminating the need for discrete comparators. Furthermore, the \ac{FPGA}-internal comparators offer fast response times, as they are intended to be used for high-speed digital signals. It should be noted that the \ac{FPGA} \acp{IOB} do provide additional hardware primitives which may be useful in the context of signal sampling, such as deserializers, which can be used as \acp{TDC}. On the negative side, it is clear that twice the amount of input pins is required to perform analog signal sampling, in comparison to using discrete comparators and only using one single-ended \ac{FPGA} input pin.
+\FloatBarrier
+\paragraph{Requirements and challenges}
+The \ac{FPGA}-internal comparators are not specified to operate with analog signals, but only with differential digital signals. Therefore, the injected analog signals to be sampled need to obey several requirements: The \ac{LVDS} comparator inputs require a DC voltage offset of $\approx\SI{900}{\milli\volt}$. This offset must be added to the input signal with analog circuitry (sec.\ \ref{sec:Scint-ReadoutBoard-InputCircuitry}). The input voltage at the comparator pins should not exceed $\SI{1.4}{\volt}$ \cite{UltraScale-FPGA-SelectIO-Switching}.
+\newline Due to fluctuations during manufacturing, the comparators do not behave ideally, but exhibit a switching bias of up to $\pm 35\;\si{\milli\volt}$ \cite{UltraScale-FPGA-SelectIO-Resources}, which may be different for each individual input. This bias needs to be calibrated in order to trigger on signals with thresholds which lie in similar order of magnitude (sec.\ \ref{sec:ScintData-VoltageBias}).
 
 \FloatBarrier
 \subsection{Analog input circuitry}
@@ -140,7 +153,23 @@ A new \ac{PCB} was developed to host the readout system according to the require
 %    \item Individually selectable thresold for all channels
 %    \item (Show screenshot from SPICE simulation)
 %\end{itemize}
-\label{sec:Scint-ReadoutBoard-Input}
+\label{sec:Scint-ReadoutBoard-InputCircuitry}
+The analog circuitry on the readout board should perform the input signal conditioning as well as the testpulse generation. Fig.\ \ref{fig:Scint-ReadoutBoard-AnalogCircuit} shows the schematic of the realized circuit for one \ac{SiPM} input.
+\begin{figure}[htb]
+    \centering
+    %\includegraphics[width=0.5\textwidth]{Carrier-with-Mezzanine.png}
+    \caption{Schematic of analog input circuitry of one \ac{SiPM} input channel.}
+    \label{fig:Scint-ReadoutBoard-AnalogCircuit}
+\end{figure}
+\FloatBarrier
+\paragraph{SiPM input}
+The \ac{SiPM} signal is received at the \ac{MCX} connector and AC-coupled in the circuit with a capacitor. As explained, the \ac{FPGA} internal comparators require a DC base voltage of $V_\text{com}\approx\SI{900}{\milli\volt}$. This voltage is supplied by a \ac{DAC} commonly for all \ac{SiPM} input channels, which is stabilized with a voltage buffer. The \ac{SiPM} input is connected to the positive comparator input $V_+$. The threshold voltage for hit discrimination of the input signal is supplied to the negative input $V_-$ of the comparator. This voltage can be set individually for each input with a \ac{DAC}.
+\FloatBarrier
+\paragraph{Testpulse generation}
+The \ac{FPGA} can output a digital synchronous testpulse signal on one of its pins. This signal has a very fast rise time of $\mathcal{O}(\SI{1}{\nano\second})$, and therefore allows timing calibration of all inputs relative to each other (sec.\ \ref{sec:ScintData-TimingBias}). The testpulse is coupled in capacitively on the negative input $V_-$ of the comparator.
+\FloatBarrier
+\paragraph{Circuit simulation}
+Before the readout board was constructed, a simulation of the analog circuit was performed in LTspice\textsuperscript{\textregistered} \cite{LTSpice}. The main concern was the possibility of crosstalk between different \ac{SiPM} inputs, which is theoretically possible through the common $V_\text{com}$ rail. The employed capacitors seem to dampen the crosstalk in the simulation output, therefore the circuit was built as presented in fig.\ \ref{fig:Scint-ReadoutBoard-AnalogCircuit}. With the real device however, significant ringing and crosstalk was observed, which is discussed further in sec.\ \ref{sec:ScintData-RingingCrosstalk}.
 
 \FloatBarrier
 \section{FPGA readout firmware}
