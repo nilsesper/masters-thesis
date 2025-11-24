@@ -141,7 +141,7 @@ Modern \acp{FPGA} have comparators built into their \acp{IOB} (sec.\ \ref{sec:Re
 Our group is among the first to employ these \ac{FPGA}-internal comparator resources to sample analog signals \cite{FPGA-MVT-Eliseev,FPGA-MVT-Palka,FPGA-MVT-Xi}. An open-source \ac{IP core} has been developed by our group (preceding this work), which offers \ac{ADC} capabilities using this method \cite{FPGA-MVT-Eliseev}.
 \newline Using the \ac{FPGA}-internal comparators for sampling can offer several advantages: First, the input circuitry is simplified by eliminating the need for discrete comparators. Furthermore, the \ac{FPGA}-internal comparators offer fast response times, as they are intended to be used for high-speed digital signals. It should be noted that the \ac{FPGA} \acp{IOB} do provide additional hardware primitives which may be useful in the context of signal sampling, such as deserializers, which can be used as \acp{TDC}. On the negative side, it is clear that twice the amount of input pins is required to perform analog signal sampling, in comparison to using discrete comparators and only using one single-ended \ac{FPGA} input pin.
 \FloatBarrier
-\paragraph{Requirements and challenges}
+\paragraph{Limitations and challenges}
 The \ac{FPGA}-internal comparators are not specified to operate with analog signals, but only with differential digital signals. Therefore, the injected analog signals to be sampled need to obey several requirements: The \ac{LVDS} comparator inputs require a DC voltage offset of $\approx\SI{900}{\milli\volt}$. This offset must be added to the input signal with analog circuitry (sec.\ \ref{sec:Scint-ReadoutBoard-InputCircuitry}). The input voltage at the comparator pins should not exceed $\SI{1.4}{\volt}$ \cite{UltraScale-FPGA-SelectIO-Switching}.
 \newline Due to fluctuations during manufacturing, the comparators do not behave ideally, but exhibit a switching bias of up to $\pm 35\;\si{\milli\volt}$ \cite{UltraScale-FPGA-SelectIO-Resources}, which may be different for each individual input. This bias needs to be calibrated in order to trigger on signals with thresholds which lie in similar order of magnitude (sec.\ \ref{sec:ScintData-VoltageBias}).
 
@@ -174,18 +174,40 @@ Before the readout board was constructed, a simulation of the analog circuit was
 \FloatBarrier
 \section{FPGA readout firmware}
 \label{sec:Scint-ReadoutFirmware}
+The \ac{FPGA} firmware of the system provides all features discussed above (sec.\ \ref{sec:Scint-ReadoutBoard-Overview}) and was newly developed for this thesis. Fig.\ \ref{fig:Scint-ReadoutFirmware-Overview} shows an overview of the different functional blocks of the firmware, which will be discussed in more detail in the following sections.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Scint-Readout-Firmware.pdf}
+    \caption{Functional blocks of the readout board \ac{FPGA} firmware. The external connections are denoted on the top. The dashed blue lines indicate the different clock domains.}
+    \label{fig:Scint-ReadoutFirmware-Overview}
+\end{figure}
 
 \FloatBarrier
-\subsection{Hit time digitization}
+\subsection{Signal sampling and time digitization}
 \label{sec:Scint-ReadoutFirmware-SamplingTDC}
+\FloatBarrier
+\paragraph{Overview}
+This block serves as discriminator and \ac{TDC} for the \ac{SiPM} signals. It receives the comparator input signals $V_+$ and $V_-$ from the analog circuitry (sec.\ \ref{fig:Scint-ReadoutBoard-AnalogCircuit}) and determines whether there is a hit depending on the voltage levels. It scans this result with a fixed frequency and periodically returns a result, whether a hit was found and forwards it to the next blocks in the firmware. The logic of this block was fully documented and packaged as an open-source \ac{IP core} which is available on the \ac{CERN} Git \cite{Multichannel-Time-Tagger-IP}.
+\FloatBarrier
+\paragraph{Signal discrimination}
+The \ac{FPGA} is configured to use the internal comparators for analog input signal sampling (sec.\ \ref{sec:Scint-ReadoutBoard-FPGASampling}). As explained, the \texttt{IBUFDS} hardware primitives \cite{UltraScale-FPGA-SelectIO-Resources} of the \ac{FPGA} are instantiated for this purpose. The output of this hardware primitive provides the comparator result determined by the input signals. As explained, the use of these resources implies a threshold voltage bias, which is to be measured with a dedicated calibration procedure (sec.\ \ref{sec:ScintData-VoltageBias}).
+\FloatBarrier
+\paragraph{Time digitization}
+The comparator output signal is asynchronous, meaning its edges are not related to any clock, but are only determined by the changing input signals. In the \ac{FPGA}, the signal should be made synchronous (i.e.\ aligned with a clock) in order to perform the further computations and transmit the data to the backend. This is the task of a \ac{TDC} (sec.\ \ref{sec:ReadoutElectronics-General}). While there exist discrete \ac{TDC} chips, in this case the functionality is directly realized in \ac{FPGA} firmware. One uses \texttt{ISERDESE3} deserializer hardware primitives \cite{UltraScale-FPGA-SelectIO-Resources} inside the \ac{FPGA} which are designed to interface high-rate serial data transmissions. These components are allowed to operate at significantly higher clock frequencies than the \ac{FPGA} fabric itself. The deserializer is provided with a slow and a fast clock, providing a bit vector of signals sampled at each fast clock edge after each slow clock cycle. Of interest are only these cases where the comparator output value switches between \texttt{0} and \texttt{1}. In order to not transmit all data but only these relevant cases, a dedicated logic was implemented which scans the deserializer bit vector for \texttt{..0011..} and \texttt{..1100..} signatures.  With the fast clock frequency of \SI{640}{\mega\hertz}, the implemented \ac{TDC} achieves a sampling resolution of \SI{0.78}{\nano\second}. This is the same granularity as in the \ac{OBDT} boards in the \ac{DT} system (sec.\ \ref{sec:CMS-Phase2Readout}).
+\newline The usage of the \ac{FPGA}-internal deserializers also imposes the need for timing calibration, because there are non-deterministic delays between different deserializer units after each startup of the device. Details on this are discussed in sec.\ \ref{sec:ScintData-TimingBias}.
 
 \FloatBarrier
-\subsection{Programmable delay units}
+\subsection{Delay unit}
 \label{sec:Scint-ReadoutFirmware-ProgrammableDelays}
+The timing biases from the calibration of the inputs (sec.\ \ref{sec:ScintData-TimingBias}) could be applied to the data during offline analysis. However, the firmware offers the possibility to set delays for all input channels and with this remove the determined timing biases of the individual channels directly "online" on the \ac{FPGA}.\footnote{This feature is especially relevant if one would like to compute live coincidences or other timing-critical conditions, which is however not the case here.} It is important that the delay for each channel can be set separately and while the \ac{FPGA} is operating.
+\FloatBarrier
+\paragraph{Programmable delay logic}
+The programmable delay units for each input channel is realized with a data pipeline with flexible exit point. The hit data arrives at the pipeline input and is shifted one position forward with each clock cycle. The data output is connected to one of the pipeline positions. A user-writable register determines the position of the exit point of the pipeline to the output. With this setup, it is possible to select the channel delay with a precision equivalent to the clock period, which in this case is \SI{6.25}{\nano\second}.
 
 \FloatBarrier
-\subsection{Dead time logic}
+\subsection{Dead time unit}
 \label{sec:Scint-ReadoutFirmware-DeadTime}
+Similar to the 
 
 \FloatBarrier
 \subsection{Global timestamp assignment}
@@ -195,12 +217,12 @@ Before the readout board was constructed, a simulation of the analog circuit was
 %\end{itemize}
 \label{sec:Scint-ReadoutFirmware-TimestampAssignment}
 
-\FloatBarrier
-\subsection{Online coincidence evaluation}
-\label{sec:Scint-ReadoutFirmware-Coincidence}
+%\FloatBarrier
+%\subsection{Online coincidence evaluation}
+%\label{sec:Scint-ReadoutFirmware-Coincidence}
 
 \FloatBarrier
-\subsection{Data buffering and funneling}
+\subsection{Hit buffer and funnel}
 %\begin{itemize}
 %    \item Limited bandwidth: Can not transmit hits of all channels together
 %    \item However do not want to lose hits
@@ -215,7 +237,7 @@ Before the readout board was constructed, a simulation of the analog circuit was
 
 
 \FloatBarrier
-\section{lpGBT Mezzanine PCB}
+\section{lpGBT Mezzanine board}
 %\begin{itemize}
 %    \item Hardware interface between scintillator readout system and DT backend
 %    \item OBDTs use lpGBT as well therefore compatible format
@@ -245,12 +267,16 @@ Before the readout board was constructed, a simulation of the analog circuit was
 \label{sec:Scint-lpGBTMezzanine-Mezzanine}
 
 \FloatBarrier
-\subsection{Backend firmware modifications}
+\subsection{Readout FPGA interface}
+\label{sec:Scint-lpGBTMezzanine-ReadoutFPGAInterface}
+
+\FloatBarrier
+\subsection{DT backend interface}
 %\begin{itemize}
 %    \item Modified data flow in DT backend to accomodate reception of data via slow control link from the lpGBT Mezzanine (OBDT has dedicated trigger links for data)
 %    \item (Show received counter data by backend)
 %\end{itemize}
-\label{sec:Scint-lpGBTMezzanine-BackendFirmware}
+\label{sec:Scint-lpGBTMezzanine-DTBackendInterface}
 
 
 
