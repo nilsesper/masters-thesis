@@ -97,7 +97,7 @@ Due to fabrication tolerances, the internal breakdown voltage of the individual 
 %    \item Control hardware and firmware from Petalinux running on ARM core of ZynqMPSoC
 %    \item Show scheme / overview of readout system
 %\end{itemize}
-\label{sec:Scint-Readout}
+\label{sec:Scint-ReadoutBoard}
 This section should present the further readout electronics and firmware which were developed solely over the course of this thesis.
 
 \FloatBarrier
@@ -112,12 +112,18 @@ The following requirements were defined for the readout board:
 A new \ac{PCB} was developed to host the readout system according to the requirements listed above. Fig.\ \ref{fig:Scint-Readout-CarrierBoard} shows a picture of the board. It features 32 \ac{MCX} connectors for the \ac{SiPM} input signals. 
 \newline The hit data is processed with an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. A \ac{SoC} is a module that feature both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. These modules allow to combine the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. The concrete device used is the Trentz Elektronik TE-0820 which features an AMD\textsuperscript{\texttrademark} Xilinx XCZU3EG-1SFVC784E \cite{FPGA-Trentz}.
 \newline To forward the acquired data to the backend and to receive the central clock, another \ac{PCB} was developed, the \ac{lpGBT} mezzanine (sec.\ \ref{sec:Scint-lpGBTMezzanine}). The readout board hosts a \ac{FMC} connector to plug the mezzanine onto it.
-\begin{figure}[htb]
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics[width=0.5\textwidth]{Carrier-with-Mezzanine.png}
+%    \caption{Photo of the developed readout \ac{PCB} hosting 32 \ac{SiPM} signal inputs (bottom right), a \ac{SoC} module (center left) and the \ac{lpGBT} mezzanine board plugged into the \ac{FMC} connector (top right).}
+%    \label{fig:Scint-Readout-CarrierBoard}
+%\end{figure}
+\begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.5\textwidth]{Carrier-with-Mezzanine.png}
     \caption{Photo of the developed readout \ac{PCB} hosting 32 \ac{SiPM} signal inputs (bottom right), a \ac{SoC} module (center left) and the \ac{lpGBT} mezzanine board plugged into the \ac{FMC} connector (top right).}
     \label{fig:Scint-Readout-CarrierBoard}
-\end{figure}
+\end{SCfigure}
 
 \FloatBarrier
 \subsection{Discrimination with FPGA-internal comparators}
@@ -328,7 +334,7 @@ The \acf{lpGBT} \cite{lpGBT-Main} is an \ac{ASIC} developed by the \ac{CERN} ele
 \FloatBarrier
 \paragraph{Optical links}
 The \ac{lpGBT} \ac{ASIC} relies on two optical links: The \SI{2.56}{\giga\bit/\second} downlink which is received from the backend, and the \SI{5.12}{\giga\bit/\second} uplink which is transmitted by the backend. The data frames are received and transmitted with a frequency of \SI{40}{\mega\hertz}, which corresponds to the \ac{LHC} bunch crossing frequency (sec.\ \ref{sec:CMS-LHC}). The electric-to-optical conversion of the data is not handled by the chip itself, one needs to connect it to an optical transmitter and receiver device. The available data width of one uplink (downlink) frame is \SI{96}{\bit} (\SI{32}{\bit}). Depending on the operation mode of the chip, different data rates and frame widths are possible \cite{lpGBT-Main}.
-\newline The \ac{lpGBT} chip has the capability to recover the \SI{40}{\mega\hertz} clock of the backend directly from the optical data \cite{lpGBT-Main}. This capability is a key feature, as it allows to operate several electronic readout components in synchronization with each other. For the developed scintillator readout system, it ensures that the clock is in fact synchronous with the \acp{OBDT} in the \ac{DT} minicrate, which is desired.
+\newline The \ac{lpGBT} chip has the capability to recover the \SI{40}{\mega\hertz} clock of the backend directly from the optical downlink data \cite{lpGBT-Main}. This capability is a key feature, as it allows to operate several electronic readout components in synchronization with each other. For the developed scintillator readout system, it ensures that the clock is in fact synchronous with the \acp{OBDT} in the \ac{DT} minicrate, which is desired.
 \FloatBarrier
 \paragraph{eLink connections}
 The connection of the chip to the readout electronics of the detector is realized with regular electrical connections. The chip employs differential digital pairs to transfer data, which are called eLinks. In the uplink (downlink) direction there are seven (four) groups containing four eLinks each. Each eLink receives or transmits a slice of the full data sequentially with a multiple of the \SI{40}{\mega\hertz} data frame frequency. The number of active eLinks and their frequency can be configured by the user \cite{lpGBT-Main}.
@@ -344,20 +350,46 @@ The connection of the chip to the readout electronics of the detector is realize
 %\end{itemize}
 \label{sec:Scint-lpGBTMezzanine-Mezzanine}
 For this thesis, a carrier for the \ac{lpGBT} \ac{ASIC} was designed, the \ac{lpGBT} mezzanine board. The board provides power and control infrastructure to operate the chip. Also, it routes 24 uplink and two downlink eLinks of the \ac{lpGBT} to a \ac{FMC} connector. This connector is plugged into the readout board to connect the eLink signals to the pins of the \ac{FPGA} of the readout system (sec.\ \ref{sec:Scint-ReadoutBoard-Overview}). Therefore, data can be exchanged between the \ac{FPGA} and the \ac{lpGBT} and therefore the \ac{DT} backend. Also, the recovered clock from the backend is provided to the \ac{FPGA} via the connector. Fig.\ \ref{fig:Scint-lpGBTMezzanine-Mezzanine} shows a picture of the assembled \ac{lpGBT} mezzanine board, the board plugged onto the carrier board was already presented above in fig.\ \ref{fig:Scint-Readout-CarrierBoard}.
-\begin{figure}[htb]
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics[width=0.4\textwidth]{lpGBT-Mezzanine.png}
+%    \caption{Image of the \ac{lpGBT} mezzanine \ac{PCB}. The \ac{ASIC} itself (center black square) as well as the optical transceiver (silver cage in top left) can be made out. The \ac{FMC} connector is located on the bottom side of the board on the left.}
+%    \label{fig:Scint-lpGBTMezzanine-Mezzanine}
+%\end{figure}
+\begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.4\textwidth]{lpGBT-Mezzanine.png}
     \caption{Image of the \ac{lpGBT} mezzanine \ac{PCB}. The \ac{ASIC} itself (center black square) as well as the optical transceiver (silver cage in top left) can be made out. The \ac{FMC} connector is located on the bottom side of the board on the left.}
     \label{fig:Scint-lpGBTMezzanine-Mezzanine}
-\end{figure}
+\end{SCfigure}
 \FloatBarrier
 \paragraph{Demonstration of operation}
-Stable operation of the board was achieved without problems. Already without preparing firmware to transmit and receive data from the mezzanine board (see following paragraphs), 
+Stable operation of the board was achieved without problems. Communication between the \ac{lpGBT} chip and the \ac{DT} backend was enabled by the existing software used to communicate with the \acp{OBDT}. An oscilloscope screenshot of the recovered \SI{40}{\mega\hertz} from the backend is presented in fig.\ \ref{fig:Scint-lpGBTMezzanine-40MHz}.
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics[width=0.4\textwidth]{lpGBT-40MHz-Clock.PNG}
+%    \caption{Oscilloscope screenshot of the \SI{40}{\mega\hertz} clock output of the \ac{lpGBT} recovered from the downlink optical fiber. The signal is monitored over one of the available test outputs of the \ac{lpGBT} chip.}
+%    \label{fig:Scint-lpGBTMezzanine-40MHz}
+%\end{figure}
+\begin{SCfigure}[50][htb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{lpGBT-40MHz-Clock.PNG}
+    \caption{Oscilloscope screenshot of the \SI{40}{\mega\hertz} clock output of the \ac{lpGBT} recovered from the downlink optical fiber. The signal is monitored over one of the available test outputs of the \ac{lpGBT} chip.}
+    \label{fig:Scint-lpGBTMezzanine-40MHz}
+\end{SCfigure}
 \FloatBarrier
 \paragraph{Interface to readout FPGA}
+To interface the eLinks of the \ac{lpGBT} which are connected to the readout \ac{FPGA} via the \ac{FMC} connector, a custom firmware block was developed (cf.\ fig.\ \ref{fig:Scint-ReadoutFirmware-Overview}). The developed logic converts the uplink data generated on the \ac{FPGA} fabric and splits it to sequentially transmit it over the connected uplink eLinks. Similarly, it can deserialize the data coming from the downlink eLinks of the \ac{lpGBT}.
+\newline The \ac{lpGBT} chip has several built-in testing features to monitor the operation and data transfer. One of these features is a pattern checker and error counter, which can count bit errors of a received \ac{PRBS7} binary sequence. Such a sequence is a periodic stream of bits which is generated by a deterministic algorithm and is commonly used in telecommunications to evaluate errors in data transfers. In the readout \ac{FPGA} firmware, a sequence generator was implemented which can transmit these sequence over the uplink eLinks. By reading out the error count on the \ac{lpGBT}, one can evaluate the data transfer quality between the readout board and the \ac{lpGBT} mezzanine. A performed scan for all uplink eLinks for two different \ac{lpGBT} mezzanine boards is presented in fig.\ \ref{fig:Scint-lpGBTMezzanine-UplinkPRBS7Error}. Most eLinks show excellent data transfer with no errors, while few eLinks exhibit some bit errors. However, for the hit data transmission only eLinks $0-16$ are effectively used, which do not show errors.
+\begin{figure}[htb]
+    \centering
+    %\includegraphics[width=0.4\textwidth]{lpGBT-40MHz-Clock.PNG}
+    \caption{Bit error fraction of a \ac{PRBS7} scan of all uplink eLinks for two different \ac{lpGBT} mezzanine boards. Most eLinks show data transmission without errors, while few eLinks have fractional errors.}
+    \label{fig:Scint-lpGBTMezzanine-UplinkPRBS7Error}
+\end{figure}
 \FloatBarrier
 \paragraph{Interface to DT backend}
-
+As explained, the basic functionalities to communicate with an \ac{lpGBT} chip were already implemented in the \ac{DT} backend, as the \ac{OBDT} boards also host such a chip (sec.\ \ref{fig:DT-Phase2Readout}). In the \acp{OBDT}, the slow control and clock recovery and the hit data are handled by two different optical links. The \ac{lpGBT} mezzanine however only has one uplink path, for slow control and hit data. Therefore, modifications had to be implemented in the \ac{DT} backend firmware to connect the data stream of the \ac{lpGBT} mezzanine uplink into the readout funnel of the backend.
 
 %\FloatBarrier
 %\subsection{Readout FPGA interface}

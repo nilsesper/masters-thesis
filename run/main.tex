@@ -65,6 +65,8 @@
 \usepackage{multirow}
 % additional symbols (i.e. trademark)
 \usepackage{textcomp}
+% captions next to figures
+\usepackage{sidecap}
 
 %%% bibliography setup
 \ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
@@ -211,6 +213,9 @@
 \configchapterheading{\cchaptertopspace}{\cchapterbottomspace}{}
 % no page numbers/headers for title page
 \pagestyle{empty}
+% center caption vertically of sidecap
+\sidecaptionvpos{figure}{c}
+\sidecaptionvpos{table}{c}
 %%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{roman} % change page numbering to letters
 \ifthenelse{\ctitlepage > -1}{ % if titlepage > -1: generate title page
