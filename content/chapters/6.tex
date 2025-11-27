@@ -28,11 +28,11 @@ A novel approach for the measurement of the comparator bias was introduced by ou
     \label{fig:ScintData-VoltageBias-Scheme}
 \end{figure}
 \FloatBarrier
-\paragraph{Calibration results}
-The voltage scans are performed for all input channels of the \ac{FPGA} and the switching rate histogram is analyzed. Fig.\ \ref{fig:ScintData-VoltageBias-SwitchingCount} shows an example histogram of the switching rate depending on the applied \ac{DAC} voltage. The obtained bias voltages of the comparators are shown in blue. They lie in the range \SI{-10}{\milli\volt} to \SI{15}{\milli\volt}, which is compatible with the mentioned maximum range of $\pm 35 \;\si{\milli\volt}$ from the \ac{FPGA} vendor datasheet \cite{UltraScale-FPGA-SelectIO-Resources}. 
+\paragraph{Observed bias voltages}
+The voltage scans are performed for all input channels of the \ac{FPGA} and the switching rate histogram is analyzed. Fig.\ \ref{fig:ScintData-VoltageBias-SwitchingCount} shows an example histogram of the switching rate depending on the applied \ac{DAC} voltage. The step size is limited by the accuracy of the used \ac{DAC} to \SI{2.5}{\milli\volt}. The count rate exhibits the expected shape with a clear peak. It should be noted that the peak position is not equal to the threshold voltage applied to the other input of the comparator, indicating a non-zero bias voltage.
 \begin{figure}[htb]
     \centering % presented histogram: ca3 zynq51 input4 step0
-    \includegraphics[width=0.8\textwidth]{scint_thres_calib/single_count_hist.pdf}
+    \includegraphics[width=0.7\textwidth]{scint_thres_calib/single_count_hist.pdf}
     \caption{Example switching rate histogram for a single comparator of the \ac{FPGA}. The weighted mean of the distribution is marked in red. Initially it deviates from the threshold voltage (gray) applied to the other input of the comparator, because of the nonzero bias voltage.}
     \label{fig:ScintData-VoltageBias-SwitchingCount}
 \end{figure}
@@ -41,20 +41,35 @@ The voltage scans are performed for all input channels of the \ac{FPGA} and the 
     V_\text{bias} = \left\langle V_\text{DAC} \right\rangle - V_\text{thres}.
     \label{eq:Scint-VoltageBias-BiasCalculation}
 \end{equation}
- The result for the measured bias voltage for all 32 inputs of a readout board is presented in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult} with the blue data points.
-\begin{figure}[htb]
-    \centering % presented histogram: ca3 zynq51
-    \includegraphics[width=0.8\textwidth]{scint_thres_calib/bias_scatter.pdf}
-    \caption{Comparison of measured comparator bias before (blue) and after (red) the calibration for all 32 inputs of one readout board. The behavior of an ideal comparator ($V_\text{bias}=\SI{0}{\milli\volt}$) is marked in gray.}
-    \label{fig:ScintData-VoltageBias-CalibResult}
-\end{figure}
-\newline After the measurement, the comparator threshold voltages are adjusted accordingly. To account for the obtained bias voltage, the new threshold voltage is selected as
+ The result for the measured bias voltage for all 32 inputs of a readout board is presented below in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult} with the blue data points. The obtained bias voltages lie in the range \SI{-10}{\milli\volt} to \SI{15}{\milli\volt}, which is compatible with the mentioned maximum range of $\pm 35 \;\si{\milli\volt}$ from the \ac{FPGA} vendor datasheet \cite{UltraScale-FPGA-SelectIO-Resources}. 
+\FloatBarrier
+\paragraph{Bias voltage correction}
+After the measurement, the comparator threshold voltages are adjusted accordingly. To account for the obtained bias voltage, the new threshold voltage is selected as
 \begin{equation}
     V_\text{thres,new} = V_\text{thres,initial} - V_\text{bias}.
     \label{fig:ScintData-VoltageBias-NewThresold}
 \end{equation}
-The procedure is repeated multiple times, in order to iteratively improve the precision of the calibration. After setting the final threshold voltage, the bias voltage is measured one more time to validate the outcome of the calibration. The obtained new bias voltages are shown as the red data points in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult}. As expected, the bias voltage could be mostly removed with this procedure, while few channels show a remaining offset of $\mathcal{O}(\SI{1}{\milli\volt})$.
-% The obtained bias voltages seem to be mostly independent of the measurement time and the temperature. However, the bias depends strongly on the applied voltages to the comparator, i.e.\ the selected threshold voltage. 
+The procedure is repeated multiple times, in order to iteratively improve the precision of the calibration. After setting the final threshold voltage, the bias voltage is measured one more time to validate the outcome of the calibration. The obtained validation data points are also shown in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult}, with the read data points. As expected, the bias voltage could be mostly removed with this procedure, while few channels show a small remaining offset of $\mathcal{O}(\SI{1}{\milli\volt})$.
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{scint_thres_calib/bias_scatter_after_board1.pdf}
+        \caption{Readout board 1}
+        \label{fig:ScintData-VoltageBias-CalibResult-Board1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{scint_thres_calib/bias_scatter_after_board2.pdf}
+        \caption{Readout board 2}
+        \label{fig:ScintData-VoltageBias-CalibResult-Board2}
+    \end{subfigure}
+    \hfill
+    \caption{Measured bias voltages for the 64 comparator inputs distributed over the two readout boards. The initial measurement (blue) is compared to the validation measurement (red) after adjusting the threshold voltage according to the measured bias.}
+    \label{fig:ScintData-VoltageBias-CalibResult}
+\end{figure}
 
 \FloatBarrier
 \section{TDC timing calibration}
@@ -67,20 +82,50 @@ The procedure is repeated multiple times, in order to iteratively improve the pr
 \label{sec:ScintData-TimingBias}
 As explained in sec.\ \ref{sec:Scint-ReadoutFirmware-SamplingTDC}, the \ac{TDC} logic of the readout board is realized in the \ac{FPGA} firmware by utilizing the deserializer primitives of the chip. On startup of the \ac{FPGA}, the deserializers are internally calibrated, individually for each component. This individual calibration leads to non-deterministic time offsets between different groups of inputs. 
 \FloatBarrier
-\paragraph{Calibration with testpulses}
-The readout board offers the possibility to transmit simultaneous testpulses to all input channels (sec.\ \ref{fig:Scint-ReadoutBoard-AnalogCircuit}). Similar to the \ac{DT} timing calibration with testpulses (sec.\ \ref{sec:DTData-Testpulse}), it is possible to extract timing offsets between the input channels by measuring the timestamps of the testpulse hits. A histogram of the recorded testpulse hit timestamps for one channel is presented in fig.\ \ref{fig:ScintData-TimingBias-TPTimestamp}.
+\paragraph{Simultaneous testpulse generation}
+The readout board offers the possibility to transmit simultaneous testpulses to all input channels (sec.\ \ref{fig:Scint-ReadoutBoard-AnalogCircuit}). Similar to the \ac{DT} timing calibration with testpulses (sec.\ \ref{sec:DTData-Testpulse}), it is possible to extract timing offsets between the input channels by measuring the timestamps of the testpulse hits.
+\FloatBarrier
+\paragraph{Testpulse response} 
+The testpulses are issued at a fixed time relative to the beginning of an orbit (which starts at $BX=0$, $TDC=0$). The timestamps of the testpulse-induced hits in all channels is recorded. Once again, one can define the $T_\text{orbit}$ variable, which is the time of testpulse arrival after the beginning of the orbit (cf.\ sec.\ \ref{sec:DTData-Testpulse-Generation}). A histogram of the recorded testpulse hit timestamps for one channel is presented in fig.\ \ref{fig:ScintData-TimingBias-TPTimestamp}. The testpulse timing seems to be very sharp $\mathcal{O}(\SI{1}{\nano\second})$, with only two TDC bins showing entries in the histogram.
 \begin{figure}[htb]
     \centering % presented histogram: 
-    \includegraphics[width=0.8\textwidth]{scint_timing_calib/single_timing_hist.pdf}
+    \includegraphics[width=0.7\textwidth]{scint_timing_calib/single_timing_hist.pdf}
     \caption{Example histogram of testpulse arrival timing for one input channel of the readout board.}
     \label{fig:ScintData-TimingBias-TPTimestamp}
 \end{figure}
+\newline To quantify the testpulse timing of each channel with one value, the weighted mean $\left\langle T_\text{orbit} \right\rangle$ is calculated and used. The initially recorded testpulse timing for all 64 channels of the two used readout boards is presented in fig.\ \ref{fig:ScintData-TimingBias-CalibResult} with the blue data points. It is evident that there are several groups of inputs which lie closely together in time for each readout board. This behavior is expected, as the \ac{FPGA}-internal calibration of the deserializer units is happening on the scope of so-called I/O banks of the \ac{FPGA}. When mapping the input channels back to these I/O banks of the chip, it becomes evident that the two groups of input channels for each board in the timing diagram correspond to these banks (indicated with different data markers in fig.\ \ref{fig:ScintData-TimingBias-CalibResult}). With each power-cycle of the board, the calibration takes place again, meaning that the timing calibration is required after each startup of the board. The observed timing fluctuation is usually $\lesssim \SI{80}{\tu}$ (\SI{62}{\nano\second}).
 \FloatBarrier
-\paragraph{Programming channel delays}
+\paragraph{Timing correction with delay unit}
+In principle, it would be possible to only extract the timing corrections from the measurement and do the actual correction of the recorded data offline. As the \ac{FPGA} firmware features a programmable delay unit for each input channel (sec.\ \ref{sec:Scint-ReadoutFirmware-ProgrammableDelays}), it is even possible to program the delays according to the observed timing differences and perform this correction already "online". The method of determining the delays to be programmed for all input channels is discussed in this section.
+\newline Because it is only possible to delay the timing of the input channels, the target timing for all channels has to be selected as the maximum observed timestamp of all channels:
+\begin{equation}
+    T_\text{orbit,target} = \max \left\{ T_{\text{orbit},i} \; ; \; i=0,...,N_\text{chs} \right\} .
+    \label{eq:ScintData-TimingBias-TimingTarget}
+\end{equation}
+In order to reach the desired timing of each input channel, one needs to subtract the observed testpulse timestamp $\left\langle T_\text{orbit} \right\rangle$ of the respective channel from the target value. For technical reasons, the delay unit in the firmware only allows to set the delay with a granularity of $T_\text{delaystep}=\SI{8}{\tu}$. This of course implies that the timing correction can not be better than this granularity. The delay register value to be programmed for channel $i$ is obtained by division and integer rounding of the target delay:
+\begin{equation}
+    \texttt{Delay\_Register}(i) = \text{round}\left( \frac{T_\text{orbit,target} - \left\langle T_{\text{orbit},i} \right\rangle}{T_\text{delaystep}} \right) .
+    \label{eq:ScintData-TimingBias-DelayRegisterValue}
+\end{equation}
+After setting the proper delay unit values, a validation measurement is performed with the testpulses. The resulting testpulse timing after the "online" timing correction is also presented in fig.\ \ref{fig:ScintData-TimingBias-CalibResult} in red. It is clearly visible that the testpulse response is now aligned within a window of approx \SI{8}{\tu} which corresponds to the expected accuracy limit of the correction due to the delay unit granularity. Note that the correction is simultaneously applied for the two readout boards, leading to the desired situation where all 64 channels are aligned in time, not only those channels which are connected to the same readout board.
 \begin{figure}[htb]
-    \centering % presented histogram: 
-    \includegraphics[width=0.8\textwidth]{scint_timing_calib/timing_scatter.pdf}
-    \caption{.}
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{scint_timing_calib/timing_after_board1.pdf}
+        \caption{Readout board 1}
+        \label{fig:ScintData-TimingBias-CalibResult-Board1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{scint_timing_calib/timing_after_board2.pdf}
+        \caption{Readout board 2}
+        \label{fig:ScintData-TimingBias-CalibResult-Board2}
+    \end{subfigure}
+    \hfill
+    \caption{Measured testpulse response timing for the 64 TDC inputs distributed over the two readout boards. The initial timing (blue) is compared to the validation measurement (red) after adjusting the delay units for each input channel individually according to the measured testpulse timing.}
     \label{fig:ScintData-TimingBias-CalibResult}
 \end{figure}
 
@@ -94,9 +139,9 @@ The readout board offers the possibility to transmit simultaneous testpulses to 
 %\end{itemize}
 \label{sec:ScintData-Noise}
 
-\FloatBarrier
-\section{Signal ringing and crosstalk}
-\label{sec:ScintData-RingingCrosstalk}
+%\FloatBarrier
+%\section{Signal ringing and crosstalk}
+%\label{sec:ScintData-RingingCrosstalk}
 
 \FloatBarrier
 \section{SiPM hits}
@@ -107,24 +152,8 @@ The readout board offers the possibility to transmit simultaneous testpulses to 
 \label{sec:ScintData-Hits}
 
 \FloatBarrier
-\section{SiPM coincidences}
-%\begin{itemize}
-%    \item Coincidence of two SiPMs of same scintillator strip
-%    \item Discuss strip rate
-%    \item Show time difference between both SiPMs, discuss width / time localization
-%    \item Compare to expected fake coincidence rate
-%\end{itemize}
-\label{sec:ScintData-Strips}
-
-\FloatBarrier
 \section{Scintillator strip coincidences}
-%\begin{itemize}
-%    \item Coincidence of two strips of two detector layers (create "pixels")
-%    \item Discuss pixel rate
-%    \item Show time difference between both strips
-%    \item Compare to expected fake coincidence rate
-%\end{itemize}
-\label{sec:ScintData-Pixels}
+\label{sec:ScintData-Strips}
 
 
 
