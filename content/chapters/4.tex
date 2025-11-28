@@ -84,19 +84,7 @@ Note that because the time differences in the testpulse sources were respected w
 %    \item Apply dead time for individual channels
 %\end{itemize}
 \label{sec:DTData-CellHits}
-In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamber at the test stand is presented. Tab.\ \ref{tab:DTData-Dataset} shows basic information about the presented \ac{DT} hit dataset in this chapter. Before the reconstruction algorithm is described and its results are showcased, the raw data (which are the drift cell hit timestamps) should be presented and discussed in this section.
-\begin{table}[htb]
-    \centering
-    \begin{tabular}{|c|c|c|} 
-        \hline
-        Timestamp & 28.10.2025, 20:46 MET \\ \hline
-        Duration & \SI{1993.16}{\second} \\ \hline
-        Total cell hits & \num{33760867} \\ \hline
-        Raw data size & \SI{3.0}{\giga\byte} \\ \hline
-    \end{tabular}
-    \caption{Information on the presented dataset recorded with the \ac{DT} chamber.}
-    \label{tab:DTData-Dataset}
-\end{table}
+In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamber at the test stand is presented. Before the reconstruction algorithm is described and its results are showcased, the raw data (which are the drift cell hit timestamps) should be presented and discussed in this section.
 \FloatBarrier
 \subsection{Cell occupancy}
 \label{sec:DTData-CellHits-Occupancy}
@@ -388,7 +376,7 @@ Here, the vertical position of the drifting electrons is assumed to be the heigh
     \label{eq:SLPatternFit-Timestamp}
 \end{equation}
 \FloatBarrier
-\paragraph{Fit function}
+\paragraph{Timestamp fit function}
 Combining eqs.\ \ref{eq:SLPatternFit-LinearTrack}, \ref{eq:SLPatternFit-xPosition} and \ref{eq:SLPatternFit-Timestamp} yields the following formula for the cell timestamps $T_{ly}$:
 \begin{equation}
     T_{ly} = T_0 + \frac{L_{ly}}{v_D} \cdot \left( x_0 + z_{\text{wire},ly} \cdot \tan\alpha - x_{\text{wire},ly} \right).
@@ -396,10 +384,15 @@ Combining eqs.\ \ref{eq:SLPatternFit-LinearTrack}, \ref{eq:SLPatternFit-xPositio
 \end{equation}
 This equation relates the four measured timestamps to the muon track parameters $x_0$ and $\alpha$, as well as the arrival time $T_0$. By fitting the measured timestamps $T_{ly}$ to this function, one can obtain the values for these parameters. Fig.\ \ref{fig:DTData-SLPatternFit-Illustration-Track} from above illustrates the meaning of the three parameters.
 \newline Note that in principle one could even use the drift velocity $v_D$ as an additional fit parameter, if one uses patterns with four hits. However, in this thesis the drift velocity is fixed to the known \ac{CMS} reference value of $v_D\approx\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}). In principle, it would be possible to use the value measured with the photo-peak method above (eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation}), but due to the observed uncertainties of this method, the obtained value (which is lower than the \ac{CMS} value) is not trusted for the reconstruction. However, it is clear that a wrongly assumed drift velocity has consequences for the reconstruction quality.
-\newline The fit method is a least-square minimization ($\chi^2$-fit) which uses the layer $ly=0,1,2,3$ as $x$-coordinate and the timestamp $T_{ly}$ as $y$-coordinate. The uncertainty of the timestamps $\sigma_{T,ly}$ is derived from the digitization uncertainty and the uncertainty of the applied timing correction obtained from the test pulse run (sec.\ \ref{sec:DTData-Testpulse-Calibration}). It is clear that when fitting four timestamps to three parameters, the number of degrees of freedom is $N_{df}=1$.
-\newline The value of the laterality factors $L_{ly}$ is initially unclear, as there are several allowed laterality configurations of the four cells for each pattern. Tab.\ \ref{tab:DTData-SLPatternFit-AllowedLateralities} in the appendix lists all possibilities for each of the analyzed patterns. As the assumption of one laterality configuration would result in a strong bias for the analysis, the timestamp fit is performed for each combination. Then, only the fit with the best (lowest) goodness-of-fit variable $\chi2/N_{df}$ is kept for the next analysis steps.
 \FloatBarrier
-\paragraph{Parameter bounds and initial values}
+\paragraph{Fit method and uncertainties}
+The fit method is a least-square minimization ($\chi^2$-fit) which uses the layer $ly=0,1,2,3$ as $x$-coordinate and the timestamp $T_{ly}$ as $y$-coordinate. It is clear that when fitting four timestamps to three parameters, the number of degrees of freedom is $N_{df}=1$.
+\newline The uncertainty of the timestamps $\sigma_{T,ly}$ for the fit is derived from the digitization uncertainty ($0.22 \;\si{\nano\second}$) and the uncertainty of the applied timing correction obtained from the test pulse run (typically $1-2 \;\si{\nano\second}$, sec.\ \ref{sec:DTData-Testpulse-Calibration}). In addition to these, a generous \SI{5}{\nano\second} uncertainty is assigned to all timestamps which should compensate for the simplified assumption of the drift electrons always being at the height of the wire (see discussion above). With this, the total assigned uncertainty of the cell timestamps is in the order of $6 \;\si{\nano\second}$.
+\FloatBarrier
+\paragraph{Laterality combinations}
+The value of the laterality factors $L_{ly}$ is initially unclear, as there are several allowed laterality configurations of the four cells for each pattern. Tab.\ \ref{tab:DTData-SLPatternFit-AllowedLateralities} in the appendix lists all possibilities for each of the analyzed patterns. As the assumption of one laterality configuration would result in a strong bias for the analysis, the timestamp fit is performed for each combination. Then, only the fit with the best (lowest) goodness-of-fit variable $\chi2/N_{df}$ is kept for the next analysis steps.
+\FloatBarrier
+\paragraph{Fit parameter bounds and initial values}
 The fit parameter values are required to obey to certain bounds, which represent the \ac{DT} chamber properties. The reference position $x_0$ of the track in the \ac{SL} fit is required to be within the reference cell ($ly=3$). Depending on the laterality, it must be within the cell frame and left or right of the wire:
 \begin{equation}
     \left.\begin{aligned}

@@ -11,8 +11,6 @@ This chapter presents the atmospheric muon data recorded with the scintillator d
 %    \item Account for measured biases when setting thresolds
 %\end{itemize}
 \label{sec:ScintData-VoltageBias}
-\FloatBarrier
-\paragraph{Comparator bias}
 The \ac{FPGA}-internal comparators used for discrimination of the analog \ac{SiPM} signals have individual bias voltages (sec.\ \ref{sec:Scint-ReadoutBoard-FPGASampling}). An ideal comparator would switch its output state at the point where both input voltages are equal: $V_+ = V_-$. For the non-ideal comparator, the switching point is shifted by the bias voltage: $V_+ + V_\text{bias} = V_-$. As explained, the bias voltage is expected to be as high as $\pm 35 \;\si{\milli\volt}$ \cite{UltraScale-FPGA-SelectIO-Resources}. As the discriminator threshold lies in the range of $\mathcal{O}(\SI{10}{\milli\volt})$, a calibration of the bias voltage for each individual comparator is essential.
 \FloatBarrier
 \paragraph{Measurement with function generator}
@@ -49,7 +47,7 @@ After the measurement, the comparator threshold voltages are adjusted accordingl
     V_\text{thres,new} = V_\text{thres,initial} - V_\text{bias}.
     \label{fig:ScintData-VoltageBias-NewThresold}
 \end{equation}
-The procedure is repeated multiple times, in order to iteratively improve the precision of the calibration. After setting the final threshold voltage, the bias voltage is measured one more time to validate the outcome of the calibration. The obtained validation data points are also shown in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult}, with the read data points. As expected, the bias voltage could be mostly removed with this procedure, while few channels show a small remaining offset of $\mathcal{O}(\SI{1}{\milli\volt})$.
+The procedure is repeated multiple times, in order to iteratively improve the precision of the calibration. After setting the final threshold voltage, the bias voltage is measured one more time to validate the outcome of the calibration. The obtained validation data points are also shown in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult}, with the read data points. As expected, the bias voltage could be mostly removed with this procedure, while few channels show a small remaining offset of $\mathcal{O}(\SI{1}{\milli\volt})$. Repeating the validation measurements after a power-cycle or a longer time does not show significant changes, hinting that the bias voltage is stable in time. However (as described in sec.\ \ref{sec:Scint-ReadoutBoard-FPGASampling}), the measured bias voltages depend on the applied threshold, making it necessary to repeat the calibration after the threshold is changed.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -107,7 +105,7 @@ In order to reach the desired timing of each input channel, one needs to subtrac
     \texttt{Delay\_Register}(i) = \text{round}\left( \frac{T_\text{orbit,target} - \left\langle T_{\text{orbit},i} \right\rangle}{T_\text{delaystep}} \right) .
     \label{eq:ScintData-TimingBias-DelayRegisterValue}
 \end{equation}
-After setting the proper delay unit values, a validation measurement is performed with the testpulses. The resulting testpulse timing after the "online" timing correction is also presented in fig.\ \ref{fig:ScintData-TimingBias-CalibResult} in red. It is clearly visible that the testpulse response is now aligned within a window of approx \SI{8}{\tu} which corresponds to the expected accuracy limit of the correction due to the delay unit granularity. Note that the correction is simultaneously applied for the two readout boards, leading to the desired situation where all 64 channels are aligned in time, not only those channels which are connected to the same readout board.
+After setting the proper delay unit values, a validation measurement is performed with the testpulses. The resulting testpulse timing after the "online" timing correction is also presented in fig.\ \ref{fig:ScintData-TimingBias-CalibResult} in red. It is clearly visible that the testpulse response is now aligned within a window of $\approx\SI{8}{\tu}$ which corresponds to the expected accuracy limit of the correction due to the delay unit granularity. Note that the correction is simultaneously applied for the two readout boards, leading to the desired situation where all 64 channels are aligned in time, not only those channels which are connected to the same readout board.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -138,6 +136,7 @@ After setting the proper delay unit values, a validation measurement is performe
 %    \item Aliasing effects (too coarse scanning steps) hide expected steps in spectrum
 %\end{itemize}
 \label{sec:ScintData-Noise}
+Before the recorded data with atmospheric muons was recorded, the \ac{SiPM} noise was recorded.
 
 %\FloatBarrier
 %\section{Signal ringing and crosstalk}
