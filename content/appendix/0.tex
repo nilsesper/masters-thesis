@@ -55,34 +55,6 @@ Fig.\ \ref{fig:DTData-Testpulse-LatencyDifference} shows an oscilloscope screens
 \FloatBarrier
 \section{Drift cell hits}
 
-\begin{table}[htb]
-    \centering
-    \begin{tabular}{|c|c|c|c|} 
-        \hline
-        \ac{SL} & Ly & Wi & Type \\ \hline
-        % ro_ch=8 masked chs: 115, 119, 121, 123 (fec 7A, probably higher than use chs)
-        1 (phi) & 1 & 49 & Not connected \\ %\hline
-        % ro_ch=14 masked chs: none
-        2 (theta) & 0 & 2 & Dead \\ 
-        2 (theta) & 0 & 5 & Dead \\ 
-        2 (theta) & 0 & 13 & Dead \\ 
-        2 (theta) & 0 & 50 & Dead \\ 
-        2 (theta) & 0 & 51 & Dead \\ 
-        2 (theta) & 1 & 4 & Dead \\ 
-        2 (theta) & 1 & 5 & Dead \\ 
-        2 (theta) & 1 & 44 & Dead \\ 
-        2 (theta) & 1 & 45 & Dead \\ 
-        2 (theta) & 1 & 57 & Not connected \\ %\hline
-        % ro_ch=10 masked chs: 124 (fec 7A, probably higher than use chs)
-        3 (phi) & 0 & 10 & Dead \\ 
-        3 (phi) & 1 & 41 & Dead \\ 
-        3 (phi) & 1 & 49 & Not connected \\ 
-        3 (phi) & 2 & 26 & Dead \\ \hline
-    \end{tabular}
-    \caption{List of dead wires of the \ac{DT} chamber at the test stand.}
-    \label{tab:DTData-DeadWires}
-\end{table}
-
 Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponential fit to the tail of the hit time difference distribution for $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$. From the residual plot and the goodness-of-fit variable (which lies in the order of one) one can conclude that the exponential behavior of the time difference $\Delta T_\text{cell}$ is indeed a valid assumption. The obtained exponential fit is used as "background" estimation for the Poisson noise events, as discussed in sec.\ \ref{sec:DTData-CellHits-SecondaryHits}
 \begin{figure}[htb]
     \centering

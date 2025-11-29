@@ -1,8 +1,25 @@
 \label{sec:Simulation}
 
-\section{Section}
-\subsection{Subsection}
-Text.
+\FloatBarrier
+\section{Muon track generation}
+
+\FloatBarrier
+\section{Propagation through DT chamber}
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|} 
+        \hline
+        Chamber subset & Average cell rate \\ \hline
+        \ac{SL} 1 (phi) & $(14.805\pm 0.009)\;\si{\hertz}$ \\
+        \ac{SL} 2 (theta) & $(12.692 \pm 0.007)\;\si{\hertz}$ \\
+        \ac{SL} 3 (phi) & $(14.785 \pm 0.009)\;\si{\hertz}$ \\ \hline
+        \acp{SL} 1, 3 (phi) & $(14.795 \pm 0.006)\;\si{\hertz}$ \\ \hline
+        Full chamber & $(14.022 \pm 0.005)\;\si{\hertz}$ \\ \hline
+    \end{tabular}
+    \caption{Simulation output of averaged \ac{DT} cell rates for different subsets of the chamber. Statistical uncertainties are given for each value.}
+    \label{tab:Simulation-ChamberRates}
+\end{table}
 
 \begin{table}[htb]
     \centering
@@ -20,6 +37,9 @@ Text.
     \caption{Obtained \ac{SL} pattern rates from the simulation.}
     \label{tab:Simulation-PatternOccupancies}
 \end{table}
+
+\FloatBarrier
+\section{Propagation through scintillator}
 
 
 

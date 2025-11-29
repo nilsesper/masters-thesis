@@ -1,8 +1,8 @@
 \FloatBarrier
 \label{sec:DTData}
 
-For this work, atmospheric muon data was recorded with the \ac{DT} chamber at the reactivated test stand in Aachen (sec.\ \ref{sec:CMS-AachenTestStand}). This section should present the data and the analysis strategy to reconstruct (potential) muon tracks without an external trigger. The triggerless reconstruction is essential, because the developed readout chain for the scintillation detector should be validated using the \ac{DT} chamber hits as reference, therefore using the scintillator as a trigger for the chamber would imply a bias.
-\newline The reconstruction strategy is guided by the local \ac{CMS} \ac{DT} reconstruction \cite{DT-LocalReco} and calibration \cite{DT-OfflineCalibration}, as well as other work within the \ac{DT} group concerning \ac{DT} hit reconstruction \cite{MSc-Alcalde,CMS-NOTE-2008-017}. However, the reconstruction was implemented into a custom standalone code framework \cite{dt-scint-analysis-tools-Main}, which allows the integration of the \ac{DT} chamber data as well as the scintillator data (sec.\ \ref{sec:ScintData}). Integration of the developed scintillator readout system with the central \ac{CMS} \ac{DT} reconstruction framework might be desired in the future, to exploit the evolved algorithms. The aim of this thesis however was a proof-of-concept measurement with the \ac{DT} chamber and the scintillator, and therefore a less evolved reconstruction strategy was considered sufficient.
+For this work, atmospheric muon data was recorded with the \ac{DT} chamber at the reactivated test stand in Aachen (sec.\ \ref{sec:CMS-AachenTestStand}). This section should present the data and the analysis strategy to reconstruct muon tracks without an external trigger. The triggerless reconstruction is essential, because the developed readout chain for the scintillation detector (sec.\ \ref{sec:Scint}) should be validated using the \ac{DT} chamber hits as reference, therefore using the scintillator as a trigger for the chamber would imply a bias.
+\newline The reconstruction strategy is guided by the local \ac{CMS} \ac{DT} reconstruction \cite{DT-LocalReco} and calibration \cite{DT-OfflineCalibration}, as well as other work within the \ac{DT} group concerning \ac{DT} hit reconstruction \cite{MSc-Alcalde,CMS-NOTE-2008-017}. The reconstruction was implemented into a custom standalone code framework \cite{dt-scint-analysis-tools-Main}, which allows the analysis of the \ac{DT} chamber data as well as the scintillator data (sec.\ \ref{sec:ScintData}). Integration with the central \ac{CMS} \ac{DT} reconstruction framework might be desired in the future, to exploit the evolved algorithms. However, the aim of this thesis is a proof-of-concept measurement with the \ac{DT} chamber and the scintillator. Therefore, a less evolved reconstruction strategy inside this self-developed framework is considered sufficient.
 
 
 
@@ -23,16 +23,17 @@ Precise time measurement of the drift cell hits is essential for a successful \a
 \FloatBarrier
 \subsection{Testpulse generation}
 \label{sec:DTData-Testpulse-Generation}
+\FloatBarrier
+\paragraph{Synchronous testpulse generation}
 As described, the minicrate can generate synchronous testpulses for the chamber's \acp{FEB}, which sends back a response to the \acp{OBDT} (sec.\ \ref{sec:CMS-DTMinicrate}). The issuing of testpulses is controlled by the \ac{DT} backend. It can send a command to all \acp{OBDT} to generate a testpulse at a given $BX$ time in an orbit (a new orbit starts at $BX=0$ and $TDC=0$, as discussed in sec.\ \ref{sec:CoordinateFrame-TimestampFormat}). Therefore, the time when the testpulse is issued is precisely known.
 \FloatBarrier
 \paragraph{Testpulse latency correction}
-The testpulse generators of the \ac{OBDT} phi and theta boards have different analog circuitry which generates the actual testpulses (sec.\ \ref{sec:CMS-Phase2Readout}). This results in a latency difference between the boards, which is however constant. In order to eliminate this timing offset between \ac{OBDT} flavors, a correction should be applied to the recorded testpulse hit timestamps. A measurement of the time difference of the generated output with an oscilloscope yields
+The testpulse generators of the \ac{OBDT} phi and theta boards have different analog circuitry which produce the actual testpulses (sec.\ \ref{sec:CMS-Phase2Readout}). This results in a latency difference between the boards, which is however constant, as it originates from the (static) circuit. In order to eliminate this timing offset between \ac{OBDT} flavors, a correction should be applied to the recorded testpulse hit timestamps. A measurement of the time difference of the generated testpulse output with an oscilloscope yields
 \begin{equation}
     T_\text{testpulse, theta} - T_\text{testpulse, phi} = (116 \pm 1)\;\si{\nano\second}.
     \label{eq:DTData-TestpulseLatency}
 \end{equation}
-Additional information and a screenshot of the oscilloscope can be found in the appendix in fig.\ \ref{fig:DTData-Testpulse-LatencyDifference}.
-\newline This latency correction value is applied to the recorded timestamps of the testpulse hits, in order to only calibrate the channels for the timing differences in the testpulse response, and not in the testpulse generation chain.
+A screenshot of the oscilloscope measurement can be found in the appendix in fig.\ \ref{fig:DTData-Testpulse-LatencyDifference}. This latency correction value is applied to the recorded timestamps of the testpulse hits.
 \newline Additionally, the testpulse cable lengths from the minicrate to the \acp{FEB} in the chamber are not all the same. To account for latency differences due to the different lengths, the difference in signal propagation time was measured with an oscilloscope and applied to the affected channels as well.
 
 \FloatBarrier
@@ -42,33 +43,33 @@ A dataset with activated testpulses is recorded, where all \ac{DT} chamber chann
 \begin{equation}
     T_\text{orbit} = T(OC,\;BX,\;TDC) - T(OC,\;BX=0,\;TDC=0).
 \end{equation}
-For the presented testpulse run, the pulses were commanded to be sent at $BX=50$ of each orbit, translating to $T_\text{orbit}=\SI{1600}{\tu}$. To this timestamp value one has to add the latency of the testpulse generation circuitry, the propagation time via the testpulse cables, as well as the \ac{FEB} response and the cable lengths of the \acp{FEC} going back to the \ac{OBDT}. Therefore one expects the testpulse responsed at $T_\text{orbit}$ values greater than the mentioned value above.
+For the presented testpulse run, the pulses were commanded to be sent at $BX=50$ of each orbit, translating to $T_\text{orbit}=\SI{1600}{\tu}$. The testpulse response should come later than this time, as one has to expect several delay sources for the received response: The latency of the testpulse generation circuitry, the propagation time via the testpulse cables, the \ac{FEB} intrinsic response time as well as the frontend cable lengths of the \acp{FEB} going back to the \ac{OBDT}.
 \FloatBarrier
 \paragraph{Testpulse response}
-Fig.\ \ref{fig:DTData-TestpulseResponse} shows the testpulse response for all channels of the \ac{DT} chamber. The presented uncertainties are derived from the digitization step of the \ac{OBDT} and the uncertainty of the latency correction discussed above (sec.\ \ref{sec:DTData-Testpulse-Generation}).
+The timestamps of all received testpulses for the each channel are averaged to obtain one testpulse time value per channel $\left\langle T_\text{orbit}(\text{SL, Ly, Wi}) \right\rangle$. Fig.\ \ref{fig:DTData-TestpulseResponse} shows the testpulse response for all channels of the \ac{DT} chamber. The timing uncertainties are calculated from the digitization step of the \ac{OBDT} (\SI{0.78}{\nano\second}) and the uncertainty of the latency correction discussed above (sec.\ \ref{sec:DTData-Testpulse-Generation}).
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{dt_tp/t_orbit.pdf}
     \caption{Mean timestamp $\left\langle T_\text{orbit}(\text{SL, Ly, Wi}) \right\rangle$ of the testpulse responses for all individual channels.}
     \label{fig:DTData-TestpulseResponse}
 \end{figure}
-\newline One can observe that all read-out channels do actually receive a testpulse response. From this one can conclude that there are no dead channels on the \ac{OBDT} side and the installed minicrate can be used to read out the \ac{DT} chamber hits as foreseen.
-\newline As expected, the testpulse response is recorded at timestamps greater than $T_\text{orbit}=\SI{1600}{\tu}$. The response timestamps lie in the range $T_\text{orbit}\approx 1700-1720 \;\si{\tu}$. While the range of response timestamps is comparable for the phi \acp{SL} 1 and 3, the response of all channels of the theta \ac{SL} 2 is systematically later by $\approx 10-15\;\si{\tu}$ ($\approx 7-12 \;\si{\nano\second}$). One possible reason is the length of the \ac{FEC} cables, which contributes to the response timing. Since the minicrate is mounted on the chamber side with the \ac{SL} phi \acp{FEC}, the phi cables are significantly shorter ($\approx 0.3-1.6\;\si{\meter}$) than the theta cables ($\approx 3\;\si{\meter}$). A cable length difference of $\approx\SI{2}{\meter}$ could in fact explain a timing difference of $\approx\SI{6}{\nano\second}$ which is the order of magnitude difference that is observed.\footnote{One usually assumes the electrical signal propagation velocity with $\approx\SI{30}{\centi\meter/\nano\second}$, which is also done in this rough estimation.} Since this difference in cable length is in the signal path, it is right to correct for this in the timing calibration.
-\newline Another observation is the difference in the channel-to-channel variations between the phi and theta \acp{SL}. While the testpulse responses for \ac{SL} 2 (theta) are contained within a window of \SI{5}{\tu} (\SI{4}{\nano\second}), channels vary by \SI{10}{\tu} (\SI{8}{\nano\second}) for the phi \acp{SL} 1 and 3. The \ac{FEC} cables of the phi \acp{SL} are not uniform in length, as it is the case for the theta (see mentioned values above). This will lead to deterministic timing variations in the order of $\approx\SI{5}{\nano\second}$ for the different cable lengths, which is the order of magnitude in variation that is observed. However, one would expect that the cable length affects the channels of the same wire and different layers in the same way. One can also observe significant variations between channels of the same wire in different layers, which must have a different cause.
+\newline One can observe that all read-out channels do actually receive a testpulse response. From this it is concluded that there are no dead channels on the \ac{OBDT} side and the installed minicrate is working correctly.
+\newline As expected, the testpulse response is recorded at timestamps greater than the time $T_\text{orbit}=\SI{1600}{\tu}$ when the testpulse generation is commanded. The recorded response timestamps lie in the range $T_\text{orbit}\approx 1705-1720 \;\si{\tu}$. While for the phi \acp{SL} 1 and 3 the interval of all response timestamps is comparable, the response of all channels of the theta \ac{SL} 2 is systematically later by $\approx 10\;\si{\tu}$ ($\approx 7 \;\si{\nano\second}$). One possible reason is the length of the \ac{FEC} cables, which contributes to the response timing. Since the minicrate is mounted on the chamber side with the \ac{SL} phi \acp{FEC}, the phi cables are significantly shorter ($\approx 0.3-1.6\;\si{\meter}$) than the theta cables ($\approx 3\;\si{\meter}$). A cable length difference of $\approx\SI{2}{\meter}$ could in fact explain a timing difference in the order of magnitude that is observed.\footnote{With the rough assumption of an electrical signal propagation velocity of $\approx\SI{30}{\centi\meter/\nano\second}$, one obtains an expected delay of \SI{6}{\nano\second} for a cable length difference of \SI{2}{\meter}.} Since this difference in cable length is in the signal path, it is right to correct for this in the timing calibration.
+\newline Another observation is the difference in the channel-to-channel variations between the phi and theta \acp{SL}. While the testpulse responses for \ac{SL} 2 (theta) are contained within a window of only \SI{5}{\tu} (\SI{4}{\nano\second}), the channels vary by up to \SI{10}{\tu} (\SI{8}{\nano\second}) for the phi \acp{SL} 1 and 3. The \ac{FEC} cables of the phi \acp{SL} are not uniform in length, as it is the case for the theta (see mentioned values above). This could again explain the order of magnitude in fluctuation that is observed. One would expect that the cable length affects groups of channels that are connected to the same cable in the same way. However, one can also observe significant variations between channels of the same wire in different layers, which must have a different cause.
 \FloatBarrier
 \paragraph{Extracted timing correction}
-The relative timing correction for all channels can now be calculated. The timestamps of all received testpulses for the respective channel are averaged to obtain one testpulse time value per channel $\left\langle T_\text{orbit}(\text{SL, Ly, Wi}) \right\rangle$. One can estimate a relative timing correction $T_\text{corr}$ for the individual channels by subtracting the channel timestamp by the global average of testpulse times $\left\langle T_\text{orbit} \right\rangle$:
+The relative timing correction for all channels can now be calculated. For the correction, it is decided to use the global average of testpulse times $\left\langle T_\text{orbit} \right\rangle$ as a reference time. One can estimate a relative timing correction $T_\text{corr}$ for the individual channels by subtracting the channel timestamp by this reference time:
 \begin{equation}
     T_\text{corr}(\text{SL, Ly, Wi}) = \left\langle T_\text{orbit}(\text{SL, Ly, Wi}) \right\rangle - \left\langle T_\text{orbit} \right\rangle.
 \end{equation}
-Note that because the time differences in the testpulse sources were respected with the latency correction (eq.\ \ref{eq:DTData-TestpulseLatency}), this value is the actual difference in timing between all channels of the \ac{DT} chamber. The extracted corrections are shown in fig.\ \ref{fig:DTData-TestpulseCorrections}.
+Note that because the latency correction was performed (eq.\ \ref{eq:DTData-TestpulseLatency}), the obtained timing correction covers the full readout path (from \ac{FEB} over the cables to the \acp{OBDT} and the path to the \ac{DT} backend), but not the variations in the testpulse generation. The extracted corrections are shown in fig.\ \ref{fig:DTData-TestpulseCorrections}.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{dt_tp/t_corr.pdf}
     \caption{Calculated relative timing corrections $T_\text{corr}(\text{SL, Ly, Wi})$ for all individual channels.}
     \label{fig:DTData-TestpulseCorrections}
 \end{figure}
-\newline The obtained timing corrections are in the range of $-6\;\si{\nano\second}$ to $+7\;\si{\nano\second}$. In comparison, the \ac{CMS} \ac{DT} offline calibration note \cite{DT-OfflineCalibration} states usual timing calibration values of up to $\pm 9\;\si{\nano\second}$. Therefore, the result from the testpulse run presented above seems to yield calibration values in the expected range, even though the systematic observations are present, which were already discussed above.
+\newline The obtained timing corrections lie in the range of $-6\;\si{\nano\second}$ to $+7\;\si{\nano\second}$. In comparison, the \ac{CMS} \ac{DT} offline calibration note \cite{DT-OfflineCalibration} states usual timing calibration values of up to $\pm 9\;\si{\nano\second}$. Thererfore, the result from the testpulse run presented above seems to yield calibration values in the expected range.
 
 
 
@@ -84,28 +85,83 @@ Note that because the time differences in the testpulse sources were respected w
 %    \item Apply dead time for individual channels
 %\end{itemize}
 \label{sec:DTData-CellHits}
-In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamber at the test stand is presented. Before the reconstruction algorithm is described and its results are showcased, the raw data (which are the drift cell hit timestamps) should be presented and discussed in this section.
+In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamber at the test stand is presented. Tab.\ \ref{tab:DTData-DatasetInfo} presents some basic facts about the recorded dataset. Before the reconstruction algorithm is described and its results are showcased, the raw data (i.e.\ the drift cell hit timestamps) should be presented and discussed in this section.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|} 
+        \hline % size = 13.6 gb * 0.47 (approx. dt fraction on dumpfile) = 
+        Measurement duration & Total \ac{DT} cell hits & Raw data size \\ \hline
+        $\SI{19599}{\second}\approx\SI{5}{\hour}\;\SI{27}{\min}$ & \num{297312727} & $\SI{6.4}{\giga\byte}$ \\ \hline
+    \end{tabular}
+    \caption{Basic facts about the presented \ac{DT} chamber dataset with atmospheric muons.}
+    \label{tab:DTData-DatasetInfo}
+\end{table}
+
 \FloatBarrier
 \subsection{Cell occupancy}
 \label{sec:DTData-CellHits-Occupancy}
-As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise. The data presented here has the timing correction from above (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
+As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise, which is discussed in the following sections. Note that the data presented here has the timing correction from above (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
 \FloatBarrier
-\paragraph{Hit rates}
-Fig.\ \ref{fig:DTData-ChamberRates} shows the hit rate of all individual wires of the chamber. The cell hit rate lies in the range $\approx 20-30\;\si{\hertz}$ and is relatively uniform for all wires. In comparison, different \ac{CMS} publications also present cell rates which are above this estimation and lie in the range $\approx 30-60\;\si{\hertz}$ \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are slightly higher than what is observed in this work, which may be because of the older readout electronics that were used at the time, or a lower selected \ac{FEB} threshold voltage. Note however that the rates both have a similar order of magnitude.
-\newline For comparison with the cosmic expectation, the average rates of drift cells in the phi (theta) \acp{SL} were calculated from the data as $(27.5 \pm 5.2)\;\si{\hertz}$ ($(24.0 \pm 4.9)\;\si{\hertz}$). Note that cells with low occupancy were excluded from this calculation.
+\paragraph{Measured cell occupancies}
+Fig.\ \ref{fig:DTData-ChamberRates} shows the cell occupancies of all individual wires of the chamber. The occupancy is observed to be relatively uniform for all wires and is $\mathcal{O}(10^5)$ hits per cell for the full recorded dataset. With the known recording time of the data, one can calculate a mean event rate for each cell. Tab.\ \ref{tab:DTData-ChamberRates} presents the cell rates for different groups of cells within the chamber. Over the full chamber, the average cell rate is measured as $(25.111 \pm 0.001)\;\si{\hertz}$.
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{dt_hits/Chamber_rates.pdf}
-    \caption{Hit rates for all wires of the \ac{DT} chamber.}
+    \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_CORR_HITS_SPECIFIC_OCCUPANCY.pdf}
+    \caption{Occupancies of all individual drift cells of the \ac{DT} chamber.}
     \label{fig:DTData-ChamberRates}
 \end{figure}
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|} 
+        \hline
+        Chamber subset & Average cell rate \\ \hline
+        \ac{SL} 1 (phi) & $(26.676\pm 0.003)\;\si{\hertz}$ \\
+        \ac{SL} 2 (theta) & $(22.940 \pm 0.002)\;\si{\hertz}$ \\
+        \ac{SL} 3 (phi) & $(25.976 \pm 0.003)\;\si{\hertz}$ \\ \hline
+        \acp{SL} 1, 3 (phi) & $(26.329 \pm 0.002)\;\si{\hertz}$ \\ \hline
+        Full chamber & $(25.111 \pm 0.001)\;\si{\hertz}$ \\ \hline
+    \end{tabular}
+    \caption{Averaged \ac{DT} cell rates for different subsets of the chamber. The dead cells (tab. \ref{tab:DTData-DeadWires}) were not considered for the rate averaging. Statistical uncertainties are given for each value.}
+    \label{tab:DTData-ChamberRates}
+\end{table}
 \FloatBarrier
 \paragraph{Noisy and dead cells}
-In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. In principle, there are two different kinds of differently behaving cells. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} in the appendix gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one cell with a higher index than the other layers (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}), this cell is not connected to the readout, which leads to zero occupancy for the highest wire index. Additionally, one can observe in fig.\ \ref{fig:DTData-ChamberRates} that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}). In total, 12 dead wires plus 3 unconnected wires are observed in the \ac{DT} chamber at the test stand.
+In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible. In principle, there are two different kinds of differently behaving cells. First, there are cells which do not produce a signal in the \ac{FEB}. These cells are called dead cells. They might originate from either broken electrical or high-voltage connections inside the chamber or problems on the \ac{FEB} itself. On the other hand, there might be noisy cells which exhibit much higher hit rates than one would expect. In the case of the \ac{DT} chamber at the test stand, no noisy cells were found. Tab.\ \ref{tab:DTData-DeadWires} gives a comprehensive list of the observed dead wires. Note that although the layer 1 of each \ac{SL} has one additional cell compared to the other layers (tab.\ \ref{tab:MB1Chamber-Cells}), this additional cell is not connected to the readout. Therefore, the observed zero occupancy in the right most cell of layer 1 of each \ac{SL} is expected. In total, 13 dead wires plus 3 unconnected wires are observed in the \ac{DT} chamber at the test stand. The most dead wires are found in \ac{SL} 2, while \ac{SL} 1 does not have any dead wires. Additionally, one can observe in fig.\ \ref{fig:DTData-ChamberRates} that the wire numbering of layer 3 in each \ac{SL} starts at 1 and not at 0 (cf.\ tab.\ \ref{tab:MB1Chamber-Cells}).
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|} 
+        \hline
+        \ac{SL} & Ly & Wi & Type \\ \hline
+        % ro_ch=8 masked chs: 115, 119, 121, 123 (fec 7A, probably higher than use chs)
+        1 (phi) & 1 & 49 & Not connected \\ %\hline
+        % ro_ch=14 masked chs: none
+        2 (theta) & 0 & 2 & Dead \\ 
+        2 (theta) & 0 & 5 & Dead \\ 
+        2 (theta) & 0 & 13 & Dead \\ 
+        2 (theta) & 0 & 35 & Dead \\ 
+        2 (theta) & 0 & 50 & Dead \\ 
+        2 (theta) & 0 & 51 & Dead \\ 
+        2 (theta) & 1 & 4 & Dead \\ 
+        2 (theta) & 1 & 5 & Dead \\ 
+        2 (theta) & 1 & 44 & Dead \\ 
+        2 (theta) & 1 & 45 & Dead \\ 
+        2 (theta) & 1 & 57 & Not connected \\ %\hline
+        % ro_ch=10 masked chs: 124 (fec 7A, probably higher than use chs)
+        3 (phi) & 0 & 10 & Dead \\ 
+        3 (phi) & 1 & 41 & Dead \\ 
+        3 (phi) & 1 & 49 & Not connected \\ 
+        3 (phi) & 2 & 26 & Dead \\ \hline
+    \end{tabular}
+    \caption{List of dead and unconnected wires of the \ac{DT} chamber at the test stand.}
+    \label{tab:DTData-DeadWires}
+\end{table}
 \FloatBarrier
-\paragraph{Comparison with cosmic rate} The measured rates should be compared with a coarse estimation of the expected atmospheric muon rate impinging on the cell. To estimate the rate, in principle one would need to solve the solid angle and area integration of the muon flux for particles above the energy detection threshold (cf.\ eq.\ \ref{eq:CosmicMuon-DetectorRate}), as was discussed in sec.\ \ref{sec:AtmosphericMuons-Cosmics}. For non-spherical geometries this is however non-trivial.
-\newline The developed analysis framework includes the possibility to simulate muon tracks and propagate them through the detector. Note that the simulation only includes the chamber geometry and does not consider the track energy, and there are additional simplifications assumed. The generation of cosmic tracks and generation of detector hits with this framework, as well as the used approximations, are discussed in detail in appendix \ref{sec:Simulation}.
-\newline The simulation yields the atmospheric muon rate for a phi (theta) drift cell of $(14.6 \pm 3.8)\;\si{\hertz}$ ($(12.5 \pm 3.5)\;\si{\hertz}$). These values are approximately $50\%$ smaller than the observed cell rates of the \ac{DT} chamber at the test stand (and in CMS). Therefore, one can conclude that the cells are subject to noise which increases the hit rates. Although the simulated expected cell hit rates are smaller, the order of magnitude of $\mathcal{O}(10^1\;\si{\hertz})$ is similar to what is observed in data. Together with the fact that the cell rates cited in \ac{CMS} publications for cosmics are also in a similar order of magnitude it is concluded that the chamber at the test stand seems to operate nominally.
+\paragraph{Comparison with CMS}
+Different \ac{CMS} publications present hit rates which lie in the range $\approx 30-60\;\si{\hertz}$ per cell \cite{CMS-Main,CMS-DT-TestBeam-2004}. These rates are slightly higher than what is observed in the recorded dataset from the test stand. The presumable higher noise in the \ac{CMS} data may be related to older readout electronics that were used at the time, as the new minicrate was not available yet. A lower selected \ac{FEB} threshold voltage might also lead to an increased hit rate. The threshold of the cited \ac{CMS} values is not known, but might have been lower than the selected \SI{35}{\milli\volt} (tab.\ \ref{tab:MB1Chamber-Settings}) used in this work. Although the hit rates in \ac{CMS} publications are larger, the order of magnitude $\mathcal{O}(10^1\;\si{\hertz})$ is still the same as what is observed in the measurements of this thesis.
+\FloatBarrier
+\paragraph{Comparison with cosmic rate} A comparison of the measured cell rates to the rate expectation solely from atmospheric muons should be made in this paragraph. In principle, the expected rate can be calculated, if one solves the solid angle and area integrals of the muon flux for particles above the energy detection threshold (eq.\ \ref{eq:CosmicMuon-DetectorRate}), as was discussed in sec.\ \ref{sec:AtmosphericMuons-Cosmics}. However, for non-spherical geometries this integration is non-trivial.
+\newline Alternatively, it is possible to estimate the rate with a \ac{MC} simulation. The developed analysis code includes this possibility of simulation: It can randomly generate muon tracks which follow the atmospheric muon rate and angular distribution and propagate them through the detector geometry. Note that the simulation does not model the physics of the muon interacting with the detector material, but simply simulates the geometric tracks and detects intersections with sensitive cell volume. Details the assumptions and simplifications of this simulation are discussed in appendix \ref{sec:Simulation}.
+\newline The simulation yields an estimated atmospheric muon rate of $(14.795 \pm 0.006)\;\si{\hertz}$ for a phi drift cell and $(12.692 \pm 0.007)\;\si{\hertz}$ for a theta drift cell (tab.\ \ref{tab:Simulation-ChamberRates}). These values are approximately $50\%$ smaller than the observed cell rates of the \ac{DT} chamber at the test stand. The higher observed cell rate could be explained with the presence of noise hits in the real detector, as the simulation performed here does not include any modeling of noise. Even though there is a deviation, the order of magnitude of $\mathcal{O}(10^1\;\si{\hertz})$ per cell is still similar to what is observed in data. Together with the fact that the cell rates cited in \ac{CMS} publications for cosmics are also in a similar order of magnitude, it is concluded that the recorded \ac{DT} data seems plausibe and that the chamber seems to operate nominally.
 
 %As discussed in sec.\ \ref{sec:AtmosphericMuons-Cosmics}, the detector rate can be calculated by integration of the muon flux (cf.\ eq.\ \ref{eq:CosmicMuon-DetectorRate}). The solution of the solid angle and area integral is non-trivial, therefore 
 %A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$ ($\approx\SI{8.5}{\hertz}$) for the phi (theta) \acp{SL}. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise.
@@ -113,7 +169,7 @@ In fig.\ \ref{fig:DTData-ChamberRates} few cells with low occupancy are visible.
 \FloatBarrier
 \subsection{Secondary hits}
 \label{sec:DTData-CellHits-SecondaryHits}
-Further information can be extracted from the recorded cell hit timestamps, even before starting with the track reconstruction. If one considers all hits of one single drift cell, sorts them by timestamp and plots the time difference $\Delta T_\text{cell}$ between these hits, one can observe some characteristic features. Fig.\ \ref{fig:DTData-CellHitDifference} shows the distribution obtained with the prescription for $\Delta T_\text{cell}$ above, cumulated for all cells. Note that the $x$-axis limit extends far beyond the presented range, however the interesting characteristics are visible the plot.
+If one considers all hits of one single drift cell, sorts them by timestamp and plots the time difference $\Delta T_\text{cell}$ between these hits, one can observe some characteristic timing features of the \ac{DT} cell hits. Fig.\ \ref{fig:DTData-CellHitDifference} shows the distribution for this time difference $\Delta T_\text{cell}$ above, cumulated for all cells. Note that the $x$-axis limit extends far beyond the presented range, but the discussed features are already visible in this limited range.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{dt_hits/Hit_difference.pdf}
