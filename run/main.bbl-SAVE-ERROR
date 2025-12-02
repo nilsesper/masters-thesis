@@ -7060,186 +7060,6 @@
       \verb https://cds.cern.ch/record/2749422
       \endverb
     \endentry
-    \entry{LINAC4-Main}{book}{}{}
-      \name{author}{29}{}{%
-        {{hash=3355f89430367d292e8ecbd915d969b1}{%
-           family={Vretenar},
-           familyi={V\bibinitperiod},
-           given={Maurizio},
-           giveni={M\bibinitperiod}}}%
-        {{hash=397a9c5964301c17e5befe0a38886060}{%
-           family={Vollaire},
-           familyi={V\bibinitperiod},
-           given={J},
-           giveni={J\bibinitperiod}}}%
-        {{hash=0698c7daee195fe9ec4457241ef1cd0d}{%
-           family={Scrivens},
-           familyi={S\bibinitperiod},
-           given={R},
-           giveni={R\bibinitperiod}}}%
-        {{hash=3eeb83a52167052a97b099bdc60ba126}{%
-           family={Rossi},
-           familyi={R\bibinitperiod},
-           given={C},
-           giveni={C\bibinitperiod}}}%
-        {{hash=8f7f06ae243f34342aff16ca1e6e1ebf}{%
-           family={Roncarolo},
-           familyi={R\bibinitperiod},
-           given={F},
-           giveni={F\bibinitperiod}}}%
-        {{hash=38fa2c4813c5b5f54d4c7d97c22e1723}{%
-           family={Ramberger},
-           familyi={R\bibinitperiod},
-           given={S},
-           giveni={S\bibinitperiod}}}%
-        {{hash=9a9496870fcf3ba98cf5dfc85c4e98be}{%
-           family={Raich},
-           familyi={R\bibinitperiod},
-           given={U},
-           giveni={U\bibinitperiod}}}%
-        {{hash=9225728fbffa70c764f9e73fd40f4452}{%
-           family={Puccio},
-           familyi={P\bibinitperiod},
-           given={B},
-           giveni={B\bibinitperiod}}}%
-        {{hash=027840307e6510a6f0fce37d04af9a56}{%
-           family={Nisbet},
-           familyi={N\bibinitperiod},
-           given={D},
-           giveni={D\bibinitperiod}}}%
-        {{hash=5f1e13b29361d3ce3597015ac77389a4}{%
-           family={Mompo},
-           familyi={M\bibinitperiod},
-           given={R},
-           giveni={R\bibinitperiod}}}%
-        {{hash=f3012b674e269ae5e3d86e456dad9ffd}{%
-           family={Mathot},
-           familyi={M\bibinitperiod},
-           given={S},
-           giveni={S\bibinitperiod}}}%
-        {{hash=02110474c3073a162d4e09bdb9e8566f}{%
-           family={Martin},
-           familyi={M\bibinitperiod},
-           given={C},
-           giveni={C\bibinitperiod}}}%
-        {{hash=9906a4abae4247a3067e63545a08eac1}{%
-           family={Lopez-Hernandez},
-           familyi={L\bibinithyphendelim H\bibinitperiod},
-           given={L\bibnamedelima A},
-           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=d507164cad06ce3a3fccbb31686f0fc9}{%
-           family={Lombardi},
-           familyi={L\bibinitperiod},
-           given={A},
-           giveni={A\bibinitperiod}}}%
-        {{hash=c8a5666e09d644ce9241451e6a54a15f}{%
-           family={Lettry},
-           familyi={L\bibinitperiod},
-           given={J},
-           giveni={J\bibinitperiod}}}%
-        {{hash=464c196afe4a039130769db9bb8953a0}{%
-           family={Lallement},
-           familyi={L\bibinitperiod},
-           given={J\bibnamedelima B},
-           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=9c14f3f293941c4d028ad528da245a8c}{%
-           family={Kozsar},
-           familyi={K\bibinitperiod},
-           given={I},
-           giveni={I\bibinitperiod}}}%
-        {{hash=d18278174a2e9456c841b21e789fabe4}{%
-           family={Hansen},
-           familyi={H\bibinitperiod},
-           given={J},
-           giveni={J\bibinitperiod}}}%
-        {{hash=0b91c389a7a00fe926e4aafc8ed1be19}{%
-           family={Gerigk},
-           familyi={G\bibinitperiod},
-           given={F},
-           giveni={F\bibinitperiod}}}%
-        {{hash=d8eb8643756718619d0cc1011b7ed75f}{%
-           family={Funken},
-           familyi={F\bibinitperiod},
-           given={A},
-           giveni={A\bibinitperiod}}}%
-        {{hash=2143380b208ae4a874a6f3fbde32ea5e}{%
-           family={Fuchs},
-           familyi={F\bibinitperiod},
-           given={J\bibnamedelima F},
-           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=4f566d4b4ab71a2009d4e8b9a12aea7b}{%
-           family={Dos\bibnamedelima Santos},
-           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
-           given={N},
-           giveni={N\bibinitperiod}}}%
-        {{hash=ec9fab99adff40fdef71cb3003cb5f43}{%
-           family={Calviani},
-           familyi={C\bibinitperiod},
-           given={M},
-           giveni={M\bibinitperiod}}}%
-        {{hash=c0b9232f8e159d51f7c9faca544d3782}{%
-           family={Buzio},
-           familyi={B\bibinitperiod},
-           given={M},
-           giveni={M\bibinitperiod}}}%
-        {{hash=7c12fc6e99046771a7948e7655b4b8e6}{%
-           family={Brunner},
-           familyi={B\bibinitperiod},
-           given={O},
-           giveni={O\bibinitperiod}}}%
-        {{hash=5e2cd571ce94af258c15e06c822f7c21}{%
-           family={Body},
-           familyi={B\bibinitperiod},
-           given={Y},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=2d3e223749c2cf7ef816932bda63368b}{%
-           family={Baudrenghien},
-           familyi={B\bibinitperiod},
-           given={P},
-           giveni={P\bibinitperiod}}}%
-        {{hash=669ebba2522a7759505b41275058b0ed}{%
-           family={Bauche},
-           familyi={B\bibinitperiod},
-           given={J},
-           giveni={J\bibinitperiod}}}%
-        {{hash=187292d5e4ba75d27407bccfc7d10232}{%
-           family={Zickler},
-           familyi={Z\bibinitperiod},
-           given={T},
-           giveni={T\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Geneva}%
-      }
-      \list{publisher}{1}{%
-        {CERN}%
-      }
-      \strng{namehash}{b4f2633e3cacef5235fa2ac5a2d73e39}
-      \strng{fullhash}{c893cc59282d4b8a7b633d1c80dbf8c5}
-      \strng{fullhashraw}{c893cc59282d4b8a7b633d1c80dbf8c5}
-      \strng{bibnamehash}{b4f2633e3cacef5235fa2ac5a2d73e39}
-      \strng{authorbibnamehash}{b4f2633e3cacef5235fa2ac5a2d73e39}
-      \strng{authornamehash}{b4f2633e3cacef5235fa2ac5a2d73e39}
-      \strng{authorfullhash}{c893cc59282d4b8a7b633d1c80dbf8c5}
-      \strng{authorfullhashraw}{c893cc59282d4b8a7b633d1c80dbf8c5}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{series}{CERN Yellow Reports: Monographs}
-      \field{title}{Linac4 design report}
-      \field{volume}{6}
-      \field{year}{2020}
-      \verb{doi}
-      \verb 10.23731/CYRM-2020-006
-      \endverb
-      \verb{urlraw}
-      \verb https://cds.cern.ch/record/2736208
-      \endverb
-      \verb{url}
-      \verb https://cds.cern.ch/record/2736208
-      \endverb
-    \endentry
     \entry{LHC-Run1}{article}{}{}
       \name{author}{15}{}{%
         {{hash=411579f572f6191b63072d3de4961be2}{%
@@ -8880,6 +8700,7 @@
       \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
       \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
       \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -9643,6 +9464,72 @@
       \verb https://drive.google.com/file/d/1fJIuFS5K9pk4hjDjCYnekB9pc1u785RM
       \endverb
     \endentry
+    \entry{CMS-NOTE-2008-017}{report}{}{}
+      \name{author}{7}{}{%
+        {{hash=2165eb206ce9ca06b1e9b2b8a83e3bd8}{%
+           family={Benettoni},
+           familyi={B\bibinitperiod},
+           given={Massimo},
+           giveni={M\bibinitperiod}}}%
+        {{hash=40aa55eb0c7f82e027be1cfefc673300}{%
+           family={Gasparini},
+           familyi={G\bibinitperiod},
+           given={Fabrizio},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e9e69e07c1eb7f077ebcf0d606830865}{%
+           family={Gonella},
+           familyi={G\bibinitperiod},
+           given={Franco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=7e2bf52d5598ba612d0f7bd5f4045b36}{%
+           family={Meneguzzo},
+           familyi={M\bibinitperiod},
+           given={Anna\bibnamedelima Teresa},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=deb40fa6d6ec1b7e8b134cce2832bd4a}{%
+           family={Vanini},
+           familyi={V\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b4c8cad72c836243ede8feab43b42162}{%
+           family={Zumerle},
+           familyi={Z\bibinitperiod},
+           given={Gianni},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f232ef03a1987b2b9202b8d5c20614e4}{%
+           family={Bonomi},
+           familyi={B\bibinitperiod},
+           given={Germano},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CERN}%
+      }
+      \list{location}{1}{%
+        {Geneva}%
+      }
+      \strng{namehash}{bde1e02eb09eb52ab8dac16ea24addd6}
+      \strng{fullhash}{f83ee2c59057a6f77a97b169f27c46d3}
+      \strng{fullhashraw}{f83ee2c59057a6f77a97b169f27c46d3}
+      \strng{bibnamehash}{bde1e02eb09eb52ab8dac16ea24addd6}
+      \strng{authorbibnamehash}{bde1e02eb09eb52ab8dac16ea24addd6}
+      \strng{authornamehash}{bde1e02eb09eb52ab8dac16ea24addd6}
+      \strng{authorfullhash}{f83ee2c59057a6f77a97b169f27c46d3}
+      \strng{authorfullhashraw}{f83ee2c59057a6f77a97b169f27c46d3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{CMS DT Chambers}}
+      \field{type}{techreport}
+      \field{year}{2008}
+      \verb{urlraw}
+      \verb https://cds.cern.ch/record/1110521
+      \endverb
+      \verb{url}
+      \verb https://cds.cern.ch/record/1110521
+      \endverb
+    \endentry
     \entry{dt-scint-analysis-tools-Main}{online}{}{}
       \name{author}{1}{}{%
         {{hash=a6126ac4586cb8d4cc3e602235706c32}{%
@@ -10230,6 +10117,656 @@
       \verb https://www.sciencedirect.com/science/article/pii/S0168900217314225
       \endverb
       \keyw{CMS,Muon detector,Gas quality monitoring}
+    \endentry
+    \entry{Scint-PlasticScint}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=c10cb9d0bd0aeb3a628a5e750fd846a0}{%
+           family={Technology},
+           familyi={T\bibinitperiod},
+           given={Eljen},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{fullhash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{fullhashraw}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{bibnamehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{authorbibnamehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{authornamehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{authorfullhash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{authorfullhashraw}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{General Purpose Plastic Scintillator EJ-200, EJ-204, EJ-208, EJ-212}
+      \verb{urlraw}
+      \verb https://eljentechnology.com/images/products/data_sheets/EJ-200_EJ-204_EJ-208_EJ-212.pdf
+      \endverb
+      \verb{url}
+      \verb https://eljentechnology.com/images/products/data_sheets/EJ-200_EJ-204_EJ-208_EJ-212.pdf
+      \endverb
+    \endentry
+    \entry{Scint-Tyvek}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=25577a0627bf9c63fcbe99ef9e258258}{%
+           family={DuPont\textsuperscript{\texttrademark}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{25577a0627bf9c63fcbe99ef9e258258}
+      \strng{fullhash}{25577a0627bf9c63fcbe99ef9e258258}
+      \strng{fullhashraw}{25577a0627bf9c63fcbe99ef9e258258}
+      \strng{bibnamehash}{25577a0627bf9c63fcbe99ef9e258258}
+      \strng{authorbibnamehash}{25577a0627bf9c63fcbe99ef9e258258}
+      \strng{authornamehash}{25577a0627bf9c63fcbe99ef9e258258}
+      \strng{authorfullhash}{25577a0627bf9c63fcbe99ef9e258258}
+      \strng{authorfullhashraw}{25577a0627bf9c63fcbe99ef9e258258}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DuPont\textsuperscript{\texttrademark} Tyvek\textsuperscript{®} 1442R - Product Properties}
+      \verb{urlraw}
+      \verb https://www.dupont.com/content/dam/dupont/amer/us/en/microsites/tyvek-design/images/documents/2019-C&I_Tyvek_1442R_Datasheet.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.dupont.com/content/dam/dupont/amer/us/en/microsites/tyvek-design/images/documents/2019-C&I_Tyvek_1442R_Datasheet.pdf
+      \endverb
+    \endentry
+    \entry{PrivateComm-Ehlert}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=c5c0e4a40d4f132d70c72c96f3a7d8f8}{%
+           family={Ehlert},
+           familyi={E\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{fullhash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{fullhashraw}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{bibnamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authorbibnamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authornamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authorfullhash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authorfullhashraw}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{howpublished}{Private communication}
+      \field{year}{2025}
+    \endentry
+    \entry{Scint-OnsemiSiPM}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=cbfd92d5f19adbe4e2f5711f48fc27c2}{%
+           family={onsemi\textsuperscript{\texttrademark}},
+           familyi={o\bibinitperiod}}}%
+      }
+      \strng{namehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{fullhash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{fullhashraw}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{bibnamehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{authorbibnamehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{authornamehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{authorfullhash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{authorfullhashraw}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{J-Series SiPM Sensors}
+      \verb{urlraw}
+      \verb https://www.onsemi.com/download/data-sheet/pdf/microj-series-d.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.onsemi.com/download/data-sheet/pdf/microj-series-d.pdf
+      \endverb
+    \endentry
+    \entry{Scint-Elastosil}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=8b6c676f52ec870d67bce2d5ce32c06a}{%
+           family={AG},
+           familyi={A\bibinitperiod},
+           given={Wacker\bibnamedelima Chemie},
+           giveni={W\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{fullhash}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{fullhashraw}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{bibnamehash}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{authorbibnamehash}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{authornamehash}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{authorfullhash}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{authorfullhashraw}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ELASTOSIL\textsuperscript{®} RT 604 A/B}
+      \verb{urlraw}
+      \verb https://www.wacker.com/h/en-us/medias/ELASTOSIL-RT-604-AB-en-2024.06.16.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.wacker.com/h/en-us/medias/ELASTOSIL-RT-604-AB-en-2024.06.16.pdf
+      \endverb
+    \endentry
+    \entry{Raspberry-Pi}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=03eb7fa9a11a8c6d79113b8a4ace0c93}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={Raspberry\bibnamedelima Pi},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{fullhash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{fullhashraw}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{bibnamehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{authorbibnamehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{authornamehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{authorfullhash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{authorfullhashraw}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Raspberry Pi Documentation}
+      \verb{urlraw}
+      \verb https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
+      \endverb
+      \verb{url}
+      \verb https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
+      \endverb
+    \endentry
+    \entry{FPGA-Trentz}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=660845b5edd9eb328ce07489550e48c9}{%
+           family={GmbH},
+           familyi={G\bibinitperiod},
+           given={Trentz\bibnamedelima Elektronik},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{660845b5edd9eb328ce07489550e48c9}
+      \strng{fullhash}{660845b5edd9eb328ce07489550e48c9}
+      \strng{fullhashraw}{660845b5edd9eb328ce07489550e48c9}
+      \strng{bibnamehash}{660845b5edd9eb328ce07489550e48c9}
+      \strng{authorbibnamehash}{660845b5edd9eb328ce07489550e48c9}
+      \strng{authornamehash}{660845b5edd9eb328ce07489550e48c9}
+      \strng{authorfullhash}{660845b5edd9eb328ce07489550e48c9}
+      \strng{authorfullhashraw}{660845b5edd9eb328ce07489550e48c9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{TE0820 TRM}
+      \verb{urlraw}
+      \verb https://wiki.trenz-electronic.de/display/PD/TE0820+TRM
+      \endverb
+      \verb{url}
+      \verb https://wiki.trenz-electronic.de/display/PD/TE0820+TRM
+      \endverb
+    \endentry
+    \entry{UltraScale-FPGA-SelectIO-Resources}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
+           family={Inc.},
+           familyi={I\bibinitperiod},
+           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{UltraScale\textsuperscript{\texttrademark} SelectIO Resources User Guide (UG571)}
+      \verb{urlraw}
+      \verb https://docs.amd.com/v/u/en-US/ug571-ultrascale-selectio
+      \endverb
+      \verb{url}
+      \verb https://docs.amd.com/v/u/en-US/ug571-ultrascale-selectio
+      \endverb
+    \endentry
+    \entry{FPGA-MVT-Eliseev}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=ecdf9726496b8d7587f0bdadfc594457}{%
+           family={Eliseev},
+           familyi={E\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=82a5a826097a33b24d14639fb81b7360}{%
+           family={Ehlert},
+           familyi={E\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=7a2d44a5c42490d3f86d5cdfb8f7e482}{%
+           family={Hebbeker},
+           familyi={H\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a4deefd80d80d3a493141e83b5131afc}{%
+           family={Merschmeyer},
+           familyi={M\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bf03a7bc2790d3a568e7c7b5d1978eec}{%
+           family={Presser},
+           familyi={P\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{ea02bdb6ffa4f36bd79f6ad15f3f9e20}
+      \strng{fullhash}{b7015b450598633893d0fb2f55e807da}
+      \strng{fullhashraw}{b7015b450598633893d0fb2f55e807da}
+      \strng{bibnamehash}{ea02bdb6ffa4f36bd79f6ad15f3f9e20}
+      \strng{authorbibnamehash}{ea02bdb6ffa4f36bd79f6ad15f3f9e20}
+      \strng{authornamehash}{ea02bdb6ffa4f36bd79f6ad15f3f9e20}
+      \strng{authorfullhash}{b7015b450598633893d0fb2f55e807da}
+      \strng{authorfullhashraw}{b7015b450598633893d0fb2f55e807da}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{High-speed multichannel ADCs are costly and require complex FPGA or MCU firmware to communicate with them. The Multi-Voltage Thresholding (MVT) approach can replace to some extent an external ADC by harnessing the internal FPGA resources, thus reducing costs and complexity. The MVT approach needs only a few low-cost external components. The focus of the contribution is presenting an open-source IP-Core that implements the MVT approach and simplifies its implementation on a standard FPGA. The contribution also provides an overview of characterization measurements and specific calibration method. Our example application demonstrates the viability of the developed IP-Core for signal acquisition from multiple SiPMs.}
+      \field{journaltitle}{Journal of Instrumentation}
+      \field{month}{2}
+      \field{number}{02}
+      \field{title}{An open-sorce IP-Core for Multi-Voltage Thresholding signal acquisition with FPGAs}
+      \field{volume}{19}
+      \field{year}{2024}
+      \field{pages}{C02035}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1748-0221/19/02/C02035
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1088/1748-0221/19/02/C02035
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1088/1748-0221/19/02/C02035
+      \endverb
+    \endentry
+    \entry{FPGA-MVT-Palka}{article}{}{}
+      \name{author}{26}{}{%
+        {{hash=ed4062f3e93132b8574a886035b7df7f}{%
+           family={Pałka},
+           familyi={P\bibinitperiod},
+           given={Marek},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f961c16ebc124c4a1e77ba194cde2e81}{%
+           family={Moskal},
+           familyi={M\bibinitperiod},
+           given={Paweł},
+           giveni={P\bibinitperiod}}}%
+        {{hash=23746cd09880fd76267cf67a3c70e809}{%
+           family={Bednarski},
+           familyi={B\bibinitperiod},
+           given={Tomasz},
+           giveni={T\bibinitperiod}}}%
+        {{hash=0b4fd4bcbc4a49977f95ff7214bbedf5}{%
+           family={Białas},
+           familyi={B\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod}}}%
+        {{hash=faea4e5aff78e7e7bce7d9b8e73e1b79}{%
+           family={Czerwiński},
+           familyi={C\bibinitperiod},
+           given={Eryk},
+           giveni={E\bibinitperiod}}}%
+        {{hash=26f0b68a926985b6ff4255ead4d83be2}{%
+           family={Kapłon},
+           familyi={K\bibinitperiod},
+           given={Łukasz},
+           giveni={Ł\bibinitperiod}}}%
+        {{hash=e8e264de7f7f601bbfd4e66c24b4a517}{%
+           family={Kochanowski},
+           familyi={K\bibinitperiod},
+           given={Andrzej},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c66ab46245ba31702973c36ad5c9e4fb}{%
+           family={Korcyl},
+           familyi={K\bibinitperiod},
+           given={Grzegorz},
+           giveni={G\bibinitperiod}}}%
+        {{hash=b35a4b7bd3c37d45efdb65ea2bbf3f3e}{%
+           family={Kowal},
+           familyi={K\bibinitperiod},
+           given={Jakub},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d62c44cf37455c3636fbcf08708870a6}{%
+           family={Kowalski},
+           familyi={K\bibinitperiod},
+           given={Paweł},
+           giveni={P\bibinitperiod}}}%
+        {{hash=cf6101d4869266b567b1048e1b6f77f2}{%
+           family={Kozik},
+           familyi={K\bibinitperiod},
+           given={Tomasz},
+           giveni={T\bibinitperiod}}}%
+        {{hash=2af576dcf356b22b7978410df27c3cd4}{%
+           family={Krzemień},
+           familyi={K\bibinitperiod},
+           given={Wojciech},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ace46d0c9b5682a21e93265719a435a8}{%
+           family={Molenda},
+           familyi={M\bibinitperiod},
+           given={Marcin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e1e44963844a68cb6af83a579b856ead}{%
+           family={Niedźwiecki},
+           familyi={N\bibinitperiod},
+           given={Szymon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1fdc8e26d0504a647803c09754dcd3e0}{%
+           family={Pawlik},
+           familyi={P\bibinitperiod},
+           given={Monika},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8a794130cb29d9353cf33946ba7301f8}{%
+           family={Razyński},
+           familyi={R\bibinitperiod},
+           given={Lech},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2568b772fa88a23cc90694ee596d9ff8}{%
+           family={Rudy},
+           familyi={R\bibinitperiod},
+           given={Zbigniew},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=c3397bb44a9b90c7cbd65630f7b7c37a}{%
+           family={Salabura},
+           familyi={S\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod}}}%
+        {{hash=4764709026f40039e1015126b1a126a4}{%
+           family={Gupta-Sharma},
+           familyi={G\bibinithyphendelim S\bibinitperiod},
+           given={Neha},
+           giveni={N\bibinitperiod}}}%
+        {{hash=f0e17440adce483869dd97560f6611c0}{%
+           family={Silarski},
+           familyi={S\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9ec30049e6eaf03302088ce9c10663b7}{%
+           family={Słomski},
+           familyi={S\bibinitperiod},
+           given={Artur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=7858cf5dbce715775ce0c5ea207d063d}{%
+           family={Smyrski},
+           familyi={S\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod}}}%
+        {{hash=426aef1581eab2f71f4e0cee6210098e}{%
+           family={Strzelecki},
+           familyi={S\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b37bfe7bf5861688e366f081a10e212f}{%
+           family={Wiślicki},
+           familyi={W\bibinitperiod},
+           given={Wojciech},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ae911f7fff24399e6dcb39bdd2294165}{%
+           family={Zieliński},
+           familyi={Z\bibinitperiod},
+           given={Marcin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=81ff9dc822aabe857964d6abd02167c8}{%
+           family={Zoń},
+           familyi={Z\bibinitperiod},
+           given={Natalia},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Index Copernicus}%
+      }
+      \strng{namehash}{4010e699a2770588f26d37a47ac025d9}
+      \strng{fullhash}{45a11e50629f0d0209f2ec00ae77a10e}
+      \strng{fullhashraw}{45a11e50629f0d0209f2ec00ae77a10e}
+      \strng{bibnamehash}{4010e699a2770588f26d37a47ac025d9}
+      \strng{authorbibnamehash}{4010e699a2770588f26d37a47ac025d9}
+      \strng{authornamehash}{4010e699a2770588f26d37a47ac025d9}
+      \strng{authorfullhash}{45a11e50629f0d0209f2ec00ae77a10e}
+      \strng{authorfullhashraw}{45a11e50629f0d0209f2ec00ae77a10e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1895-9091}
+      \field{journaltitle}{Bio-Algorithms and Med-Systems}
+      \field{month}{3}
+      \field{number}{1}
+      \field{title}{A novel method based solely on field programmable gate array (FPGA) units enabling measurement of time and charge of analog signals in positron emission tomography (PET)}
+      \field{volume}{10}
+      \field{year}{2014}
+      \field{pages}{41\bibrangedash 45}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1515/bams-2013-0104
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1515/bams-2013-0104
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1515/bams-2013-0104
+      \endverb
+    \endentry
+    \entry{FPGA-MVT-Xi}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=3d9b65b9c863fb60d1e7dc15e94d0c99}{%
+           family={Xi},
+           familyi={X\bibinitperiod},
+           given={Daoming},
+           giveni={D\bibinitperiod}}}%
+        {{hash=76947cb81c6f6277a2d916553f53ecbf}{%
+           family={Kao},
+           familyi={K\bibinitperiod},
+           given={Chien-Min},
+           giveni={C\bibinithyphendelim M\bibinitperiod}}}%
+        {{hash=c0e0d23e2d09e45e6f51cc2bcea6d9f9}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=96f54e7e86a3f32b3998b76a1d230233}{%
+           family={Zeng},
+           familyi={Z\bibinitperiod},
+           given={Chen},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4622823528906a7f86a323f6f41fd33e}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Xiang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=00fec096f95820ff25ea64f3de607570}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Qingguo},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{26af304a67973e4ebc82dce3258935d7}
+      \strng{fullhash}{eb30cbfc25b80a834539ebf554846328}
+      \strng{fullhashraw}{eb30cbfc25b80a834539ebf554846328}
+      \strng{bibnamehash}{26af304a67973e4ebc82dce3258935d7}
+      \strng{authorbibnamehash}{26af304a67973e4ebc82dce3258935d7}
+      \strng{authornamehash}{26af304a67973e4ebc82dce3258935d7}
+      \strng{authorfullhash}{eb30cbfc25b80a834539ebf554846328}
+      \strng{authorfullhashraw}{eb30cbfc25b80a834539ebf554846328}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Nuclear Science}
+      \field{number}{5}
+      \field{title}{FPGA-Only MVT Digitizer for TOF PET}
+      \field{volume}{60}
+      \field{year}{2013}
+      \field{pages}{3253\bibrangedash 3261}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1109/TNS.2013.2277855
+      \endverb
+      \keyw{Field programmable gate arrays;Positron emission tomography;Adders;Clocks;Detectors;Timing;US Department of Transportation;Digitizer;FPGA;LVDS;MVT;TOF PET}
+    \endentry
+    \entry{UltraScale-FPGA-SelectIO-Switching}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
+           family={Inc.},
+           familyi={I\bibinitperiod},
+           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC Data Sheet: DC and AC Switching Characteristics (DS925)}
+      \verb{urlraw}
+      \verb https://www.amd.com/content/dam/xilinx/support/documents/data_sheets/ds925-zynq-ultrascale-plus.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.amd.com/content/dam/xilinx/support/documents/data_sheets/ds925-zynq-ultrascale-plus.pdf
+      \endverb
+    \endentry
+    \entry{LTSpice}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=c4e4a40d251ae6c4d2544a70945bc176}{%
+           family={Analog\bibnamedelima Devices},
+           familyi={A\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Inc.},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{fullhash}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{fullhashraw}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{bibnamehash}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{authorbibnamehash}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{authornamehash}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{authorfullhash}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{authorfullhashraw}{c4e4a40d251ae6c4d2544a70945bc176}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{LTspice\textsuperscript{®}}
+      \verb{urlraw}
+      \verb https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html
+      \endverb
+      \verb{url}
+      \verb https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html
+      \endverb
+    \endentry
+    \entry{Xilinx-PetaLinux}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
+           family={Inc.},
+           familyi={I\bibinitperiod},
+           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \field{extraname}{4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Xilinx Petalinux Wiki}
+      \verb{urlraw}
+      \verb https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842250/PetaLinux
+      \endverb
+      \verb{url}
+      \verb https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842250/PetaLinux
+      \endverb
+    \endentry
+    \entry{Multichannel-Time-Tagger-IP}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=a6126ac4586cb8d4cc3e602235706c32}{%
+           family={Esper},
+           familyi={E\bibinitperiod},
+           given={Nils},
+           giveni={N\bibinitperiod}}}%
+        {{hash=6181a03e75456006b7dbbfc06fe3e616}{%
+           family={Eliseev},
+           familyi={E\bibinitperiod},
+           given={Dmitry},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{0a128908d998e65c367921350508d00d}
+      \strng{fullhash}{0a128908d998e65c367921350508d00d}
+      \strng{fullhashraw}{0a128908d998e65c367921350508d00d}
+      \strng{bibnamehash}{0a128908d998e65c367921350508d00d}
+      \strng{authorbibnamehash}{0a128908d998e65c367921350508d00d}
+      \strng{authornamehash}{0a128908d998e65c367921350508d00d}
+      \strng{authorfullhash}{0a128908d998e65c367921350508d00d}
+      \strng{authorfullhashraw}{0a128908d998e65c367921350508d00d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Multichannel Time Tagger IP: GitHub repository}
+      \verb{urlraw}
+      \verb https://gitlab.cern.ch/nesper/multichannel_time_tagger_ip
+      \endverb
+      \verb{url}
+      \verb https://gitlab.cern.ch/nesper/multichannel_time_tagger_ip
+      \endverb
+    \endentry
+    \entry{Xilinx-XPM}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
+           family={Inc.},
+           familyi={I\bibinitperiod},
+           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \field{extraname}{5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Vivado\textsuperscript{\texttrademark} Design Suite 7 Series FPGA and Zynq\textsuperscript{\texttrademark} 7000 SoC Libraries Guide (UG953)}
+      \verb{urlraw}
+      \verb https://docs.amd.com/r/en-US/ug953-vivado-7series-libraries
+      \endverb
+      \verb{url}
+      \verb https://docs.amd.com/r/en-US/ug953-vivado-7series-libraries
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

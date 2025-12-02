@@ -56,12 +56,12 @@ Fig.\ \ref{fig:DTData-Testpulse-LatencyDifference} shows an oscilloscope screens
 \section{Drift cell hits}
 
 Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponential fit to the tail of the hit time difference distribution for $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$. From the residual plot and the goodness-of-fit variable (which lies in the order of one) one can conclude that the exponential behavior of the time difference $\Delta T_\text{cell}$ is indeed a valid assumption. The obtained exponential fit is used as "background" estimation for the Poisson noise events, as discussed in sec.\ \ref{sec:DTData-CellHits-SecondaryHits}
-\begin{figure}[htb]
+\begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.7\textwidth]{dt_hits/Hit_difference_expfit.pdf}
+    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_DIFF_SPECIFIC_BGFIT.pdf}
     \caption{Exponential fit to the tail of the distribution for $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$.}
     \label{fig:DTData-CellHitDifference-ExpFit}
-\end{figure}
+\end{SCfigure}
 
 \FloatBarrier
 \section{Superlayer pattern fitting}
@@ -142,7 +142,7 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
         \label{fig:DTData-Hist-SLPatternfit-Uncertainties-tan-alpha}
     \end{subfigure}
     \hfill
-    \caption{Histograms of the track fit parameter uncertainties cumulated for all patterns in all \acp{SL}, with the specified cuts applied.}
+    \caption{Histograms of the track fit parameter uncertainties, cumulated for all patterns in all \acp{SL} and with the specified cuts applied.}
     \label{fig:DTData-Hist-SLPatternfit-Uncertainties}
 \end{figure}
 
