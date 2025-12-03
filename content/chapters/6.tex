@@ -47,7 +47,10 @@ After the measurement, the comparator threshold voltages are adjusted accordingl
     V_\text{thres,new} = V_\text{thres,initial} - V_\text{bias}.
     \label{fig:ScintData-VoltageBias-NewThresold}
 \end{equation}
-The procedure is repeated multiple times, in order to iteratively improve the precision of the calibration. After setting the final threshold voltage, the bias voltage is measured one more time to validate the outcome of the calibration. The obtained validation data points are also shown in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult}, with the read data points. As expected, the bias voltage could be mostly removed with this procedure, while few channels show a small remaining offset of $\mathcal{O}(\SI{1}{\milli\volt})$. Repeating the validation measurements after a power-cycle or a longer time does not show significant changes, hinting that the bias voltage is stable in time. However (as described in sec.\ \ref{sec:Scint-ReadoutBoard-FPGASampling}), the measured bias voltages depend on the applied threshold, making it necessary to repeat the calibration after the threshold is changed.
+The procedure is repeated multiple times, in order to iteratively improve the precision of the calibration.
+\FloatBarrier
+\paragraph{Validation measurement}
+After setting the final threshold voltage, the bias voltage is measured one more time to validate the outcome of the calibration. The obtained validation data points are also shown in fig.\ \ref{fig:ScintData-VoltageBias-CalibResult}, with the read data points. As expected, the bias voltage could be mostly removed with this procedure, while few channels show a small remaining offset of $\mathcal{O}(\SI{1}{\milli\volt})$. Repeating the validation measurements after a power-cycle or a longer time does not show significant changes, hinting that the bias voltage is stable in time. However (as described in sec.\ \ref{sec:Scint-ReadoutBoard-FPGASampling}), the measured bias voltages depend on the applied threshold, making it necessary to repeat the calibration after the threshold is changed.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -105,6 +108,8 @@ In order to reach the desired timing of each input channel, one needs to subtrac
     \texttt{Delay\_Register}(i) = \text{round}\left( \frac{T_\text{orbit,target} - \left\langle T_{\text{orbit},i} \right\rangle}{T_\text{delaystep}} \right) .
     \label{eq:ScintData-TimingBias-DelayRegisterValue}
 \end{equation}
+\FloatBarrier
+\paragraph{Validation measurement}
 After setting the proper delay unit values, a validation measurement is performed with the testpulses. The resulting testpulse timing after the "online" timing correction is also presented in fig.\ \ref{fig:ScintData-TimingBias-CalibResult} in red. It is clearly visible that the testpulse response is now aligned within a window of $\approx\SI{8}{\tu}$ which corresponds to the expected accuracy limit of the correction due to the delay unit granularity. Note that the correction is simultaneously applied for the two readout boards, leading to the desired situation where all 64 channels are aligned in time, not only those channels which are connected to the same readout board.
 \begin{figure}[htb]
     \centering
@@ -136,11 +141,39 @@ After setting the proper delay unit values, a validation measurement is performe
 %    \item Aliasing effects (too coarse scanning steps) hide expected steps in spectrum
 %\end{itemize}
 \label{sec:ScintData-Noise}
-Before the recorded data with atmospheric muons was recorded, the \ac{SiPM} noise was recorded.
+Before atmospheric muon data is recorded with the system, the setup should be exercised by measuring the \ac{SiPM} noise rates for different discriminator threshold voltages. This is done as a plausibility check of the developed readout system as well as to check that the \acp{SiPM} on the detector are behaving as expected.
+\newline Note that this measurement was only performed with one readout board and 32 \acp{SiPM}, and not with the full scintillation detector.
+\FloatBarrier
+\paragraph{Discriminator threshold range}
+In order to measure the \ac{SiPM} rates for different threshold voltage levels, it is first necessary to perform a discriminator threshold calibration (sec.\ \ref{sec:ScintData-VoltageBias}) for each voltage. This is necessary because the comparator bias measured with the calibration procedure is dependent on the selected threshold, as discussed above. After all calibration runs have been completed, the \acp{SiPM} of the scintillator can be connected to the readout board.
+\newline The range of discriminator thresholds to be considered for the \ac{SiPM} noise measurement is $\SI{2.5}{\milli\volt}-\SI{32.5}{\milli\volt}$.  The \acp{DAC} which provide the threshold voltage $V_\text{thres}$ have a granularity of \SI{2.5}{\milli\volt}. The common voltage $V_\text{com}$ on the other side of the discriminator circuit is provided with a common \ac{DAC} with the same granularity (sec.\ \ref{sec:Scint-ReadoutBoard-InputCircuitry}).
+\FloatBarrier
+\paragraph{Rate measurement}
+As one expects very high rates for low threshold values and the transmission bandwidth of hits to the backend is limited, the count rate of the inputs is measured directly on the readout board itself, with the counter registers that are also used for the comparator bias calibration (sec.\ \ref{sec:ScintData-VoltageBias}). From the measurement duration and the obtained hit count, it is trivial to calculate the rate present at the input. In this case, the number of hits is recorded for $\SI{10}{\second}$ per \ac{SiPM} and threshold voltage, which already gives a sufficiently high count to have reasonable uncertainties.
+\newline Using the counter registers in the \ac{FPGA} firmware for the measurement has the described advantage of not being limited by the data transfer rate to the backend. On the other hand however, the counter register is directly attached to the input block of the firmware. This means that the dead time logic is not yet applied to the counted hits.
+\newline As will be discussed in sec.\ \ref{sec:ScintData-Hits-Systematics} in detail, signal reflections and crosstalk are observed in measurements with the readout board. It is clear that these effects have an influence on the measured \ac{SiPM} rate. Since the measurement of the \ac{SiPM} noise spectrum in this section is only envisioned as a plausibility check, and not as a characterization measurement of the \ac{SiPM} device, this is accepted here.
+\FloatBarrier
+\paragraph{Resulting SiPM rates}
+Fig.\ \ref{fig:ScintData-Noise-ScanResult} presents the resulting rates of 29 \acp{SiPM} channels. Three channels had to be excluded from the measurement, because they showed unphysical behavior, which might be related to a defect in the \ac{SiPM} or its preamplifier, or in a defect comparator inside the \ac{FPGA}.
+\newline Note that the estimated uncertainties on the rate from the Poisson counting error are negligible, and not even visible in the plot. However, the uncertainty of threshold voltage (on the $x$-axis) is significant, as the granularity of the selectable threshold is relatively large.\footnote{As both the $V_\text{thres}$ and $V_\text{com}$ inputs of the comparator are connected to \acp{DAC} with a granularity of $\Delta V_\text{DAC}=\SI{2.5}{\milli\volt}$, the resulting uncertainty of the effective discrimination thresold $V_\text{thres,eff}=V_\text{thres}-V_\text{com}$ is calculated to be $\sigma_\text{thres,eff}=\sqrt{2\cdot \left( \Delta V_\text{DAC}/\sqrt{12} \right)^2 }\approx \SI{1}{\milli\volt}$. This is almost as large as the measured threshold voltage steps.}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{scint_noise_scan/sipm_rates.pdf}
+    \caption{Obtained rates of 29 \acp{SiPM} for different discrimination thresholds in the range $\SI{2.5}{\milli\volt}-\SI{32.5}{\milli\volt}$ presented in a logarithmic plot, measured with one readout board.}
+    \label{fig:ScintData-Noise-ScanResult}
+\end{figure}
+\newline The measured \ac{SiPM} rates show a clearly visible exponentially falling behavior with increasing threshold voltages. Over the measured range with a width of \SI{30}{\milli\volt}, the rate decreases by around four orders of magnitude.
+\newline Another observation is the strong fluctuations in rate between individual \acp{SiPM}. There are several cases where different \acp{SiPM} show rate differences of more than one order of magnitude for the same threshold voltage.
+\FloatBarrier
+\paragraph{Comparison to expectation}
+As discussed in sec.\ \ref{sec:Scintillators-SiPMs}, the noise of \acp{SiPM} originates from thermal excitations of electrons in the sensitive region of the device. This noise results in a signal with one \ac{p.e.} amplitude. Due to the non-zero probability $p_\text{cross}>0$ for crosstalk between \ac{GAPD} cells on the \ac{SiPM}, the amplitude of the noise hit can be increased. For $N$ triggered cells, the amplitude increases to $N$ \ac{p.e.}, however the probability for this is suppressed by a factor $\propto \left( p_\text{cross} \right)^N$. Therefore, one expects an exponentially falling distribution of the noise rate with increasing discriminator threshold. The expected exponential behavior can be well observed in the recorded noise scan in fig.\ \ref{fig:ScintData-Noise-ScanResult}.
+\newline The exponential decrease in count rate is expected to happen in discrete steps, as each step translates to the activation of another discrete \ac{GAPD} cell. Since the used frontend board of the \ac{SiPM} has a preamplifier with a conversion factor of $\approx \SI{5}{\milli\volt}$/\ac{p.e.}, which is in the same order of magnitude as the scan interval of \SI{2.5}{\milli\volt}, strong aliasing effects should be present. It is therefore not unexpected that one can not make out the discrete steps in the presented measurement.
 
-%\FloatBarrier
-%\section{Signal ringing and crosstalk}
-%\label{sec:ScintData-RingingCrosstalk}
+
+
+
+
+
 
 \FloatBarrier
 \section{SiPM hits}
@@ -150,12 +183,20 @@ Before the recorded data with atmospheric muons was recorded, the \ac{SiPM} nois
 %\end{itemize}
 \label{sec:ScintData-Hits}
 
-\begin{SCfigure}[50][htb]
+\FloatBarrier
+\subsection{Distributions of recorded hits}
+\label{sec:ScintData-Hits-Distributions}
+
+\FloatBarrier
+\paragraph{SiPM occupancies}
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_HITS_SPECIFIC_OCCUPANCY.pdf}
+    \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_HITS_SPECIFIC_OCCUPANCY.pdf}
     \caption{}
     \label{fig:ScintData-SiPM-Occupancy}
-\end{SCfigure}
+\end{figure}
+\FloatBarrier
+\paragraph{Hit timing}
 \begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_HITS_HIST_ts.pdf}
@@ -163,10 +204,29 @@ Before the recorded data with atmospheric muons was recorded, the \ac{SiPM} nois
     \label{fig:ScintData-SiPM-Timestamp}
 \end{SCfigure}
 
+\FloatBarrier
+\subsection{Observed systematic effects}
+\label{sec:ScintData-Hits-Systematics}
+
+
+
+
+
+
+
 
 \FloatBarrier
 \section{Scintillator strip coincidences}
 \label{sec:ScintData-Strips}
+
+\FloatBarrier
+\subsection{Grouping of SiPM hits}
+
+\FloatBarrier
+\subsection{Hit selection criteria}
+
+\FloatBarrier
+\subsection{Strip coincidence results}
 
 
 
