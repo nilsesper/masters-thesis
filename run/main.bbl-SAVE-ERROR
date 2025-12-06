@@ -10118,6 +10118,28 @@
       \endverb
       \keyw{CMS,Muon detector,Gas quality monitoring}
     \endentry
+    \entry{PrivateComm-Hebbeker}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=4da69697781c3e623fdd513d58d3f64a}{%
+           family={Hebbeker},
+           familyi={H\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{4da69697781c3e623fdd513d58d3f64a}
+      \strng{fullhash}{4da69697781c3e623fdd513d58d3f64a}
+      \strng{fullhashraw}{4da69697781c3e623fdd513d58d3f64a}
+      \strng{bibnamehash}{4da69697781c3e623fdd513d58d3f64a}
+      \strng{authorbibnamehash}{4da69697781c3e623fdd513d58d3f64a}
+      \strng{authornamehash}{4da69697781c3e623fdd513d58d3f64a}
+      \strng{authorfullhash}{4da69697781c3e623fdd513d58d3f64a}
+      \strng{authorfullhashraw}{4da69697781c3e623fdd513d58d3f64a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{howpublished}{Private communication}
+      \field{year}{2025}
+    \endentry
     \entry{Scint-PlasticScint}{online}{}{}
       \name{author}{1}{}{%
         {{hash=c10cb9d0bd0aeb3a628a5e750fd846a0}{%

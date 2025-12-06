@@ -132,7 +132,7 @@ In fig.\ \ref{fig:DTData-ChamberRates}, few cells deviate from the uniformly dis
     \centering
     \begin{tabular}{|c|c|c|c|}  %% VALUES: WITH FULL DATASET
         \hline
-        \ac{SL} & Ly & Wi & Type \\ \hline
+        \acl{SL} & Layer & Wire & Type \\ \hline
         % ro_ch=8 masked chs: 115, 119, 121, 123 (fec 7A, probably higher than use chs)
         1 (phi) & 1 & 49 & Not connected \\ %\hline
         % ro_ch=14 masked chs: none
@@ -834,8 +834,8 @@ Fig.\ \ref{fig:DTData-GlobalTrack-Example} presents an event display of an examp
 \label{sec:DTData-GlobalTrackBuilding-Results}
 \FloatBarrier
 \paragraph{Global track occupancy}
-Using the algorithm described above, \num{168579} global tracks were reconstructed from the recorded data. This corresponds to a global track frequency of $(109.9 \pm 0.2)\;\si{\hertz}$.
-\newline Compared to the rate of the fitted patterns in each \ac{SL} ($\approx\SI{400}{\hertz}$, cf.\ sec.\ \ref{sec:DTData-SLPatternFitting-Results}), this is approximately only one quarter of the rate. However, there are several factors which are expected to contribute to a smaller global track rate. Note that the global track reconstruction algorithm described above always requires three fitted \ac{SL} patterns, i.e.\ one cell hit in all 12 layers of the chamber. Due to the cell hit efficiency being smaller than one (sec.\ \ref{sec:CMS-DTPerformance}), it is expected that one or more of the cells are not hit by the passing muon. In such a case, the global track will not be reconstructed. Additionally, it is clear that the described reconstruction strategy relies on many assumptions and simplifications, especially during the \ac{SL} pattern fits (sec.\ \ref{sec:DTData-SLPatternFitting}). This means that the resulting pattern fits might not always be correct and therefore could be filtered out by the matching criteria of the different \acp{SL}.
+Using the algorithm described above, \num{1656448} global tracks were reconstructed from the recorded data. This corresponds to a global track frequency of $(84.52 \pm 0.07)\;\si{\hertz}$.
+\newline Compared to the rate of the fitted patterns in each \ac{SL} ($\approx\SI{400}{\hertz}$, cf.\ sec.\ \ref{sec:DTData-SLPatternFitting-Results}), this is approximately only $\approx 20\%$ of the rate. However, there are several factors which are expected to contribute to a smaller global track rate. Note that the global track reconstruction algorithm described above always requires three fitted \ac{SL} patterns, i.e.\ one cell hit in all 12 layers of the chamber. Due to the cell hit efficiency being smaller than one (sec.\ \ref{sec:CMS-DTPerformance}), it is expected that one or more of the cells are not hit by the passing muon. In such a case, the global track will not be reconstructed. Additionally, it is clear that the described reconstruction strategy relies on many assumptions and simplifications, especially during the \ac{SL} pattern fits (sec.\ \ref{sec:DTData-SLPatternFitting}). This means that the resulting pattern fits might not always be correct and therefore could be filtered out by the matching criteria of the different \acp{SL}.
 \FloatBarrier
 \paragraph{Arrival time}
 A histogram of the estimated arrival time $T$ of the reconstructed global tracks is presented in fig.\ \ref{fig:DTData-GlobalTrack-ArrivalTime}. As one would expect from atmospheric muon tracks, the number of events is uniform in time. The lower bin count at the histogram edges is again a binning effect. The difference between consecutive track arrival times $\Delta T$ is plotted in fig.\ \ref{fig:DTData-GlobalTrack-ArrivalTimeDifference}. It seems to follow an exponentially falling distribution, which is the expected from Poisson distributed arrival times of the atmospheric muons. 

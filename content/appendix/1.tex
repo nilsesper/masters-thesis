@@ -44,3 +44,32 @@
     \caption{Mapping of the scintillator layers, strips and \acp{SiPM} to the input channels of the two used readout (RO) boards.}
     \label{tab:Scint-ReadoutBoard-Channels}
 \end{table}
+
+\FloatBarrier
+\section{SiPM hits}
+
+\begin{SCfigure}[50][htb]
+    
+\end{SCfigure}
+
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_HITS_DIFF_SPECIFIC_SAMESIPM_closeup_single.pdf}
+        \caption{Applied online dead time $t_\text{dead,online}=\SI{75}{\nano\second}$ inside the \ac{FPGA} firmware}
+        \label{fig:ScintData-Full-Hist-DeltaT-close-onlyfpgadeadtime}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_HITS_DEADTIME_DIFF_SPECIFIC_SAMESIPM_closeup_single.pdf}
+        \caption{Additionally applied dead time $t_\text{dead,offline}=\SI{250}{\nano\second}$ in offline analysis}
+        \label{fig:ScintData-Full-Hist-DeltaT-close-alsoofflinedeadtime}
+    \end{subfigure}
+    \hfill
+    \caption{Histogram of the timestamp difference $\Delta T$ of consecutive hits of one single \ac{SiPM} (Layer 0, Strip 0, \ac{SiPM} 0). Close-up view with $\mathcal{O}(\SI{100}{\nano\second})$ bin range. For this narrow range, many data points lie in the overflow bin. The two subfigures show the histograms after different dead times are applied to the data.}
+        \label{fig:ScintData-Full-Hist-DeltaT-close}
+    \label{fig:DTData-CellHitDifference-SecondaryHits}
+\end{figure}
+
