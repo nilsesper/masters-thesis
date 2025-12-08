@@ -280,7 +280,7 @@ With the offline dead time $t_\text{dead,offline}$ applied, the number of \ac{Si
 \end{table}
 \FloatBarrier
 \paragraph{Dead channels}
-Two dead \ac{SiPM} channels are observed in the data, which show zero occupancy. These channels are listed in tab.\ \ref{tab:ScintData-Full-DeadSiPMs}.
+Two dead \ac{SiPM} channels are observed in the data, which show zero occupancy. These channels are listed in tab.\ \ref{tab:ScintData-Full-DeadSiPMs}. Dead readout channels may originate from a broken detector device or preamplifier, or may be caused by a faulty comparator in the \ac{FPGA}.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|}  %% VALUES: WITH FULL DATASET
@@ -307,7 +307,6 @@ The \ac{SiPM} hits are expected to originate from cosmics or thermal noise, whic
 
 
 
-
 \FloatBarrier
 \section{Scintillator strip coincidences}
 \label{sec:ScintData-Strips}
@@ -322,8 +321,7 @@ First, the hits of all \ac{SiPM} channels are sorted in time. Then a grouping al
     \Delta T_\text{SiPM group,max} = \max \left\{ \left | T_{i} - T_{j} \right | ; \; i,j=0,...,N_\text{SiPM hits} \right\} \leq \SI{78}{\nano\second}.
     \label{eq:ScintData-Grouping-TimeWindow}
 \end{equation}
-A time window of $\Delta T_\text{SiPM group,max}=\SI{78}{\nano\second}$ (\SI{100}{\tu}) is selected. This value is smaller than the applied dead time, to avoid multiple hits of the same \ac{SiPM} in one group. However, it is larger than the maximum expected deviation between input channels after the timing calibration (which corresponds to the granularity of the delay module of \SI{8}{\nano\second}, cf.\ sec.\ \ref{sec:ScintData-TimingBias}).
-\newline In total, there are \num{43315460} \ac{SiPM} hit groups created with this algorithm. Fig.\ \ref{fig:ScintData-Full-Hist-Nhits} presents the number of hits originating from different \acp{SiPM} in the calculated groups.
+A time window of $\Delta T_\text{SiPM group,max}=\SI{78}{\nano\second}$ (\SI{100}{\tu}) is selected. This value is smaller than the applied dead time, to avoid multiple hits of the same \ac{SiPM} in one group. In total, there are \num{43315460} \ac{SiPM} hit groups created with this algorithm. Fig.\ \ref{fig:ScintData-Full-Hist-Nhits} presents the number of hits originating from different \acp{SiPM} in the calculated groups.
 \begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_GROUPS_HIST_n_hits.pdf}
@@ -333,31 +331,102 @@ A time window of $\Delta T_\text{SiPM group,max}=\SI{78}{\nano\second}$ (\SI{100
 \newline The majority of groups only contains one hit, which corresponds to a single thermal noise event.\footnote{In principle, it would also be possible that only one \ac{SiPM} would be hit by a muon event due to inefficiencies.} The groups with two hits have an occupancy which is around $10\%$ of the number of groups with one hit. Higher hit numbers are suppressed by at least another order of magnitude.
 \FloatBarrier
 \paragraph{Isolated coincidence criterion}
-The created hit groups are analyzed for coincidences of the two \acp{SiPM} of the same strip. In principle, it would be possible to accept all coincidences which are possible in each group. However, in this work only isolated coincidences in each of the two scintillator layers are considered, meaning one requires exactly two \acp{SiPM} per layer being hit in a defined coincidence window. This coincidence window is chosen to be $\Delta T_\text{SiPMs,max}=\SI{25}{\nano\second}$ (\SI{32}{\tu}).
-\begin{SCfigure}[50][htb]
-    \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/SCINT_HITS_SPECIFIC_SIPM-TS-DIFF.pdf}
-    \caption{Histogram of the time difference of the two \ac{SiPM} hits which form the coincidence.}
+The created hit groups are analyzed for coincidences of the two \acp{SiPM} of the same strip. In principle, it would be possible to accept all coincidences which are possible in each group. However, only isolated coincidences in each of the two scintillator layers are considered here, meaning one requires exactly two \acp{SiPM} per layer being hit in a defined coincidence window. The time difference between the \ac{SiPM} hits is defined as
+\begin{equation}
+    \Delta T_\text{SiPMs} = T_\text{SiPM,0} - T_\text{SiPM,1}.
+\end{equation}
+The coincidence window is chosen to be $\left| \Delta T_\text{SiPMs} \right| \leq \Delta T_\text{SiPMs,max} = \SI{25}{\nano\second}$ (\SI{32}{\tu}), which should be large enough to cover the maximum expected deviation between input channels after the timing calibration (which corresponds to the granularity of the delay module of \SI{6.25}{\nano\second}, cf.\ sec.\ \ref{sec:ScintData-TimingBias}). As timestamp $T$ of the coincidence hit, the average hit timestamp of the \ac{SiPM} hit timestamps $T_{\text{SiPM},i}$ is selected.
+\FloatBarrier
+\paragraph{Coincidence time difference}
+Fig.\ \ref{fig:ScintData-Full-Hist-DeltaTSiPMs} presents the hit time difference of the two \acp{SiPM} of one scintillator, individually for each strip, plotted in the allowed coincidence range $\Delta T_\text{SiPMs} \in [-\Delta T_\text{SiPMs,max},\; \Delta T_\text{SiPMs,max}]$. In theory, one would expect a single peak around zero in each plot, as one naively expects the \acp{SiPM} to be hit by a photon from the scintillator strip at approximately the same time.
+\begin{figure}[htb]
+    \centering %% VALUES: WITH FULL DATASET
+    \includegraphics[width=\textwidth]{large_combined_data_plots/SCINT_HITS_SPECIFIC_DELTA-TS_SIGNED_SEPARATE.pdf}
+    \caption{Histograms of coincidence time difference between \ac{SiPM} hits $\Delta T_\text{SiPMs}=T_\text{SiPM 0}-T_\text{SiPM 1}$, plotted separately for all scintillator strips.}
     \label{fig:ScintData-Full-Hist-DeltaTSiPMs}
-\end{SCfigure}
+\end{figure}
+\newline The first observation is that there are two strips which do not show any coincidence events. These dead strips will be discussed in the following section (sec.\ \ref{sec:ScintData-Strips-Results}). For the other strips, non-zero event counts are visible.
+\newline  It is clear that there exists a time offset on the $x$-axis between the different strips. This offset is a result of the performed timing calibration: As one can only correct for timing offsets in steps of \SI{6.25}{\nano\second} with the delay module (secs.\ \ref{sec:Scint-ReadoutFirmware-ProgrammableDelays} and \ref{sec:ScintData-TimingBias}), the timing of both \acs{SiPM} is expected to not be completely synchronous. This leads to the observed offset in the coincidence time difference plots.
+\newline Apart from the timing offset, the most notable observation is the double-peak structure, which stands in conflict with the expectation of a single peak. The second peak is usually of similar or smaller amplitude as the first peak and the distance of the peak is around \SI{8}{\nano\second}, similar for all strips. The origin of this double-peak structure is initially unclear.
+\newline As already discussed above in sec.\ \ref{sec:ScintData-Hits-Systematics}, secondary hits might occur after the initial \ac{SiPM} signal. This might be due to a signal reflection or a \ac{SiPM} after-pulse event. Note that as there is a dead time is applied to all individual channels, the double-peak observed in the histogram must originate from individual events, and it is not possible that the second peak originates of secondary hits within the same event. The only exception would therefore be that the initial hit signal is not properly detected, and the secondary hit is counted wrongly as the initial hit. However, it seems unlikely that this happens in as many cases as would be needed to generate a similar amplitude for the first peak and the second peak in the histogram.
+\newline The next possibility would be the optical propagation times, which may vary between different intersection positions of the muon in the scintillator strip. The strip has a length of \SI{50}{\centi\meter}, which yields a maximum possible time difference due to photon propagation time of around \SI{1.7}{\nano\second}, assuming the speed of light in the vacuum. Of course one has to respect the lower speed of light in the medium as well as reflections in the optical path, which might slightly increase the propagation time. This might explain in part the width of the coincidence time distribution in general, but not the double-peak structure, as it is not clear why the light collection would be less efficient if the photon origin is at the center of the scintillator tile.
+\newline The hit time digitization in the \ac{FPGA} is implemented with a deserializer (sec.\ \ref{sec:Scint-ReadoutFirmware-SamplingTDC}), which performs a conversion with a granularity of \SI{0.78}{\nano\second} in intervals of \SI{6.25}{\nano\second} (\SI{8}{\tu}). A curious observation is the fact that the distance of the observed peaks ($\approx \SI{8}{\nano\second}$) is approximately the same as this \ac{TDC} conversion interval. This might lead to the hypothesis that the two are related. Indeed, a random bit flip of the timestamp bit above the \ac{TDC} value could explain the discrete time shift. However, if this effect would be present, it should have been noticed already during the testpulse run (sec.\ \ref{sec:ScintData-TimingBias}). The timing histogram of the testpulse however does not show such double-peaks, but a sharp testpulse timestamp. Therefore, a connection of the double-peak structure to the time digitization in the \ac{FPGA} firmware also seems unlikely.
+\newline Lastly, it should be noted that the two \acp{SiPM} signals, from which the coincidence is created, are sampled by two different readout boards, as can be seen in tab.\ \ref{tab:Scint-ReadoutBoard-Channels} in the appendix. It could therefore be imagined that small discrete changes in the timing synchronization between the two readout boards might lead to such a double peak structure in the time difference between the two sampled \acp{SiPM}. However, such jumps should also have been observable already in the testpulse run, and the suggested origin is consequently considered as very unlikely.
+\newline In summary, the origin of the observed double-peak structure could not be determined with the conducted measurements. Due to the limited available time to record measurements for this thesis, no further characterization measurements with the scintillator were possible. However, it is clear that these measurements should be conducted in the future, to resolve the question of the origin of the observed coincidence time structure. In this thesis, the observed time structure is accepted, and it is continued with all found coincidences, i.e.\ both peaks in the timing histogram considered as valid.
 
 \FloatBarrier
 \subsection{Strip hit results}
 \label{sec:ScintData-Strips-Results}
-A
+The scintillator strip hits, created by combination of the hits of two \acp{SiPM} with the coincidence condition discussed above (sec.\ \ref{sec:ScintData-Strips-Coincidence}), should be presented in this section. These strip hits is the data which should also be used when combining the information of the \ac{DT} chamber with the scintillator in the following chapter (sec.\ \ref{sec:Combined}).
 \FloatBarrier
 \paragraph{Strip occupancies}
-A
+Fig.\ \ref{fig:ScintData-Full-Strip-Occupancies} shows a bar plot of the scintillator strip occupancies. In total, \num{343594} strip hits were found in the dataset, with the discussed dead time and coincidence conditions.
+\begin{figure}[htb]
+    \centering %% VALUES: WITH FULL DATASET
+    \includegraphics[width=\textwidth]{large_combined_data_plots/SCINT_HITS_SPECIFIC_OCCUPANCY.pdf}
+    \caption{Occupancies of all strips of the scintillator, calculated from coincidences of two \acp{SiPM}.}
+    \label{fig:ScintData-Full-Strip-Occupancies}
+\end{figure}
+\newline The strip occupancy lies in the order of $\mathcal{O}(10^4)$, but shows significant variations between the strips, by a factor of four in the extreme case. It is clear that some variation in the rate is expected due to the fact that the discriminator thresholds for the \ac{SiPM} channels are not all the same in terms of \ac{p.e.} units. However, such a large variation was not expected from this effect.
+\newline Additionally, there is a systematic visible, that the strips $0-7$ usually have lower rates than the following strips, especially in layer 0. This is initially not plausible, as one expects uniform illumination by cosmics. Looking at the underlying strip occupancies (fig.\ \ref{fig:ScintData-Full-SiPMOccupancy}), a lower hit count can also not be observed for these channels. This means that the signal purity of the recorded events in these channels is therefore lower, if less coincidences can be found.
+\newline In the discussion, it must not be neglected that an online (and offline) dead time is applied to the hit data. If one imagines a higher noise rate for one channel, it is clear that the effective time when the respective channel is active is smaller. This is because the applied dead time to each channel is extendable, i.e.\ the dead time restarts for each received hit. This means that a difference in channel noise rates may have an impact on the signal fraction of the recorded hits. The exact consequences of the described phenomenon can not be easily foreseen, but a difference in coincidence rate might certainly be explainable with it.
+\newline The averaged calculated strip rates for different subsets of the detector are presented in tab.\ \ref{tab:ScintData-Full-StripRates}. Over the full detector, one observes a mean rate of $(0.585 \pm 0.001)\;\si{\hertz}$. Note however that the given uncertainty is simply the statistical uncertainty on the mean, and that the deviations between the individual strips are significantly larger, as discussed.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|}  %% VALUES: WITH FULL DATASET
+        \hline
+        Scintillator subset & Average strip rate \\ \hline
+        Layer 0 & $(0.597\pm 0.001)\;\si{\hertz}$ \\
+        Layer 1 & $(0.573 \pm 0.001)\;\si{\hertz}$ \\
+        Full scintillator & $(0.585 \pm 0.001)\;\si{\hertz}$ \\ \hline
+    \end{tabular}
+    \caption{Averaged strip rates for different subsets of the scintillator. The dead channels (tab. \ref{tab:ScintData-Full-DeadStrips}) were not considered for the rate averaging. Statistical uncertainties are given for each value.}
+    \label{tab:ScintData-Full-StripRates}
+\end{table}
 \FloatBarrier
 \paragraph{Dead strips}
-A
+Tab.\ \ref{tab:ScintData-Full-DeadStrips} summarizes the two dead scintillator strips found in the data. These zero-occupancy strips are a direct consequence of the two observed dead \ac{SiPM} channels, which inhibit coincidences for these strips.
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|}  %% VALUES: WITH FULL DATASET
+        \hline
+        Layer & Strip & Type \\ \hline
+        0 & 8 & Dead \\ 
+        0 & 14 & Dead \\ \hline
+    \end{tabular}
+    \caption{List of dead strips observed in the data.}
+    \label{tab:ScintData-Full-DeadStrips}
+\end{table}
 \FloatBarrier
-\paragraph{Strip timing distributions}
-A
+\paragraph{Time distributions}
+The timestamps $T$ of the reconstructed scintillator strips hits are presented as a histogram in fig.\ \ref{fig:ScintData-Full-ArrivalTime}. It is visible that the strip hits seem to be uniformly distributed in time, which matches the expectation of cosmic particles. Fig.\ \ref{fig:ScintData-Full-ArrivalTimeDifference} presents the time difference of consecutive strip hits in a logarithmic scale. The exponentially falling characteristic is clearly visible. This exponential distribution of the timestamp differences is expected from the Poisson statistics of the atmospheric muons.
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/SCINT_HITS_SPECIFIC_TS.pdf}
+        \caption{Scintillator strip hit timestamps $T$}
+        \label{fig:ScintData-Full-ArrivalTime}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/SCINT_HITS_SPECIFIC_DELTA-TS_ALL_fullrange.pdf}
+        \caption{Difference $\Delta T$ between all scintillator strip hit timestamps}
+        \label{fig:ScintData-Full-ArrivalTimeDifference}
+    \end{subfigure}
+    \hfill
+    \caption{Histograms of the reconstructed scintillator strip hit arrival times.}
+    \label{fig:ScintData-Full-ArrivalTimes}
+\end{figure}
 \FloatBarrier
 \paragraph{Comparison with cosmic rate}
-A
-
+Finally, the obtained rate of scintillator hits should be briefly compared to the expectation from atmospheric muons. It is clear that the observed variation of the rates between different strips is not expected from cosmics, as already discussed. This should however not be the topic of this section, but rather the comparison of the mean strip rate with an expected rate. This rate is determined again from simulation of tracks in the custom analysis framework. From the propagation of the generated muon tracks (with \ac{MC} method) through the scintillator geometry, the expected hits are calculated. Details on the principle and the assumptions of simulation can be found in appendix \ref{sec:Simulation}.
+\newline For one scintillator strip, the simulation yields an average expected rate of $(2.155 \pm 0.008)\;\si{\hertz}$ (tab.\ \ref{tab:Simulation-StripRates}). This expected rate is around a factor four larger than what is observed on average for the strips. As the simulation does not consider the scintillator efficiency, it is clear that a smaller rate in the real experiment is not unexpected. The strip efficiency was not explicitly measured, however a rate of $70-90\%$ should be a plausible assumption. This is not enough to explain the factor four between data and expectation. Additionally, the applied dead time cuts away all signal events which lie close to each other. Because of the exponential distribution of the time difference occurrences, it is clear that a some events are definitely lost. As discussed above, noise hits lead to an artificial extension of the dead time, which leads to the loss of some more data events. Even though the rate observed in data is smaller than in the simulation, it still lies in the same order of magnitude of $\mathcal{O}(\SI{1}{\hertz})$.
+\FloarBarrier
+\paragraph{Conclusion}
+The scintillator hit rate is observed to vary significantly between strips, and the average event rate is lower than the expectation from cosmic muons, however it is still in the same order of magnitude. Problems with the analog readout circuitry have led to the need to introduce a dead time in the \ac{SiPM} data to record measurements of reasonable data size. This has the consequence of biasing the recorded data and can potentially be blamed for the fluctuations between strip rates. The coincidence evaluation of the two \acp{SiPM} of each strip has revealed an unexpected double-peak timing structure. Its origin remains unclear, although a relation to the analog circuitry, the dead time or synchronization problems in the readout system might be possible ideas. However, none of these hypotheses can be accepted with the measured data and analysis strategy. The in-depth analysis and understanding of the analog and sampling part of the scintillator readout system remains an open task after this thesis, which was started with the observations presented above, but could unfortunately not be included within the given time frame. To record usable data for the next chapter (sec.\ \ref{sec:Combined}) to illustrate the synchronization between the scintillator and the \ac{DT} chamber, the recorded scintillator data is used as it is in the current state.
 
 
 
