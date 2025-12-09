@@ -1,5 +1,6 @@
 \FloatBarrier
 \label{sec:Combined}
+A
 
 \FloatBarrier
 \section{Combined detector setup}
@@ -8,13 +9,15 @@
 %    \item Highlight shared backend and synchronized clocks
 %\end{itemize}
 \label{sec:Combined-Setup}
+A
 
 \FloatBarrier
 \subsection{Physical detector setup}
+A
 
 \FloatBarrier
 \subsection{Combined analysis strategy}
-
+A
 
 
 
@@ -29,16 +32,65 @@
 %    \item Discuss distribution, highlight the synchronization
 %\end{itemize}
 \label{sec:Combined-TemporalCorrelation}
+A
 
 \FloatBarrier
 \subsection{Matching procedure}
+A
 
 \FloatBarrier
-\subsection{Matched hit occupancy}
+\subsection{Matched hits}
+A
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_fullrange.pdf}
+        \caption{Broad view in $\mathcal{O}(\SI{1}{\micro\second})$ range.}
+        \label{fig:Combined-Hist-DeltaScintDT-fullrange}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_closeup.pdf}
+        \caption{Close-up view in $\mathcal{O}(\SI{50}{\nano\second})$ range. Few events lie in the overflow bin.}
+        \label{fig:Combined-Hist-DeltaScintDT-closeup}
+    \end{subfigure}
+    \hfill
+    \caption{Histogram of the timestamp difference between the matched scintillator strip hit and the \ac{DT} track.}
+    \label{fig:Combined-Hist-DeltaScintDTs}
+\end{figure}
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_MUON_TS.pdf}
+        \caption{Matched \ac{DT} track timestamps $T$}
+        \label{fig:Combined-Hist-DTArrivalTime}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_MUON_DELTA-TS_fullrange.pdf}
+        \caption{Difference $\Delta T$ between all matched \ac{DT} tracks}
+        \label{fig:Combined-Hist-DTArrivalTimeDifference}
+    \end{subfigure}
+    \hfill
+    \caption{Histograms of the matched \ac{DT} track timestamps.}
+    \label{fig:Combined-Hist-DTArrivalTimes}
+\end{figure}
 
 \FloatBarrier
 \subsection{Check of detector synchronization}
-
+A
+\begin{SCfigure}[50][htb]
+    \centering
+    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_FIT.pdf}
+    \caption{Result of a Gaussian fit to the peak in the time difference histogram between matched scintillator hit and \ac{DT} track.}
+    \label{fig:Combined-Hist-DeltaScintDT-Fit}
+\end{SCfigure}
 
 
 
@@ -51,6 +103,7 @@
 %    \item Mention need for alignment analysis (which in principle would be possible with this data)
 %\end{itemize}
 \label{sec:Combined-SpatialCorrelation}
+A
 
 \begin{figure}[htb]
     \centering
@@ -69,13 +122,13 @@
         \label{fig:Combined-GlobalTrack-2D-yz}
     \end{subfigure}
     \hfill
-    \caption{}
+    \caption{2D histograms of the matched \ac{DT} track positions. The \ac{DT} chamber and scintillator geometry is drawn in white. Dead channels in both the \ac{DT} chamber and the scintillator are marked in red. The bin size is $5 \times 5\;\si{\milli\meter^2}$.}
     \label{fig:Combined-GlobalTrack-2D-z}
 \end{figure}
 \begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.49\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_xy.pdf}
-    \caption{Correlated track $(x,y)$ positions at scintillator.}
+    \caption{Correlated \ac{DT} track $(x,y)$ positions at the center height of the scintillator ($z=\SI{-926}{\milli\meter}$ in the chosen coordinate frame). The bin size is $10 \times 10\;\si{\milli\meter^2}$.}
     \label{fig:Combined-GlobalTrack-2D-xy}
 \end{SCfigure}
 
