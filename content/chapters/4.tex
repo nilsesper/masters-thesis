@@ -83,7 +83,7 @@ In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamb
     \begin{tabular}{|c|c|c|} 
         \hline % size = 13.6 gb * 0.47 (approx. dt fraction on dumpfile) = 
         Measurement duration & Total \ac{DT} cell hits & Raw data size \\ \hline
-        $\SI{19599}{\second}\approx\SI{5}{\hour}\;\SI{27}{\min}$ & \num{297312727} & $\SI{6.4}{\giga\byte}$ \\ \hline
+        $\SI{19599}{\second}\approx\SI{5}{\hour}\;\SI{27}{\min}$ & \num{316757979} & $\SI{6.4}{\giga\byte}$ \\ \hline
     \end{tabular}
     \caption{Basic facts about the presented \ac{DT} chamber dataset with atmospheric muons.}
     \label{tab:DTData-DatasetInfo}
@@ -93,10 +93,10 @@ In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamb
 \label{sec:DTData-CellHits-Occupancy}
 As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise, which is discussed in the following sections. Note that the data presented here has the timing correction from the testpulse run (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
 \paragraph{Measured cell occupancies}
-The full dataset contains a total of \num{297312727} drift cell hits. Fig.\ \ref{fig:DTData-ChamberRates} shows the cell occupancies of all individual wires of the chamber. The occupancy is observed to be relatively uniform for all wires and is around $\mathcal{O}(10^5)$ hits per cell for the full recorded dataset. With the known recording time of the data, one can calculate a mean event rate for each cell. Tab.\ \ref{tab:DTData-ChamberRates} presents the cell rates for different groups of cells within the chamber. Over the full chamber, the average cell rate is measured as $(25.111 \pm 0.001)\;\si{\hertz}$.
+The full dataset contains a total of \num{316757979} drift cell hits. Fig.\ \ref{fig:DTData-ChamberRates} shows the cell occupancies of all individual wires of the chamber. The occupancy is observed to be relatively uniform for all wires and is around $\mathcal{O}(10^5)$ hits per cell for the full recorded dataset. With the known recording time of the data, one can calculate a mean event rate for each cell. Tab.\ \ref{tab:DTData-ChamberRates} presents the cell rates for different groups of cells within the chamber. Over the full chamber, the average rate of active cells is measured as $(26.754 \pm 0.002)\;\si{\hertz}$.
 \begin{figure}[htb]
     \centering %% VALUES: WITH FULL DATASET
-    \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_CORR_HITS_SPECIFIC_OCCUPANCY.pdf}
+    \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_SPECIFIC_OCCUPANCY.pdf}
     \caption{Occupancies of all individual drift cells of the \ac{DT} chamber.}
     \label{fig:DTData-ChamberRates}
 \end{figure}
@@ -105,11 +105,11 @@ The full dataset contains a total of \num{297312727} drift cell hits. Fig.\ \ref
     \begin{tabular}{|c|c|}  %% VALUES: WITH FULL DATASET
         \hline
         Chamber subset & Average cell rate \\ \hline
-        \ac{SL} 1 (phi) & $(26.676\pm 0.003)\;\si{\hertz}$ \\
-        \ac{SL} 2 (theta) & $(22.940 \pm 0.002)\;\si{\hertz}$ \\
-        \ac{SL} 3 (phi) & $(25.976 \pm 0.003)\;\si{\hertz}$ \\ \hline
-        \acp{SL} 1, 3 (phi) & $(26.329 \pm 0.002)\;\si{\hertz}$ \\ \hline
-        Full chamber & $(25.111 \pm 0.001)\;\si{\hertz}$ \\ \hline
+        \ac{SL} 1 (phi) & $(28.450\pm 0.003)\;\si{\hertz}$ \\
+        \ac{SL} 2 (theta) & $( 24.511 \pm 0.002)\;\si{\hertz}$ \\
+        \ac{SL} 3 (phi) & $(27.565 \pm 0.003)\;\si{\hertz}$ \\ \hline
+        \acp{SL} 1, 3 (phi) & $(28.011 \pm 0.002)\;\si{\hertz}$ \\ \hline
+        Full chamber & $(26.754 \pm 0.002)\;\si{\hertz}$ \\ \hline
     \end{tabular}
     \caption{Averaged \ac{DT} cell rates for different subsets of the chamber. The dead cells (tab. \ref{tab:DTData-DeadWires}) were not considered for the rate averaging. Statistical uncertainties are given for each value.}
     \label{tab:DTData-ChamberRates}
@@ -161,7 +161,7 @@ Fig.\ \ref{fig:DTData-Hist-T} presents a histogram of all drift cell hit timesta
 %\end{figure}
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__DT_CORR_HITS_HIST_ts.pdf}
+    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_HIST_ts.pdf}
     \caption{Histogram of the recorded \ac{DT} hit timestamps $T$, cumulated for all cells.}
     \label{fig:DTData-Hist-T}
 \end{SCfigure}
@@ -221,7 +221,7 @@ As discussed above, the second (narrower) photo-peak originates from photo-elect
 \end{SCfigure}
 \newline With the obtained photo-peak position $t_\text{pp}=b=(414.96 \pm 0.10)\;\si{\nano\second}$ and an uncertainty on the drift distance of $\sigma_{d/2}\approx\SI{100}{\micro\meter}$ (which was the requirement during the chamber construction \cite{CMS-Main}) one can estimate the drift velocity as
 \begin{equation}
-    v_D=\frac{d/2}{t_\text{pp}}\approx ( 50.6 \pm 0.2 )\;\si{\frac{\micro\meter}{\nano\second}}.
+    v_D=\frac{d/2}{t_\text{pp}}\approx ( 50.5 \pm 0.2 )\;\si{\frac{\micro\meter}{\nano\second}}.
     \label{eq:PhotoPeak-DriftVelocityEstimation}
 \end{equation}
 Of course this value assumes a constant drift velocity over the full drift distance, which in reality is not the case. Another unregarded fact is the vertical extent of the cathode strip. This means that photo-electrons may also drift towards the wire from a different height, leading to a longer drift distance than the assumed half cell width $d/2$ and therefore a longer drift time. It therefore becomes clear that the obtained position of the photo-peak can not be directly related to the maximum drift time, and that one should further understand the described geometric effect of longer drift distances.
@@ -237,6 +237,7 @@ Because of the observed difficulties in the attempt to measure the electron drif
 \label{sec:DTData-CellHits-DeadTime}
 As discussed above, there are occasions where secondary hits in the \ac{DT} cells can occur (sec.\ \ref{sec:DTData-CellHits-SecondaryHits}). If a track reconstruction is being attempted with these hits, one will obtain tracks which do not originate from a passing muon. As these secondary hits usually originate from photons escaping the electron amplification avalanche near the wire, the easiest way to suppress them is to apply a dead time to each individual \ac{DT} cell.  The dead time covers the time interval where the secondary hits occur. Of course this is not necessarily helpful in the case of $\delta$-electrons, as they also create pre-pulses and not only after-pulses. In the case of a pre-pulse, the dead time would lead to a loss of the "real" hit and therefore a wrong hit selection.
 \newline Since this analysis does not aim at optimized precision but rather at a proof-of-concept measurement of the \ac{DT} chamber in combination with the scintillator readout, this small bias is accepted. In the following, a dead time of \SI{600}{\tu} (\SI{468}{\nano\second}) was applied to all individual cells to suppress the effect of secondary hits.
+\newline The application of the dead time reduces the total number of cell hits to \num{297312727} ($\approx 93.9\%$ of the initial count). The average rate of active cells consequently reduces slightly, to a value of $(25.111 \pm 0.001)\;\si{\hertz}$.
 
 
 
@@ -895,7 +896,7 @@ Finally, the position of the reconstructed global tracks in the \ac{DT} chamber 
         \label{fig:DTData-GlobalTrack-2D-yz}
     \end{subfigure}
     \hfill
-    \caption{2D histograms of the reconstructed $(x,z)$ and $(y,z)$ track positions. The drift cells are marked in white, dead cells (from tab.\ \ref{tab:DTData-DeadWires}) are marked in red. The bin size is $5 \times 5\;\si{\milli\meter^2}$.}
+    \caption{2D histograms of the reconstructed \ac{DT} track positions. For each track, the projected $x$- or $y$-position is represented with one entry in the horizontal bin rows at the respective $z$ height. The plot cumulates all tracks of the third coordinate axis. Therefore, it can be understood to present a cumulated track density. The drift cells are marked in white, dead cells (from tab.\ \ref{tab:DTData-DeadWires}) are marked in red. The bin size is $5 \times 5\;\si{\milli\meter^2}$.}
     \label{fig:DTData-GlobalTrack-2D-z}
 \end{figure}
 \newline The density of tracks again seems to be uniformly distributed inside the chamber, except for the dead cells. This is the expected behavior. The "shadows" thrown by dead cells are impressively visible in the lateral view. It is also visible that the angle of the reconstructed tracks is limited, which is related to the angular acceptance of the \ac{SL} patterns.
