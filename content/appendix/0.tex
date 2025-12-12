@@ -1,5 +1,4 @@
 
-\FloatBarrier
 \section{DT test stand in Aachen}
 
 \begin{table}[htb]
@@ -41,7 +40,6 @@
     \label{tab:MB1Backend-ReadoutChannelMapping}
 \end{table}
 
-\FloatBarrier
 \section{Timing calibration with testpulses}
 
 Fig.\ \ref{fig:DTData-Testpulse-LatencyDifference} shows an oscilloscope screenshot of the measurement of the testpulse output latency for both \ac{OBDT} flavors. It is evident that the testpulses are not issued at the same time, although both \acp{OBDT} were programmed to do so. As explained in sec.\ \ref{sec:DTData-Testpulse-Generation}, this is due to the differences in analog testpulse circuitry. From the cursor in the screenshot, the time difference is estimated as $T_\text{testpulse, theta} - T_\text{testpulse, phi} = \SI{116}{\nano\second}$. One conservatively assumes an uncertainty of $\SI{1}{\nano\second}$, given the step size of the cursor of $\SI{2}{\nano\second}$.
@@ -52,7 +50,6 @@ Fig.\ \ref{fig:DTData-Testpulse-LatencyDifference} shows an oscilloscope screens
     \label{fig:DTData-Testpulse-LatencyDifference}
 \end{figure}
 
-\FloatBarrier
 \section{Drift cell hits}
 
 Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponential fit to the tail of the hit time difference distribution for $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$. From the residual plot and the goodness-of-fit variable (which lies in the order of one) one can conclude that the exponential behavior of the time difference $\Delta T_\text{cell}$ is indeed a valid assumption. The obtained exponential fit is used as "background" estimation for the Poisson noise events, as discussed in sec.\ \ref{sec:DTData-CellHits-SecondaryHits}
@@ -63,7 +60,6 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
     \label{fig:DTData-CellHitDifference-ExpFit}
 \end{SCfigure}
 
-\FloatBarrier
 \section{Superlayer pattern fitting}
 
 \begin{table}[htb]
@@ -146,7 +142,6 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
     \label{fig:DTData-Hist-SLPatternfit-Uncertainties}
 \end{figure}
 
-\FloatBarrier
 \section{Global track fitting}
 \begin{figure}[htb]
     \centering

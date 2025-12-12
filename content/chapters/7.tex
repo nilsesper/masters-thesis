@@ -1,66 +1,83 @@
 \FloatBarrier
 \label{sec:Combined}
-A
+The main goal of this thesis is to take measurements with a combined setup of the \ac{DT} chamber at the test stand (sec.\ \ref{sec:DT}) and the scintillator (sec.\ \ref{sec:Scint}). The newly developed readout electronics for the scintillator allow to directly interface the \ac{DT} backend and its clock for synchronization.
+\newline This chapter presents the setup of the detector hardware, and the recorded atmospheric muon data of both detectors. By attempting to correlate the hits of both detectors with their timestamps, it is investigated whether the synchronization with the global clock could be achieved. Furthermore, the matched \ac{DT} track positions are compared to the scintillator position to provide an unbiased cross-check of the implemented \ac{DT} track reconstruction algorithm.
 
-\FloatBarrier
 \section{Combined detector setup}
 %\begin{itemize}
 %    \item Overview schematic of combined detector and readout setup
 %    \item Highlight shared backend and synchronized clocks
 %\end{itemize}
 \label{sec:Combined-Setup}
-A
+To record the hits of the same atmospheric muons, the scintillator needs to be placed into the acceptance range of the \ac{DT} chamber, which is mounted on a metal frame. For this work, the chosen scintillator position is on the floor, approximately \SI{1}{\meter} below the \ac{DT} chamber.
+\paragraph{Coordinate frame}
+The global coordinate frame used is the same as for the \ac{DT} chamber discussed above (sec.\ \ref{sec:CoordinateFrame-TimestampFormat}). The scintillator strips are oriented in parallel to the coordinate axes. The bottom layer of the scintillator (layer 0) has its strips in parallel with the \ac{SL} theta wires of the chamber, the top layer (layer 1) in parallel with the \ac{SL} phi wires. The strips are counted up towards the negative $x$ and $y$ direction. The position of the \ac{DT} chamber lies in the coordinate origin $(x,y,z)_\text{DT,ref}=(0,\; 0,\; 0)\;\si{\milli\meter}$ in the used reference frame. The scintillator base point lies at $(x,y,z)_\text{scint,ref}=(744.0,\; 1194.3,\; -986.0)\;\si{\milli\meter}$. Fig.\ \ref{fig:Combined-CoordinateFrame} illustrates the setup with the two different detectors, as well as the used coordinate frame and the definition of the reference points. A photo of the operational setup used for the measurement is shown in fig.\ \ref{fig:Combined-SetupPhoto}.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{CombinedSetup.pdf}
+    \caption{Illustration of the combined detector setup consisting of the scintillator and the \ac{DT} chamber. The used coordinate frame and the channel segmentation axis of the different detector components is highlighted. The reference points of the two detectors in the frame are marked.}
+    \label{fig:Combined-CoordinateFrame}
+\end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{CombinedSetup-Photo.pdf}
+    \caption{Photo of the combined detector setup: The scintillator with its readout electronics is visible below the \ac{DT} chamber at the test stand. The different components are labeled in the image.}
+    \label{fig:Combined-SetupPhoto}
+\end{figure}
+\paragraph{Readout system}
+Both detectors are read out by their respective systems, which were already presented in the previous chapters. The \ac{DT} chamber is read out by the Phase-2 minicrate which sends the hit data to the \ac{DT} backend system via an optical fiber (sec.\ \ref{sec:CMS-AachenTestStand-Phase2Setup}). The scintillator uses the self-developed readout board (secs.\ \ref{sec:Scint-ReadoutBoard}), transferring the hit data to the \ac{lpGBT} mezzanine that also interfaces the \ac{DT} backend system. Both the \ac{DT} and the developed scintillator electronics have the capability to recover the backend clock, allowing for synchronous operation. This capability is enabled by the \ac{lpGBT} \ac{ASIC} used both on the minicrate's \ac{OBDT} board (sec.\ \ref{sec:CMS-Phase2Readout}) and on the \ac{lpGBT} mezzanine board (sec.\ \ref{sec:Scint-lpGBTMezzanine}).
+\paragraph{Combined dataset}
+Atmospheric muon data was recorded for both detectors simultaneously with the combined setup described above. The datasets presented in the \ac{DT} (sec.\ \ref{sec:DTData}) and scintillator data (sec.\ \ref{sec:ScintData}) analysis section are actually from this simultaneous measurement of both detectors. It has a recording time of around $\SI{5}{\hour}\;\SI{27}{\min}$ and contains \num{297312727} drift cell hits and \num{44575666} \ac{SiPM} hits in total. The data analysis is conducted according to the respective sections above. From this analysis, \num{1656448} \ac{DT} tracks and \num{343594} scintillator strip hits were obtained.
 
-\FloatBarrier
-\subsection{Physical detector setup}
-A
-
-\FloatBarrier
-\subsection{Combined analysis strategy}
-A
-
+%\FloatBarrier
+%\subsection{Physical detector setup}
+%A
+%\FloatBarrier
+%\subsection{Combined analysis strategy}
+%A
 
 
 
 
-\FloatBarrier
-\section{Temporal hit correlation}
+
+\section{Temporal hit matching}
 %\begin{itemize}
 %    \item Group scintillator pixel hits with reconstructed DT tracks in time window
 %    \item Discuss rate of correlated events (compared to scintillator pixel hits before correlation)
 %    \item Show time difference between DT and scintillator
 %    \item Discuss distribution, highlight the synchronization
 %\end{itemize}
-\label{sec:Combined-TemporalCorrelation}
-A
+\label{sec:Combined-TemporalMatching}
+In order to demonstrate the synchronization of the \ac{DT} chamber and the scintillator readout, the reconstructed tracks and hits should be matched in time. With the time difference of the matched hits, it is then possible to quantify the latency between the detectors as well as the synchronization accuracy.
 
-\FloatBarrier
 \subsection{Matching procedure}
-A
+\label{sec:Combined-TemporalMatching-Procedure}
+\paragraph{Algorithm description}
+It is attempted to match each recorded scintillator strip hit to a \ac{DT} track, which was reconstructed independently of the scintillator with the algorithm discussed in sec.\ \ref{sec:DTData}. The matching procedure is again event-loop based: Both the \ac{DT} and scintillator hits are sorted by their timestamp. For each scintillator hit, it is searched for a reconstructed \ac{DT} track, lying within a time window $T_\text{DT} \in [T_\text{scint}-\Delta T_\text{matching,max} ,\; T_\text{scint}+\Delta T_\text{matching,max}]$. If this is the case, both the scintillator hit and the \ac{DT} track are stored as matched pair.
+\newline All unmatched scintillator hits and \ac{DT} tracks are discarded. It is clear that unmatched hits of both detectors are expected: The \ac{DT} chamber covers a significantly larger acceptance range, meaning that many atmospheric muons passing through the chamber are not hitting the scintillator. On the other hand it is also possible that inclined muons hit the scintillator but not the chamber. The absence of hits in one of the two detectors can also be caused by efficiency losses.
+\paragraph{Handling of ambiguities}
+One expects ambiguities to occur in the described matching algorithm, both because of the detector geometry and statistical effects. The scintillation detector consists of two stacked layers of scintillator strips, rotated relative to each other. A passing atmospheric muon can trigger a hit in one strip of each layer, which would lead to two scintillator strip hits close in time. If there is a corresponding \ac{DT} track, both scintillator hits would be matched to this same track. To inhibit such double-matching, it is ensured in the algorithm, that each \ac{DT} track is only matched once.
+\newline The other effect is purely statistical: As the atmospheric muons are expected to arrive at random times, which might lead to a situation where two \ac{DT} tracks lie in the matching time window of one scintillator hit, if two muons arrive closely in time. These cases are simply solved by requiring exactly one matched \ac{DT} track in the matching time window, and rejecting all other cases. Of course this implies a small bias to the data, however these cases are rare, and the bias is accepted here.
+\paragraph{Selected time window}
+For the analysis, the matching time window is conservatively chosen as $\Delta T_\text{matching,max}=\SI{780}{\nano\second}$ (\SI{1000}{\tu}). The latency difference between the \ac{DT} and scintillator readout systems is unknown initially, therefore the relatively large value is chosen to cover a wider time range. It is clear that the selection of this time window influences the number of statistically induced ambiguities, as discussed above. Given the rather low \ac{DT} muon rate and scintillator rate, the selected relatively large value is still considered reasonable.
 
-\FloatBarrier
 \subsection{Matched hits}
-A
-\begin{figure}[htb]
-    \centering
-    \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_fullrange.pdf}
-        \caption{Broad view in $\mathcal{O}(\SI{1}{\micro\second})$ range.}
-        \label{fig:Combined-Hist-DeltaScintDT-fullrange}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_closeup.pdf}
-        \caption{Close-up view in $\mathcal{O}(\SI{50}{\nano\second})$ range. Few events lie in the overflow bin.}
-        \label{fig:Combined-Hist-DeltaScintDT-closeup}
-    \end{subfigure}
-    \hfill
-    \caption{Histogram of the timestamp difference between the matched scintillator strip hit and the \ac{DT} track.}
-    \label{fig:Combined-Hist-DeltaScintDTs}
-\end{figure}
+\label{sec:Combined-TemporalMatching-Hits}
+This section presents the temporally matched scintillator and \ac{DT} hits, which result from the algorithm discussed above (sec.\ \ref{sec:Combined-TemporalMatching-Procedure}).
+\paragraph{Hit occupancy}
+From the recorded dataset with both detectors, one finds \num{39106} matched hits. This corresponds to a matched hit rate of $(2.00 \pm 0.01)\;\si{\hertz}$.
+\newline This rate is significantly smaller than what one would expect from one scintillator layer of 16 strips.\footnote{The scintillator has two layers, which means that the expected rate of the full scintillator is twice the rate of one layer. Since the cases where two close scintillator hits occur are however resolved by only matching one of these hits (see ambiguity handling above), the expectation for the matched hit rate should only be the rate of one layer.} The observed mean strip rate was observed to be $\approx \SI{0.5}{\hertz}$ (sec.\ \ref{sec:ScintData-Strips-Results}), which would lead to an expected hit rate of one layer of around \SI{8}{\hertz}.
+\newline It is however clear, that only as many scintillator hits can be matched, as \ac{DT} tracks are available. For the full \ac{DT} chamber, a reconstructed track rate of $\approx\SI{84}{\hertz}$ is observed (sec.\ \ref{sec:DTData-GlobalTrackBuilding-Results}). A coarse estimation of the expected \ac{DT} track rate on the scintillator can be given by scaling the rate with the area ratio of the chamber and the scintillator. Using the drift cell lengths of the different \acp{SL} from tab.\ \ref{tab:MB1Chamber-Cells} and the scintillator area of $0.5\times 0.5 \;\si{\meter^2}$, one obtains a rate of around \SI{4.3}{\hertz}, which is already significantly smaller than the recorded scintillator rate. Note that this is only a coarse estimation, which does not consider the distance of around \SI{1}{\meter} between the \ac{DT} chamber and the scintillator, as well as the distribution of dead cells in the \ac{DT} chamber.
+% rate scaling: expected dt rate on scint = total dt rate * (500*500)/(2379*2038)
+\paragraph{Efficiency interference}
+The deviation might in part be explainable with efficiency losses: For a successful hit match, all 12 drift cells of the \ac{DT} chamber and at least one strip of the scintillator need to be hit. This means that one can not simply assume that the smaller of the two rates as the rate of the matched hits. Instead, for each arriving atmospheric muon, the efficiency of both detectors independently determines whether the respective detector registers a hit or track.
+\newline With the value for the cell hit efficiency $\varepsilon_\text{cell}=96.93\%$ measured by \ac{CMS} of (sec.\ \ref{sec:CMS-DTPerformance}), the requirement of 12 hit cells gives a reduction factor of the \ac{DT} rate compared to the true impinging atmospheric muons of $\varepsilon_\text{DT}=(\varepsilon_\text{cell})^{12}\approx 68.79\%$. Therefore, the mentioned scintillator rate of around \SI{8}{\hertz} must be scaled with the \ac{DT} chamber efficiency to obtain the expected matched hit rate. In addition, it is not considered that not all hits in the scintillator actually pass through the \ac{DT} chamber. Atmospheric muon tracks of higher angles might not lie in the \ac{DT} chamber acceptance. The dead cells in the \ac{DT} chamber further reduce the expected number of matched hits.
+\newline Given all these aspects, the observed matched hit rate of $\approx \SI{2}{\hertz}$ is still small, but at least some reasons for a lower matching rate compared to the single-detector rates could be mentioned.
+
+\paragraph{Time distribution}
+The matched hits should originate from atmospheric muons passing though both detectors. The muons are expected follow a Poisson distribution in time, as they are arriving randomly. In this paragraph, the timing of the matched \ac{DT} tracks should be discussed, as a representation to understand the time distribution of the matched scintillator hits.
+\newline Fig.\ \ref{fig:Combined-Hist-DTArrivalTime} shows a histogram of the matched \ac{DT} track arrival times. The plot shows uniformly distributed matched hits in time over the full measurement, which is expected. As mentioned several times in this thesis, the time difference of Poisson events is expected to be exponentially distributed. In fig.\ \ref{fig:Combined-Hist-DTArrivalTimeDifference}, the difference of timestamps between consecutive matched \ac{DT} tracks is plotted. The exponential distribution is clearly visible, in compliance with the expectation.
+\newline Had there been deviations observed from the expected behavior, this might have hinted a problem with the combined setup or the synchronization on a coarse timescale in the order of the matching time window $\Delta T_\text{matching,max}$. However, this is not the case, which is already a first indication that the developed electronics are operating as expected regarding this aspect.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -74,37 +91,83 @@ A
     \begin{subfigure}[c]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_MUON_DELTA-TS_fullrange.pdf}
-        \caption{Difference $\Delta T$ between all matched \ac{DT} tracks}
+        \caption{Difference $\Delta T$ between consecutive matched \ac{DT} tracks}
         \label{fig:Combined-Hist-DTArrivalTimeDifference}
     \end{subfigure}
     \hfill
     \caption{Histograms of the matched \ac{DT} track timestamps.}
     \label{fig:Combined-Hist-DTArrivalTimes}
 \end{figure}
-
-\FloatBarrier
-\subsection{Check of detector synchronization}
+\paragraph{Comparison with cosmic rate}
 A
+
+\subsection{Check of detector synchronization}
+\paragraph{Time difference between detectors}
+For all matched hits, the time difference between the \ac{DT} chamber track arrival time $T_\text{DT}$ and the scintillator hit timestamp $T_\text{scint}$ is calculated:
+\begin{equation}
+    \Delta T_\text{matching} = T_\text{scint} - T_\text{DT}.
+    \label{eq:Combuined-MatchingTimeDifference}
+\end{equation}
+Fig.\ \ref{fig:Combined-Hist-DeltaScintDTs} presents a histogram of this quantity for all matched hits. The two subfigures cover different $x$-axis ranges: In fig.\ \ref{fig:Combined-Hist-DeltaScintDT-fullrange} the full range is covered, which is limited by the matching time window $\left| \Delta T_\text{matching} \right| \leq T_\text{matching,max}=\SI{780}{\nano\second}$. A narrower range $\mathcal{O}(\SI{50}{\nano\second})$ is presented in fig.\ \ref{fig:Combined-Hist-DeltaScintDT-closeup}.
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_fullrange.pdf}
+        \caption{Full allowed range $\left| \Delta T_\text{matching} \right| \leq T_\text{matching,max}=\SI{780}{\nano\second}$}
+        \label{fig:Combined-Hist-DeltaScintDT-fullrange}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_closeup.pdf}
+        \caption{Close-up view in $\mathcal{O}(\SI{50}{\nano\second})$ range with finer binning}
+        \label{fig:Combined-Hist-DeltaScintDT-closeup}
+    \end{subfigure}
+    \hfill
+    \caption{Histograms of the timestamp difference $\Delta T_\text{matching}$ between the matched scintillator strip hit and the \ac{DT} track, plotted for different bin ranges.}
+    \label{fig:Combined-Hist-DeltaScintDTs}
+\end{figure}
+\newline The time difference of the hits in both detectors for matched events shows a clear peak at $\Delta T_\text{matching}\approx\SI{-60}{\nano\second}$. Very few events are spread uniformly over the full range.
+\newline The observed peak in the distribution can be interpreted as follows: The matched hits in both detectors do not have randomly distributed timestamps, but are instead clustered at a fixed temporal distance. When assuming that the matched hits originate from the same passing atmospheric muon, one can conclude that the detector synchronization is in principle working. The shape of the obtained time difference distribution is analyzed and discussed in the next paragraphs.
+\paragraph{Quantification of peak offset and width}
+A function should be fitted to the observed peak in the matched hit time difference histogram, to extract its position and width. The first choice for the fit function is a Gaussian distribution. Fig.\ \ref{fig:Combined-Hist-DeltaScintDT-Fit} presents the result of the fit, using the range of $\Delta T_\text{matching}\in[-70, -49]\;\si{\nano\second}$ around the peak.
 \begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.49\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_CORR_DELTA-TS_FIT.pdf}
     \caption{Result of a Gaussian fit to the peak in the time difference histogram between matched scintillator hit and \ac{DT} track.}
     \label{fig:Combined-Hist-DeltaScintDT-Fit}
 \end{SCfigure}
+\newline From the residual plot and the goodness-of-fit variable $\chi^2/N_{df}>1$ it is clear that the selected Gaussian fit function is not completely ideal to describe the shape of the peak. It seems to have a higher peak count than the Gaussian shape. Also, it shows an asymmetry with the left tail being wider than the right one. While it would be possible to find better fit models than the used Gaussian, the presented fit is considered sufficient for a rough quantification of the peak position and the width of the distribution. One can estimate the peak offset from zero as $T_\text{matching,offset} = b \approx (-59.34 \pm 0.03)\;\si{\nano\second}$. The \ac{FWHM} of the peak is used as measure of the width. It can be estimated to be $T_\text{matching,FWHM} = 2 \sqrt{2 \ln 2} \cdot c \approx (11.75 \pm 0.07)\;\si{\nano\second}$.\footnote{The used formula can be obtained from simple calculations, equating the Gaussian function with half the maximum amplitude.}
+\newline Naively, one would expect the hits of both detectors to be registered simultaneously in both detectors, if they are read out synchronously. This would translate to a Dirac peak at $\Delta T_\text{matching}=\SI{0}{\nano\second}$ in the time difference plot. However, there are several effects which lead to the observed offset and the finite width of the distribution, which are discussed in the following paragraphs.
+\paragraph{Discussion of peak offset}
+% For the reconstruction within the \ac{DT} chamber (sec.\ \ref{sec:DTData-GlobalTrackBuilding-Strategy}), neglecting the muon flight time did not imply a significant bias, because of the relatively small height of the chamber. However, t
+As explained, the mean timing offset between the detector hits is around $T_\text{matching,offset}\approx\SI{-59}{\nano\second}$, assuming both matched hits originate from the same atmospheric muon event. Apparently, this offset is constant over time, as only one peak at the given position is observed in the matching time difference plot (fig.\ \ref{fig:Combined-Hist-DeltaScintDTs}).
+\newline The first relevant effect is the muon flight time. The distance between the chamber and the scintillator of around \SI{1}{\meter} starts to become relevant, as a vertical muon at the speed of light takes around \SI{3.3}{\nano\second} to pass from the chamber to the scintillator, and for inclined muons the contribution is even larger. This should result in a positive contribution to the peak offset $T_\text{matching,offset}$, as the scintillator should be hit later than the \ac{DT} chamber. The observed offset is however relatively small, and of opposite sign, which means that other effects must be involved.
+\newline A scalable contribution to the offset is expected from a latency difference of the two readout systems. It is clear that even though the \ac{DT} minicrate and the scintillator readout board may operate synchronously, they can still have a constant difference in latency. It is clear that the physical length of the readout connection (i.e.\ the fiber length) influences the latency. In the setup used, the optical fibers of the \ac{DT} and scintillator however both had a similar length in the order of \SI{10}{\meter}. Length differences of few meters will also only result in offsets of few nanoseconds, which is not enough to explain the observed offset as well.
+\newline The second and more relevant point regarding the latency is the difference in the readout logic, running on the \ac{DT} minicrate's \ac{OBDT} boards and the scintillator readout board. In both cases, the sampling logic is implemented in an \ac{FPGA}, but the firmware was independently developed. If the hit data propagates a different number of clock cycles in the \ac{OBDT} firmware compared to the readout board firmware, this will result in a fixed latency difference. Depending on which clock domain is used, latency difference in the order of few $BX$ (multiples of \SI{25}{\nano\second}) may be observed. A detailed timing comparison of both firmware implementations is rather complex and was therefore not conducted, therefore no concrete numbers can be given here. Still, it is clear that the described effect of different hit propagation times is most likely able to explain the observed order of magnitude in time offset.
+\newline Such differences in propagation time might not only occur in the "frontend" readout of the \ac{DT} chamber and the scintillator. They might also be imagined in the firmware of the backend system, which was modified for this work to inject the scintillator data into the existing data stream of the \ac{DT} chamber readout.
+\newline From the discussion it becomes evident that the observed constant time offset between the \ac{DT} and scintillator readout systems is not unexpected, and there are several aspects potentially contributing to it. The observed order of magnitude of the offset may be explained with a latency difference in firmware and other smaller effects.
+\paragraph{Discussion of peak width}
+The peak in the matching time difference plot has a finite width of around \SI{12}{\nano\second}. The peak width is generated by event-by-event or channel-by-channel timing variations occurring in the dataset. Potential origins of this variation are introduced in the following.
+\newline It was already mentioned that the timing calibration of the \ac{SiPM} inputs is only accurate by \SI{6.25}{\nano\second} (sec.\ \ref{sec:ScintData-TimingBias}). This means that the scintillator strip coincidences also inherit timing biases relative to each other. The result is a temporal offset between different strips, which contributes to the peak width in the matched hit time difference. It is clear that such a channel-by-channel offset also distorts the shape of the peak from an ideal Gaussian, as it in fact becomes a sum of several shifted Gaussians.
+\newline Apart from this, both the scintillator and \ac{DT} hit reconstruction are subject to event-by-event timing variations, which was discussed in the respective chapters dealing with the analysis of the individual detectors. For the \ac{DT} tracks, the arrival time uncertainty is $\mathcal{O}(\SI{10}{\nano\second})$ (sec.\ \ref{sec:DTData-GlobalTrackBuilding-Results}). For the scintillator strips, the uncertainty can be estimated to be $\mathcal{O}(\SI{10}{\nano\second})$ as well, from the width of the coincidence time difference of the two \acp{SiPM} of each strip (sec.\ \ref{sec:ScintData-Strips-Results} and fig.\ \ref{fig:ScintData-Full-Hist-DeltaTSiPMs}). These variations obviously contribute to the width of the time difference for matched of the two detectors as well.
+\newline With the given points in this section, the width of the peak can be understood. If there would be a time-walk of the synchronization between the \ac{DT} and scintillator readout system, this should create to a broader peak in the cumulated matching time difference distribution as well. Because the effects mentioned above are expected to already cause a peak width in the $\mathcal{O}(\SI{10}{\nano\second})$ range, one concludes that the synchronization between the readout systems seems to be maintained over the full recording time of the dataset.
+\paragraph{Conclusion}
+The matching of reconstructed \ac{DT} tracks and scintillator strip hits reveals that the desired synchronization between both detectors could be achieved. The matched rate is relatively low, possibly due to the simplified \ac{DT} reconstruction strategy used (sec.\ \ref{sec:DTData}) and the observed systematic observations in the data recorded with the scintillator readout board (sec.\ \ref{sec:ScintData-Strips-Results}). However, the successfully matched hits show a time variation between the two detectors is only around \SI{12}{\nano\second}, which is considered a success.
 
-
-
-
-\FloatBarrier
-\section{Spatial hit correlation}
+\section{Further analysis of matched tracks}
 %\begin{itemize}
 %    \item Show cumulated reconstructed DT tracks for "matched" hits between scintillator and DT
 %    \item Highlight good geometric agreement
 %    \item Mention need for alignment analysis (which in principle would be possible with this data)
 %\end{itemize}
-\label{sec:Combined-SpatialCorrelation}
-A
-
+\label{sec:Combined-MatchedHitAnalysis}
+The \ac{DT} tracks matched to scintillator hits, presented in the last section (sec.\ \ref{sec:Combined-TemporalMatching}), should now be further analyzed. As only the timing information and not position information was used for the matching, one can use the matched tracks for an independent cross-check of the implemented \ac{DT} reconstruction strategy.
+\paragraph{DT track propagation}
+The matched \ac{DT} tracks are propagated through the combined geometry of the \ac{DT} chamber and the scintillator, which was illustrated above in fig.\ \ref{fig:Combined-CoordinateFrame}. If the implemented \ac{DT} reconstruction algorithm works correctly, one would expect that the tracks intersect the scintillator, because they were matched with a scintillator hit in time.
+\newline Fig.\ \ref{fig:Combined-GlobalTrack-2D-z} shows both the $x$-$z$- and $y$-$z$-view of the propagated matched \ac{DT} tracks as a 2D histogram. The plot is created with a similar prescription as the plots that were shown in sec.\ \ref{sec:DTData-GlobalTrackBuilding-Results} (fig. \ref{fig:DTData-GlobalTrack-2D-z}), by evaluating the $x$-position ($y$-position) of the \ac{DT} tracks for all $z$ heights and cumulating all $y$-coordinates ($x$-coordinates) into the presented bins.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -125,14 +188,28 @@ A
     \caption{2D histograms of the matched \ac{DT} track positions. The \ac{DT} chamber and scintillator geometry is drawn in white. Dead channels in both the \ac{DT} chamber and the scintillator are marked in red. The bin size is $5 \times 5\;\si{\milli\meter^2}$.}
     \label{fig:Combined-GlobalTrack-2D-z}
 \end{figure}
-\begin{SCfigure}[50][htb]
+\newline The plot shows that from both views, almost all matched \ac{DT} tracks actually intersect the scintillator. From this, one can conclude that the implemented \ac{DT} track reconstruction algorithm (sec.\ \ref{sec:DTData}) seems to work successfully, at least in the cases that could be successfully matched to scintillator hits.
+\newline One observation is the fact that the density of vertical tracks is the highest, and it decreases towards tracks of higher angles. This is consistent with the angular distribution of the atmospheric muons, which follows a $\propto\cos^2\theta$ distribution (sec.\ \ref{sec:AtmosphericMuons-Dependencies}). It emphasizes that the matched events should actually originate from cosmics.
+\newline The "shadows" thrown by the dead cells of the chamber (marked in red) can be clearly observed in the plot. The "diamond shape" of a track higher density above and below the scintillator is again a geometric effect which arises due to the tracks originating from the left and the right intersecting in the central region.
+\newline A lower track density is observed at roughly the positions of the two dead scintillator strips (marked in red), which is expected as at these positions only the hits of the second scintillator layer can be used to match \ac{DT} tracks, while for all other strips a hit in one of the two layers is sufficient for matching.
+\paragraph{DT tracks at scintillator intersection point}
+A 2D histogram of the propagated $(x,y)$ positions of the matched \ac{DT} tracks at the mean $z$ height of the scintillator is presented in fig.\ \ref{fig:Combined-GlobalTrack-2D-xy}. The expected position of the scintillator (white) as well as the location of the two dead scintillator strips (red) is marked in the plot.
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_xy.pdf}
-    \caption{Correlated \ac{DT} track $(x,y)$ positions at the center height of the scintillator ($z=\SI{-926}{\milli\meter}$ in the chosen coordinate frame). The bin size is $10 \times 10\;\si{\milli\meter^2}$.}
+    \includegraphics[width=0.9\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_xy.pdf}
+    \caption{Correlated \ac{DT} track $(x,y)$ positions at the center height of the scintillator ($z=\SI{-966}{\milli\meter}$ in the global coordinate frame). The bin size is $10 \times 10\;\si{\milli\meter^2}$.}
     \label{fig:Combined-GlobalTrack-2D-xy}
-\end{SCfigure}
+\end{figure}
+\newline A square-shaped distribution of the track positions on the height of the scintillator can be observed, which is approximately the expected shape of the scintillator. However, one can observe geometric misalignment of around $\SI{3}{\centi\meter}$ along both the $x$- and the $y$-axis, i.e. a shift between the measured track positions relative to the expected scintillator position. This misalignment could already be made out in the lateral views in fig.\ \ref{fig:Combined-GlobalTrack-2D-z} presented above.
+\newline The origin of the misalignment is not initially clear. However, it must be noted that the position of the scintillator relative to the \ac{DT} chamber was only roughly measured with a carpenter's ruler, which implies an uncertainty in the order of $\mathcal{O}(\SI{1}{\centi\meter})$. This can at least in part explain the observed deviation in position. Apart from the misalignment along the coordinate axes, a slight rotation of the square-shaped track position relative to the expected scintillator position is visible, indicating that the scintillator in the real setup might have been slightly tilted relative to the \ac{DT} chamber coordinate axes.
+\newline From these two observations, the need for a proper detector alignment procedure becomes evident, which ideally should not only cover translations but also rotations. The development and validation of such an algorithm is beyond the scope of this thesis, but should be addressed in the future if the combined detector setup should be continued to be used.
+\newline Apart from the obvious misalignment, another interesting feature is visible in the plot, which was already mentioned in the discussion of the lateral view (fig.\ \ref{fig:Combined-GlobalTrack-2D-z}). A lower matched \ac{DT} track count is visible for two rectangles in the square-shaped distribution of track positions. If one would correct for the misalignment along the $y$-axis it would become evident, that these darker rectangles in the 2D histogram correspond to the position of the dead scintillator strips. This behavior is expected, as fewer tracks can be reconstructed for if only one instead of two strips are available to detect the atmospheric muon, due to the finite scintillator efficiency.
+\paragraph{Conclusion}
+The analysis of the matched \ac{DT} track positions in the detector geometry shows that almost all tracks intersect the scintillator. This can be regarded as a successful independent validation of the implemented \ac{DT} track reconstruction algorithm. However, the need for proper detector alignment is obvious, although this can not be accomplished in this thesis.
+\newline With this cross-check, it is clear that the \ac{DT} chamber at the test stand is ready to be operated again as an atmospheric muon detector, which can be used for a variety of different future studies in the future. It should be noted that the implemented reconstruction algorithm is triggerless, which means that the \ac{DT} chamber could now be operated in stand-alone mode, i.e.\ without an external trigger detector or the full \ac{CMS} online trigger algorithm running.
+\newline Nevertheless, the low rate of correlated hits should be further investigated, and potential optimizations should be realized for the \ac{DT} reconstruction. The observed issues with the developed scintillator readout system should also be studied in the future, to understand in detail the cause for the observed systematic effects and implement countermeasures.
 
-
+%As the implemented triggerless \ac{DT} track reconstruction seems to deliver plausible output data, it is now possible to use the \ac{DT} test stand in the future as a reference for other detectors or readout electronics to be tested in the future. Instead of the scintillator, it could be imagined to place another detector in the \ac{DT} chamber acceptance range and use the independently reconstructed \ac{DT} tracks as reference muons for the analysis of the response of the other detector.
 
 %\section{Alignment analysis}
 
