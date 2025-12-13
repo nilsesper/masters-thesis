@@ -272,6 +272,8 @@
 %%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{roman} % change page numbering to letters
 \ifthenelse{\ctitlepage > -1}{ % if titlepage > -1: generate title page
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Title page}
     { \input{../content/title.tex} }
 }{}
 %%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,6 +299,14 @@
     \acresetall
 }{}
 
+%%% CUSTOM PAGE CONTENT AFTER ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\cpageafterabstract > -1}{ % if pageafterabstract > -1: generate page after abstract
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \pagestyle{plain}
+    \phantomsection
+    \input{../content/pageafterabstract.tex}
+}{}
+
 %%% TABLE OF CONTENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthenelse{\ctocdepth > -1}{ % if tocdepth > -1: generate toc
     \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
@@ -318,6 +328,15 @@
         \ifthenelse{\GetChapterSections = 0}{ \pagestyle{chapterheader} }{ \pagestyle{sectionheader} } % set proper pagestyle (with or without section name in header, depending if existing)
         \input{../content/chapters/\x.tex}
     }
+}{}
+
+%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \chapter*{Bibliography}
+    \addcontentsline{toc}{chapter}{Bibliography}
+    \pagestyle{bibheader}
+    \printbibliography[heading=none]
 }{}
 
 %%% APPENDIX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -342,18 +361,18 @@
     \end{appendices}
 }{}
 
-%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
-    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
-    \chapter*{Bibliography}
-    \addcontentsline{toc}{chapter}{Bibliography}
-    \pagestyle{bibheader}
-    \printbibliography[heading=none]
-}{}
-
 %%% LISTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \FloatBarrier
 \phantomsection
+%%% list of acronyms
+\ifthenelse{\cuseacr > -1}{ % if useacr > -1
+ \ifthenelse{\clistofacronyms > -1}{ % if listofacronyms > -1: generate list of acronyms
+    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
+    \phantomsection
+    \addcontentsline{toc}{chapter}{List of Acronyms}
+    \pagestyle{loaheader}
+    \printacronyms[display=used,name=List of Acronyms]
+ }{}
 %%% list of figures
 \ifthenelse{\clistoffigures > -1}{ % if listoffigures > -1: generate list of figures
     \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
@@ -370,15 +389,6 @@
     \pagestyle{chapterheadernonumber}
     \listoftables
 }{}
-%%% list of acronyms
-\ifthenelse{\cuseacr > -1}{ % if useacr > -1
- \ifthenelse{\clistofacronyms > -1}{ % if listofacronyms > -1: generate list of acronyms
-    \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
-    \phantomsection
-    \addcontentsline{toc}{chapter}{List of Acronyms}
-    \pagestyle{loaheader}
-    \printacronyms[display=used,name=List of Acronyms]
- }{}
 }{}
 
 %%% ACKNOWLEDGEMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
