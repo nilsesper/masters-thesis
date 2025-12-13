@@ -5,14 +5,15 @@ useacr,0
 
 titlepage,0
 abstract,0
+germanabstract,0
 acknowledgements,0
-listoffigures,-1
-listoftables,-1
+listoffigures,0
+listoftables,0
 listofacronyms,0
 
 tocdepth,3
-abstractintoc,-1
-acknowledgementsintoc,-1
+abstractintoc,0
+acknowledgementsintoc,0
 usecleardouble,-1
 
 chaptertopspace,50

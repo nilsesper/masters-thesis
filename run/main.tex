@@ -29,8 +29,8 @@
 
 %%% load packages:
 % hyperlinks
-\usepackage[]{hyperref}
-    % alternatively: pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures
+\usepackage[pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures]{hyperref}
+    % alternatively: pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures 
 % insert images
 \usepackage{graphicx}
 % foreach capability
@@ -67,6 +67,13 @@
 \usepackage{textcomp}
 % captions next to figures
 \usepackage{sidecap}
+% .aux file
+\usepackage{auxhook}
+
+%%% .aux file
+\AddLineBeginAux{%
+  \string\providecommand\string\AuxChapterSection[1]{}%
+}
 
 %%% bibliography setup
 \ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
@@ -95,6 +102,52 @@
         \acsetup{make-links}
     }{}
 }{}
+
+%%% chapter & section counting setup
+\makeatletter
+\newcommand*{\AuxChapterSection}[1]{%
+  \@ifundefined{AuxChapterSection@#1}{%
+    \expandafter\gdef\csname AuxChapterSection@#1\endcsname{1}%
+  }{%
+    \expandafter\xdef\csname AuxChapterSection@#1\endcsname{%
+      \the\numexpr\csname AuxChapterSection@#1\endcsname + 1\relax
+    }%
+  }%
+}
+\newcommand*{\WriteAuxChapterSection}{%
+  \if@filesw
+    \immediate\write\@auxout{%
+      \string\AuxChapterSection{\the\value{abs@chapter}}%
+    }%
+  \fi
+}
+\newcounter{abs@chapter}
+\newcommand{\Original}{}
+\let\OriginalChapter\chapter
+\renewcommand*{\chapter}{%
+  \stepcounter{abs@chapter}%
+  \OriginalChapter
+}
+\let\OriginalSection\section
+\renewcommand*{\section}{%
+  \WriteAuxChapterSection
+  \OriginalSection
+}
+\newcommand*{\@GetChapterSections}[1]{%
+  \@ifundefined{AuxChapterSection@#1}{%
+    0%
+  }{%
+    \csname AuxChapterSection@#1\endcsname
+  }%
+}
+\newcommand*{\GetChapterSections}{%
+  \expandafter\@GetChapterSections\expandafter{\the\numexpr\value{abs@chapter}\relax}%
+}
+\newcommand*{\GetNextChapterSections}{%
+  \expandafter\@GetChapterSections\expandafter
+    {\the\numexpr\value{abs@chapter}+1\relax}%
+}
+\makeatother
 
 %%% command definitions
 % configure chapter headings:
@@ -232,6 +285,17 @@
     \phantomsection
     \input{../content/abstract.tex}
 }{}
+%%% GERMAN ABSTRACT
+\ifthenelse{\cgermanabstract > -1}{ % if germanabstract > -1: generate abstract
+    \ifthenelse{\cabstract > -1}{ {\par\let\clearpage\relax\chapter*{Zusammenfassung}} }{ \chapter*{Zusammenfassung} } % if also english abstract, try to fit on same page
+    \pagestyle{abstractheader}
+    \phantomsection
+    \input{../content/zusammenfassung.tex}
+}{}
+%%% reset acronyms after abstract, as the abstract is separate from rest of thesis
+\ifthenelse{\cuseacr > -1}{ % if useacr > -1
+    \acresetall
+}{}
 
 %%% TABLE OF CONTENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthenelse{\ctocdepth > -1}{ % if tocdepth > -1: generate toc
@@ -244,12 +308,14 @@
 %%% CHAPTERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
 \pagenumbering{arabic} % change page numbering to real numbers
-\pagestyle{sectionheader}
+\pagestyle{chapterheader} % default
 \ifthenelse{\chighestchapter > -1}{ % if highestchapter > -1: generate chapters
     % insert chapters content
     \foreach  \x in {0,...,\chighestchapter} {
+        \ifthenelse{\GetChapterSections = 0}{ \pagestyle{chapterheader} }{ \pagestyle{sectionheader} } % set proper pagestyle (with or without section name in header, depending if existing)
         \ifthenelse{\cusecleardouble > -1 \AND \x > 0}{ \cleardoublepage }{ \clearpage } % clear(double) page
         \chapter{\csname cchapter\x \endcsname} % call \chapterX command (variable content)
+        \ifthenelse{\GetChapterSections = 0}{ \pagestyle{chapterheader} }{ \pagestyle{sectionheader} } % set proper pagestyle (with or without section name in header, depending if existing)
         \input{../content/chapters/\x.tex}
     }
 }{}
@@ -260,15 +326,17 @@
 \ifthenelse{\chighestappendix > -1}{ % if highestappendix > -1: generate appendix
     \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
     \begin{appendices}
-        \pagestyle{sectionheader}
+        \pagestyle{chapterheader} % default
         %\addcontentsline{toc}{part}{Appendices}
         % insert appendix content
         \foreach  \x in {0,...,\chighestappendix} {
+            \ifthenelse{\GetChapterSections = 0}{ \pagestyle{chapterheader} }{ \pagestyle{sectionheader} } % set proper pagestyle (with or without section name in header, depending if existing)
             \ifthenelse{\cusecleardouble > -1 \AND \x > 0}{ \cleardoublepage }{ \clearpage } % clear(double) page
             \ifthenelse{\x > 0}
                 { \configchapterheading{\cchaptertopspace}{\cchapterbottomspace}{} } % normal chapter heading configuration for following appendix chapters
                 { \configchapterheading{\cchaptertopspace}{\cchapterbottomspace}{Appendix} } % add "Appendix" to heading of first chapter of appendix
             \chapter{\csname cappendix\x \endcsname} % call \appendixX command (variable content)
+            \ifthenelse{\GetChapterSections = 0}{ \pagestyle{chapterheader} }{ \pagestyle{sectionheader} } % set proper pagestyle (with or without section name in header, depending if existing)
             \input{../content/appendix/\x.tex}
         }
     \end{appendices}
@@ -289,16 +357,16 @@
 %%% list of figures
 \ifthenelse{\clistoffigures > -1}{ % if listoffigures > -1: generate list of figures
     \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
-    \addcontentsline{toc}{chapter}{List of Figures}
     \phantomsection
+    \addcontentsline{toc}{chapter}{List of Figures}
     \pagestyle{chapterheadernonumber}
     \listoffigures
 }{}
 %%% list of tables
 \ifthenelse{\clistoftables > -1}{ % if listoftables > -1: generate list of tables
     \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
-    \addcontentsline{toc}{chapter}{List of Tables}
     \phantomsection
+    \addcontentsline{toc}{chapter}{List of Tables}
     \pagestyle{chapterheadernonumber}
     \listoftables
 }{}
@@ -306,8 +374,8 @@
 \ifthenelse{\cuseacr > -1}{ % if useacr > -1
  \ifthenelse{\clistofacronyms > -1}{ % if listofacronyms > -1: generate list of acronyms
     \ifthenelse{\cusecleardouble > -1}{ \cleardoublepage }{ \clearpage } % clear(double) page
-    \addcontentsline{toc}{chapter}{List of Acronyms}
     \phantomsection
+    \addcontentsline{toc}{chapter}{List of Acronyms}
     \pagestyle{loaheader}
     \printacronyms[display=used,name=List of Acronyms]
  }{}
