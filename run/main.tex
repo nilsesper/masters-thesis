@@ -206,6 +206,21 @@
 %%% \addtag: enable numbering of \[\] eqs. by using the newly defined command
 \newcommand\addtag{\refstepcounter{equation}\tag{\theequation}}
 
+%%% utils for two eqs. next to each other
+\makeatletter
+\newcommand*{\stepeqlabel}[1]{%
+  \@bsphack
+  \begingroup
+    \refstepcounter{equation}%
+    \label{#1}%
+  \endgroup
+  \@esphack
+}
+\newcommand*{\theequationadd}[1]{%
+    \thechapter.\the\numexpr\value{equation}+(#1)\relax
+}
+\makeatother
+
 %%% load additional (user-given) packages
 \input{../resources/packages.sty}
 
