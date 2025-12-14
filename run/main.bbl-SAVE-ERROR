@@ -3931,8 +3931,8 @@
       \strng{authornamehash}{170de6335e1ef7cc0b0f7888d4068bf6}
       \strng{authorfullhash}{170de6335e1ef7cc0b0f7888d4068bf6}
       \strng{authorfullhashraw}{170de6335e1ef7cc0b0f7888d4068bf6}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0092-640X}
@@ -8455,8 +8455,8 @@
       \strng{authornamehash}{54897669e34de57e61e659e3e03d8167}
       \strng{authorfullhash}{a565a43f6f33ca32873af834bd585c34}
       \strng{authorfullhashraw}{a565a43f6f33ca32873af834bd585c34}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{lpGBT documentation}

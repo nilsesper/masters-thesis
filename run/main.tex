@@ -180,8 +180,8 @@
 \captionsetup{
     font=small, % fontsize of captions
     labelfont=bf,
-    format=hang,
-    justification=centering, %justified,
+    format=plain, %format=hang,
+    justification=justified, %centering,
     singlelinecheck=false,
     figurename=Fig., % change fig. label
     tablename=Tab., % change tab. label
@@ -304,14 +304,10 @@
 }{}
 %%% GERMAN ABSTRACT
 \ifthenelse{\cgermanabstract > -1}{ % if germanabstract > -1: generate abstract
-    \ifthenelse{\cabstract > -1}{ {\par\let\clearpage\relax\chapter*{Zusammenfassung}} }{ \chapter*{Zusammenfassung} } % if also english abstract, try to fit on same page
+    \ifthenelse{\cabstract > -1}{ \vspace{-1cm} {\par\let\clearpage\relax\chapter*{Zusammenfassung}} }{ \chapter*{Zusammenfassung} } % if also english abstract, try to fit on same page
     \pagestyle{abstractheader}
     \phantomsection
     \input{../content/zusammenfassung.tex}
-}{}
-%%% reset acronyms after abstract, as the abstract is separate from rest of thesis
-\ifthenelse{\cuseacr > -1}{ % if useacr > -1
-    \acresetall
 }{}
 
 %%% CUSTOM PAGE CONTENT AFTER ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
