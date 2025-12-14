@@ -1848,20 +1848,21 @@
     \endentry
     \entry{SM-Wikimedia}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=93d707cc77f037fd02e1c8cfa75317cf}{%
-           family={Commons},
-           familyi={C\bibinitperiod},
-           given={Wikimedia},
-           giveni={W\bibinitperiod}}}%
+        {{hash=b01821bb0ad0dd7a9d014feec7cc1206}{%
+           family={Wikimedia\bibnamedelima Commons},
+           familyi={W\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={MissMJ},
+           giveni={M\bibinitperiod}}}%
       }
-      \strng{namehash}{93d707cc77f037fd02e1c8cfa75317cf}
-      \strng{fullhash}{93d707cc77f037fd02e1c8cfa75317cf}
-      \strng{fullhashraw}{93d707cc77f037fd02e1c8cfa75317cf}
-      \strng{bibnamehash}{93d707cc77f037fd02e1c8cfa75317cf}
-      \strng{authorbibnamehash}{93d707cc77f037fd02e1c8cfa75317cf}
-      \strng{authornamehash}{93d707cc77f037fd02e1c8cfa75317cf}
-      \strng{authorfullhash}{93d707cc77f037fd02e1c8cfa75317cf}
-      \strng{authorfullhashraw}{93d707cc77f037fd02e1c8cfa75317cf}
+      \strng{namehash}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{fullhash}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{fullhashraw}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{bibnamehash}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{authorbibnamehash}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{authornamehash}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{authorfullhash}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{authorfullhashraw}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -4225,6 +4226,59 @@
       \field{year}{1994}
       \keyw{Strahlung ; Kernphysik / Datenauswertung ; Elementarteilchenphysik / Datenauswertung ; Strahlungsdetektor ; Kernelektronik}
     \endentry
+    \entry{pnJunction-Wikimedia}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=bf1132fe7f8830eeebe90e54c2927ac9}{%
+           family={Wikimedia\bibnamedelima Commons},
+           familyi={W\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={TheNoise},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{fullhash}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{fullhashraw}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{bibnamehash}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{authorbibnamehash}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{authornamehash}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{authorfullhash}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{authorfullhashraw}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A PN junction in thermal equilibrium with zero bias voltage applied}
+      \field{year}{2007}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/File:Pn-junction-equilibrium-graphs.png
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/File:Pn-junction-equilibrium-graphs.png
+      \endverb
+    \endentry
+    \entry{PrivateComm-Ehlert}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=c5c0e4a40d4f132d70c72c96f3a7d8f8}{%
+           family={Ehlert},
+           familyi={E\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{fullhash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{fullhashraw}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{bibnamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authorbibnamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authornamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authorfullhash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \strng{authorfullhashraw}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
+      \field{extraname}{3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{howpublished}{Private communication}
+      \field{year}{2025}
+    \endentry
     \entry{SiPM-Gundacker}{article}{}{}
       \name{author}{2}{}{%
         {{hash=a667fc3f5856c3a21f1f67d1513989f2}{%
@@ -4269,36 +4323,6 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1088/1361-6560/ab7b2d
-      \endverb
-    \endentry
-    \entry{SiPM-PhysicsAndOperation}{online}{}{}
-      \name{author}{1}{}{%
-        {{hash=07e053fd6386290c4e0d36d7c8a4047e}{%
-           family={{Piatek, Slawomir}},
-           familyi={P\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Hamamatsu Corporation}%
-      }
-      \strng{namehash}{07e053fd6386290c4e0d36d7c8a4047e}
-      \strng{fullhash}{07e053fd6386290c4e0d36d7c8a4047e}
-      \strng{fullhashraw}{07e053fd6386290c4e0d36d7c8a4047e}
-      \strng{bibnamehash}{07e053fd6386290c4e0d36d7c8a4047e}
-      \strng{authorbibnamehash}{07e053fd6386290c4e0d36d7c8a4047e}
-      \strng{authornamehash}{07e053fd6386290c4e0d36d7c8a4047e}
-      \strng{authorfullhash}{07e053fd6386290c4e0d36d7c8a4047e}
-      \strng{authorfullhashraw}{07e053fd6386290c4e0d36d7c8a4047e}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Physics and operation of the MPPC silicon photomultiplier}
-      \field{year}{2014}
-      \verb{urlraw}
-      \verb https://hub.hamamatsu.com/us/en/technical-notes/mppc-sipms/physics-and-operation-of-the-MPPC-silicon-photomultiplier.html
-      \endverb
-      \verb{url}
-      \verb https://hub.hamamatsu.com/us/en/technical-notes/mppc-sipms/physics-and-operation-of-the-MPPC-silicon-photomultiplier.html
       \endverb
     \endentry
     \entry{PhD-Eliseev}{thesis}{}{}
@@ -7982,37 +8006,6 @@
       \verb https://cds.cern.ch/record/2904698
       \endverb
     \endentry
-    \entry{DT-Phase2Upgrade}{article}{}{}
-      \name{author}{1}{}{%
-        {{hash=371f59c3f80f7f30c020f0a3c343530b}{%
-           family={Bedoya},
-           familyi={B\bibinitperiod},
-           given={C.\bibnamedelimi F.},
-           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \strng{namehash}{371f59c3f80f7f30c020f0a3c343530b}
-      \strng{fullhash}{371f59c3f80f7f30c020f0a3c343530b}
-      \strng{fullhashraw}{371f59c3f80f7f30c020f0a3c343530b}
-      \strng{bibnamehash}{371f59c3f80f7f30c020f0a3c343530b}
-      \strng{authorbibnamehash}{371f59c3f80f7f30c020f0a3c343530b}
-      \strng{authornamehash}{371f59c3f80f7f30c020f0a3c343530b}
-      \strng{authorfullhash}{371f59c3f80f7f30c020f0a3c343530b}
-      \strng{authorfullhashraw}{371f59c3f80f7f30c020f0a3c343530b}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{JINST}
-      \field{number}{01}
-      \field{title}{{Upgrade of the CMS Drift Tube electronics for the High Luminosity LHC}}
-      \field{volume}{20}
-      \field{year}{2025}
-      \field{pages}{C01029}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1088/1748-0221/20/01/C01029
-      \endverb
-    \endentry
     \entry{DT-MADChip}{article}{}{}
       \name{author}{2}{}{%
         {{hash=f54c6689c849f9c6e04432f93c6ac11a}{%
@@ -8074,6 +8067,37 @@
       \endverb
       \verb{url}
       \verb https://www3.pd.infn.it/cms/DTFB/electronics/frontend/mad4.jpg
+      \endverb
+    \endentry
+    \entry{DT-Phase2Upgrade}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=371f59c3f80f7f30c020f0a3c343530b}{%
+           family={Bedoya},
+           familyi={B\bibinitperiod},
+           given={C.\bibnamedelimi F.},
+           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{371f59c3f80f7f30c020f0a3c343530b}
+      \strng{fullhash}{371f59c3f80f7f30c020f0a3c343530b}
+      \strng{fullhashraw}{371f59c3f80f7f30c020f0a3c343530b}
+      \strng{bibnamehash}{371f59c3f80f7f30c020f0a3c343530b}
+      \strng{authorbibnamehash}{371f59c3f80f7f30c020f0a3c343530b}
+      \strng{authornamehash}{371f59c3f80f7f30c020f0a3c343530b}
+      \strng{authorfullhash}{371f59c3f80f7f30c020f0a3c343530b}
+      \strng{authorfullhashraw}{371f59c3f80f7f30c020f0a3c343530b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{JINST}
+      \field{number}{01}
+      \field{title}{{Upgrade of the CMS Drift Tube electronics for the High Luminosity LHC}}
+      \field{volume}{20}
+      \field{year}{2025}
+      \field{pages}{C01029}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1748-0221/20/01/C01029
       \endverb
     \endentry
     \entry{OBDT-theta-1}{misc}{}{}
@@ -8455,8 +8479,8 @@
       \strng{authornamehash}{54897669e34de57e61e659e3e03d8167}
       \strng{authorfullhash}{a565a43f6f33ca32873af834bd585c34}
       \strng{authorfullhashraw}{a565a43f6f33ca32873af834bd585c34}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{lpGBT documentation}
@@ -10193,29 +10217,6 @@
       \verb{url}
       \verb https://www.dupont.com/content/dam/dupont/amer/us/en/microsites/tyvek-design/images/documents/2019-C&I_Tyvek_1442R_Datasheet.pdf
       \endverb
-    \endentry
-    \entry{PrivateComm-Ehlert}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=c5c0e4a40d4f132d70c72c96f3a7d8f8}{%
-           family={Ehlert},
-           familyi={E\bibinitperiod},
-           given={Erik},
-           giveni={E\bibinitperiod}}}%
-      }
-      \strng{namehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \strng{fullhash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \strng{fullhashraw}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \strng{bibnamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \strng{authorbibnamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \strng{authornamehash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \strng{authorfullhash}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \strng{authorfullhashraw}{c5c0e4a40d4f132d70c72c96f3a7d8f8}
-      \field{extraname}{3}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{howpublished}{Private communication}
-      \field{year}{2025}
     \endentry
     \entry{Scint-OnsemiSiPM}{online}{}{}
       \name{author}{1}{}{%
