@@ -2,6 +2,13 @@
 
 \section{Muon track generation}
 
+%% total simulated tracks: 4198026
+%% simulated duration: 1000.2017319957001 s
+
+
+
+
+
 \section{Propagation through DT chamber}
 
 \begin{table}[htb]
@@ -38,11 +45,92 @@
 \end{table}
 %% total pattern count: 1396840 +- 1181.8798585304685
 
+\begin{table}[htb]
+    \centering  %% WITH CORRECT SIM DATA
+    \begin{tabular}{|c|c|c|c|} 
+        \hline
+        Pattern & \ac{SL} 1 (phi) & \ac{SL} 2 (theta) & \ac{SL} 3 (phi) \\ \hline
+        $0$ & $(144.45 \pm 0.38)\;\si{\hertz}$ & $(121.29 \pm 0.35)\;\si{\hertz}$ & $(135.89 \pm 0.37)\;\si{\hertz}$ \\
+        $1$ & $(145.26 \pm 0.38)\;\si{\hertz}$ & $(119.04 \pm 0.34)\;\si{\hertz}$ & $(135.10 \pm 0.37)\;\si{\hertz}$ \\
+        $2$ & $(48.72 \pm 0.22)\;\si{\hertz}$ & $(40.74 \pm 0.20)\;\si{\hertz}$ & $(45.78 \pm 0.21)\;\si{\hertz}$ \\
+        $3$ & $(48.62 \pm 0.22)\;\si{\hertz}$ & $(40.23 \pm 0.20)\;\si{\hertz}$ & $(46.00 \pm 0.21)\;\si{\hertz}$ \\
+        $4$ & $(47.62 \pm 0.22)\;\si{\hertz}$ & $(39.20 \pm 0.20)\;\si{\hertz}$ & $(44.79 \pm 0.21)\;\si{\hertz}$ \\
+        $5$ & $(48.57 \pm 0.22)\;\si{\hertz}$ & $(41.08 \pm 0.20)\;\si{\hertz}$ & $(45.61 \pm 0.21)\;\si{\hertz}$ \\ \hline
+        Cumulative & $(483.23 \pm 0.70)\;\si{\hertz}$ & $(401.59 \pm 0.63)\;\si{\hertz}$ & $(453.16 \pm 0.67)\;\si{\hertz}$ \\ \hline
+    \end{tabular}
+    \caption{Obtained rates from the simulation: Track-like superlayer patterns after the track fit, with the described cuts applied.}
+    \label{tab:Simulation-SLPatternFit-PatternOccupancies}
+\end{table}
+%% total fitted pattern count: 1338250 +- 1156.8275584545866
+
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sim_data_plots/53_sim__SL_FITS_AFTERCUTS_HIST_t0.pdf}
+        \caption{Track arrival time $T_0$}
+        \label{fig:Simulation-Hist-SLPatternfit-t0}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sim_data_plots/53_sim__SL_FITS_AFTERCUTS_HIST_x0.pdf}
+        \caption{Track reference position $x_0$}
+        \label{fig:Simulation-Hist-SLPatternfit-x0}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sim_data_plots/53_sim__SL_FITS_AFTERCUTS_HIST_tan_alpha.pdf}
+        \caption{Track inclination $\tan\alpha$}
+        \label{fig:Simulation-Hist-SLPatternfit-tan-alpha}
+    \end{subfigure}
+    \hfill
+    \caption{Obtained histograms from the simulation: Fit parameters of the pattern fits, cumulated for all patterns in all superlayers and with the specified cuts applied.}
+    \label{fig:Simulation-Hist-SLPatternfit}
+\end{figure}
+
+%% total muon count: 195949
+%% total muon rate:  195.9 +- 0.4 Hz
+
+\begin{figure}[htb]
+    \centering
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sim_data_plots/DT_MUON_SPECIFIC_TS.pdf}
+        \caption{Global track arrival times $T_0$}
+        \label{fig:Simulation-GlobalTrack-ArrivalTime}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sim_data_plots/53_sim__DT_MUONS_HIST_phi.pdf}
+        \caption{Global track azimuth angles $\phi$}
+        \label{fig:Simulation-GlobalTrack-Angles-Phi}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sim_data_plots/DT_MUON_SPECIFIC_THETA_REWEIGHT.pdf}
+        \caption{Global track zenith angle $\theta$, reweighted with solid angle factor $1/\sin\theta$}
+        \label{fig:Simulation-GlobalTrack-Angles-Theta}
+    \end{subfigure}
+    \hfill
+    \caption{Obtained histograms from the simulation: Reconstructed global track parameters.}
+    \label{fig:Simulation-GlobalTrack-Hists}
+\end{figure}
+
+
+
+
+
 \section{Propagation through scintillator}
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|c|c|}  %% VALUES: WITH FULL DATASET
+    \begin{tabular}{|c|c|}  %% WITH CORRECT SIM DATA
         \hline
         Scintillator subset & Average strip rate \\ \hline
         Layer 0 & $(2.154\pm 0.012)\;\si{\hertz}$ \\
@@ -55,4 +143,8 @@
 
 
 
+
+
+
+\section{Combination of DT tracks and scintillator hits}
 
