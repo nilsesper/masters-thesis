@@ -1,6 +1,8 @@
-
+\FloatBarrier
 \section{DT test stand in Aachen}
 
+\paragraph{DT chamber FEC mapping}
+Tab.\ \ref{tab:MB1Minicrate-FECMapping} presents the mapping of the \acfp{FEC} of the \ac{DT} chamber at the test stand to the three \ac{OBDT} boards in the minicrate.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|c|} 
@@ -27,6 +29,8 @@
     \label{tab:MB1Minicrate-FECMapping}
 \end{table}
 
+\paragraph{OBDT optical link mapping}
+In tab.\ \ref{tab:MB1Backend-ReadoutChannelMapping}, the indices of the optical fibers connecting the three \acp{OBDT} of the minicrate to the \ac{SCTbox} backend are listed. This mapping is relevant to correctly map the recorded data to the chamber cells.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|} 
@@ -40,18 +44,30 @@
     \label{tab:MB1Backend-ReadoutChannelMapping}
 \end{table}
 
+
+
+
+
+\FloatBarrier
 \section{Timing calibration with testpulses}
 
+\paragraph{Testpulse latency between OBDTs}
 Fig.\ \ref{fig:DTData-Testpulse-LatencyDifference} shows an oscilloscope screenshot of the measurement of the testpulse output latency for both \ac{OBDT} flavors. It is evident that the testpulses are not issued at the same time, although both \acp{OBDT} were programmed to do so. As explained in sec.\ \ref{sec:DTData-Testpulse-Generation}, this is due to the differences in analog testpulse circuitry. From the cursor in the screenshot, the time difference is estimated as $T_\text{testpulse, theta} - T_\text{testpulse, phi} = \SI{116}{\nano\second}$. One conservatively assumes an uncertainty of $\SI{1}{\nano\second}$, given the step size of the cursor of $\SI{2}{\nano\second}$.
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.65\textwidth]{DTData-TestpulseLatencyDifference.PNG}
+    \includegraphics[width=0.66\textwidth]{DTData-TestpulseLatencyDifference.PNG}
     \caption{Measurement of the latency between the \ac{OBDT} phi (yellow) and theta (magenta) testpulse output with an oscilloscope. The time difference can be read off from the cursor $\Delta t$ value in the bottom left.}
     \label{fig:DTData-Testpulse-LatencyDifference}
 \end{figure}
 
+
+
+
+
+\FloatBarrier
 \section{Drift cell hits}
 
+\paragraph{Exponential fit for secondary hits}
 Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponential fit to the tail of the hit time difference distribution for $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$. From the residual plot and the goodness-of-fit variable (which lies in the order of one) one can conclude that the exponential behavior of the time difference $\Delta T_\text{cell}$ is indeed a valid assumption. The obtained exponential fit is used as "background" estimation for the Poisson noise events, as discussed in sec.\ \ref{sec:DTData-CellHits-SecondaryHits}
 \begin{SCfigure}[50][htb]
     \centering
@@ -60,8 +76,14 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
     \label{fig:DTData-CellHitDifference-ExpFit}
 \end{SCfigure}
 
+
+
+
+\FloatBarrier
 \section{Superlayer pattern fitting}
 
+\paragraph{Pattern laterality combinations}
+Tab.\ \ref{tab:DTData-SLPatternFit-AllowedLateralities} lists all geometrically allowed laterality combinations (i.e.\ the combinations of the laterality factors $L_{ly}$ for all four layers) for all fitted patterns. The six patterns were already presented above in fig.\ \ref{fig:DTData-SLPatterns}. As explained in sec.\ \ref{sec:DTData-SLPatternFitting-Strategy}, the fit is performed once for all possible laterality combinations. Then, the best fit is kept for the following analysis steps.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|} 
@@ -98,6 +120,8 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
     \label{tab:DTData-SLPatternFit-AllowedLateralities}
 \end{table}
 
+\paragraph{Pattern angular acceptance}
+For the six track-like patterns presented above in fig.\ \ref{fig:DTData-SLPatterns}, the minimum and maximum possible track angles $\alpha$ is estimated. Tab.\ \ref{tab:SLPatternFit-AngularRange} presents the obtained results. Note that these angles are calculated under the condition that the track must still lie within all four cells of the superlayer at the height of their respective wires.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|} 
@@ -114,10 +138,12 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
     \label{tab:SLPatternFit-AngularRange}
 \end{table}
 
+\paragraph{Pattern fit parameter uncertainties}
+Fig.\ \ref{fig:DTData-Hist-SLPatternfit-Uncertainties} presents histograms of the uncertainties for the obtained track parameters from the superlayer pattern fit.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_err_t0.pdf}
         \caption{Track arrival time $T_0$ uncertainty}
@@ -125,7 +151,8 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
         %% t0 histogram weighted mean = ( 3.577338640855595 +- 0.0001666030262357535 ) TU
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \hfill
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_err_x0.pdf}
         \caption{Track reference position $x_0$ uncertainty}
@@ -133,7 +160,8 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
         %% x0 histogram weighted mean = ( 0.2436133941872126 +- 8.827563381276845e-06 ) mm
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \hfill
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_err_tan_alpha.pdf}
         \caption{Track inclination $\tan\alpha$ uncertainty}
@@ -145,11 +173,19 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
     \label{fig:DTData-Hist-SLPatternfit-Uncertainties}
 \end{figure}
 
+
+
+
+\FloatBarrier
 \section{Global track fitting}
+
+\paragraph{Global track parameter uncertainties}
+In fig.\ \ref{fig:DTData-Hist-GlobalTrack-Uncertainties}, histograms of the uncertainties of the obtained global track parameters are presented. The individual uncertainties are propagated from the superlayer pattern fits, if possible. If values are not compatible within their errors during calculations, the deviation between the combined values is used as uncertainty.
+\newline Note that for the two angular variables $\phi$ and $\theta$, there are few global tracks $\mathcal{O}(1\%)$ which lie in the respective overflow bin.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_MUONS_HIST_err_ts.pdf}
         \caption{Global track arrival time $T$ uncertainty}
@@ -157,7 +193,8 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
         %% t0 histogram weighted mean = ( 10.997648925427375 +- 0.00454970911040038 ) TU
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \hfill
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_MUONS_HIST_err_phi.pdf}
         \caption{Global track azimuth angle $\phi$ uncertainty, the falling distribution continues beyond the plotted range}
@@ -165,7 +202,8 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
         %% phi histogram weighted mean = ( 0.04959885959458857 +- 5.1457399188024553e-05 ) rad
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \hfill
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_MUONS_HIST_err_theta.pdf}
         \caption{Global track zenith angle $\theta$ uncertainty, the falling distribution continues beyond the plotted range}
@@ -173,7 +211,8 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
         %% theta histogram weighted mean = ( 0.05159365144109958 +- 4.4829372134060757e-05 ) rad
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \hfill
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_MUONS_HIST_err_x0.pdf}
         \caption{Global track reference position $x_0$ uncertainty}
@@ -181,7 +220,8 @@ Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} shows the result of an exponenti
         %% x0 histogram weighted mean = ( 2.448117949026047 +- 0.0022707621998489702 ) mm
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \hfill
+    \begin{subfigure}[c]{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_MUONS_HIST_err_y0.pdf}
         \caption{Global track reference position $y_0$ uncertainty}

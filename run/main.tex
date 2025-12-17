@@ -78,7 +78,7 @@
 %%% bibliography setup
 \ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
     % bibliography and literature rerferences
-    \usepackage[backend=biber,sorting=none,sortcites,citestyle=numeric-comp]{biblatex}
+    \usepackage[backend=biber,sorting=none,sortcites,citestyle=numeric-comp,firstinits=true]{biblatex}
     % bibliography setup
     \addbibresource{../resources/bibliography.bib}
 %   % uncomment if one wants to have "backreferences" to cited page in bibliography
@@ -383,7 +383,10 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{List of Acronyms}
     \pagestyle{loaheader}
-    \printacronyms[display=used,name=List of Acronyms]
+    {
+      \setlength{\itemsep}{0.2em} % change distance between entries in loa (because default distance is too large)
+      \printacronyms[display=used,name=List of Acronyms,template=description]
+    }
  }{}
 %%% list of figures
 \ifthenelse{\clistoffigures > -1}{ % if listoffigures > -1: generate list of figures
