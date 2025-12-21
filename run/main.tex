@@ -198,10 +198,14 @@
 }
 % width of subcaptions (to avoid them being too close to each other)
 \captionsetup[subfigure]{width=0.9\textwidth}
-% remove indent at new paragraph
-\setlength{\parindent}{0pt}
+% configure indent at new paragraph
+\setlength{\parindent}{20pt} %0pt
 % hide boxes around hyperlinks
 \hypersetup{hidelinks}
+
+%%% hyphenation settings
+% uncomment this to turn of hyphenation
+\usepackage[none]{hyphenat}
 
 %%% adjust distance between text and floats
 \addtolength{\textfloatsep}{-0.1in} %-0.2in

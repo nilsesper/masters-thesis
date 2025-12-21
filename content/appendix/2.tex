@@ -1,31 +1,61 @@
+\FloatBarrier
 \label{sec:Simulation}
 
 The custom analysis framework developed for this thesis \cite{dt-scint-analysis-tools-Main} allows the \acf{MC} generation of atmospheric muon tracks and the propagation of those tracks through the geometry of both the \ac{DT} chamber and the scintillator. In this way, the expected detector output from atmospheric muons can be estimated.
-\newline Note that the performed simulation is only considering the detector geometry, and not the physics of the interactions of the atmospheric muons with the surrounding material during their propagation. Also, the physics inside the detectors itself are not simulated. Instead, a simple geometric evaluation of the muon track intersecting the sensitive detector area is performed, and the detector hit timestamp is calculated from the intersection point.
+\newline Note that the performed simulation is only considering the detector geometry, and not the physics of the interactions of the atmospheric muons with the surrounding material during their propagation. Also, the physics inside the detectors itself are not simulated. Instead, a simple geometric evaluation of the muon track intersecting the sensitive detector area is performed, and the detector hit timestamp is calculated from the intersection point. The simulation does not model any noise in the detector or the readout systems, which is however present in the real setup.
+\newline Therefore, it is clear that a bias of the simulation is expected. Since the simulation results should however only be used as a rough basis for comparison with the data, the bias is accepted, but has to be kept in mind when comparing the results to real data.
 
+\FloatBarrier
+\section{Detector geometry}
+\label{sec:Simulation-Geometry}
+
+The detector geometry of the combined setup, consisting of the \ac{DT} chamber and the scintillator is realized in the simulation. The base points of the two detectors are chosen similar to what was discussed in sec.\ \ref{sec:Combined-Setup}, with the scintillator being positioned around \SI{1}{\meter} below the \ac{DT} chamber.
+
+\FloatBarrier
 \section{Muon track generation}
+\label{sec:Simulation-Generation}
 
 %% total simulated tracks: 4198026
 %% simulated duration: 1000.2017319957001 s
-The implemented muon generator works by simply sampling the track parameters from the expected distributions of atmospheric muons (sec.\ \ref{sec:AtmosphericMuons-Dependencies}) with a \ac{MC} method. A simulated muon track has the same parameter as a reconstructed \ac{DT} global track (sec.\ \ref{sec:DTData-GlobalTrackBuilding}): The arrival time $T_0$, the azimuth and zenith angles $(\phi,\theta)$ and a base point $(x_0,x=0,z_0)$.
+The implemented muon generator works by simply sampling the track parameters from the expected distributions of atmospheric muons (sec.\ \ref{sec:AtmosphericMuons-Dependencies}) with a \ac{MC} method. A simulated muon track has the same parameter as a reconstructed \ac{DT} global track (sec.\ \ref{sec:DTData-GlobalTrackBuilding}): The arrival time $T_0$, the azimuth and zenith angles $(\phi,\theta)$ and a base point $(x_0,y_0,z_0)$. Note that this simulation assumes that the distributions of all track parameters are independent of each other.
+\paragraph{Generator base area}
+The generated muon tracks have base points which lie in a fixed rectangular area. The $z$-coordinate of this area is fixed, and the $(x,y)$ coordinates of the base point are sampled from a uniform distribution over a given range. In the case presented here, the area is chosen as the sensitive area of the \ac{DT} chamber, plus a margin of \SI{1.5}{\meter} in all directions. The additional margin ensures that also angled tracks are hitting the edges of the \ac{DT} chamber and therefore the detector is uniformly illuminated in a good approximation. Since the scintillator is a smaller detector, which is placed in the acceptance range of the \ac{DT} chamber, it is also illuminated with this choice of the base area.
+\paragraph{Angular distribution}
+In the theory chapter it was discussed that the azimuth angle $\phi$ is approximately uniformly distributed (sec.\ \ref{sec:AtmosphericMuons-Dependencies}). Therefore, this variable is sampled from a uniform distribution in the range $[0, 2\pi)$.
+\newline The zenith angle $\theta$ for atmospheric muons in a good approximation follows a $\propto \cos^2\theta$ distribution (sec.\ \ref{sec:AtmosphericMuons-Dependencies}). The muon generator sampled zenith angles from this distribution in the range $[0, \pi/2]$, i.e.\ over the full half sphere.
 \paragraph{Arrival time}
-The vertical flux of atmospheric muons is given in the theory chapter as $\Phi(\theta=\SI{0}{\radian}) \approx \SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}$ (eq.\ \ref{eq:CosmicMuon-VerticalFlux} in sec.\ \ref{sec:AtmosphericMuons-Dependencies}). By integration of this flux over the polar angle of the full half-sphere, one obtains the expected muon rate per area $\dot{N}/A$, cumulated for all angular directions. Note that one has to respect the angular dependence of the muon flux $\Phi(\theta)\propto\cos^2\theta$ (eq.\ \ref{eq:CosmicMuon-ZenithDependence}):
+The vertical flux of atmospheric muons is given in the theory chapter as $\Phi(\theta=\SI{0}{\radian}) \approx \SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}$ (eq.\ \ref{eq:CosmicMuon-VerticalFlux} in sec.\ \ref{sec:AtmosphericMuons-Dependencies}). By integration of this flux over the polar angle of the full half-sphere, one obtains the expected muon rate per area $\dot{N}/A$, cumulated for all angular directions. Note that one has to respect the angular dependence of the muon flux $\Phi(\theta)=\Phi(\theta=\SI{0}{\radian})\cdot\cos^2\theta$ (eq.\ \ref{eq:CosmicMuon-ZenithDependence}):
 \begin{equation}
     \frac{\dot{N}}{A} = \int d\Omega\; \Phi(\theta) = \int_{0}^{2\pi} d\phi \int_{0}^{\pi/2} d\theta\; \sin\theta\cdot\cos^2\theta\cdot\Phi(\theta=\SI{0}{\radian}) \approx \SI{147}{\second^{-1}\meter^{-2}}.
 \end{equation}
-The obtained value is now the rate per area to be used in the simulation, cumulated over all angles.
-\newline From theory, it is clear that the atmospheric arrival time follows a Poisson distribution. 
-\paragraph{Generator base area}
-A
-\paragraph{Angular distribution}
-A
+The obtained value is now the muon rate per area to be used in the simulation, cumulated over all angles.
+\newline From the base area $A_\text{base} = \Delta x_\text{base}\cdot\Delta y_\text{base}$ in which the muons are generated, one can calculate the mean muon rate $\left\langle \dot{N} \right\rangle$ expected from the setup:
+\begin{equation}
+    \left\langle \dot{N} \right\rangle = \frac{\dot{N}}{A} \cdot A_\text{base},
+\end{equation}
+Now, the timestamps of the muon tracks are generated. It is known, that for a Poisson distribution, the time differences of events are exponentially distributed \cite{Book-KolanoskiWermes}. Therefore, the timestamp differences between the muon hits can be generated by sampling from this exponential distribution (which contains the rate $\left\langle \dot{N} \right\rangle$). By summing the time differences between all previous events, one can then obtain the timestamps for all generated muon tracks.
+\paragraph{Simulated dataset}
+For the simulation presented in this thesis, the simulation time interval was set to $T_\text{sim}\approx\SI{1000}{\second}=\SI{16}{\min}\;\SI{40}{\second}$. In the performed run, the generated number of muon tracks is $N=\num{4198026}$. This track count is considered sufficient to give results with acceptably low statistical uncertainties.
 
 
 
-
-
+\FloatBarrier
 \section{Propagation through DT chamber}
+\label{sec:Simulation-DT}
 
+The generated muon tracks are propagated through the \ac{DT} chamber geometry to calculate the drift cell hits. As already explained, the simulation does not model the physics of the muon interactions with the surrounding material, e.g.\ energy loss or scattering processes. Instead, it simply propagates the straight track through the specified geometry. Note that the simulation treats the muon as infinitely fast, i.e.\ it neglects the time of flight of the particle.
+\FloatBarrier
+\paragraph{Drift cell hit evaluation}
+Generally, it is clear that when a muon track passes through a drift cell, it can create ionization over the full length of the track. In accordance to the assumptions of the \ac{DT} superlayer track fit (sec.\ \ref{sec:DTData-SLPatternFitting-Strategy}), this is however not modeled. Instead, only the position of the track at the $z$ height of the wire, i.e.\ at the center height of each layer of drift cells is considered. This means that each muon track can generate only one hit in each layer, if it intersects the \ac{DT} chamber.
+\newline When comparing the simulation results with the measurement, this has to be taken into account. For the real data, the ionization of course happens over the full track length, which means that a deviation is expected between data and simulation. This is especially the case for inclined tracks, as for these tracks, the closest distance between the track and the anode wire might no longer be on the horizontal axis.
+\newline It is also clear that in reality, the drift cell can of course also be triggered by ionization in gas volume which is not at the height of the wire, which is not considered in this approximation. This is especially relevant if the muon only traverses the cell at one of the corners, where there is not even an intersection with the cell at the height of the wire.
+\FloatBarrier
+\paragraph{Modeling of dead cells and cell efficiency}
+The dead cells observed with the real \ac{DT} chamber (tab.\ \ref{tab:DTData-DeadWires}) should be considered in the simulation as well. This is realized by simply removing all hits in the respective dead cells from the obtained set of simulated muon track hits.
+\newline Also, the non-ideal cell efficiency is taken into account in the simulation. This is implemented by \enquote{dicing} a random value in the range $[0,1]$ each time a cell is hit. Only if the diced value is smaller than the cell efficiency $\varepsilon_\text{cell}$ (sec.\ \ref{sec:CMS-DTPerformance}), the cell hit is accepted.
+\FloatBarrier
+\paragraph{Cell occupancies}
+When propagating the simulated muon tracks through the geometry, one obtains a total of \num{8221923} drift cell hits. The hit rates for various subsets of the \ac{DT} chamber are presented in tab.\ \ref{tab:Simulation-ChamberRates}.
 \begin{table}[htb]
     \centering  %% WITH CORRECT SIM DATA
     \begin{tabular}{|c|c|} 
@@ -42,6 +72,9 @@ A
 \end{table}
 %% total count all cells: 8221923 +- 2867.3895793909833
 
+\FloatBarrier
+\paragraph{Superlayer pattern occupancies}
+Applying the same algorithm to find track-like superlayer patterns to the simulated drift cell hits as to the data (sec.\ \ref{sec:DTData-SLHitPatterns-TrackPatterns}), one obtains a total of \num{1396840} track-like patterns. The pattern rates are presented in tab.\ \ref{tab:Simulation-PatternOccupancies}.
 \begin{table}[htb]
     \centering  %% WITH CORRECT SIM DATA
     \begin{tabular}{|c|c|c|c|} 
@@ -55,11 +88,14 @@ A
         $5$ & $(51.66 \pm 0.23)\;\si{\hertz}$ & $(43.41 \pm 0.21)\;\si{\hertz}$ & $(48.43 \pm 0.22)\;\si{\hertz}$ \\ \hline
         Cumulative & $(504.70 \pm 0.71)\;\si{\hertz}$ & $(419.06 \pm 0.65)\;\si{\hertz}$ & $(472.72 \pm 0.69)\;\si{\hertz}$ \\ \hline
     \end{tabular}
-    \caption{Obtained \ac{SL} pattern rates from the simulation.}
+    \caption{Obtained track-like superlayer pattern rates from the simulation.}
     \label{tab:Simulation-PatternOccupancies}
 \end{table}
 %% total pattern count: 1396840 +- 1181.8798585304685
 
+\FloatBarrier
+\paragraph{Superlayer pattern fits}
+The same local track fitting procedure as for the data (sec.\ \ref{sec:DTData-SLPatternFitting-Strategy}) is applied to the simulation patterns, and the same cuts are applied after the fit. The number of patterns after fitting and applying the cuts is \num{1338250}, which is only slightly smaller than the number of initially found patterns. Since no noise is modeled, it can be understood why the cuts do not affect a larger fraction of patterns. Tab.\ \ref{tab:Simulation-SLPatternFit-PatternOccupancies} presents the occupancies of the patterns after the fit obtained from the simulation.
 \begin{table}[htb]
     \centering  %% WITH CORRECT SIM DATA
     \begin{tabular}{|c|c|c|c|} 
@@ -78,6 +114,9 @@ A
 \end{table}
 %% total fitted pattern count: 1338250 +- 1156.8275584545866
 
+\FloatBarrier
+\paragraph{Pattern fit parameters}
+Fig.\ \ref{fig:Simulation-Hist-SLPatternfit} presents histograms of the obtained track parameters from the pattern fit of the simulated data after the specified cuts have been applied. 
 \begin{figure}[htb]
     \centering
     \hfill
@@ -109,6 +148,11 @@ A
 %% total muon count: 195949
 %% total muon rate:  195.9 +- 0.4 Hz
 
+\FloatBarrier
+\paragraph{Global track occupancy}
+When applying the global track reconstruction strategy to the pattern fits obtained from the simulation, a total of \num{195949} global \ac{DT} tracks are reconstructed. The given occupancy corresponds to a rate of $(195.9 \pm 0.4)\;\si{\nano\second}$.
+\newline Note that this number is significantly smaller than the number of initially generated tracks (\num{4198026}). This is however expected, as the area in which muon tracks were generated extends beyond the size of the \ac{DT} chamber (sec.\ \ref{sec:Simulation-Generation}) and in general, only tracks up to a maximum angle can be reconstructed.
+\newline Fig.\ \ref{fig:Simulation-GlobalTrack-Hists} presents histograms of the obtained values for all global track parameters.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -140,9 +184,17 @@ A
 
 
 
-
+\FloatBarrier
 \section{Propagation through scintillator}
+\label{sec:Simulation-Scint}
 
+Similar as for the \ac{DT} chamber, the simulated muon tracks are also propagated through the scintillator, which is placed in the detector geometry (sec.\ \ref{sec:Simulation-Geometry}). The time of flight of the muons is neglected, as well as the physical interactions of the muon with the surrounding material, similarly as in sec.\ \ref{sec:Simulation-DT}.
+\FloatBarrier
+\paragraph{Scintillator strip hit evaluation}
+For both layers of the scintillator, the intersection point of the muon track at the central $z$ height is used to evaluate which strip has been hit. This is similar to the procedure with the \ac{DT} chamber, where the track intersection is evaluated at the height of the anode wire in the cell (sec.\ \ref{sec:Simulation-DT}).
+\FloatBarrier
+\paragraph{Scintillator strip occupancies}
+For the simulated set of muon tracks, one obtains a total of \num{64459} scintillator strip hits. The calculated scintillator strip rate for different subsets of the detector is presented in tab.\ \ref{tab:Simulation-StripRates}.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|}  %% WITH CORRECT SIM DATA
@@ -160,6 +212,6 @@ A
 
 
 
-
-\section{Combination of DT tracks and scintillator hits}
+%\FloatBarrier
+%\section{Combination of DT tracks and scintillator hits}
 
