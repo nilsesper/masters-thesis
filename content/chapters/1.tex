@@ -78,7 +78,7 @@ The muon ($\mu$) is the second generation charged lepton. It has a mass of $m_\m
 \stepeqlabel{eq:SM-Muon-PlusDecay} \hspace{-0.7em}
 The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}. Due to time dilation, high-energy muons can travel significant distances (e.g. in Earth's atmosphere, as discussed in sec.\ \ref{sec:AtmosphericMuons}).
 \paragraph{History of discovery}
-The muon was initially discovered in cloud chamber experiments with cosmic rays in 1937, where a charged particle more massive than the electron other than the proton was postulated \cite{MuonDiscovery-Anderson,MuonDiscovery-Street}. However, it was initially labeled "$\mu$-meson" and confused with the charged pions ($\pi^\pm$ mesons). The leptonic nature of the muon and the distinction from the pions was only revealed later, when a decay of pions into muons could be observed \cite{MuonDiscovery-Lee}.
+The muon was initially discovered in cloud chamber experiments with cosmic rays in 1937, where a charged particle more massive than the electron other than the proton was postulated \cite{MuonDiscovery-Anderson,MuonDiscovery-Street}. However, it was initially labeled \enquote{$\mu$-meson} and confused with the charged pions ($\pi^\pm$ mesons). The leptonic nature of the muon and the distinction from the pions was only revealed later, when a decay of pions into muons could be observed \cite{MuonDiscovery-Lee}.
 %These mesons have masses in the same order of magnitude as the muon and were thought to be the mediator particle in Yukawa's theory of strong interactions \cite{MuonDiscovery-Yukawa}.
 
 
@@ -96,7 +96,7 @@ Since in this work the muon detector and its developed readout is only operated 
 %\end{itemize}
 %\begin{itemize}
 %    \item Formation of muons from primary cosmic rays in Earth's atmosphere
-%    \item Discussion / criticism of terminology "cosmic muon"
+%    \item Discussion / criticism of terminology cosmic muon
 %    \item Energy spectrum and angular distribution of cosmic muons \cite{CosmicMuon-Shukla}
 %\end{itemize}
 
@@ -152,9 +152,9 @@ Note that there also other decay modes, which however have lower branching fract
 \label{sec:AtmosphericMuons-Dependencies}
 In the following, the particle flux and its angular distribution of cosmic muons on Earth's surface should be briefly presented, as they are the baseline to calculate the expected detector response for the measurements presented in this thesis.
 \paragraph{Vertical muon flux}
-The flux of vertical atmospheric muons $\Phi(\theta=0)$ with energies above \SI{1}{\giga\electronvolt} at sea level can be measured as \cite{PDG2022,Book-Grieder}:
+The flux of vertical atmospheric muons $\Phi(\theta=\SI{0}{\radian})$ with energies above \SI{1}{\giga\electronvolt} at sea level can be measured as \cite{PDG2022,Book-Grieder}:
 \begin{equation}
-    \Phi(E \geq \SI{1}{\giga\electronvolt},\;\theta=0) = \int_{\SI{1}{\giga\electronvolt}}^{\infty}dE\; I(E,\;\theta=0)\approx\SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}.
+    \Phi(E \geq \SI{1}{\giga\electronvolt},\;\theta=\SI{0}{\radian}) = \int_{\SI{1}{\giga\electronvolt}}^{\infty}dE\; I(E,\;\theta=\SI{0}{\radian})\approx\SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}.
     \label{eq:CosmicMuon-VerticalFlux}
 \end{equation}
 The value depends not only on the altitude and location of the measurement, but also on the solar activity and atmospheric properties. %Also note that different measurements of absolute muon fluxes yield results spreading up to $\mathcal{O}(10\%)$, even though individual uncertainties are claimed to be smaller \cite{CosmicMuon-Cecchini}.
@@ -164,6 +164,7 @@ The mean energy of atmospheric muons is approximately $\SI{4}{\giga\electronvolt
 The muon flux is both dependent on the azimuth ($\phi$) and zenith angle ($\theta$). The azimuthal dependence is small and will therefore be neglected in this work \cite{CosmicMuon-Shukla,Book-Grieder}. The zenith angle dependence is however significant. It arises mostly from the fact that different zenith angles imply different paths through the atmosphere, with varying length and atmospheric density \cite{Book-Grieder}. In the $\mathcal{O}(1-10\;\si{\giga\electronvolt})$ range, the dependence can be approximated with a cosine power law \cite{PDG2022,CosmicMuon-Cecchini}:
 \begin{equation}
     I(E,\;\theta)\propto \cos^n\theta.
+    \label{eq:CosmicMuon-ZenithDependence}
 \end{equation}
 The exponent $n$ has a value of $n\approx 2$ for $E\approx\SI{3}{\giga\electronvolt}$ and is slightly energy-dependent \cite{PDG2022}. For higher energies, the azimuthal dependence flattens, until it reaches an $I(E,\;\theta)\propto 1/\cos\theta$ relation for muon energies $\mathcal{O}(\SI{1}{\tera\electronvolt})$ \cite{CosmicMuon-Cecchini}.
 \paragraph{Prediction of detector rate}

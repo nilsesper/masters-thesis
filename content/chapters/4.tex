@@ -91,7 +91,7 @@ In the following, a dataset of atmospheric muons recorded with the \ac{DT} chamb
     \label{tab:DTData-DatasetInfo}
 \end{table}
 
-\subsection{Cell occupancy}
+\subsection{Drift cell occupancy}
 \label{sec:DTData-CellHits-Occupancy}
 As the \acp{OBDT} in the minicrate stream out all hits of the chamber and do not apply any preselection (sec.\ \ref{sec:CMS-DTMinicrate}), the recorded \ac{DT} hits are expected to include both real hits caused by ionization events in the cell as well as noise, which is discussed in the following sections. Note that the data presented here has the timing correction from the testpulse run (sec.\ \ref{sec:DTData-Testpulse-Calibration}) already applied.
 \paragraph{Measured cell occupancies}
@@ -166,7 +166,7 @@ Fig.\ \ref{fig:DTData-Hist-T} presents a histogram of all drift cell hit timesta
 %\end{figure}
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_HIST_ts.pdf}
+    \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_HIST_ts.pdf}
     \caption{Histogram of the recorded \ac{DT} hit timestamps $T$, cumulated for all cells. At the edges, the histogram count is lower, this is purely a binning effect.}
     \label{fig:DTData-Hist-T}
 \end{SCfigure}
@@ -174,20 +174,20 @@ Fig.\ \ref{fig:DTData-Hist-T} presents a histogram of all drift cell hit timesta
 %As discussed in sec.\ \ref{sec:AtmosphericMuons-Cosmics}, the detector rate can be calculated by integration of the muon flux (cf.\ eq.\ \ref{eq:CosmicMuon-DetectorRate}). The solution of the solid angle and area integral is non-trivial, therefore 
 %A rough estimation for the vertical cosmic hit rate onto one drift cell yields $\approx\SI{10}{\hertz}$ ($\approx\SI{8.5}{\hertz}$) for the phi (theta) \acp{SL}. However, cosmic particles at higher angles are not considered in this estimation as well as the influence of noise.
 
-\subsection{Secondary hits}
+\subsection{Secondary hits in drift cell}
 \label{sec:DTData-CellHits-SecondaryHits}
 If one considers all hits of one single drift cell, sorts them by timestamp and plots the time difference $\Delta T_\text{cell}$ between these hits, one can observe some characteristic timing features. Fig.\ \ref{fig:DTData-Hist-CellHitDifference} shows a histogram for this time difference $\Delta T_\text{cell}$, cumulated for all cells. Note that there are many data points beyond the shown maximum $x$-axis value, but the relevant features are already visible in this limited range.
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_DIFF_SPECIFIC_ALL.pdf}
+    \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_DIFF_SPECIFIC_ALL.pdf}
     \caption{Histogram of the time difference $\Delta T_\text{cell}$ between hits of a single drift cell, cumulatively plotted for all cells.}
     \label{fig:DTData-Hist-CellHitDifference}
 \end{SCfigure}
 \paragraph{Poisson background}
 One can observe that the time difference between hits decreases exponentially. This behavior continues to the right beyond the plotted range. Both cosmic muon hits and noise are random events which can be described by a Poisson distribution. From statistics, it is known that the time difference between Poisson events is exponentially distributed \cite{Book-KolanoskiWermes}. Therefore, this behavior is expected and confirms the random nature of the recorded cell hits.
 \paragraph{Secondary hits}
-In the region $\approx 0-500\;\si{\nano\second}$, another feature is visible which dominates over the exponentially decreasing behavior. Apparently, there are secondary hits detected a short time after the initial hit. The observed structure of these secondary hits is analyzed in the following. For this, the Poissonian "background" due to random noise events should be subtracted, to analyze the shape of secondary hits in time. For this, an exponential function is fitted to the exponentially decreasing part of the histogram (fit range: $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$). Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} in the appendix shows the fit result.
-\newline Fig.\ \ref{fig:DTData-CellHitDifference-NoBg} shows the resulting distribution after extrapolating the exponential "background" to the left and subtracting it. A structure of two peaks can be observed, where the second peak is more narrow than the first one. Also note that one can observe a dead time of $\approx\SI{40}{\nano\second}$ in the plot, which might originate from the \acp{FEB} in the chamber or the \acp{OBDT} themselves.
+In the region $\approx 0-500\;\si{\nano\second}$, another feature is visible which dominates over the exponentially decreasing behavior. Apparently, there are secondary hits detected a short time after the initial hit. The observed structure of these secondary hits is analyzed in the following. For this, the Poissonian \enquote{background} due to random noise events should be subtracted, to analyze the shape of secondary hits in time. For this, an exponential function is fitted to the exponentially decreasing part of the histogram (fit range: $\Delta T_\text{cell} \geq \SI{1000}{\nano\second}$). Fig.\ \ref{fig:DTData-CellHitDifference-ExpFit} in the appendix shows the fit result.
+\newline Fig.\ \ref{fig:DTData-CellHitDifference-NoBg} shows the resulting distribution after extrapolating the exponential \enquote{background} to the left and subtracting it. A structure of two peaks can be observed, where the second peak is more narrow than the first one. Also note that one can observe a dead time of $\approx\SI{40}{\nano\second}$ in the plot, which might originate from the \acp{FEB} in the chamber or the \acp{OBDT} themselves.
 \newline Note that the structure with the secondary peaks was not originally discovered in this work, but is a known effect. Two \ac{CMS} Notes \cite{CMS-NOTE-2008-003,CMS-NOTE-2010-004} also show a distribution of secondary hits which looks similar in shape. In fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} the observed distribution of the secondary hits from one of these publications is shown for comparison. The distribution matches well the double-peak structure which is observed in the measurement from this thesis with the background subtracted.
 \begin{figure}[htb]
     \centering
@@ -201,7 +201,7 @@ In the region $\approx 0-500\;\si{\nano\second}$, another feature is visible whi
     \begin{subfigure}[c]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Hit_difference_CMSNote.png}
-        \caption{Secondary hits measured by \ac{CMS}. The plot is taken from a CMS Note, only $x$-axis label was changed to timestamp units \cite[adapted]{CMS-NOTE-2008-003}.}
+        \caption{Secondary hits measured by \ac{CMS} \cite[adapted]{CMS-NOTE-2008-003}.}
         \label{fig:DTData-CellHitDifference-CMSNote}
     \end{subfigure}
     \hfill
@@ -215,32 +215,32 @@ The observation that the secondary peaks lie in the time range of $\Delta T _\te
 
 \subsection{Drift velocity estimation with photo-peak}
 \label{sec:DTData-CellHits-DriftVelocityEstimation}
-The second photo-peak can be used to estimate the drift velocity of the electrons in the \ac{DT} cell, without the need of an external trigger or performing a track reconstruction. This method was introduced in \cite{CMS-NOTE-2008-003}, where it was however only used for relative drift velocity measurements $\delta v_D/v_D$, not the absolute value $v_D$.
+The second photo-peak can be used to estimate the drift velocity of the electrons in the \ac{DT} cell, without the need of an external trigger or performing a track reconstruction. This method was introduced in \cite{CMS-NOTE-2008-003}, where it was however only used for relative drift velocity measurements $\delta v_\text{drift}/v_\text{drift}$, not the absolute value $v_\text{drift}$.
 \paragraph{Photo-peak method}
 As discussed above, the second (narrower) photo-peak originates from photo-electrons created at the cathode strip, which is located on the cell walls at roughly $d/2=\SI{21}{\milli\meter}$ distance from the wire. Assuming that the avalanche takes place very close to the wire and neglecting the photon travelling time, one can consider the peak position of the photo-peak as the drift time of the created photo-electron from the cathode strip to the wire. A parabolic fit to the second photo-peak is presented in fig.\ \ref{fig:DTData-CellHitDifference-PeakFit}. From the goodness-of-fit value and the residual plot it is concluded that the peak fit is acceptable, even though it is clear that the peak is asymmetric, and the parabolic fit therefore only is a first-order estimation.
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_DIFF_SPECIFIC_PEAKFIT.pdf}
+    \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__DT_HITS_NODEADTIME_DIFF_SPECIFIC_PEAKFIT.pdf}
     \caption{Parabolic fit to the second narrow peak in the time difference distribution of secondary hits.}
     \label{fig:DTData-CellHitDifference-PeakFit}
 \end{SCfigure}
 \newline With the obtained photo-peak position $t_\text{pp}=b=(414.96 \pm 0.10)\;\si{\nano\second}$ and an uncertainty on the drift distance of $\sigma_{d/2}\approx\SI{100}{\micro\meter}$ (which was the requirement during the chamber construction \cite{CMS-Main}) one can estimate the drift velocity as
 \begin{equation}
-    v_D=\frac{d/2}{t_\text{pp}}\approx ( 50.5 \pm 0.2 )\;\si{\frac{\micro\meter}{\nano\second}}.
+    v_\text{drift}=\frac{d/2}{t_\text{pp}}\approx ( 50.5 \pm 0.2 )\;\si{\frac{\micro\meter}{\nano\second}}.
     \label{eq:PhotoPeak-DriftVelocityEstimation}
 \end{equation}
 Of course this value assumes a constant drift velocity over the full drift distance, which in reality is not exactly the case. Another unregarded fact is the vertical extent of the cathode strip. This means that photo-electrons may also drift towards the wire from a different height, leading to a longer drift distance than the assumed half cell width $d/2$ and consequently a longer drift time. It therefore becomes clear that the obtained position of the photo-peak can not be directly related to the maximum drift time, and that one should further understand the described geometric effect of longer drift distances.
 %\newline Within the scope of this thesis, no further simulation studies are performed, which would however be needed to account for this effect and to derive an average (effective) drift distance $x_{D,\text{eff}} > d/2$ which might be able average out this geometric effect and would allow the calculation of the drift velocity as $v_{D}=x_{D,\text{eff}} / t_\text{pp}$. 
 \paragraph{Comparison to CMS}
 The obtained value for the drift velocity in eq.\ \ref{eq:PhotoPeak-DriftVelocityEstimation} above is smaller than the expectation in the \ac{DT} system of $\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}). However, the described geometric effects might be able to explain the smaller value, although quantitative studies were not performed yet. Still, the resulting velocity lies in the expected order of magnitude of $\mathcal{O}(\SI{50}{\micro\meter/\nano\second})$.
-\newline In the CMS Note \cite{CMS-NOTE-2008-003}, the photo-peak method was only used to estimate the relative change in drift velocity $\delta v_D / v_D$, never the absolute value $v_D$ itself. If one tries to calculate the drift velocity with the photo-peak position from the \ac{CMS} plot in the same way as presented above, one would obtain a drift velocity of $v_D\approx\SI{52.8}{\micro\meter/\nano\second}$ (estimating the peak position from fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} as $t_\text{pp}\approx\SI{510}{\tu}\approx\SI{398}{\nano\second}$). This value is also lower than the expected value of $\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}).
+\newline In the CMS Note \cite{CMS-NOTE-2008-003}, the photo-peak method was only used to estimate the relative change in drift velocity $\delta v_\text{drift} / v_\text{drift}$, never the absolute value $v_\text{drift}$ itself. If one tries to calculate the drift velocity with the photo-peak position from the \ac{CMS} plot in the same way as presented above, one would obtain a drift velocity of $v_\text{drift}\approx\SI{52.8}{\micro\meter/\nano\second}$ (estimating the peak position from fig.\ \ref{fig:DTData-CellHitDifference-CMSNote} as $t_\text{pp}\approx\SI{510}{\tu}\approx\SI{398}{\nano\second}$). This value is also lower than the expected value of $\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}).
 \newline From this, one can conclude that the photo-peak method is not capable of measuring the drift velocity in terms of absolute value without calibration. The absolute calibration may include simulation studies of the photo-electron drift behavior and effective distance. Studies at the \ac{DT} test stand involving a reference measurement with the \ac{VDC} monitoring hardware \cite{DT-VDC-System} could be imagined in the future.
 \paragraph{Assumption for drift velocity in this work}
-Because of the observed uncertainties in deriving electron drift velocity from the recorded dataset with the photo-peak method, it is decided here that in the following the \ac{CMS} reference value of $v_D\approx\SI{54.5}{\micro\meter/\nano\second}$ is used (eq.\ \ref{eq:DT-DriftVelocity}). This reference value is plausible, because the gas mixture and high voltage values are chosen similar to \ac{CMS} (sec.\ \ref{sec:CMS-AachenTestStand}). In principle, it would also be possible to extract the drift velocity from the track fits (sec.\ \ref{sec:DTData-SLPatternFitting}) However, in the simple reconstruction strategy employed in this work, this parameter is fixed to the reference value. %It is clear that the assumption implies a bias on the reconstruction results, which is accepted here.
+Because of the observed uncertainties in deriving electron drift velocity from the recorded dataset with the photo-peak method, it is decided here that in the following the \ac{CMS} reference value of $v_\text{drift}\approx\SI{54.5}{\micro\meter/\nano\second}$ is used (eq.\ \ref{eq:DT-DriftVelocity}). This reference value is plausible, because the gas mixture and high voltage values are chosen similar to \ac{CMS} (sec.\ \ref{sec:CMS-AachenTestStand}). In principle, it would also be possible to extract the drift velocity from the track fits (sec.\ \ref{sec:DTData-SLPatternFitting}) However, in the simple reconstruction strategy employed in this work, this parameter is fixed to the reference value. %It is clear that the assumption implies a bias on the reconstruction results, which is accepted here.
 
-\subsection{Cell dead time}
+\subsection{Drift cell dead time}
 \label{sec:DTData-CellHits-DeadTime}
-As discussed above, there are occasions where secondary hits in the \ac{DT} cells can occur (sec.\ \ref{sec:DTData-CellHits-SecondaryHits}). If a track reconstruction is being attempted with these hits, one will obtain tracks which do not originate from a passing muon. As these secondary hits usually originate from photons escaping the electron amplification avalanche near the wire, the easiest way to suppress them is to apply a dead time to each individual \ac{DT} cell.  The dead time covers the time interval where the secondary hits occur. Of course this is not necessarily helpful in the case of $\delta$-electrons, as they also create pre-pulses and not only after-pulses. In the case of a pre-pulse, the dead time would lead to a loss of the "real" hit and therefore a wrong hit selection.
+As discussed above, there are occasions where secondary hits in the \ac{DT} cells can occur (sec.\ \ref{sec:DTData-CellHits-SecondaryHits}). If a track reconstruction is being attempted with these hits, one will obtain tracks which do not originate from a passing muon. As these secondary hits usually originate from photons escaping the electron amplification avalanche near the wire, the easiest way to suppress them is to apply a dead time to each individual \ac{DT} cell.  The dead time covers the time interval where the secondary hits occur. Of course this is not necessarily helpful in the case of $\delta$-electrons, as they also create pre-pulses and not only after-pulses. In the case of a pre-pulse, the dead time would lead to a loss of the \enquote{real} hit and therefore a wrong hit selection.
 \newline Since this analysis does not aim at optimized precision but rather at a proof-of-concept measurement of the \ac{DT} chamber in combination with the scintillator readout, this small bias is accepted. In the following, a dead time of \SI{600}{\tu} (\SI{468}{\nano\second}) was applied to all individual cells to suppress the effect of secondary hits.
 \paragraph{Cell occupancy after dead time}
 The application of the dead time reduces the total number of cell hits in the dataset to \num{297312727} ($\approx 93.9\%$ of the initial count). The average rate of active cells consequently reduces slightly, to a value of $(25.111 \pm 0.001)\;\si{\hertz}$.
@@ -277,7 +277,7 @@ Depending on the position of the muon track within each cell, the distance from 
 Here, $T_{\text{Ly}=i}$ is the hit timestamp of the respective cell hit in layer $i$ of the superlayer. Of course, this is only valid if one assumes simultaneous creation of the ionization in all four cells. Since the cosmic muons travel approximately with the speed of light and one superlayer measures only $\SI{5.4}{\centi\meter}$ in height (sec.\ \ref{sec:CMS-AachenTestStand-Phase2Setup}), this assumption can be justified.
 \paragraph{Pattern finder algorithm}
 The algorithm which was implemented to identify the patterns should be briefly described here. It is capable of finding patterns in the recorded cell hits over a full superlayer and is event-loop based. First, all hits are sorted by their timestamp. Then, the algorithm loops through the hit list one by one and stores the current hit in a matrix containing the latest hit of each cell. After the matrix was updated with the current hit, all possible patterns which contain the most recently added hit are checked. If any of the checked patterns shows a maximum time difference between all hits $\Delta T_\text{max}$ smaller than the selected maximum timestamp difference $t_\text{drift,max}$, the pattern is constructed and stored.
-\newline Note that because this algorithm checks for new patterns with each new hit, it is possible that multiple patterns are constructed in the event of more than four hits lying close in time. This might be the case for noise hits close to the "real" track, or if a high energy particle creates showers in the chamber. The fact that there may be several patterns very close in time at the same position in the superlayer is revisited in sec.\ \ref{sec:DTData-SLFitGrouping} later.
+\newline Note that because this algorithm checks for new patterns with each new hit, it is possible that multiple patterns are constructed in the event of more than four hits lying close in time. This might be the case for noise hits close to the \enquote{real} track, or if a high energy particle creates showers in the chamber. The fact that there may be several patterns very close in time at the same position in the superlayer is revisited in sec.\ \ref{sec:DTData-SLFitGrouping} later.
 \paragraph{Applied selection criteria}
 The goal of this analysis is to accomplish a track reconstruction algorithm which is simple and can be used for cross-checks with the developed scintillator readout system, and not to conduct precision measurements. Therefore, a not fully complete selection of patterns is considered sufficient. As explained, only superlayer patterns with four hits are accepted and not less. In principle (depending on the assumptions) it is possible to also use three-hit patterns for the analysis, however in this thesis this is not the case. Also, regarding the pattern shape, only the patterns with indices $0-5$ are considered. The patterns $6-7$ introduce additional difficulties in the reconstruction without a trigger, and are therefore neglected here. Tab.\ \ref{tab:DTData-PatternSelection} summarizes the pattern selection criteria used in this work.
 \begin{table}[htb]
@@ -296,7 +296,7 @@ The goal of this analysis is to accomplish a track reconstruction algorithm whic
 Running the pattern finder algorithm on the recorded \ac{DT} dataset yields a total of \num{40776293} patterns. Fig.\ \ref{fig:DTData-Hist-PatternType} presents the resulting occupancies of the six analyzed pattern types $0-5$ discussed above.
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__SL_PATTERNS_HIST_pat_type.pdf}
+    \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__SL_PATTERNS_HIST_pat_type.pdf}
     \caption{Histogram of pattern occupancy binned by pattern type, cumulated for all patterns in all superlayers.}
     \label{fig:DTData-Hist-PatternType}
 \end{SCfigure}
@@ -320,13 +320,13 @@ Running the pattern finder algorithm on the recorded \ac{DT} dataset yields a to
 \newline It is evident that the pattern groups $(0,1)$, $(2,3)$ and $(4,5)$ exhibit similar rates, which is expected because these patterns are symmetric in their shape (fig.\ \ref{fig:DTData-SLPatterns}). Also, the patterns $(0,1)$ seem to show a significantly higher occupancy as the other pattern types. Since these two patterns generally have a larger angular acceptance than the others, a higher rate is expected, this is discussed in sec.\ \ref{sec:DTData-SLPatternFitting-Strategy} in more detail. Note that patterns $(2,3)$ and $(4,5)$ also have symmetric geometries, as they are only mirrored along the central horizontal axis. This explains the similarity in rates for these four patterns.
 \paragraph{Comparison with cosmic rate}
 The performed simulation (which was already mentioned above when discussing the cosmic expectation for the \ac{DT} cell rate) is also capable to estimate the expected superlayer pattern rate (appendix \ref{sec:Simulation}). The simulated \ac{DT} hits are analyzed with the same pattern finding algorithm as the chamber data. The expected rates for all analyzed patterns are given in tab.\ \ref{tab:Simulation-PatternOccupancies} in the appendix. The simulation yields an expected pattern rate in the order of $\SI{450}{\hertz}$ cumulated per superlayer from atmospheric muons.
-\newline It is evident that this rate is around $35\%$ lower than the rate observed in data ($\SI{700}{\hertz}$ cumulated per superlayer). This rate difference could again be explained with the noise hits of the single cells, which can create noise-induced patterns, in the case of a coincidence of noise hits. Additionally, the implementation of the pattern finding algorithm yields additional patterns in the case of a noise hit being present next to a "real" track. This might also lead to a boosted rate of observed patterns in data.
+\newline It is evident that this rate is around $35\%$ lower than the rate observed in data ($\SI{700}{\hertz}$ cumulated per superlayer). This rate difference could again be explained with the noise hits of the single cells, which can create noise-induced patterns, in the case of a coincidence of noise hits. Additionally, the implementation of the pattern finding algorithm yields additional patterns in the case of a noise hit being present next to a \enquote{real} track. This might also lead to a boosted rate of observed patterns in data.
 
 \subsection{Fake patterns}
 \label{sec:DTData-SLHitPatterns-FakePatterns}
-This section further investigates the influence of noise by searching for "fake patterns", i.e.\ patterns that can not originate from muon tracks (suggested by \cite{PrivateComm-Hebbeker}). Analysis of the rate of these patterns could provide information on the order of magnitude of the fraction of noise in the track-like patterns.
+This section further investigates the influence of noise by searching for \enquote{fake patterns}, i.e.\ patterns that can not originate from muon tracks (suggested by \cite{PrivateComm-Hebbeker}). Analysis of the rate of these patterns could provide information on the order of magnitude of the fraction of noise in the track-like patterns.
 \paragraph{Influence of noise hits}
-It is clear that the observed noise in the single-cell hits can propagate through the pattern finding algorithm and generate patterns which do not originate from a muon track. For the track-like patterns the resulting rate is a combination of "real" muon tracks and noise. However, the noise will also produce patterns with other geometries, that are impossible to create with a muon track.\footnote{In principle, there is the possibility that more exotic patterns are formed from real particle crossings. This may be due to showering of high energy particles or due to Coulomb scattering (sec.\ \ref{sec:Interactions-CoulombScattering}) inside the \ac{SL}. These effects are considered to have a small influence, and therefore the fake patterns discussed here are assumed to be generated only by noise.} In the following, these patterns will be called "fake patterns".
+It is clear that the observed noise in the single-cell hits can propagate through the pattern finding algorithm and generate patterns which do not originate from a muon track. For the track-like patterns the resulting rate is a combination of \enquote{real} muon tracks and noise. However, the noise will also produce patterns with other geometries, that are impossible to create with a muon track.\footnote{In principle, there is the possibility that more exotic patterns are formed from real particle crossings. This may be due to showering of high energy particles or due to Coulomb scattering (sec.\ \ref{sec:Interactions-CoulombScattering}) inside the \ac{SL}. These effects are considered to have a small influence, and therefore the fake patterns discussed here are assumed to be generated only by noise.} In the following, these patterns will be called \enquote{fake patterns}.
 \paragraph{SL fake patterns}
 The selected fake patterns are presented in fig.\ \ref{fig:DTData-SLFakePatterns}. It is obvious, that none of these patterns can be created by a straight track through the \ac{SL}.\footnote{In fact, fake patterns $(2,3)$ may originate from a muon track which is diagonal and does not trigger the cells between the two hit clusters. However, this is considered very unlikely and this pattern is also used as a fake pattern here.} The same pattern finding algorithm (sec.\ \ref{sec:DTData-SLHitPatterns-TrackPatterns}) as before is used on the cell hit data, with the task to now identify these fake patterns.
 \begin{figure}[htb]
@@ -339,7 +339,7 @@ The selected fake patterns are presented in fig.\ \ref{fig:DTData-SLFakePatterns
 In total, \num{2027701} fake patterns are found in the recorded dataset. Fig.\ \ref{fig:DTData-Hist-FakePatternType} presents the pattern occupancies for the different fake pattern types.
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__SL_FAKE_PATTERNS_HIST_pat_type.pdf}
+    \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__SL_FAKE_PATTERNS_HIST_pat_type.pdf}
     \caption{Histogram of fake pattern occupancy binned by pattern type, cumulated for all patterns in all superlayers.}
     \label{fig:DTData-Hist-FakePatternType}
 \end{SCfigure}
@@ -395,17 +395,17 @@ There are several simplifying assumptions made for the fitting of the hit timest
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{SL-PatternFit.pdf}
-        \caption{Pattern with track and its parameters $x_0$, $\alpha$ and $T_0$}
+        \caption{Pattern with track and its parameters $x_0$, $\alpha$ and $T_0$.}
         \label{fig:DTData-SLPatternFit-Illustration-Track}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.45\textwidth}
+    \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=0.7\textwidth]{SL-PatternFit-Cell.pdf}
-        \caption{Single cell and laterality $L$ definition}
+        \caption{Single cell and laterality $L$ definition.}
         \label{fig:DTData-SLPatternFit-Illustration-Cell}
     \end{subfigure}
     \hfill
@@ -418,15 +418,15 @@ There are several simplifying assumptions made for the fitting of the hit timest
     \label{eq:SLPatternFit-LinearTrack}
 \end{equation}
 where $x_0$ is the reference position of the muon (at height $z=z_{ref}$) and $\alpha$ is the track angle measured from the $z$-axis ($\alpha=0$ corresponds to a vertical track). The local coordinate system is chosen with the origin at the position of the $ly=3$ wire, therefore it is $z_{ref}=z_{\text{wire},ly=3}$. The angle $\alpha$ is chosen positive towards the left.\footnote{This unusual convention is used here since the $z$ axis points upwards but $(z-z_{ref})$ is negative for the cells below the reference cell.}
-\newline The drift velocity $v_D$ of the electrons in the cell is assumed to be constant over the whole length. Therefore, the drift distance $x_D$ can simply be related to the drift time $t$ with a linear equation:
+\newline The drift velocity $v_\text{drift}$ of the electrons in the cell is assumed to be constant over the whole length. Therefore, the drift distance $x_D$ can simply be related to the drift time $t$ with a linear equation:
 \begin{equation}
-    x_D = v_D \cdot t.
+    x_D = v_\text{drift} \cdot t.
     \label{eq:SLPatternFit-DriftDistance}
 \end{equation}
 This is of course an approximation, as the electric field in the cell is not completely homogeneous, especially near the anode wire.
 \newline The track position $x_\mu(z)$ is now equated with the wire position $x_{\text{wire},ly}$ plus the drift distance $x_D$. As the wire is at the center of the drift cell and the sign of the drift distance $x_D$ can not be determined by the measurement of the drift time $t$, a left-right ambiguity remains. This ambiguity is described with the laterality factor $L=\pm 1$. The sign of the laterality is chosen as follows: $L=-1$ means left ($x<x_\text{wire}$) of the wire, $L=+1$ means right ($x>x_\text{wire}$) of the wire. Fig.\ \ref{fig:DTData-SLPatternFit-Illustration-Cell} above illustrates the definition and sign convention used for the laterality. For the drift cells of the four layers $ly =0,1,2,3$, one can then write down the following equations:
 \begin{equation}
-    x_\mu (z=z_{\text{wire},ly}) = x_{\text{wire},ly} + L_{ly} \cdot v_D \cdot t_{ly}.
+    x_\mu (z=z_{\text{wire},ly}) = x_{\text{wire},ly} + L_{ly} \cdot v_\text{drift} \cdot t_{ly}.
     \label{eq:SLPatternFit-xPosition}
 \end{equation}
 Here, the vertical position of the drifting electrons is assumed to be equal to the height of the respective wire $z=z_{\text{wire},ly}$. In reality however, the muon leaves a track of ionization charges over the full height of the cell, not a localized charge at the height of the wire. Especially for larger muon inclinations, this implies a bias on this fit method.
@@ -438,11 +438,11 @@ Here, the vertical position of the drifting electrons is assumed to be equal to 
 \paragraph{Timestamp fit function}
 Combining eqs.\ \ref{eq:SLPatternFit-LinearTrack}, \ref{eq:SLPatternFit-xPosition} and \ref{eq:SLPatternFit-Timestamp} yields the following four equations $(ly =0,1,2,3)$ for the cell timestamps $T_{ly}$:
 \begin{equation}
-    T_{ly} = T_0 + \frac{L_{ly}}{v_D} \cdot \left( x_0 + z_{\text{wire},ly} \cdot \tan\alpha - x_{\text{wire},ly} \right).
+    T_{ly} = T_0 + \frac{L_{ly}}{v_\text{drift}} \cdot \left( x_0 + z_{\text{wire},ly} \cdot \tan\alpha - x_{\text{wire},ly} \right).
     \label{eq:SLPatternFit-FitFunction}
 \end{equation}
 By fitting the measured timestamps $T_{ly}$ to this function, one can obtain the values for the three local track parameters $(T_0,\;x_0,\;\tan\alpha)$. Fig.\ \ref{fig:DTData-SLPatternFit-Illustration-Track} above illustrates the meaning of the three parameters with an example track.
-\newline Note that in principle one could use the drift velocity $v_D$ as an additional fit parameter, if one uses patterns with four hits. However, in this thesis, the drift velocity is fixed to the known \ac{CMS} reference value of $v_D\approx\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}).
+\newline Note that in principle one could use the drift velocity $v_\text{drift}$ as an additional fit parameter, if one uses patterns with four hits. However, in this thesis, the drift velocity is fixed to the known \ac{CMS} reference value of $v_\text{drift}\approx\SI{54.5}{\micro\meter/\nano\second}$ (eq.\ \ref{eq:DT-DriftVelocity}).
 \paragraph{Fit method and uncertainties}
 The fit method is a least-square minimization ($\chi^2$-fit) which uses the layer index $ly=0,1,2,3$ as $x$-coordinate and the respective hit timestamp $T_{ly}$ as $y$-coordinate. It is clear that when fitting four timestamps to the three parameters $(T_0,\; x_0,\; \tan\alpha)$, the number of degrees of freedom is $N_{df}=4-3=1$.
 \newline The uncertainty of the timestamps $\sigma_{T,ly}$ for the fit is derived from the digitization uncertainty of the \acp{OBDT} ($0.78 \;\si{\nano\second}/\sqrt{12} \approx 0.22 \;\si{\nano\second}$) and the uncertainty of the applied timing correction obtained from the test pulse run (typically $1-2 \;\si{\nano\second}$, sec.\ \ref{sec:DTData-Testpulse-Calibration}). As discussed, the fit function (eq.\ \ref{eq:SLPatternFit-FitFunction}) assumes that the drift electrons are always created at the height of the wire, which is a strong simplification. It is clear that in reality, different (longer) drift times are expected if the electron is created on a different height than the wire, as it has to drift at an angle. Additionally, inclined tracks lead to more complicated drift time behaviors. A generous \SI{5}{\nano\second} uncertainty is assigned to all timestamps to cover for the strong simplification made in this work. With this, the total assigned uncertainty of the cell timestamps is in the order of $5-6 \;\si{\nano\second}$.
@@ -483,7 +483,7 @@ There are cuts applied to the fit results due to the possibility of noise-induce
     t_{ly}=T_{ly}-T_0
     \label{eq:DTData-DriftTime-Hits}
 \end{equation}
-It is clear that the drift time should be smaller than the maximum drift time $t_\text{drift,max}\approx\SI{385}{\nano\second}$ (eq.\ \ref{eq:DT-MaxDriftTime}) which is given by the drift velocity assumption. In order to cut away "corner cases", where the drift time corresponds to exactly zero or the maximum drift time (maybe because of a non-converging fit), a cut margin of \SI{2}{\nano\second} (\SI{2.56}{\tu}) is chosen. The cuts applied to the superlayer pattern fits are summarized in tab.\ \ref{tab:DTData-SLPatternFit-Cuts}.
+It is clear that the drift time should be smaller than the maximum drift time $t_\text{drift,max}\approx\SI{385}{\nano\second}$ (eq.\ \ref{eq:DT-MaxDriftTime}) which is given by the drift velocity assumption. In order to cut away \enquote{corner cases}, where the drift time corresponds to exactly zero or the maximum drift time (maybe because of a non-converging fit), a cut margin of \SI{2}{\nano\second} (\SI{2.56}{\tu}) is chosen. The cuts applied to the superlayer pattern fits are summarized in tab.\ \ref{tab:DTData-SLPatternFit-Cuts}.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|} 
@@ -510,7 +510,7 @@ Fig.\ \ref{fig:DTData-SLPatternFit-EventDisplay-TimestampFit} shows the timestam
 \begin{figure}[htb]
     \centering
     \centering
-    \includegraphics[width=0.8\textwidth]{dt_sl_fit/sl_fit.pdf}
+    \includegraphics[width=0.9\textwidth]{dt_sl_fit/sl_fit.pdf}
     \caption{Reconstructed cell hit positions and fitted track $x_\mu(z)$ for the same example superlayer pattern as fig.\ \ref{fig:DTData-SLPatternFit-EventDisplay-TimestampFit}. Note that the laterality $L_{ly}$ determines the hit position relative to the central wire for the cell in each layer ($L_{ly}=-1$: left, $L_{ly}=+1$: right).}
     \label{fig:DTData-SLPatternFit-EventDisplay-CellFit}
 \end{figure}
@@ -544,7 +544,7 @@ A histogram of the goodness-of-fit parameter $\chi^2/N_{df}$ for the pattern fit
 \newline The effect of the $\chi^2/N_{df}<10$ cut (tab.\ \ref{tab:DTData-SLPatternFit-Cuts}) is also visible in the plot, as the overflow bin for the plotted range is empty.
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_chi2-ndf.pdf}
+    \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_chi2-ndf.pdf}
     \caption{Histogram of goodness-of-fit parameter $\chi^2/N_{df}$, cumulated for all patterns in all superlayers and with the specified cuts applied.}
     \label{fig:DTData-Hist-SLPatternFit-chi2}
 \end{SCfigure}
@@ -554,24 +554,24 @@ In the following, histograms of the resulting track parameters $(T_0,\; x_0,\; \
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_t0.pdf}
-        \caption{Track arrival time $T_0$}
+        \caption{Track arrival time $T_0$.}
         \label{fig:DTData-Hist-SLPatternfit-t0}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_x0.pdf}
-        \caption{Track reference position $x_0$}
+        \caption{Track reference position $x_0$.}
         \label{fig:DTData-Hist-SLPatternfit-x0}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_tan_alpha.pdf}
-        \caption{Track inclination $\tan\alpha$}
+        \caption{Track inclination $\tan\alpha$.}
         \label{fig:DTData-Hist-SLPatternfit-tan-alpha}
     \end{subfigure}
     \hfill
@@ -580,7 +580,7 @@ In the following, histograms of the resulting track parameters $(T_0,\; x_0,\; \
 \end{figure}
 \newline From fig.\ \ref{fig:DTData-Hist-SLPatternfit-t0} it is clear, that the obtained arrival times $T_0$ are uniformly distributed. This is the expected behavior for atmospheric muons, which should arrive at the chamber at random times.
 \newline The reference position of the track $x_0$ in fig.\ \ref{fig:DTData-Hist-SLPatternfit-x0} shows an approximately uniform distribution over the full cell size of $\pm 21 \;\si{\milli\meter}$, except for the region close to the anode wire at $x_0=\SI{0}{\milli\meter}$. As the electric field in this region is not homogeneous as was assumed in the fit, this deviation is not completely unexpected. For atmospheric muons, a uniform distribution of $x_0$ is expected, as the impact position of the muon on the chamber is random. This is roughly the case in the data, with the exception of the mentioned region close to the wire.
-\newline An additional observation can be made in the $x_0$ distribution: There is a narrow spike visible at $x_0\approx +10.5\;\si{\milli\meter}$ above the rather continuous shape of the histogram. This position corresponds to the center of the half-cell. It is possible that the spike originates from noise patterns whose timestamps do not follow the fit model for a muon track, and the fit therefore does not converge properly. It might be that the fit then decides to "average out" the deviation over the hits, resulting in a (vertical) track through the center of the half-cell. However, further investigations beyond the scope of this thesis would be necessary to support this hypothesis. For the negative side ($x_0\approx\SI{-10.5}{\milli\meter}$) of the $x_0$ distribution the described feature is also visible, however much less pronounced.
+\newline An additional observation can be made in the $x_0$ distribution: There is a narrow spike visible at $x_0\approx +10.5\;\si{\milli\meter}$ above the rather continuous shape of the histogram. This position corresponds to the center of the half-cell. It is possible that the spike originates from noise patterns whose timestamps do not follow the fit model for a muon track, and the fit therefore does not converge properly. It might be that the fit then decides to \enquote{average out} the deviation over the hits, resulting in a (vertical) track through the center of the half-cell. However, further investigations beyond the scope of this thesis would be necessary to support this hypothesis. For the negative side ($x_0\approx\SI{-10.5}{\milli\meter}$) of the $x_0$ distribution the described feature is also visible, however much less pronounced.
 \newline The track inclination $\tan\alpha$ in fig.\ \ref{fig:DTData-Hist-SLPatternfit-tan-alpha} shows an approximately symmetric distribution around $\tan\alpha=0$, i.e.\ a vertically impinging track. The covered angular range is limited by the angular acceptance of the used patterns, which was already discussed in sec.\ \ref{sec:DTData-SLPatternFitting-Strategy}. The observed falling behavior towards higher angle values is expected from atmospheric muons, as they should follow a $\propto \cos^2 \theta$ distribution (sec.\ \ref{sec:AtmosphericMuons-Dependencies}). This means that vertical muons are the most frequent and the number of muons decreases with increasing inclination.\footnote{Note that the \ac{SL} pattern fits take place in a 2D slice of space ($x$-$z$- or $y$-$z$-plane), which means one can not directly translate $\alpha$ to $\theta$, but has to consider the solid angle. However, the general dependencies of decreasing rate with higher inclination should remain the same.}
 \newline Similar to the small peaks in the $x_0$ distribution, there also seems to be a peak in the angular distribution at $\tan\alpha\approx 0$. Here, the bin count seems to be higher than what would be expected from the continuous parabola-like shape of the histogram. As discussed above for the feature in the $x_0$ distribution, it is well possible that this peak originates from noise patterns which may not be fitted properly, but could result in vertical tracks in the center of the half-cell. In the future, these effects should be further explored to properly deal with them in the reconstruction at the cosmic test stand. For this work, this systematic is accepted and the analysis is continued, as the goal in this work is a proof-of-concept measurement, and less the development of a precision reconstruction algorithm. Besides, the observed spike in the distribution only consists of $\mathcal{O}(1\%)$ of the fitted patterns.
 \newline 
@@ -612,21 +612,21 @@ The size of the uncertainties of the obtained fit parameters should be briefly d
 \newline The angular resolution is also reasonable, as the uncertainty on the tangent $\sigma_{\tan\alpha}<0.021$ translates to only $\sigma_\alpha \approx \SI{0.02}{\radian} \approx 1.2{}^\circ$ (in the case of $\tan\alpha=0$ which gives the highest uncertainty on $\alpha$).
 \newline It should be noted here that the discussed uncertainties are the only obtained from the fit itself. All other potentially relevant systematic effects are not included in this discussion. Therefore, it is likely that the total uncertainty on the fit parameters is higher than the values given here. Other potential systematic effects affecting the reconstruction will not be studied in this thesis in more detail, but may be the topic of future studies.
 \paragraph{Drift time distribution}
-In the context of \ac{DT} chambers, the distribution of drift times in the cells is referred to as "time box". This distribution has a characteristic shape, which is determined by the drift velocity of the electrons in the cell as well as the shape of the electric field. With eq.\ \ref{eq:DTData-DriftTime-Hits} shown above, the drift time $t_{ly}=t_\text{drift}$ for each cell hit can be calculated. A histogram of the obtained drift times for all cells is presented in fig.\ \ref{fig:DTData-Hist-SLPatternfit-DriftTime}.
+In the context of \ac{DT} chambers, the distribution of drift times in the cells is referred to as \enquote{time box}. This distribution has a characteristic shape, which is determined by the drift velocity of the electrons in the cell as well as the shape of the electric field. With eq.\ \ref{eq:DTData-DriftTime-Hits} shown above, the drift time $t_{ly}=t_\text{drift}$ for each cell hit can be calculated. A histogram of the obtained drift times for all cells is presented in fig.\ \ref{fig:DTData-Hist-SLPatternfit-DriftTime}.
 \begin{figure}[htb]
     \centering
     \hfill
     \begin{subfigure}[c]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__SL_FITS_AFTERCUTS_HIST_TIMEBOX_ns.pdf}
-    \caption{Calculated drift times in this work, cumulated for all pattern fits with applied cuts}
+    \caption{Calculated drift times in this work, cumulated for all pattern fits with applied cuts.}
     \label{fig:DTData-Hist-SLPatternfit-DriftTime}
     \end{subfigure}
     \hfill
     \begin{subfigure}[c]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{CMS-TimeBox.png}
-        \caption{Drift time distribution measured by \ac{CMS} \cite{CMS-Main}}
+        \caption{Drift time distribution measured by \ac{CMS} \cite{CMS-Main}.}
         \label{fig:DTData-DriftTime-CMS}
     \end{subfigure}
     \hfill
@@ -668,7 +668,7 @@ One needs to consider the fact that several patterns close in time may be presen
 The grouping of fitted patterns is executed for all three superlayers separately. A histogram of the number of patterns in the created groups $N_\text{fits}(\text{Group})$ is presented in fig.\ \ref{fig:DTData-Hist-SLFitGrouping-Nfit}. It is clear that the majority of patterns is isolated in time, as the number of groups with more than one pattern is almost two orders of magnitude lower than the groups with only one pattern. However, there are rare cases where larger pattern multiplicities are observed, close in time. The most extreme case is that there was one pattern group constructed which contains 40 separate patterns. While multiplicities of few patterns are expected to be induced by noise hits close to the real track pattern, the very high multiplicities might be related to showering effects of high-energy cosmics.
 \begin{SCfigure}[50][htb]
     \centering
-    \includegraphics[width=0.49\textwidth]{large_combined_data_plots/53_comb__SL_FIT_GROUPS_HIST_n_fits.pdf}
+    \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__SL_FIT_GROUPS_HIST_n_fits.pdf}
     \caption{Histogram of number of fitted patterns $N_\text{fits}(\text{Group})$ in the constructed pattern groups, cumulated for all superlayers.}
     \label{fig:DTData-Hist-SLFitGrouping-Nfit}
 \end{SCfigure}
@@ -721,7 +721,7 @@ The assumption taken during the local superlayer fits, that the muon track creat
     \end{aligned}
     \label{eq:DTData-GlobalReco-TimeWindow}
 \end{equation}
-\newline This value for the time window was selected, as it is large enough to cover fluctuations of few standard deviations of the fitted arrival times for all the three superlayer fits.\footnote{In sec.\ \ref{sec:DTData-SLPatternFitting-Results}, it was discussed that the obtained uncertainty on the arrival time from the fit is $\sigma_{T_0}<5.5\;\si{\nano\second}$ (tab.\ \ref{tab:DTData-SLPatternfit-Uncertainties}). Therefore, the condition $\Delta T_\text{0,max}(\text{global})\leq\SI{20}{\nano\second}$ leaves comfortable margin for fluctuations of the fit results for the different superlayers.} Note that the patterns used here are only the ones which have passed the grouping step before (sec.\ \ref{sec:DTData-SLFitGrouping}) and were found to be "isolated" in time within the same superlayer. 
+\newline This value for the time window was selected, as it is large enough to cover fluctuations of few standard deviations of the fitted arrival times for all the three superlayer fits.\footnote{In sec.\ \ref{sec:DTData-SLPatternFitting-Results}, it was discussed that the obtained uncertainty on the arrival time from the fit is $\sigma_{T_0}<5.5\;\si{\nano\second}$ (tab.\ \ref{tab:DTData-SLPatternfit-Uncertainties}). Therefore, the condition $\Delta T_\text{0,max}(\text{global})\leq\SI{20}{\nano\second}$ leaves comfortable margin for fluctuations of the fit results for the different superlayers.} Note that the patterns used here are only the ones which have passed the grouping step before (sec.\ \ref{sec:DTData-SLFitGrouping}) and were found to be \enquote{isolated} in time within the same superlayer. 
 \paragraph{Superlayer selection criteria}
 In principle, it would be possible to build a global track when one has at least one superlayer pattern fit in the phi and theta plane. However, in this thesis one requires a matched pattern in all three superlayers. A global track is therefore only reconstructed when all 12 layers of the chamber are hit and three successful superlayer pattern fits are available, which have a comparable arrival time.
 
@@ -755,7 +755,7 @@ The combined phi superlayer projection (denoted by index $\phi$) and the theta s
 Fig.\ \ref{fig:DTData-GlobalTrack-Illustration} illustrates the global track variables and the angles obtained by the superlayer pattern fits.
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.45\textwidth]{GlobalTrack.pdf}
+    \includegraphics[width=0.6\textwidth]{GlobalTrack.pdf}
     \caption{Illustration of the relation of the phi superlayer projection ($x$-$z$-plane) and theta superlayer projection ($y$-$z$-plane) local track angles $\alpha_\phi$ and $\alpha_\theta$ to the global track angles $\theta$ and $\phi$ in the used coordinate frame.}
     \label{fig:DTData-GlobalTrack-Illustration}
 \end{figure}
@@ -768,17 +768,17 @@ Fig.\ \ref{fig:DTData-GlobalTrack-Example} presents an event display of an examp
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{\textwidth}
+    \begin{subfigure}[t]{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{dt_global/global_phi_view.pdf}
-        \caption{Track in $x$-$z$-plane (phi superlayer view)}
+        \caption{Track in $x$-$z$-plane (phi superlayer view).}
         \label{fig:DTData-GlobalTrack-Example-phi}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{\textwidth}
+    \begin{subfigure}[t]{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{dt_global/global_theta_view.pdf}
-        \caption{Track in $y$-$z$-plane (theta superlayer view)}
+        \caption{Track in $y$-$z$-plane (theta superlayer view).}
         \label{fig:DTData-GlobalTrack-Example-theta}
     \end{subfigure}
     \hfill
@@ -790,23 +790,23 @@ Fig.\ \ref{fig:DTData-GlobalTrack-Example} presents an event display of an examp
 \label{sec:DTData-GlobalTrackBuilding-Results}
 \paragraph{Global track occupancy}
 Using the algorithm described above, \num{1656448} global tracks were reconstructed from the recorded data. This corresponds to a global track frequency of $(84.52 \pm 0.07)\;\si{\hertz}$.
-\newline Compared to the rate of the fitted patterns in each superlayer (around $\SI{400}{\hertz}$, cf.\ sec.\ \ref{sec:DTData-SLPatternFitting-Results}), this is approximately only $20\%$ of the rate. However, there are several factors which are expected to contribute to a smaller global track rate. Note that the global track reconstruction algorithm described above always requires three fitted superlayer patterns, i.e.\ one cell hit in all 12 layers of the chamber. Due to the cell hit efficiency being smaller than one (sec.\ \ref{sec:CMS-DTPerformance}), it is expected that one or more of the cells are not hit by the passing muon. Even if only one hit is missing this means that one superlayer has not valid pattern, even if there are fitted patterns in the other superlayers. In such a case, no global track will be reconstructed. It might also be, that the applied cuts on the superlayer pattern fits themselves (tab.\ \ref{tab:DTData-SLPatternFit-Cuts}) lead to the occasional "loss" of one of the three fitted patterns of a passing muon, and therefore inhibit the global track reconstruction. Additionally, it is clear that the described reconstruction strategy relies on many assumptions and simplifications, especially during the superlayer pattern fits (sec.\ \ref{sec:DTData-SLPatternFitting}). This means that the resulting pattern fits might not always be correct and therefore could be filtered out by the matching criteria of the different superlayers.
+\newline Compared to the rate of the fitted patterns in each superlayer (around $\SI{400}{\hertz}$, cf.\ sec.\ \ref{sec:DTData-SLPatternFitting-Results}), this is approximately only $20\%$ of the rate. However, there are several factors which are expected to contribute to a smaller global track rate. Note that the global track reconstruction algorithm described above always requires three fitted superlayer patterns, i.e.\ one cell hit in all 12 layers of the chamber. Due to the cell hit efficiency being smaller than one (sec.\ \ref{sec:CMS-DTPerformance}), it is expected that one or more of the cells are not hit by the passing muon. Even if only one hit is missing this means that one superlayer has not valid pattern, even if there are fitted patterns in the other superlayers. In such a case, no global track will be reconstructed. It might also be, that the applied cuts on the superlayer pattern fits themselves (tab.\ \ref{tab:DTData-SLPatternFit-Cuts}) lead to the occasional \enquote{loss} of one of the three fitted patterns of a passing muon, and therefore inhibit the global track reconstruction. Additionally, it is clear that the described reconstruction strategy relies on many assumptions and simplifications, especially during the superlayer pattern fits (sec.\ \ref{sec:DTData-SLPatternFitting}). This means that the resulting pattern fits might not always be correct and therefore could be filtered out by the matching criteria of the different superlayers.
 \paragraph{Arrival time}
 A histogram of the estimated arrival time $T_0$ of the reconstructed global tracks is presented in fig.\ \ref{fig:DTData-GlobalTrack-ArrivalTime}. As one would expect from atmospheric muon tracks, the number of events is distributed uniform in time. The lower bin count at the histogram edges is a binning effect. The difference between consecutive track arrival times $\Delta T_0$ is plotted in fig.\ \ref{fig:DTData-GlobalTrack-ArrivalTimeDifference}. It seems to follow an exponentially falling distribution, which is the expected from Poisson distributed arrival times of the atmospheric muons. 
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_TS.pdf}
-        \caption{Global track arrival times $T_0$}
+        \caption{Global track arrival times $T_0$.}
         \label{fig:DTData-GlobalTrack-ArrivalTime}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_DELTA-TS.pdf}
-        \caption{Difference $\Delta T_0$ between arrival times of consecutive global tracks}
+        \caption{Difference $\Delta T_0$ between arrival times of consecutive global tracks.}
         \label{fig:DTData-GlobalTrack-ArrivalTimeDifference}
     \end{subfigure}
     \hfill
@@ -818,17 +818,17 @@ Histograms of the global track azimuth angle $\phi$ and zenith angle $\theta$ ar
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__DT_MUONS_HIST_phi.pdf}
-        \caption{Global track azimuth angles $\phi$}
+        \caption{Global track azimuth angles $\phi$.}
         \label{fig:DTData-GlobalTrack-Angles-Phi}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_THETA_REWEIGHT.pdf}
-        \caption{Global track zenith angle $\theta$, reweighted with solid angle factor $1/\sin\theta$}
+        \caption{Global track zenith angle $\theta$, reweighted with solid angle factor $1/\sin\theta$.}
         \label{fig:DTData-GlobalTrack-Angles-Theta}
     \end{subfigure}
     \hfill
@@ -874,53 +874,53 @@ Finally, the position of the reconstructed global tracks in the \ac{DT} chamber 
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_xy_SL1.pdf}
-        \caption{Track position in SL 1 (phi)}
+        \caption{Track position in SL 1 (phi).}
         \label{fig:DTData-GlobalTrack-2D-xy-SL1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_xy_SL2.pdf}
-        \caption{Track position in SL 2 (theta)}
+        \caption{Track position in SL 2 (theta).}
         \label{fig:DTData-GlobalTrack-2D-xy-SL2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_xy_SL3.pdf}
-        \caption{Track position in SL 3 (phi)}
+        \caption{Track position in SL 3 (phi).}
         \label{fig:DTData-GlobalTrack-2D-xy-SL3}
     \end{subfigure}
     \hfill
     \caption{2D histograms of the reconstructed $(x,y)$ track positions for each superlayer of the chamber. The $(x,y)$ track positions are evaluated at the mean $z$ coordinate of the superlayer. The outer frame of the superlayer is represented by the white rectangle in the plot. The positions of the dead (or unconnected) wires of the respective superlayer (tab.\ \ref{tab:DTData-DeadWires}) is outlined in red.}
     \label{fig:DTData-GlobalTrack-2D-xy}
 \end{figure}
-\newline A uniform distribution of global tracks is visible inside the three superlayers, with few sharp gaps. From atmospheric muons, this uniform distribution is expected, as the applied reconstruction algorithm requires one hit in all 12 layers of the chamber (sec.\ \ref{sec:DTData-GlobalTrackBuilding-Strategy}). This means that it is impossible to build a muon track through a dead cell. The observation of the occupancy gaps corresponding to the positions of the dead cells can therefore be understood as a cross-confirmation of the properly functioning reconstruction algorithm. From the geometry of the \ac{DT} chamber, it is known that the \acp{SL} 2 and 3 lie close together, while \ac{SL} 1 is further away from the others (sec.\ \ref{sec:CMS-DTSetup}). This results in the dead wires of \ac{SL} 2 and 3 to throw a "shadow" on each other, while \ac{SL} 1 is affected less by the dead wires of the other superlayers.
-\newline A lateral view of the chamber in both the $x$-$z$- (\acp{SL} 1 and 3 sensitivity) and $y$-$z$-plane (\ac{SL} 2 sensitivity) is presented in fig.\ \ref{fig:DTData-GlobalTrack-2D-z}. This plot was created with the following prescription: For each $z$ height, the $x$-position ($y$-position) of each \ac{DT} track is evaluated, and the respective $x$-bin ($y$-bin) count at the current $z$ height is incremented by one. The plot cumulates the tracks along the third dimension, i.e.\ the $y$-axis ($x$-axis). One can therefore understand this plot as a representation of the "track density" in a lateral view.
+\newline A uniform distribution of global tracks is visible inside the three superlayers, with few sharp gaps. From atmospheric muons, this uniform distribution is expected, as the applied reconstruction algorithm requires one hit in all 12 layers of the chamber (sec.\ \ref{sec:DTData-GlobalTrackBuilding-Strategy}). This means that it is impossible to build a muon track through a dead cell. The observation of the occupancy gaps corresponding to the positions of the dead cells can therefore be understood as a cross-confirmation of the properly functioning reconstruction algorithm. From the geometry of the \ac{DT} chamber, it is known that the \acp{SL} 2 and 3 lie close together, while \ac{SL} 1 is further away from the others (sec.\ \ref{sec:CMS-DTSetup}). This results in the dead wires of \ac{SL} 2 and 3 to throw a \enquote{shadow} on each other, while \ac{SL} 1 is affected less by the dead wires of the other superlayers.
+\newline A lateral view of the chamber in both the $x$-$z$- (\acp{SL} 1 and 3 sensitivity) and $y$-$z$-plane (\ac{SL} 2 sensitivity) is presented in fig.\ \ref{fig:DTData-GlobalTrack-2D-z}. This plot was created with the following prescription: For each $z$ height, the $x$-position ($y$-position) of each \ac{DT} track is evaluated, and the respective $x$-bin ($y$-bin) count at the current $z$ height is incremented by one. The plot cumulates the tracks along the third dimension, i.e.\ the $y$-axis ($x$-axis). One can therefore understand this plot as a representation of the \enquote{track density} in a lateral view.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{\textwidth}
+    \begin{subfigure}[t]{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_xz_CHAMBER.pdf}
-        \caption{Reconstructed track $(x,z)$ positions (phi superlayer view)}
+        \caption{Reconstructed track $(x,z)$ positions (phi superlayer view).}
         \label{fig:DTData-GlobalTrack-2D-xz}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{\textwidth}
+    \begin{subfigure}[t]{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/DT_MUON_SPECIFIC_yz_CHAMBER.pdf}
-        \caption{Reconstructed track $(y,z)$ positions (theta superlayer view)}
+        \caption{Reconstructed track $(y,z)$ positions (theta superlayer view).}
         \label{fig:DTData-GlobalTrack-2D-yz}
     \end{subfigure}
     \hfill
-    \caption{Lateral views of the reconstructed \ac{DT} track positions. For each track, the projected $x$- or $y$-position is represented with one entry in the horizontal bin rows at the respective $z$ height. The plot cumulates all tracks of the third coordinate axis. Therefore, it can be understood to present a cumulated track density. The drift cell positions are sketched in white, dead cells (from tab.\ \ref{tab:DTData-DeadWires}) are outlined in red. The bin size is $5 \times 5\;\si{\milli\meter^2}$.}
+    \caption{Lateral views of the reconstructed \ac{DT} track positions. For each track, the projected $x$- or $y$-position is represented with one entry in the horizontal bin rows at the respective $z$ height. The plot cumulates all tracks of the third coordinate axis. Therefore, the plot can be understood to represent a cumulated track density. The drift cell positions are sketched in white, dead cells (from tab.\ \ref{tab:DTData-DeadWires}) are outlined in red. The bin size is $5 \times 5\;\si{\milli\meter^2}$.}
     \label{fig:DTData-GlobalTrack-2D-z}
 \end{figure}
-\newline The density of tracks again seems to be uniformly distributed inside the chamber, except for the dead cells. This is the expected behavior. The "shadows" thrown by dead cells are impressively visible in the lateral view. The triangular features between the dead cells are simply a geometric effect of tracks with positive and negative slopes intersecting each other, creating a higher track density. Above and below the chamber on can see that the tracks are reconstructed up to a maximum angle, which is given by the superlayer hit pattern acceptance.
+\newline The density of tracks again seems to be uniformly distributed inside the chamber, except for the dead cells. This is the expected behavior. The \enquote{shadows} thrown by dead cells are impressively visible in the lateral view. The triangular features between the dead cells are simply a geometric effect of tracks with positive and negative slopes intersecting each other, creating a higher track density. Above and below the chamber on can see that the tracks are reconstructed up to a maximum angle, which is given by the superlayer hit pattern acceptance.
 \paragraph{Comparison to cosmic tracks}
 As done in the previous analysis steps, one can again compare the obtained rates and obtained parameter histograms for the data with the result of the simulation of atmospheric muon tracks. Further details on the simulation are discussed in appendix \ref{sec:Simulation}.
 \newline For the simulation, a reconstructed \ac{DT} global track rate of around \SI{196}{\hertz} is obtained. The value observed in data (around \SI{85}{\hertz}) corresponds only to a fraction of $43\%$. Note however that in the simplified simulation, there are no noise events and the measurement of the timestamps has not modeled uncertainty. It is therefore imaginable, that this observed deviation can (at least in part) be explained with pattern fits not surviving the applied cuts (tab.\ \ref{tab:DTData-SLPatternFit-Cuts}) applied to the goodness-of-fit variable, due to fluctuations of the timestamps due to measurement uncertainties.

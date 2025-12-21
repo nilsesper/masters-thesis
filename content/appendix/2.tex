@@ -1,9 +1,24 @@
 \label{sec:Simulation}
 
+The custom analysis framework developed for this thesis \cite{dt-scint-analysis-tools-Main} allows the \acf{MC} generation of atmospheric muon tracks and the propagation of those tracks through the geometry of both the \ac{DT} chamber and the scintillator. In this way, the expected detector output from atmospheric muons can be estimated.
+\newline Note that the performed simulation is only considering the detector geometry, and not the physics of the interactions of the atmospheric muons with the surrounding material during their propagation. Also, the physics inside the detectors itself are not simulated. Instead, a simple geometric evaluation of the muon track intersecting the sensitive detector area is performed, and the detector hit timestamp is calculated from the intersection point.
+
 \section{Muon track generation}
 
 %% total simulated tracks: 4198026
 %% simulated duration: 1000.2017319957001 s
+The implemented muon generator works by simply sampling the track parameters from the expected distributions of atmospheric muons (sec.\ \ref{sec:AtmosphericMuons-Dependencies}) with a \ac{MC} method. A simulated muon track has the same parameter as a reconstructed \ac{DT} global track (sec.\ \ref{sec:DTData-GlobalTrackBuilding}): The arrival time $T_0$, the azimuth and zenith angles $(\phi,\theta)$ and a base point $(x_0,x=0,z_0)$.
+\paragraph{Arrival time}
+The vertical flux of atmospheric muons is given in the theory chapter as $\Phi(\theta=\SI{0}{\radian}) \approx \SI{70}{\meter^{-2} \second^{-1} \steradian^{-1}}$ (eq.\ \ref{eq:CosmicMuon-VerticalFlux} in sec.\ \ref{sec:AtmosphericMuons-Dependencies}). By integration of this flux over the polar angle of the full half-sphere, one obtains the expected muon rate per area $\dot{N}/A$, cumulated for all angular directions. Note that one has to respect the angular dependence of the muon flux $\Phi(\theta)\propto\cos^2\theta$ (eq.\ \ref{eq:CosmicMuon-ZenithDependence}):
+\begin{equation}
+    \frac{\dot{N}}{A} = \int d\Omega\; \Phi(\theta) = \int_{0}^{2\pi} d\phi \int_{0}^{\pi/2} d\theta\; \sin\theta\cdot\cos^2\theta\cdot\Phi(\theta=\SI{0}{\radian}) \approx \SI{147}{\second^{-1}\meter^{-2}}.
+\end{equation}
+The obtained value is now the rate per area to be used in the simulation, cumulated over all angles.
+\newline From theory, it is clear that the atmospheric arrival time follows a Poisson distribution. 
+\paragraph{Generator base area}
+A
+\paragraph{Angular distribution}
+A
 
 
 
@@ -66,24 +81,24 @@
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sim_data_plots/53_sim__SL_FITS_AFTERCUTS_HIST_t0.pdf}
-        \caption{Track arrival time $T_0$}
+        \caption{Track arrival time $T_0$.}
         \label{fig:Simulation-Hist-SLPatternfit-t0}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sim_data_plots/53_sim__SL_FITS_AFTERCUTS_HIST_x0.pdf}
-        \caption{Track reference position $x_0$}
+        \caption{Track reference position $x_0$.}
         \label{fig:Simulation-Hist-SLPatternfit-x0}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sim_data_plots/53_sim__SL_FITS_AFTERCUTS_HIST_tan_alpha.pdf}
-        \caption{Track inclination $\tan\alpha$}
+        \caption{Track inclination $\tan\alpha$.}
         \label{fig:Simulation-Hist-SLPatternfit-tan-alpha}
     \end{subfigure}
     \hfill
@@ -97,24 +112,24 @@
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sim_data_plots/DT_MUON_SPECIFIC_TS.pdf}
-        \caption{Global track arrival times $T_0$}
+        \caption{Global track arrival times $T_0$.}
         \label{fig:Simulation-GlobalTrack-ArrivalTime}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sim_data_plots/53_sim__DT_MUONS_HIST_phi.pdf}
-        \caption{Global track azimuth angles $\phi$}
+        \caption{Global track azimuth angles $\phi$.}
         \label{fig:Simulation-GlobalTrack-Angles-Phi}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sim_data_plots/DT_MUON_SPECIFIC_THETA_REWEIGHT.pdf}
-        \caption{Global track zenith angle $\theta$, reweighted with solid angle factor $1/\sin\theta$}
+        \caption{Global track zenith angle $\theta$, reweighted with solid angle factor $1/\sin\theta$.}
         \label{fig:Simulation-GlobalTrack-Angles-Theta}
     \end{subfigure}
     \hfill

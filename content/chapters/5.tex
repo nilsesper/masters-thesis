@@ -12,14 +12,14 @@ The detector consists of two layers of 16 scintillator strips stacked with perpe
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[height=4.5cm]{Scint-Setup-LayerRendering.png}
         \caption{3D view of one opened layer with 16 strips}
         \label{fig:Scint-Setup-LayerRendering}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[height=5.5cm]{Scint-Setup-TopRendering.png}
         \caption{Top view of the two stacked layers}
@@ -58,21 +58,21 @@ Fig.\ \ref{fig:Scint-Readout-Chain} shows an overview of the readout chain of th
 \label{sec:Scint-Frontend}
 \paragraph{Signal preamplifier} A small frontend board is mounted directly at the scintillator. The \ac{SiPM} itself is mounted on this \ac{PCB}. Additionally, it features a preamplifier with an amplification of $+22\;\si{\decibel}$, which amplifies the  \ac{SiPM} output signal to measurable voltage ranges. With the applied bias voltage of \SI{29}{\volt}, the setup achieves an output amplitude for one \ac{p.e.} (sec.\ \ref{sec:Scintillators-SiPMs}) of $\approx\SI{5}{\milli\volt}$ \cite{MSc-Ehlert}. In addition, the \ac{PCB} hosts a \ac{LED} which may be used to test the photon readout. In this work, this feature is however not used. Fig.\ \ref{fig:Scint-Setup-FrontendPCB} shows a picture of one frontend \ac{PCB}.
 \paragraph{Frontend infrastructure}
-Around the sides of the detector, a total of eight so-called "backbone" \acp{PCB} are mounted. Each backbone board directly connects to eight frontend \acp{PCB}, i.e.\ eight \acp{SiPM}. It supplies the bias voltage as well as the operation voltage for the preamplifier. The amplified signals are provided on the backbone \ac{PCB} via \ac{MCX} connectors, in order to be further transmitted to the readout system via coaxial cables. A Raspberry Pi \cite{Raspberry-Pi} is used to control the bias voltage levels of all channels \cite{MSc-Ehlert}.
+Around the sides of the detector, a total of eight so-called \enquote{backbone} \acp{PCB} are mounted. Each backbone board directly connects to eight frontend \acp{PCB}, i.e.\ eight \acp{SiPM}. It supplies the bias voltage as well as the operation voltage for the preamplifier. The amplified signals are provided on the backbone \ac{PCB} via \ac{MCX} connectors, in order to be further transmitted to the readout system via coaxial cables. A Raspberry Pi \cite{Raspberry-Pi} is used to control the bias voltage levels of all channels \cite{MSc-Ehlert}.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.3\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{Scint-Frontend-PCB.png}
-        \caption{Frontend \ac{PCB} with \ac{SiPM} and preamplifier}
+        \caption{Frontend \ac{PCB} with \ac{SiPM} and preamplifier.}
         \label{fig:Scint-Setup-FrontendPCB}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.69\textwidth}
+    \begin{subfigure}[t]{0.69\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{Scint-Backbone-PCB.png}
-        \caption{Backbone \ac{PCB} for with the 8 \ac{SiPM} signal \ac{MCX} connectors visible on the top}
+        \caption{Backbone \ac{PCB} for with the 8 \ac{SiPM} signal \ac{MCX} connectors visible on the top.}
         \label{fig:Scint-Setup-BackbonePCB}
     \end{subfigure}
     \hfill
@@ -211,20 +211,20 @@ The comparator output signal is asynchronous, meaning its edges are not related 
 
 \subsection{Time-alignment unit}
 \label{sec:Scint-ReadoutFirmware-ProgrammableDelays}
-The firmware offers the possibility to set individual delays for all input channels. This allows to apply the determined timing calibration for the channels (sec.\ \ref{sec:ScintData-TimingBias}) directly "online" in firmware, eliminating the need for timestamp realignment of the data in offline analysis.\footnote{This feature would be especially relevant if one would like to compute live coincidences or other timing-critical conditions, which is however not the case here.}
+The firmware offers the possibility to set individual delays for all input channels. This allows to apply the determined timing calibration for the channels (sec.\ \ref{sec:ScintData-TimingBias}) directly \enquote{online} in firmware, eliminating the need for timestamp realignment of the data in offline analysis.\footnote{This feature would be especially relevant if one would like to compute live coincidences or other timing-critical conditions, which is however not the case here.}
 \paragraph{Programmable delay logic}
 The programmable delay units for each input channel are realized with a data pipeline with a flexible exit point. The hit data arrives at the pipeline input and is shifted one position forward with each clock cycle. The data output is connected to one of the pipeline positions. A user-writable register determines the position of the exit point of the pipeline to the output. With this setup, it is possible to select the channel delay with a precision equivalent to the system clock period, which in this case is \SI{6.25}{\nano\second}. The maximum delay that can be programmed is 32 clock cycles (\SI{200}{\nano\second}). Fig.\ \ref{fig:Scint-ReadoutFirmware-DelayUnit-Scheme} illustrates the working principle of the described and implemented delay logic. An example for two initially misaligned input signals is presented in fig.\ \ref{fig:Scint-ReadoutFirmware-DelayUnit-Timing}. It is visible that the signals become aligned by delaying both channels by the correct amount.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{Scint-Firmware-DelayUnit-Scheme.pdf}
         \caption{Illustration of data pipeline with programmable exit point to realize delay effect.}
         \label{fig:Scint-ReadoutFirmware-DelayUnit-Scheme}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{Scint-Firmware-DelayUnit-Timing.pdf}
         \caption{Timing diagram for two signals passing through delay unit, becoming time aligned at the output.}
@@ -239,7 +239,7 @@ The programmable delay units for each input channel are realized with a data pip
 \label{sec:Scint-ReadoutFirmware-DeadTime}
 To suppress potential afterpulses of a hit propagating through the readout (sec.\ \ref{sec:Scintillators-SiPMs}), a dead time should be applied to each individual channel. These pulses may arise from \ac{SiPM} intrinsic afterpulses or from potential ringing of the analog circuit. Similar to the delay unit, it would be possible to apply such a dead time offline, however it is advantageous to do it already in the \ac{FPGA}, to reduce the data rate transferred to the backend and consequently the required bandwidth of the data link to the backend.
 \paragraph{Programmable dead time logic}
-The dead time is set for each channel individually with a user-writable register. Each time a hit occurs, a counter is set to the dead time value specified in this register. With each clock cycle, the counter decreases its value until it reaches zero. A consecutive hit is only forwarded, if the counter value is equal to zero. Note that with this simple logic, the achieved dead time is "extendable", meaning it is restarted with each newly arriving hit. The granularity of the selectable dead time is again \SI{6.25}{\nano\second}. Fig.\ \ref{fig:Scint-ReadoutFirmware-DeadTimeUnit-Timing} illustrates the working principle of the dead time unit with a timing diagram.
+The dead time is set for each channel individually with a user-writable register. Each time a hit occurs, a counter is set to the dead time value specified in this register. With each clock cycle, the counter decreases its value until it reaches zero. A consecutive hit is only forwarded, if the counter value is equal to zero. Note that with this simple logic, the achieved dead time is \enquote{extendable}, meaning it is restarted with each newly arriving hit. The granularity of the selectable dead time is again \SI{6.25}{\nano\second}. Fig.\ \ref{fig:Scint-ReadoutFirmware-DeadTimeUnit-Timing} illustrates the working principle of the dead time unit with a timing diagram.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.9\textwidth]{Scint-Firmware-DeadTimeUnit-Timing.pdf}
@@ -268,7 +268,7 @@ The chosen timestamp format is the same as the timestamp format of the \acp{OBDT
 \end{table}
 \paragraph{Synchronization with backend}
 The clock of the readout system can be assumed to be synchronous with the \ac{DT} backend system, because the \ac{lpGBT} chip is used to recover the clock from the backend. More details on this are discussed in sec.\ \ref{sec:Scint-lpGBTMezzanine}.
-\newline However, not only the clock, but also the timestamp values should be the same for all readout devices connected to the backend. To achieve this, one needs to receive a synchronization signal from the backend. The \ac{DT} backend sends a $BX$ reset signal (\texttt{BC0} signal) via the \ac{lpGBT} downlink to the readout board, which is received by the \ac{FPGA} firmware.\footnote{In \ac{CMS}, this \texttt{BC0} reset signal comes from the timing control system and is coupled to the clock of the \ac{LHC} accelerator. In the case of the test stand used in this work, it is simply emulated by the \ac{DT} backend system.} A dedicated logic block (the TTC receiver) was developed which reconstructs a timestamp which is aligned with this reset signal. This aligned timestamp is then used when timing information is assigned to the recorded scintillator hits. In this way it is ensured that the timestamps assigned to all events recorded by the \ac{DT} readout (\ac{OBDT} boards) and the scintillator readout board are the aligned in time and "count up" synchronously.
+\newline However, not only the clock, but also the timestamp values should be the same for all readout devices connected to the backend. To achieve this, one needs to receive a synchronization signal from the backend. The \ac{DT} backend sends a $BX$ reset signal (\texttt{BC0} signal) via the \ac{lpGBT} downlink to the readout board, which is received by the \ac{FPGA} firmware.\footnote{In \ac{CMS}, this \texttt{BC0} reset signal comes from the timing control system and is coupled to the clock of the \ac{LHC} accelerator. In the case of the test stand used in this work, it is simply emulated by the \ac{DT} backend system.} A dedicated logic block (the TTC receiver) was developed which reconstructs a timestamp which is aligned with this reset signal. This aligned timestamp is then used when timing information is assigned to the recorded scintillator hits. In this way it is ensured that the timestamps assigned to all events recorded by the \ac{DT} readout (\ac{OBDT} boards) and the scintillator readout board are the aligned in time and \enquote{count up} synchronously.
 
 %\FloatBarrier
 %\subsection{Online coincidence evaluation}
@@ -296,7 +296,7 @@ The bandwidth to transmit hit data from the readout board to the backend is limi
 For all 32 input channels, an individual hit buffer is employed in the firmware. This buffer is implemented as so-called \ac{FIFO} unit. As the name suggests, this unit stores the incoming data and outputs them in the order of arrival. The depth of the used \ac{FIFO} is 128 hits for each channel. The \ac{FIFO} logic employs the \texttt{XPM\_FIFO\_ASYNC} macro, which is part of the \ac{XPM} library provided by the \ac{FPGA} vendor AMD\textsuperscript{\texttrademark} Xilinx \cite{Xilinx-XPM}.
 \paragraph{Intelligent data funneling}
 The desired funneling ratio is $32:1$, meaning that only one hit should be transmitted at a time. The funnel logic is realized with a demultiplexer, which selects one of the 32 \ac{FIFO} outputs and connects them to the next firmware block, the data transmission unit (fig.\ \ref{fig:Scint-ReadoutFirmware-Overview}).
-\newline There are different approaches to select the active \ac{FIFO} for transmission and cycle through the input channels. The easiest approach is to use a counter for the \ac{FIFO} selector to create a "rotating funnel", giving all channels equal weight during hit transmission. However, if some channels experience higher rates than others, or only few channels are used at all, this \ac{FIFO} selection is inefficient. Potentially empty \acp{FIFO} would still take away transmission time which leads to less optimal usage of the available transmission bandwidth.
+\newline There are different approaches to select the active \ac{FIFO} for transmission and cycle through the input channels. The easiest approach is to use a counter for the \ac{FIFO} selector to create a \enquote{rotating funnel}, giving all channels equal weight during hit transmission. However, if some channels experience higher rates than others, or only few channels are used at all, this \ac{FIFO} selection is inefficient. Potentially empty \acp{FIFO} would still take away transmission time which leads to less optimal usage of the available transmission bandwidth.
 \newline The funneling logic implemented in the readout firmware does not use this simple approach. It rather selects only the \acp{FIFO} which have at least one hit stored in them. The result is improved rate capability and therefore better performance, at the cost of increased complexity and therefore more used logic elements on the \ac{FPGA}.
 
 

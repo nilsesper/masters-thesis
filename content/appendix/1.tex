@@ -1,6 +1,9 @@
 
 \section{Readout board and circuitry}
 
+\FloatBarrier
+\paragraph{SiPM channel mapping}
+Tab.\ \ref{tab:Scint-ReadoutBoard-Channels} presents the mapping of the \acp{SiPM} of the scintillation detector to the input channels of the two used readout boards.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|c} 
@@ -35,34 +38,45 @@
         & 1 & 2 & 28 & 1 & 28 \\ \hline
         \multirow{2}{*}{13} & 0 & 1 & 13 & 2 & 13 \\
         & 1 & 2 & 29 & 1 & 29 \\ \hline
+    \end{tabular}
+    \caption{Mapping of the scintillator layers, strips and \acp{SiPM} to the input channels of the two used readout (RO) boards.}
+    \label{tab:Scint-ReadoutBoard-Channels}
+\end{table}
+\begin{table}[htb]
+    \ContinuedFloat
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c} 
+        \hline
+        \multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{Layer 0} & \multicolumn{2}{c|}{Layer 1} \\ \hline
+        Strip & \ac{SiPM} & RO board & Channel & RO board & Channel \\ \hline
         \multirow{2}{*}{14} & 0 & 1 & 14 & 2 & 14 \\
         & 1 & 2 & 30 & 1 & 30 \\ \hline
         \multirow{2}{*}{15} & 0 & 1 & 15 & 2 & 15 \\
         & 1 & 2 & 31 & 1 & 31 \\ \hline
     \end{tabular}
-    \caption{Mapping of the scintillator layers, strips and \acp{SiPM} to the input channels of the two used readout (RO) boards.}
+    \caption{Mapping of the scintillator layers, strips and \acp{SiPM} to the input channels of the two used readout (RO) boards (continued).}
     \label{tab:Scint-ReadoutBoard-Channels}
 \end{table}
 
+\FloatBarrier
 \section{SiPM hits}
 
-\begin{SCfigure}[50][htb]
-    
-\end{SCfigure}
-
+\FloatBarrier
+\paragraph{SiPM channel mapping}
+In fig.\ \ref{fig:ScintData-Full-Hist-DeltaT-close}, a close-up view of the timestamp difference between hits of one single \ac{SiPM} in the close-up range of $\mathcal{O}(\SI{100}{\nano\second})$ is presented, for different applied dead times.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_HITS_DIFF_SPECIFIC_SAMESIPM_closeup_single.pdf}
-        \caption{Applied online dead time $t_\text{dead,online}=\SI{75}{\nano\second}$ inside the \ac{FPGA} firmware}
+        \caption{Applied online dead time $t_\text{dead,online}=\SI{75}{\nano\second}$ inside the \ac{FPGA} firmware.}
         \label{fig:ScintData-Full-Hist-DeltaT-close-onlyfpgadeadtime}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{large_combined_data_plots/53_comb__RAW_SCINT_HITS_DEADTIME_DIFF_SPECIFIC_SAMESIPM_closeup_single.pdf}
-        \caption{Additionally applied dead time $t_\text{dead,offline}=\SI{250}{\nano\second}$ in offline analysis}
+        \caption{Additionally applied dead time $t_\text{dead,offline}=\SI{250}{\nano\second}$ in offline analysis.}
         \label{fig:ScintData-Full-Hist-DeltaT-close-alsoofflinedeadtime}
     \end{subfigure}
     \hfill

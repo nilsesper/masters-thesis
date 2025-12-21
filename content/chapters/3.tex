@@ -92,18 +92,18 @@ The bunch crossing frequency of the \ac{LHC} of \SI{40}{\mega\hertz} is orders o
 %    \item Components of one DT chamber: 2-3 superlayers, 4 layers, drift cells
 %    \item Gas mixture, HV values
 %\end{itemize}
-The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{CMS}, covering the angular range $\left| \eta \right|\leq 1.2$. It consists of $250$ chambers in total. The chambers are arranged along the five wheels and $12$ sectors per wheel. Each sector features four stations of chambers, which are named MB1/2/3/4, respectively (where MB stands for "muon barrel"). In total, the \ac{DT} system has \num{171852} readout channels \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:DT-Layout} shows a schematic of the \ac{DT} chamber layout in one of the five wheels and a photo of a real chamber.
+The \ac{DT} system is one of the two muon detectors in the barrel region of \ac{CMS}, covering the angular range $\left| \eta \right|\leq 1.2$. It consists of $250$ chambers in total. The chambers are arranged along the five wheels and $12$ sectors per wheel. Each sector features four stations of chambers, which are named MB1/2/3/4, respectively (where MB stands for \enquote{muon barrel}). In total, the \ac{DT} system has \num{171852} readout channels \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:DT-Layout} shows a schematic of the \ac{DT} chamber layout in one of the five wheels and a photo of a real chamber.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.46\textwidth}
+    \begin{subfigure}[t]{0.46\textwidth}
         \centering
         \includegraphics[height=6cm]{DT-Wheel.png}
         \caption{Schematic drawing of the \ac{DT} chamber positions in one wheel (in cyan) \cite{CMS-Main}.}
         \label{fig:DT-Wheel}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.46\textwidth}
+    \begin{subfigure}[t]{0.46\textwidth}
         \centering
         \includegraphics[height=6cm]{DT-ChamberInsertion.jpg}
         \caption{Photo of a \ac{DT} chamber being mounted inside the \ac{CMS} yoke \cite{DT-ChamberInsertion}.}
@@ -118,25 +118,25 @@ A drift chamber measures around $2\times 2.5 \;\si{\meter^2}$ in area, with the 
 \paragraph{Drift cell}
 A close-up view of one drift cell is presented in fig.\ \ref{fig:DT-Cell}. It measures $42\times 13\;\si{\milli\meter^2}$ along its cross section. The cell length is determined by the chamber dimensions. The cell walls are the so-called I-beams, which are aluminum structures. These structures not only hold the cathode electrodes, but also provide structural integrity to the chamber. In the center of the cell is the anode wire, which is made from gold-plated steel with a diameter of \SI{50}{\micro\meter}. Two additional electrodes are located on the walls above and below the wire, to shape the electric field. The gas mixture used in the \ac{DT} system is composed of 85\% Argon and 15\% CO$_2$ (volume percentage). The voltages applied to the electrodes are as follows: $+3.6\;\si{\kilo\volt}$ to the wire, $-1.2\;\si{\kilo\volt}$ to the cathode strips and $+1.8\;\si{\kilo\volt}$ to the field-shaping electrodes \cite{CMS-Main,CMS-Muon,CMS-Phase2Muon}. The drift velocity for electrons with this configuration is approximately \cite{DT-CosmicsCalibrationVelocity}:
 \begin{equation}
-    v_D\approx\SI{54.5}{\frac{\micro\meter}{\nano\second}}.
+    v_\text{drift}\approx\SI{54.5}{\frac{\micro\meter}{\nano\second}}.
     \label{eq:DT-DriftVelocity}
 \end{equation}
 With the half-width of $d/2\approx\SI{21}{\mm}$ of a cell, the maximum electron drift time is:
 \begin{equation}
-    t_\text{drift,max}=\frac{d/2}{v_D}\approx\SI{385}{\nano\second}.
+    t_\text{drift,max}=\frac{d/2}{v_\text{drift}}\approx\SI{385}{\nano\second}.
     \label{eq:DT-MaxDriftTime}
 \end{equation}
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.35\textwidth}
+    \begin{subfigure}[t]{0.35\textwidth}
         \centering
         \includegraphics[height=4.7cm]{DT-Chamber.png}
         \caption{Setup of one \ac{DT} chamber consisting of three \acp{SL} \cite[adapted]{DT-Chamber}.}
         \label{fig:DT-Chamber}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.64\textwidth}
+    \begin{subfigure}[t]{0.64\textwidth}
         \centering
         \includegraphics[height=4.7cm]{DT-Cell.pdf}
         \caption{Sketch of a single \ac{DT} cell \cite[adapted]{DT-Cell}.}
@@ -182,22 +182,22 @@ In the context of the Phase-2 upgrade of \ac{CMS}, the readout electronics of th
 \label{sec:CMS-DTFrontend}
 The frontend electronics of the \ac{DT} system are located inside the chamber gas volume. They amplify the analog pulse from the drift cell wire and compare it to an amplitude threshold, providing a digital pulse on the output \cite{CMS-Main,CMS-Muon}. Because of their sufficient radiation hardness and their limited accessibility, these are the only part of the electronics to not be exchanged in the course of the Phase-2 upgrade \cite{CMS-Phase2Muon}.
 \paragraph{MAD chip}
-A custom \ac{ASIC} called "MAD" \cite{DT-MADChip} was developed for the frontend electronics, which houses the analog amplification and signal shaping circuits. One chip has inputs for four \ac{DT} wire signals. The charge to voltage conversion gain of the mounted chip is around \SI{3.4}{\milli\volt/\femto\coulomb}. The MAD chip also includes a discriminator stage (sec.\ \ref{sec:ReadoutElectronics-General}), which converts the analog signal into a digital pulse. The threshold of the discriminator can be set externally and usually is in the range $\mathcal{O}(\SI{30}{\milli\volt})$. Note that the digital output of the MAD chip is not single-ended, but in the form of a \ac{LVDS} pulse \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:MAD-DieShot} shows a die shot of the MAD chip.
+A custom \ac{ASIC} called \enquote{MAD} \cite{DT-MADChip} was developed for the frontend electronics, which houses the analog amplification and signal shaping circuits. One chip has inputs for four \ac{DT} wire signals. The charge to voltage conversion gain of the mounted chip is around \SI{3.4}{\milli\volt/\femto\coulomb}. The MAD chip also includes a discriminator stage (sec.\ \ref{sec:ReadoutElectronics-General}), which converts the analog signal into a digital pulse. The threshold of the discriminator can be set externally and usually is in the range $\mathcal{O}(\SI{30}{\milli\volt})$. Note that the digital output of the MAD chip is not single-ended, but in the form of a \ac{LVDS} pulse \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:MAD-DieShot} shows a die shot of the MAD chip.
 \paragraph{Frontend board}
 The \ac{FEB} is the \ac{PCB} which hosts the MAD chips. It connects the \ac{DT} wire pins with the MAD inputs and the \ac{LVDS} outputs of the MAD to the \acp{FEC} located on the casing of the \ac{DT} chamber. The \ac{FEB} is also wired to so-called testpulse connectors on the chamber casing. These are coupled to the inputs of the MAD to emulate a wire hit, when a testpulse signal is received. This testpulse capability is required for precise timing calibration between all channels (sec.\ \ref{sec:DTData-Testpulse}). A photo of one \ac{FEB} is shown in fig.\ \ref{fig:DT-Frontend}.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.33\textwidth}
+    \begin{subfigure}[t]{0.38\textwidth}
         \centering
-        \includegraphics[height=2.8cm]{MAD-DieShot.jpg}
+        \includegraphics[height=2.6cm]{MAD-DieShot.jpg}
         \caption{Die shot of the MAD \ac{ASIC} \cite{MAD-DieShot}.}
         \label{fig:MAD-DieShot}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.66\textwidth}
+    \begin{subfigure}[t]{0.61\textwidth}
         \centering
-        \includegraphics[height=2.8cm]{DT-FEB.png}
+        \includegraphics[height=2.6cm]{DT-FEB.png}
         \caption{Image of a \ac{DT} \acs{FEB} with four MAD chips \cite{CMS-Main}.}
         \label{fig:DT-FEB}
     \end{subfigure}
@@ -255,18 +255,18 @@ With the Phase-2 upgrade, not only the minicrate electronics will be exchanged, 
 The Phase-2 backend system is located in the service cavern of \ac{CMS} in \ac{ATCA} crates. It can be divided into two systems: The timing and slow control system is responsible for clock distribution to the minicrate as well as \ac{OBDT} configuration and control commands. The hardware platform used is the Serenity board \cite{Serenity-Main}. The hit data reception is handled by \ac{BMTL1} boards \cite{BMTL1-Main}. They run the barrel trigger primitive generation algorithms with data inputs from both \ac{DT} and \ac{RPC} detectors. Also, they forward the hit data to the \ac{CMS} \ac{DAQ} when a \ac{L1T} accept signal is present \cite{DT-Phase2Upgrade,CMS-Phase2Muon}. Both boards rely on an AMD Xilinx Virtex\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} VU13P \ac{FPGA} \cite{UltraScale-FPGA}. The described backend system structure is depicted in fig.\ \ref{fig:DT-Phase2Readout} above.
 \paragraph{Slow control and timing box}
 Since the Serenity and \ac{BMTL1} hardware is not yet available, a prototyping platform is used as intermediate backend system. This platform is not only used for firmware development, but also for the quality control of the minicrates at the different \ac{DT} minicrate assembly sites. As this backend was available in Aachen, the \ac{DT} chamber data presented in this work was also recorded with this system.
-\newline The hardware platform used is the \ac{HTG-940} \ac{FPGA} evaluation board \cite{HTG-940} which hosts an AMD Xilinx Virtex\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} VU9P \ac{FPGA} \cite{UltraScale-FPGA}. The similarity in \ac{FPGA} family and performance enables this module to be used as the prototype backend platform. The backend device built around this \ac{FPGA} evaluation board is referred to as "\acl{SCTbox}" (\acs{SCTbox}). Fig.\ \ref{fig:DT-Backend} shows a picture of both the evaluation board and the \ac{SCTbox}.
+\newline The hardware platform used is the \ac{HTG-940} \ac{FPGA} evaluation board \cite{HTG-940} which hosts an AMD Xilinx Virtex\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} VU9P \ac{FPGA} \cite{UltraScale-FPGA}. The similarity in \ac{FPGA} family and performance enables this module to be used as the prototype backend platform. The backend device built around this \ac{FPGA} evaluation board is referred to as \enquote{\acl{SCTbox}} (\acs{SCTbox}). Fig.\ \ref{fig:DT-Backend} shows a picture of both the evaluation board and the \ac{SCTbox}.
 \begin{figure}[htb]
     \centering
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[height=4cm]{HTG-940-Board.png}
         \caption{\ac{HTG-940} \ac{FPGA} evaluation board \cite{HTG-940}.}
         \label{fig:HTG-940-Board}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.49\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[height=4cm]{DTBackend-Box.png}
         \caption{Image of the \ac{SCTbox} with optics patch panel.}
@@ -361,7 +361,7 @@ The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OB
     \label{fig:MB1Minicrate-Mounted}
 \end{figure}
 \paragraph{Backend}
-The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which is placed next to the test stand and connected to the minicrate. The backend rack is prominently visible in fig.\ \ref{fig:DT-Teststand} above. The mapping of the backend slow control and readout channels, i.e.\ the optical fiber link numbers are given in tab.\ \ref{tab:MB1Backend-ReadoutChannelMapping} in the appendix. The \ac{SCTbox} is connected to a server located inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
+The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which is placed next to the test stand and connected to the minicrate. The backend rack is prominently visible in fig.\ \ref{fig:DT-Teststand} above. The \ac{SCTbox} is connected to a server located inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
 \newline The \ac{MONSA} system (sec.\ \ref{sec:CMS-DTBackend}) backend is also not available in Aachen, therefore a dedicated emulator can execute the functions normally executed by the \ac{MONSA}. This emulator is also controlled by the server.
 
 \subsection{Coordinate frame and timestamp format}

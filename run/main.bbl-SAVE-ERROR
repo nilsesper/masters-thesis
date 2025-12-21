@@ -1390,7 +1390,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{JINST}
-      \field{note}{Also published by CERN Geneva in 2010}
       \field{title}{{The CMS experiment at the CERN LHC}}
       \field{volume}{3}
       \field{year}{2008}
@@ -1492,7 +1491,6 @@
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Upgrade Project Leader Deputies: Lucia Silvestris (INFN-Bari), Jeremy Mans (University of Minnesota) Additional contacts: Lucia.Silvestris@cern.ch, Jeremy.Mans@cern.ch}
       \field{title}{Technical Proposal for the Phase-II Upgrade of the CMS Detector}
       \field{type}{techreport}
       \field{year}{2015}
@@ -1508,11 +1506,9 @@
     \endentry
     \entry{CMS-Phase2Muon}{report}{}{}
       \name{author}{1}{}{%
-        {{hash=e742ba4e105e5341464c3528b118ff41}{%
-           family={Collaboration},
-           familyi={C\bibinitperiod},
-           given={CMS},
-           giveni={C\bibinitperiod}}}%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
       }
       \list{institution}{1}{%
         {CERN}%
@@ -1520,20 +1516,19 @@
       \list{location}{1}{%
         {Geneva}%
       }
-      \strng{namehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \strng{bibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorbibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authornamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \field{extraname}{1}
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{2}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{This is the final version, approved by the LHCC.}
       \field{title}{The Phase-2 Upgrade of the CMS Muon Detectors}
       \field{type}{techreport}
       \field{year}{2017}
@@ -1821,7 +1816,7 @@
       \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
       \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
       \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{9}
       \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
@@ -1848,25 +1843,24 @@
     \endentry
     \entry{SM-Wikimedia}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=b01821bb0ad0dd7a9d014feec7cc1206}{%
-           family={Wikimedia\bibnamedelima Commons},
-           familyi={W\bibinitperiod\bibinitdelim C\bibinitperiod},
-           given={MissMJ},
-           giveni={M\bibinitperiod}}}%
+        {{hash=e0dedb40dda8df32fd056b6b6551502b}{%
+           family={{Wikimedia Commons}},
+           familyi={W\bibinitperiod}}}%
       }
-      \strng{namehash}{b01821bb0ad0dd7a9d014feec7cc1206}
-      \strng{fullhash}{b01821bb0ad0dd7a9d014feec7cc1206}
-      \strng{fullhashraw}{b01821bb0ad0dd7a9d014feec7cc1206}
-      \strng{bibnamehash}{b01821bb0ad0dd7a9d014feec7cc1206}
-      \strng{authorbibnamehash}{b01821bb0ad0dd7a9d014feec7cc1206}
-      \strng{authornamehash}{b01821bb0ad0dd7a9d014feec7cc1206}
-      \strng{authorfullhash}{b01821bb0ad0dd7a9d014feec7cc1206}
-      \strng{authorfullhashraw}{b01821bb0ad0dd7a9d014feec7cc1206}
+      \strng{namehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{bibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorbibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authornamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
       \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{Author: MissMJ}
       \field{title}{Standard model of elementary particles}
       \field{year}{2019}
       \verb{urlraw}
@@ -1988,18 +1982,20 @@
     \endentry
     \entry{BoseEinstein-Bose}{article}{}{}
       \name{author}{1}{}{%
-        {{hash=20383fe03b614c5fb3a4da13e1d0b873}{%
+        {{hash=e215bc1674a8187b33a38b56a490b85c}{%
            family={Bose},
-           familyi={B\bibinitperiod}}}%
+           familyi={B\bibinitperiod},
+           given={Satyendranath},
+           giveni={S\bibinitperiod}}}%
       }
-      \strng{namehash}{20383fe03b614c5fb3a4da13e1d0b873}
-      \strng{fullhash}{20383fe03b614c5fb3a4da13e1d0b873}
-      \strng{fullhashraw}{20383fe03b614c5fb3a4da13e1d0b873}
-      \strng{bibnamehash}{20383fe03b614c5fb3a4da13e1d0b873}
-      \strng{authorbibnamehash}{20383fe03b614c5fb3a4da13e1d0b873}
-      \strng{authornamehash}{20383fe03b614c5fb3a4da13e1d0b873}
-      \strng{authorfullhash}{20383fe03b614c5fb3a4da13e1d0b873}
-      \strng{authorfullhashraw}{20383fe03b614c5fb3a4da13e1d0b873}
+      \strng{namehash}{e215bc1674a8187b33a38b56a490b85c}
+      \strng{fullhash}{e215bc1674a8187b33a38b56a490b85c}
+      \strng{fullhashraw}{e215bc1674a8187b33a38b56a490b85c}
+      \strng{bibnamehash}{e215bc1674a8187b33a38b56a490b85c}
+      \strng{authorbibnamehash}{e215bc1674a8187b33a38b56a490b85c}
+      \strng{authornamehash}{e215bc1674a8187b33a38b56a490b85c}
+      \strng{authorfullhash}{e215bc1674a8187b33a38b56a490b85c}
+      \strng{authorfullhashraw}{e215bc1674a8187b33a38b56a490b85c}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -2103,21 +2099,19 @@
     \endentry
     \entry{HiggsDiscovery-CMS}{article}{}{}
       \name{author}{1}{}{%
-        {{hash=e742ba4e105e5341464c3528b118ff41}{%
-           family={Collaboration},
-           familyi={C\bibinitperiod},
-           given={CMS},
-           giveni={C\bibinitperiod}}}%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
       }
-      \strng{namehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \strng{bibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorbibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authornamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \field{extraname}{2}
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{4}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -2143,21 +2137,19 @@
     \endentry
     \entry{HiggsDiscovery-ATLAS}{article}{}{}
       \name{author}{1}{}{%
-        {{hash=a3364242a05dc5a80a93fa55804031af}{%
-           family={Collaboration},
-           familyi={C\bibinitperiod},
-           given={ATLAS},
-           giveni={A\bibinitperiod}}}%
+        {{hash=ebfe6052e5f504e4a3579c49c44afe41}{%
+           family={{ATLAS Collaboration}},
+           familyi={A\bibinitperiod}}}%
       }
-      \strng{namehash}{a3364242a05dc5a80a93fa55804031af}
-      \strng{fullhash}{a3364242a05dc5a80a93fa55804031af}
-      \strng{fullhashraw}{a3364242a05dc5a80a93fa55804031af}
-      \strng{bibnamehash}{a3364242a05dc5a80a93fa55804031af}
-      \strng{authorbibnamehash}{a3364242a05dc5a80a93fa55804031af}
-      \strng{authornamehash}{a3364242a05dc5a80a93fa55804031af}
-      \strng{authorfullhash}{a3364242a05dc5a80a93fa55804031af}
-      \strng{authorfullhashraw}{a3364242a05dc5a80a93fa55804031af}
-      \field{extraname}{3}
+      \strng{namehash}{ebfe6052e5f504e4a3579c49c44afe41}
+      \strng{fullhash}{ebfe6052e5f504e4a3579c49c44afe41}
+      \strng{fullhashraw}{ebfe6052e5f504e4a3579c49c44afe41}
+      \strng{bibnamehash}{ebfe6052e5f504e4a3579c49c44afe41}
+      \strng{authorbibnamehash}{ebfe6052e5f504e4a3579c49c44afe41}
+      \strng{authornamehash}{ebfe6052e5f504e4a3579c49c44afe41}
+      \strng{authorfullhash}{ebfe6052e5f504e4a3579c49c44afe41}
+      \strng{authorfullhashraw}{ebfe6052e5f504e4a3579c49c44afe41}
+      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -2429,7 +2421,6 @@
       \field{labeltitlesource}{title}
       \field{issn}{0920-5632}
       \field{journaltitle}{Nuclear Physics B - Proceedings Supplements}
-      \field{note}{Proceedings of the 9th workshop on Science with the New Generation of High Energy Gamma-ray Experiments: From high energy gamma sources to cosmic rays, one century after their discovery}
       \field{title}{The History of Cosmic Ray Studies after Hess}
       \field{volume}{239-240}
       \field{year}{2013}
@@ -4139,12 +4130,12 @@
       \strng{authornamehash}{ebfe6052e5f504e4a3579c49c44afe41}
       \strng{authorfullhash}{ebfe6052e5f504e4a3579c49c44afe41}
       \strng{authorfullhashraw}{ebfe6052e5f504e4a3579c49c44afe41}
+      \field{extraname}{2}
       \field{sortinit}{9}
       \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{JINST}
-      \field{note}{Also published by CERN Geneva in 2010}
       \field{title}{{The ATLAS Experiment at the CERN Large Hadron Collider}}
       \field{volume}{3}
       \field{year}{2008}
@@ -4228,25 +4219,24 @@
     \endentry
     \entry{pnJunction-Wikimedia}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=bf1132fe7f8830eeebe90e54c2927ac9}{%
-           family={Wikimedia\bibnamedelima Commons},
-           familyi={W\bibinitperiod\bibinitdelim C\bibinitperiod},
-           given={TheNoise},
-           giveni={T\bibinitperiod}}}%
+        {{hash=e0dedb40dda8df32fd056b6b6551502b}{%
+           family={{Wikimedia Commons}},
+           familyi={W\bibinitperiod}}}%
       }
-      \strng{namehash}{bf1132fe7f8830eeebe90e54c2927ac9}
-      \strng{fullhash}{bf1132fe7f8830eeebe90e54c2927ac9}
-      \strng{fullhashraw}{bf1132fe7f8830eeebe90e54c2927ac9}
-      \strng{bibnamehash}{bf1132fe7f8830eeebe90e54c2927ac9}
-      \strng{authorbibnamehash}{bf1132fe7f8830eeebe90e54c2927ac9}
-      \strng{authornamehash}{bf1132fe7f8830eeebe90e54c2927ac9}
-      \strng{authorfullhash}{bf1132fe7f8830eeebe90e54c2927ac9}
-      \strng{authorfullhashraw}{bf1132fe7f8830eeebe90e54c2927ac9}
+      \strng{namehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{bibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorbibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authornamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
       \field{extraname}{2}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{Author: TheNoise}
       \field{title}{A PN junction in thermal equilibrium with zero bias voltage applied}
       \field{year}{2007}
       \verb{urlraw}
@@ -4453,7 +4443,6 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{General Photo}
       \field{title}{The CERN accelerator complex, layout in 2022}
       \field{year}{2022}
       \verb{urlraw}
@@ -7624,14 +7613,29 @@
       \endverb
     \endentry
     \entry{CMS-Phase2Tracker}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
+      }
       \list{institution}{1}{%
         {CERN}%
       }
       \list{location}{1}{%
         {Geneva}%
       }
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{5}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The Phase-2 Upgrade of the CMS Tracker}
       \field{type}{techreport}
@@ -7647,16 +7651,30 @@
       \endverb
     \endentry
     \entry{CMS-Phase2BarrelCalo}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
+      }
       \list{institution}{1}{%
         {CERN}%
       }
       \list{location}{1}{%
         {Geneva}%
       }
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{6}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{This is the final version, approved by the LHCC}
       \field{title}{The Phase-2 Upgrade of the CMS Barrel Calorimeters}
       \field{type}{techreport}
       \field{year}{2017}
@@ -7668,14 +7686,29 @@
       \endverb
     \endentry
     \entry{CMS-Phase2EndcapCalo}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
+      }
       \list{institution}{1}{%
         {CERN}%
       }
       \list{location}{1}{%
         {Geneva}%
       }
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{7}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{The Phase-2 Upgrade of the CMS Endcap Calorimeter}
       \field{type}{techreport}
@@ -7728,11 +7761,9 @@
     \endentry
     \entry{CMS-Phase2L1Trigger}{report}{}{}
       \name{author}{1}{}{%
-        {{hash=e742ba4e105e5341464c3528b118ff41}{%
-           family={Collaboration},
-           familyi={C\bibinitperiod},
-           given={CMS},
-           giveni={C\bibinitperiod}}}%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
       }
       \list{institution}{1}{%
         {CERN}%
@@ -7740,20 +7771,19 @@
       \list{location}{1}{%
         {Geneva}%
       }
-      \strng{namehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \strng{bibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorbibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authornamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \field{extraname}{4}
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{8}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Final version}
       \field{title}{{The Phase-2 Upgrade of the CMS Level-1 Trigger}}
       \field{type}{techreport}
       \field{year}{2020}
@@ -7766,11 +7796,9 @@
     \endentry
     \entry{CMS-Phase2DAQHLT}{report}{}{}
       \name{author}{1}{}{%
-        {{hash=e742ba4e105e5341464c3528b118ff41}{%
-           family={Collaboration},
-           familyi={C\bibinitperiod},
-           given={CMS},
-           giveni={C\bibinitperiod}}}%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
       }
       \list{institution}{1}{%
         {CERN}%
@@ -7778,20 +7806,19 @@
       \list{location}{1}{%
         {Geneva}%
       }
-      \strng{namehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \strng{bibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorbibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authornamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \field{extraname}{5}
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{9}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{This is the final version of the document, approved by the LHCC}
       \field{title}{The Phase-2 Upgrade of the CMS Data Acquisition and High Level Trigger}
       \field{type}{techreport}
       \field{year}{2021}
@@ -7868,7 +7895,6 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{CMS Collection.}
       \field{title}{{Images of CMS Muons - Drift Tubes (DT)}}
       \field{year}{2008}
       \verb{urlraw}
@@ -7880,21 +7906,19 @@
     \endentry
     \entry{DT-CosmicsCalibrationVelocity}{article}{}{}
       \name{author}{1}{}{%
-        {{hash=e742ba4e105e5341464c3528b118ff41}{%
-           family={Collaboration},
-           familyi={C\bibinitperiod},
-           given={CMS},
-           giveni={C\bibinitperiod}}}%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
       }
-      \strng{namehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{fullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \strng{bibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorbibnamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authornamehash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhash}{e742ba4e105e5341464c3528b118ff41}
-      \strng{authorfullhashraw}{e742ba4e105e5341464c3528b118ff41}
-      \field{extraname}{6}
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{10}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -7921,11 +7945,9 @@
     \endentry
     \entry{DT-Chamber}{report}{}{}
       \name{author}{1}{}{%
-        {{hash=143e79e9980c55020c4bac4723b0b3de}{%
-           family={Group},
-           familyi={G\bibinitperiod},
-           given={CMS\bibnamedelima Muon},
-           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d4304afa09b08e1ff9ebbec630662fca}{%
+           family={{CMS Muon Group}},
+           familyi={C\bibinitperiod}}}%
       }
       \list{institution}{1}{%
         {CERN}%
@@ -7933,21 +7955,19 @@
       \list{location}{1}{%
         {Geneva}%
       }
-      \strng{namehash}{143e79e9980c55020c4bac4723b0b3de}
-      \strng{fullhash}{143e79e9980c55020c4bac4723b0b3de}
-      \strng{fullhashraw}{143e79e9980c55020c4bac4723b0b3de}
-      \strng{bibnamehash}{143e79e9980c55020c4bac4723b0b3de}
-      \strng{authorbibnamehash}{143e79e9980c55020c4bac4723b0b3de}
-      \strng{authornamehash}{143e79e9980c55020c4bac4723b0b3de}
-      \strng{authorfullhash}{143e79e9980c55020c4bac4723b0b3de}
-      \strng{authorfullhashraw}{143e79e9980c55020c4bac4723b0b3de}
-      \field{extraname}{1}
+      \strng{namehash}{d4304afa09b08e1ff9ebbec630662fca}
+      \strng{fullhash}{d4304afa09b08e1ff9ebbec630662fca}
+      \strng{fullhashraw}{d4304afa09b08e1ff9ebbec630662fca}
+      \strng{bibnamehash}{d4304afa09b08e1ff9ebbec630662fca}
+      \strng{authorbibnamehash}{d4304afa09b08e1ff9ebbec630662fca}
+      \strng{authornamehash}{d4304afa09b08e1ff9ebbec630662fca}
+      \strng{authorfullhash}{d4304afa09b08e1ff9ebbec630662fca}
+      \strng{authorfullhashraw}{d4304afa09b08e1ff9ebbec630662fca}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprinttype}{arXiv}
-      \field{note}{10 pages, 7 figures, to be published in JINST, editor I. González Caballero}
       \field{number}{12}
       \field{title}{Study of the effects of radiation on the CMS Drift Tubes Muon Detector for the HL-LHC}
       \field{type}{techreport}
@@ -7994,8 +8014,23 @@
       \endverb
     \endentry
     \entry{DT-Performance2024}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=0448d009825e0bfac7316a655abf5740}{%
+           family={{CMS Collaboration}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{fullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \strng{bibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorbibnamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authornamehash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhash}{0448d009825e0bfac7316a655abf5740}
+      \strng{authorfullhashraw}{0448d009825e0bfac7316a655abf5740}
+      \field{extraname}{11}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{DT performance in 2024 and some comparisons with the past}
       \field{year}{2024}
@@ -8772,20 +8807,18 @@
     \endentry
     \entry{UltraScale-FPGA}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
-           family={Inc.},
-           familyi={I\bibinitperiod},
-           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=82528b9f49a20c6f4295ec0863c14ec9}{%
+           family={{Advanced Micro Devices Inc.}},
+           familyi={A\bibinitperiod}}}%
       }
-      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{namehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{bibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorbibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authornamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
       \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -8801,20 +8834,18 @@
     \endentry
     \entry{HTG-940}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=a6ec74296a7764f9b7efad59988c2375}{%
-           family={LLC},
-           familyi={L\bibinitperiod},
-           given={HiTech\bibnamedelima Global},
-           giveni={H\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=19f6e7374a788b2cdd3f2d2f2ba12907}{%
+           family={{HiTech Global LLC}},
+           familyi={H\bibinitperiod}}}%
       }
-      \strng{namehash}{a6ec74296a7764f9b7efad59988c2375}
-      \strng{fullhash}{a6ec74296a7764f9b7efad59988c2375}
-      \strng{fullhashraw}{a6ec74296a7764f9b7efad59988c2375}
-      \strng{bibnamehash}{a6ec74296a7764f9b7efad59988c2375}
-      \strng{authorbibnamehash}{a6ec74296a7764f9b7efad59988c2375}
-      \strng{authornamehash}{a6ec74296a7764f9b7efad59988c2375}
-      \strng{authorfullhash}{a6ec74296a7764f9b7efad59988c2375}
-      \strng{authorfullhashraw}{a6ec74296a7764f9b7efad59988c2375}
+      \strng{namehash}{19f6e7374a788b2cdd3f2d2f2ba12907}
+      \strng{fullhash}{19f6e7374a788b2cdd3f2d2f2ba12907}
+      \strng{fullhashraw}{19f6e7374a788b2cdd3f2d2f2ba12907}
+      \strng{bibnamehash}{19f6e7374a788b2cdd3f2d2f2ba12907}
+      \strng{authorbibnamehash}{19f6e7374a788b2cdd3f2d2f2ba12907}
+      \strng{authornamehash}{19f6e7374a788b2cdd3f2d2f2ba12907}
+      \strng{authorfullhash}{19f6e7374a788b2cdd3f2d2f2ba12907}
+      \strng{authorfullhashraw}{19f6e7374a788b2cdd3f2d2f2ba12907}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -8829,21 +8860,18 @@
     \endentry
     \entry{QSFP+-Main}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=95901dd025f6791a17cc2b4554323b5b}{%
-           family={Group},
-           familyi={G\bibinitperiod},
-           given={SNIA\textsuperscript{\texttrademark}\bibnamedelimb Technical\bibnamedelima Working},
-           giveni={S\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=841ed2a67d82a440e0576ec246d56a80}{%
+           family={{{SNIA\textsuperscript{\texttrademark} Technical Working Group}}},
+           familyi={S\bibinitperiod}}}%
       }
-      \strng{namehash}{95901dd025f6791a17cc2b4554323b5b}
-      \strng{fullhash}{95901dd025f6791a17cc2b4554323b5b}
-      \strng{fullhashraw}{95901dd025f6791a17cc2b4554323b5b}
-      \strng{bibnamehash}{95901dd025f6791a17cc2b4554323b5b}
-      \strng{authorbibnamehash}{95901dd025f6791a17cc2b4554323b5b}
-      \strng{authornamehash}{95901dd025f6791a17cc2b4554323b5b}
-      \strng{authorfullhash}{95901dd025f6791a17cc2b4554323b5b}
-      \strng{authorfullhashraw}{95901dd025f6791a17cc2b4554323b5b}
-      \field{extraname}{2}
+      \strng{namehash}{841ed2a67d82a440e0576ec246d56a80}
+      \strng{fullhash}{841ed2a67d82a440e0576ec246d56a80}
+      \strng{fullhashraw}{841ed2a67d82a440e0576ec246d56a80}
+      \strng{bibnamehash}{841ed2a67d82a440e0576ec246d56a80}
+      \strng{authorbibnamehash}{841ed2a67d82a440e0576ec246d56a80}
+      \strng{authornamehash}{841ed2a67d82a440e0576ec246d56a80}
+      \strng{authorfullhash}{841ed2a67d82a440e0576ec246d56a80}
+      \strng{authorfullhashraw}{841ed2a67d82a440e0576ec246d56a80}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -8859,7 +8887,7 @@
     \entry{FMC-Main}{online}{}{}
       \name{author}{1}{}{%
         {{hash=94fcd2bedc851599990c5acbbfe86b00}{%
-           family={VITA},
+           family={{VITA}},
            familyi={V\bibinitperiod}}}%
       }
       \strng{namehash}{94fcd2bedc851599990c5acbbfe86b00}
@@ -10166,20 +10194,18 @@
     \endentry
     \entry{Scint-PlasticScint}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=c10cb9d0bd0aeb3a628a5e750fd846a0}{%
-           family={Technology},
-           familyi={T\bibinitperiod},
-           given={Eljen},
-           giveni={E\bibinitperiod}}}%
+        {{hash=7b3331449b14485dca15dbccc8fa231d}{%
+           family={{Eljen Technology}},
+           familyi={E\bibinitperiod}}}%
       }
-      \strng{namehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
-      \strng{fullhash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
-      \strng{fullhashraw}{c10cb9d0bd0aeb3a628a5e750fd846a0}
-      \strng{bibnamehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
-      \strng{authorbibnamehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
-      \strng{authornamehash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
-      \strng{authorfullhash}{c10cb9d0bd0aeb3a628a5e750fd846a0}
-      \strng{authorfullhashraw}{c10cb9d0bd0aeb3a628a5e750fd846a0}
+      \strng{namehash}{7b3331449b14485dca15dbccc8fa231d}
+      \strng{fullhash}{7b3331449b14485dca15dbccc8fa231d}
+      \strng{fullhashraw}{7b3331449b14485dca15dbccc8fa231d}
+      \strng{bibnamehash}{7b3331449b14485dca15dbccc8fa231d}
+      \strng{authorbibnamehash}{7b3331449b14485dca15dbccc8fa231d}
+      \strng{authornamehash}{7b3331449b14485dca15dbccc8fa231d}
+      \strng{authorfullhash}{7b3331449b14485dca15dbccc8fa231d}
+      \strng{authorfullhashraw}{7b3331449b14485dca15dbccc8fa231d}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -10195,7 +10221,7 @@
     \entry{Scint-Tyvek}{online}{}{}
       \name{author}{1}{}{%
         {{hash=25577a0627bf9c63fcbe99ef9e258258}{%
-           family={DuPont\textsuperscript{\texttrademark}},
+           family={{{DuPont\textsuperscript{\texttrademark}}}},
            familyi={D\bibinitperiod}}}%
       }
       \strng{namehash}{25577a0627bf9c63fcbe99ef9e258258}
@@ -10220,18 +10246,18 @@
     \endentry
     \entry{Scint-OnsemiSiPM}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=cbfd92d5f19adbe4e2f5711f48fc27c2}{%
-           family={onsemi\textsuperscript{\texttrademark}},
-           familyi={o\bibinitperiod}}}%
+        {{hash=96ec55877b1a56decc7ec62f7b3bd261}{%
+           family={{{Onsemi\textsuperscript{\texttrademark}}}},
+           familyi={O\bibinitperiod}}}%
       }
-      \strng{namehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
-      \strng{fullhash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
-      \strng{fullhashraw}{cbfd92d5f19adbe4e2f5711f48fc27c2}
-      \strng{bibnamehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
-      \strng{authorbibnamehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
-      \strng{authornamehash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
-      \strng{authorfullhash}{cbfd92d5f19adbe4e2f5711f48fc27c2}
-      \strng{authorfullhashraw}{cbfd92d5f19adbe4e2f5711f48fc27c2}
+      \strng{namehash}{96ec55877b1a56decc7ec62f7b3bd261}
+      \strng{fullhash}{96ec55877b1a56decc7ec62f7b3bd261}
+      \strng{fullhashraw}{96ec55877b1a56decc7ec62f7b3bd261}
+      \strng{bibnamehash}{96ec55877b1a56decc7ec62f7b3bd261}
+      \strng{authorbibnamehash}{96ec55877b1a56decc7ec62f7b3bd261}
+      \strng{authornamehash}{96ec55877b1a56decc7ec62f7b3bd261}
+      \strng{authorfullhash}{96ec55877b1a56decc7ec62f7b3bd261}
+      \strng{authorfullhashraw}{96ec55877b1a56decc7ec62f7b3bd261}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -10246,20 +10272,18 @@
     \endentry
     \entry{Scint-Elastosil}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=8b6c676f52ec870d67bce2d5ce32c06a}{%
-           family={AG},
-           familyi={A\bibinitperiod},
-           given={Wacker\bibnamedelima Chemie},
-           giveni={W\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=9f0ccb0cbb7db4107fff04652fbd44e7}{%
+           family={{Wacker Chemie AG}},
+           familyi={W\bibinitperiod}}}%
       }
-      \strng{namehash}{8b6c676f52ec870d67bce2d5ce32c06a}
-      \strng{fullhash}{8b6c676f52ec870d67bce2d5ce32c06a}
-      \strng{fullhashraw}{8b6c676f52ec870d67bce2d5ce32c06a}
-      \strng{bibnamehash}{8b6c676f52ec870d67bce2d5ce32c06a}
-      \strng{authorbibnamehash}{8b6c676f52ec870d67bce2d5ce32c06a}
-      \strng{authornamehash}{8b6c676f52ec870d67bce2d5ce32c06a}
-      \strng{authorfullhash}{8b6c676f52ec870d67bce2d5ce32c06a}
-      \strng{authorfullhashraw}{8b6c676f52ec870d67bce2d5ce32c06a}
+      \strng{namehash}{9f0ccb0cbb7db4107fff04652fbd44e7}
+      \strng{fullhash}{9f0ccb0cbb7db4107fff04652fbd44e7}
+      \strng{fullhashraw}{9f0ccb0cbb7db4107fff04652fbd44e7}
+      \strng{bibnamehash}{9f0ccb0cbb7db4107fff04652fbd44e7}
+      \strng{authorbibnamehash}{9f0ccb0cbb7db4107fff04652fbd44e7}
+      \strng{authornamehash}{9f0ccb0cbb7db4107fff04652fbd44e7}
+      \strng{authorfullhash}{9f0ccb0cbb7db4107fff04652fbd44e7}
+      \strng{authorfullhashraw}{9f0ccb0cbb7db4107fff04652fbd44e7}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -10274,20 +10298,18 @@
     \endentry
     \entry{Raspberry-Pi}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=03eb7fa9a11a8c6d79113b8a4ace0c93}{%
-           family={Foundation},
-           familyi={F\bibinitperiod},
-           given={Raspberry\bibnamedelima Pi},
-           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=0dac029e46904a2d35a186cfa0c1303c}{%
+           family={{Raspberry Pi Foundation}},
+           familyi={R\bibinitperiod}}}%
       }
-      \strng{namehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
-      \strng{fullhash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
-      \strng{fullhashraw}{03eb7fa9a11a8c6d79113b8a4ace0c93}
-      \strng{bibnamehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
-      \strng{authorbibnamehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
-      \strng{authornamehash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
-      \strng{authorfullhash}{03eb7fa9a11a8c6d79113b8a4ace0c93}
-      \strng{authorfullhashraw}{03eb7fa9a11a8c6d79113b8a4ace0c93}
+      \strng{namehash}{0dac029e46904a2d35a186cfa0c1303c}
+      \strng{fullhash}{0dac029e46904a2d35a186cfa0c1303c}
+      \strng{fullhashraw}{0dac029e46904a2d35a186cfa0c1303c}
+      \strng{bibnamehash}{0dac029e46904a2d35a186cfa0c1303c}
+      \strng{authorbibnamehash}{0dac029e46904a2d35a186cfa0c1303c}
+      \strng{authornamehash}{0dac029e46904a2d35a186cfa0c1303c}
+      \strng{authorfullhash}{0dac029e46904a2d35a186cfa0c1303c}
+      \strng{authorfullhashraw}{0dac029e46904a2d35a186cfa0c1303c}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -10300,22 +10322,20 @@
       \verb https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
       \endverb
     \endentry
-    \entry{FPGA-Trentz}{online}{}{}
+    \entry{FPGA-Trenz}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=660845b5edd9eb328ce07489550e48c9}{%
-           family={GmbH},
-           familyi={G\bibinitperiod},
-           given={Trentz\bibnamedelima Elektronik},
-           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=aeade7944d3cc96d37208389948f048a}{%
+           family={{Trenz Elektronic GmbH}},
+           familyi={T\bibinitperiod}}}%
       }
-      \strng{namehash}{660845b5edd9eb328ce07489550e48c9}
-      \strng{fullhash}{660845b5edd9eb328ce07489550e48c9}
-      \strng{fullhashraw}{660845b5edd9eb328ce07489550e48c9}
-      \strng{bibnamehash}{660845b5edd9eb328ce07489550e48c9}
-      \strng{authorbibnamehash}{660845b5edd9eb328ce07489550e48c9}
-      \strng{authornamehash}{660845b5edd9eb328ce07489550e48c9}
-      \strng{authorfullhash}{660845b5edd9eb328ce07489550e48c9}
-      \strng{authorfullhashraw}{660845b5edd9eb328ce07489550e48c9}
+      \strng{namehash}{aeade7944d3cc96d37208389948f048a}
+      \strng{fullhash}{aeade7944d3cc96d37208389948f048a}
+      \strng{fullhashraw}{aeade7944d3cc96d37208389948f048a}
+      \strng{bibnamehash}{aeade7944d3cc96d37208389948f048a}
+      \strng{authorbibnamehash}{aeade7944d3cc96d37208389948f048a}
+      \strng{authornamehash}{aeade7944d3cc96d37208389948f048a}
+      \strng{authorfullhash}{aeade7944d3cc96d37208389948f048a}
+      \strng{authorfullhashraw}{aeade7944d3cc96d37208389948f048a}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -10330,20 +10350,18 @@
     \endentry
     \entry{UltraScale-FPGA-SelectIO-Resources}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
-           family={Inc.},
-           familyi={I\bibinitperiod},
-           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=82528b9f49a20c6f4295ec0863c14ec9}{%
+           family={{Advanced Micro Devices Inc.}},
+           familyi={A\bibinitperiod}}}%
       }
-      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{namehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{bibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorbibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authornamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
       \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -10645,20 +10663,18 @@
     \endentry
     \entry{UltraScale-FPGA-SelectIO-Switching}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
-           family={Inc.},
-           familyi={I\bibinitperiod},
-           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=82528b9f49a20c6f4295ec0863c14ec9}{%
+           family={{Advanced Micro Devices Inc.}},
+           familyi={A\bibinitperiod}}}%
       }
-      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{namehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{bibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorbibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authornamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
       \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -10674,20 +10690,18 @@
     \endentry
     \entry{LTSpice}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=c4e4a40d251ae6c4d2544a70945bc176}{%
-           family={Analog\bibnamedelima Devices},
-           familyi={A\bibinitperiod\bibinitdelim D\bibinitperiod},
-           given={Inc.},
-           giveni={I\bibinitperiod}}}%
+        {{hash=f81b34da5839253845c696bf71a74915}{%
+           family={{Analog Devices, Inc.}},
+           familyi={A\bibinitperiod}}}%
       }
-      \strng{namehash}{c4e4a40d251ae6c4d2544a70945bc176}
-      \strng{fullhash}{c4e4a40d251ae6c4d2544a70945bc176}
-      \strng{fullhashraw}{c4e4a40d251ae6c4d2544a70945bc176}
-      \strng{bibnamehash}{c4e4a40d251ae6c4d2544a70945bc176}
-      \strng{authorbibnamehash}{c4e4a40d251ae6c4d2544a70945bc176}
-      \strng{authornamehash}{c4e4a40d251ae6c4d2544a70945bc176}
-      \strng{authorfullhash}{c4e4a40d251ae6c4d2544a70945bc176}
-      \strng{authorfullhashraw}{c4e4a40d251ae6c4d2544a70945bc176}
+      \strng{namehash}{f81b34da5839253845c696bf71a74915}
+      \strng{fullhash}{f81b34da5839253845c696bf71a74915}
+      \strng{fullhashraw}{f81b34da5839253845c696bf71a74915}
+      \strng{bibnamehash}{f81b34da5839253845c696bf71a74915}
+      \strng{authorbibnamehash}{f81b34da5839253845c696bf71a74915}
+      \strng{authornamehash}{f81b34da5839253845c696bf71a74915}
+      \strng{authorfullhash}{f81b34da5839253845c696bf71a74915}
+      \strng{authorfullhashraw}{f81b34da5839253845c696bf71a74915}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -10702,20 +10716,18 @@
     \endentry
     \entry{Xilinx-PetaLinux}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
-           family={Inc.},
-           familyi={I\bibinitperiod},
-           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=82528b9f49a20c6f4295ec0863c14ec9}{%
+           family={{Advanced Micro Devices Inc.}},
+           familyi={A\bibinitperiod}}}%
       }
-      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{namehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{bibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorbibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authornamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
       \field{extraname}{4}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -10764,20 +10776,18 @@
     \endentry
     \entry{Xilinx-XPM}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=dc16ee1ee54605d0dc040fb754323e62}{%
-           family={Inc.},
-           familyi={I\bibinitperiod},
-           given={Advanced\bibnamedelimb Micro\bibnamedelima Devices},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=82528b9f49a20c6f4295ec0863c14ec9}{%
+           family={{Advanced Micro Devices Inc.}},
+           familyi={A\bibinitperiod}}}%
       }
-      \strng{namehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{fullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{bibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorbibnamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authornamehash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhash}{dc16ee1ee54605d0dc040fb754323e62}
-      \strng{authorfullhashraw}{dc16ee1ee54605d0dc040fb754323e62}
+      \strng{namehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{fullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{bibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorbibnamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authornamehash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhash}{82528b9f49a20c6f4295ec0863c14ec9}
+      \strng{authorfullhashraw}{82528b9f49a20c6f4295ec0863c14ec9}
       \field{extraname}{5}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}

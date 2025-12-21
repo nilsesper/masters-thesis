@@ -77,10 +77,10 @@
 
 %%% bibliography setup
 \ifthenelse{\cusebib > -1}{ % if usebib > -1: use bibtex
-    % bibliography and literature rerferences
-    \usepackage[backend=biber,sorting=none,sortcites,citestyle=numeric-comp,firstinits=true]{biblatex}
-    % bibliography setup
-    \addbibresource{../resources/bibliography.bib}
+  % bibliography and literature rerferences
+  \usepackage[backend=biber,sorting=none,sortcites,citestyle=numeric-comp,firstinits=true]{biblatex}
+  % bibliography setup
+  \addbibresource{../resources/bibliography.bib}
 %   % uncomment if one wants to have "backreferences" to cited page in bibliography
 %   \ExecuteBibliographyOptions{
 %       backref=true,
@@ -89,18 +89,28 @@
 %      backrefpage  = {Cited on page},
 %      backrefpages = {Cited on pages},
 %    }
+  % use url only in bibliography if doi is not available
+  \DeclareSourcemap{
+    \maps[datatype=bibtex]{
+      \map[overwrite]{
+        \step[fieldsource=doi, final]
+        \step[fieldset=url, null]
+        \step[fieldset=eprint, null]
+      }  
+    }
+  }
 }{}
 
 %%% acronym setup
 \ifthenelse{\cuseacr > -1}{ % if useacr > -1: use acronym package
-    % acronyms package
-    \usepackage{acro}
-    % load defined acronyms
-    \input{../resources/acronyms.sty}
-    % add acronym hyperlinks (if list of acronyms is generated)
-    \ifthenelse{\clistofacronyms > -1}{
-        \acsetup{make-links}
-    }{}
+  % acronyms package
+  \usepackage{acro}
+  % load defined acronyms
+  \input{../resources/acronyms.sty}
+  % add acronym hyperlinks (if list of acronyms is generated)
+  \ifthenelse{\clistofacronyms > -1}{
+      \acsetup{make-links}
+  }{}
 }{}
 
 %%% chapter & section counting setup
@@ -186,10 +196,15 @@
     figurename=Fig., % change fig. label
     tablename=Tab., % change tab. label
 }
+% width of subcaptions (to avoid them being too close to each other)
+\captionsetup[subfigure]{width=0.9\textwidth}
 % remove indent at new paragraph
 \setlength{\parindent}{0pt}
 % hide boxes around hyperlinks
 \hypersetup{hidelinks}
+
+%%% adjust distance between text and floats
+\addtolength{\textfloatsep}{-0.1in} %-0.2in
 
 %%% thousands separator for siunitx
 \sisetup{group-separator = {,}}
@@ -384,7 +399,7 @@
     \addcontentsline{toc}{chapter}{List of Acronyms}
     \pagestyle{loaheader}
     {
-      \setlength{\itemsep}{0.2em} % change distance between entries in loa (because default distance is too large)
+      \setlength{\itemsep}{0.1em} % change distance between entries in loa (because default distance is too large)
       \printacronyms[display=used,name=List of Acronyms,template=description]
     }
  }{}
