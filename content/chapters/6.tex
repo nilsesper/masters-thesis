@@ -1,7 +1,8 @@
-\FloatBarrier
+%\FloatBarrier
 \label{sec:ScintData}
 With the scintillation detector and the developed readout system described in the last chapter (sec.\ \ref{sec:Scint}), a dataset of atmospheric muons was recorded. This chapter presents the recorded data and the analysis procedure. Before the data is discussed, all required calibration measurements of the readout system are presented in this chapter, which need to be performed before data can be recorded.
 
+\FloatBarrier
 \section{Discriminator threshold calibration}
 %\begin{itemize}
 %    \item FPGA-internal comparators (on FPGA silicon die) are subject to production uncertainties
@@ -66,6 +67,7 @@ After setting the final threshold voltage, the bias voltage is measured one more
     \label{fig:ScintData-VoltageBias-CalibResult}
 \end{figure}
 
+\FloatBarrier
 \section{TDC timing calibration}
 %\begin{itemize}
 %    \item Bank-specific calibration of deserializers on each power cycle leads to non-deterministic signal delays
@@ -123,6 +125,7 @@ After setting the proper delay unit values, a validation measurement is performe
     \label{fig:ScintData-TimingBias-CalibResult}
 \end{figure}
 
+\FloatBarrier
 \section{SiPM noise scan}
 %\begin{itemize}
 %    \item Scan of SiPM rates for different thresholds with the developed readout system
@@ -163,6 +166,7 @@ One expects an exponentially falling distribution of the noise rate with increas
 
 
 
+\FloatBarrier
 \section{SiPM hits}
 %\begin{itemize}
 %    \item Show single SiPM occupancies
@@ -215,7 +219,7 @@ The observed discrete peak structure stands in contrast to the expected continuo
 Since the goal of this work is to demonstrate the synchronization of the developed scintillator readout system with the \ac{DT} chamber (sec.\ \ref{sec:Combined}), it was necessary to record data with the scintillator, even in the present state. To record usable data, a mitigation strategy was developed, which should allow recovering at least a fraction of the recorded scintillator hits and suppress the multi-counting of events.
 \par The simplest method to suppress the secondary hits without modification of the electronic hardware itself, is to apply a dead time $t_\text{dead}$ to each individual \ac{SiPM} channel. As discussed above, the \ac{FPGA} readout firmware offers the possibility to apply this dead time \enquote{online} (sec.\ \ref{sec:DTData-CellHits-DeadTime}). This is expected to drastically reduce the \ac{SiPM} hit rate, as the region left of the selected value in the time difference histogram $\Delta T < t_\text{dead}$ is effectively cut away by it. Applying the dead time directly in the \ac{FPGA} therefore reduces the amount of data recorded from the detector, while it would of course also be possible to keep all data and apply the dead time later in the offline analysis.
 \par With the dead time, one does not only cut away the prompt secondary hits, but may also lose a fraction of \enquote{real} muon events, which can of course also occur in short time distances, as they are randomly distributed. Since the modification of the analog circuit was not feasible in the time frame of this thesis, the use of a dead time is the simplest and most effective solution to record usable data.
-%\FloatBarrier
+%%\FloatBarrier
 %\paragraph{Coincidences of unrelated channels}
 
 \subsection{Full recorded dataset}
@@ -284,6 +288,7 @@ The \ac{SiPM} hits are expected to originate from atmospheric muons or thermal n
 
 
 
+\FloatBarrier
 \section{Scintillator strip coincidences}
 \label{sec:ScintData-Strips}
 Because the raw \ac{SiPM} hits are significantly contaminated with thermal noise, they should not directly be considered as \enquote{muon candidate} hits. Instead, coincidences of the two \acp{SiPM} mounted to the same scintillator strip should be evaluated.

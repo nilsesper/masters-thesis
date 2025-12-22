@@ -1,10 +1,11 @@
 
-\FloatBarrier
+%\FloatBarrier
 \label{sec:Scint}
 This chapter focuses on the second muon detector used in this thesis: A scintillation strip detector with \ac{SiPM} photon readout. The readout electronics and firmware were newly developed for this work, with the intention to connect the readout to the Phase-2 \ac{DT} backend (sec.\ \ref{sec:CMS-Phase2Readout}). The goal is to provide synchronous operation of the scintillator and the \ac{DT} chamber with this system (sec.\ \ref{sec:Combined}).
 %to read out the scintillator and the \ac{DT} chamber together with this system and to demonstrate that synchronization could actually be achieved (sec.\ \ref{sec:Combined}).
 
 
+\FloatBarrier
 \section{Detector setup}
 \label{sec:Scint-Setup}
 %Mention self-development of detector at institute \cite{BSc-Ehlert} \cite{MSc-Ehlert}.
@@ -52,6 +53,7 @@ Fig.\ \ref{fig:Scint-Readout-Chain} shows an overview of the readout chain of th
 
 
 
+\FloatBarrier
 \section{Frontend electronics}
 %\begin{itemize}
 %    \item SiPM front-end board with preamplifier
@@ -90,6 +92,7 @@ Due to fabrication tolerances, the internal breakdown voltage of the individual 
 
 
 
+\FloatBarrier
 \section{Readout board and circuitry}
 %\begin{itemize}
 %    \item Mention completely new hardware and firmware development in the scope of this thesis, based on previous experience and efforts of our group
@@ -182,6 +185,7 @@ One of the \ac{FPGA} pins is configured to issue a digital synchronous testpulse
 \paragraph{Circuit simulation}
 Before the readout board was constructed, a simulation of the analog circuit was performed in LTspice\textsuperscript{\textregistered} \cite{LTSpice}. The main concern was the possibility of crosstalk between different \ac{SiPM} inputs, which is theoretically possible through the common $V_\text{com}$ rail. The employed capacitor on this rail seems to suppress the possibility of crosstalk in the simulation output. Therefore, the circuit was considered acceptable, and the readout board was built using this circuit.
 
+\FloatBarrier
 \section{FPGA readout firmware}
 \label{sec:Scint-ReadoutFirmware}
 The \ac{FPGA} firmware of the readout board implements all requirements discussed above (sec.\ \ref{sec:Scint-ReadoutBoard-Overview}) and was newly developed for this thesis. Fig.\ \ref{fig:Scint-ReadoutFirmware-Overview} shows an overview of the different functional blocks of the firmware, which will be discussed in more detail in the following sections.
@@ -272,7 +276,7 @@ The chosen timestamp format is the same as the timestamp format of the \acp{OBDT
 The clock of the readout system can be assumed to be synchronous with the \ac{DT} backend system, because the \ac{lpGBT} chip is used to recover the clock from the backend. More details on this are discussed in sec.\ \ref{sec:Scint-lpGBTMezzanine}.
 \par However, not only the clock, but also the timestamp values should be the same for all readout devices connected to the backend. To achieve this, one needs to receive a synchronization signal from the backend. The \ac{DT} backend sends a $BX$ reset signal (\texttt{BC0} signal) via the \ac{lpGBT} downlink to the readout board, which is received by the \ac{FPGA} firmware.\footnote{In \ac{CMS}, this \texttt{BC0} reset signal comes from the timing control system and is coupled to the clock of the \ac{LHC} accelerator. In the case of the test stand used in this work, it is simply emulated by the \ac{DT} backend system.} A dedicated logic block (the TTC receiver) was developed, which reconstructs a timestamp that is aligned with this reset signal. This aligned timestamp is then used when timing information is assigned to the recorded scintillator hits. In this way, it is ensured that the timestamps assigned to all events recorded by the \ac{DT} readout (\ac{OBDT} boards) and the scintillator readout board are aligned in time and \enquote{count up} synchronously.
 
-%\FloatBarrier
+%%\FloatBarrier
 %\subsection{Online coincidence evaluation}
 %\label{sec:Scint-ReadoutFirmware-Coincidence}
 
@@ -305,6 +309,7 @@ The desired funneling ratio is $32:1$, meaning that only one hit should be trans
 
 
 
+\FloatBarrier
 \section{lpGBT mezzanine board}
 %\begin{itemize}
 %    \item Hardware interface between scintillator readout system and DT backend
@@ -383,11 +388,11 @@ Stable operation of the board could be achieved, and the clock recovery was demo
 \end{figure}
 
 
-%\FloatBarrier
+%%\FloatBarrier
 %\subsection{Readout FPGA interface}
 %\label{sec:Scint-lpGBTMezzanine-ReadoutFPGAInterface}
 
-%\FloatBarrier
+%%\FloatBarrier
 %\subsection{DT backend interface}
 %\begin{itemize}
 %    \item Modified data flow in DT backend to accomodate reception of data via slow control link from the lpGBT Mezzanine (OBDT has dedicated trigger links for data)

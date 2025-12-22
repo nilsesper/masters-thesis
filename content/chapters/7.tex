@@ -1,8 +1,9 @@
-\FloatBarrier
+%\FloatBarrier
 \label{sec:Combined}
 The main goal of this thesis is to take first measurements with a combined setup of the \ac{DT} chamber at the test stand (sec.\ \ref{sec:DT}) and the scintillator (sec.\ \ref{sec:Scint}). The newly developed readout electronics for the scintillator allow the direct interfacing with the \ac{DT} backend and its clock for synchronization.
 \par This chapter presents the setup of the detector hardware and the recorded atmospheric muon data of both detectors. By attempting to match the hits of both detectors with their timestamps, it is investigated whether synchronization with the global clock could be achieved. Furthermore, the matched \ac{DT} track positions are compared to the scintillator position to provide an unbiased cross-check of the implemented \ac{DT} track reconstruction algorithm.
 
+\FloatBarrier
 \section{Combined detector setup}
 %\begin{itemize}
 %    \item Overview schematic of combined detector and readout setup
@@ -12,13 +13,13 @@ The main goal of this thesis is to take first measurements with a combined setup
 To record the hits of the same atmospheric muons, the scintillator needs to be placed into the acceptance range of the \ac{DT} chamber, which is mounted on a metal frame at the test stand. For this work, the chosen scintillator position is on the floor, approximately \SI{1}{\meter} below the \ac{DT} chamber.
 \paragraph{Coordinate frame}
 The global coordinate frame used is the same as for the \ac{DT} chamber discussed above (sec.\ \ref{sec:CoordinateFrame-TimestampFormat}). The scintillator strips are oriented in parallel with the coordinate axes. The bottom layer of the scintillator (layer 0) has its strips in parallel with the \ac{SL} theta wires of the chamber, i.e.\ parallel to the $x$-axis, the top layer (layer 1) in parallel with the \ac{SL} phi wires, i.e.\ parallel to the $y$-axis. The strip index is counted up towards the negative $x$ and $y$ direction. In the used reference frame, the position of the \ac{DT} chamber lies in the coordinate origin $(x,y,z)_\text{DT,ref}=(0,\; 0,\; 0)\;\si{\milli\meter}$. The scintillator base point lies at $(x,y,z)_\text{scint,ref}=(744.0,\; 1194.3,\; -986.0)\;\si{\milli\meter}$. Fig.\ \ref{fig:Combined-CoordinateFrame} illustrates the setup with the two different detectors, as well as the used coordinate frame and the definition of the reference points. A photo of the operational setup used for the measurement is shown in fig.\ \ref{fig:Combined-SetupPhoto}.
-\begin{figure}[htb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{CombinedSetup.pdf}
 \caption{Illustration of the combined detector setup consisting of the scintillator and the \ac{DT} chamber. The used coordinate frame and the channel segmentation axis of the different detector components are highlighted. The reference points of the two detectors in the frame are marked.}
 \label{fig:Combined-CoordinateFrame}
 \end{figure}
-\begin{figure}[htb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{CombinedSetup-Photo.pdf}
 \caption{Photo of the combined detector setup: The scintillator with its readout electronics is visible below the \ac{DT} chamber at the test stand. The different components are labeled in the image. A muon track intersecting both detectors is overlaid in red.}
@@ -26,17 +27,18 @@ The global coordinate frame used is the same as for the \ac{DT} chamber discusse
 \end{figure}
 \paragraph{Readout system}
 Both detectors are read out by their respective systems, which were already presented in the previous chapters. The \ac{DT} chamber is read out by the Phase-2 minicrate, which sends the hit data to the \ac{DT} backend system via an optical fiber (sec.\ \ref{sec:CMS-AachenTestStand-Phase2Setup}). The scintillator uses the self-developed readout board (secs.\ \ref{sec:Scint-ReadoutBoard}), transferring the hit data to the \ac{lpGBT} mezzanine that also interfaces the \ac{DT} backend system. Both the \ac{DT} and the developed scintillator electronics have the capability to recover the backend clock, allowing for synchronous operation. This capability is enabled by the \ac{lpGBT} \ac{ASIC} used both on the minicrate’s \ac{OBDT} board (sec.\ \ref{sec:CMS-Phase2Readout}) and on the \ac{lpGBT} mezzanine board (sec.\ \ref{sec:Scint-lpGBTMezzanine}).
-\FloatBarrier
+%\FloatBarrier
 \paragraph{Combined dataset}
 Atmospheric muon data were recorded for both detectors simultaneously with the combined setup described above. The datasets presented in the \ac{DT} (sec.\ \ref{sec:DTData}) and scintillator data (sec.\ \ref{sec:ScintData}) analysis section originate from this simultaneous measurement with both detectors. The measurement recording time is $\SI{5}{\hour}\;\SI{27}{\min}$ and it contains \num{316757979} drift cell hits and \num{44575666} \ac{SiPM} hits in total. The data analysis is conducted according to the respective sections above. From this analysis, \num{1656448} \ac{DT} tracks and \num{343594} scintillator strip hits were obtained.
 
-%\FloatBarrier
+%%\FloatBarrier
 %\subsection{Physical detector setup}
 %A
-%\FloatBarrier
+%%\FloatBarrier
 %\subsection{Combined analysis strategy}
 %A
 
+\FloatBarrier
 \section{Temporal hit matching}
 %\begin{itemize}
 %    \item Group scintillator pixel hits with reconstructed DT tracks in time window
@@ -164,6 +166,7 @@ The peak in the matching time difference plot has a finite width of around \SI{1
 \paragraph{Conclusion}
 The matching of reconstructed \ac{DT} tracks and scintillator strip hits reveals that the desired synchronization between both detectors could be achieved to the order of $\mathcal{O}(\SI{10}{\nano\second})$, with a constant time offset between the readout systems of around $T_\text{matching,offset}\approx\SI{-59}{\nano\second}$. The matched rate of \SI{2}{\hertz} is relatively low, possibly due to the simplified \ac{DT} reconstruction strategy used (sec.\ \ref{sec:DTData}) and the observed systematic observations in the data recorded with the scintillator readout board (sec.\ \ref{sec:ScintData-Strips-Results}). However, the successfully matched \ac{DT} tracks and scintillator hits show a narrow time difference distribution, which is considered a success.
 
+\FloatBarrier
 \section{Further analysis of matched tracks}
 %\begin{itemize}
 %    \item Show cumulated reconstructed DT tracks for matched hits between scintillator and DT
@@ -175,7 +178,7 @@ The \ac{DT} tracks matched to scintillator hits presented in the last section (s
 \par The matched \ac{DT} tracks are propagated through the combined geometry of the \ac{DT} chamber and the scintillator, which was illustrated above in fig.\ \ref{fig:Combined-CoordinateFrame}. If the implemented \ac{DT} reconstruction algorithm works correctly, one would expect that the tracks, which are matched with a scintillator hit in time, intersect the scintillator area.
 \paragraph{Lateral view of DT track intersections with scintillator}
 Fig.\ \ref{fig:Combined-GlobalTrack-2D-z} shows both the $x$-$z$- and $y$-$z$-view of the propagated matched \ac{DT} track density as a 2D histogram. The plot is created with a similar prescription as the plots that were shown in sec.\ \ref{sec:DTData-GlobalTrackBuilding-Results} (fig. \ref{fig:DTData-GlobalTrack-2D-z}), by evaluating the $x$-position ($y$-position) of the \ac{DT} tracks for all $z$ heights and cumulating all $y$-coordinates ($x$-coordinates) into the presented bins.
-\begin{figure}[htb]
+\begin{figure}[htbp]
 \centering
 \hfill
 \begin{subfigure}[t]{\textwidth}
@@ -202,7 +205,7 @@ Fig.\ \ref{fig:Combined-GlobalTrack-2D-z} shows both the $x$-$z$- and $y$-$z$-vi
 \par Additionally, a small offset of the \ac{DT} track intersection points and the scintillator position is visible in both views, which hints at geometric misalignment. This is also further discussed in the next paragraph.
 \paragraph{Top view of DT track intersections with scintillator}
 A 2D histogram of the propagated $(x,y)$ positions of the matched \ac{DT} tracks at the mean $z$ height of the scintillator is presented in fig.\ \ref{fig:Combined-GlobalTrack-2D-xy}. The expected position of the scintillator (white) as well as the location of the two dead scintillator strips (red) is marked in the plot.
-\begin{figure}[htb]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{large_combined_data_plots/CORRELATED_HITS_SPECIFIC_xy.pdf}
 \caption{Matched \ac{DT} track $(x,y)$ positions at the center height of the scintillator ($z=\SI{-966}{\milli\meter}$ in the global coordinate frame). The bin size is $10 \times 10\;\si{\milli\meter^2}$.}
@@ -213,6 +216,8 @@ A 2D histogram of the propagated $(x,y)$ positions of the matched \ac{DT} tracks
 \par From these two observations, the need for a proper detector alignment procedure becomes evident, which ideally should not only cover translations but also rotations. The development and validation of such an algorithm is beyond the scope of this thesis, but should be addressed in the future if the combined detector setup is continued to be used.
 \par Apart from the obvious misalignment, another interesting feature is visible in the plot, which was already mentioned in the discussion of the lateral view (fig.\ \ref{fig:Combined-GlobalTrack-2D-z}). A lower matched \ac{DT} track count is visible for two horizontal rectangles in the square-shaped distribution of track positions. If one would correct for the misalignment along the $y$-axis, it would become evident that these darker rectangles in the 2D histogram correspond to the position of the dead scintillator strips. This behavior is expected, as fewer tracks can be matched with a scintillator hit if only one instead of two strips are available to detect the atmospheric muon, due to the finite scintillator efficiency.
 \par In the 2D view, one can observe a few outliers, i.e.\ matched \ac{DT} tracks which do not intersect the scintillator area (even if one would correct for the detector alignment). However, their fraction of the total number of matched tracks is only in the order of $\mathcal{O}(1\%)$.
+
+%\FloatBarrier
 \paragraph{Conclusion}
 The analysis of the matched \ac{DT} track positions in the detector geometry shows that almost all tracks intersect the scintillator. This can be regarded as a successful independent validation of the implemented \ac{DT} track reconstruction algorithm. However, the need for proper detector alignment is obvious, although this cannot be accomplished in this thesis.
 \par With this cross-check, it is clear that the \ac{DT} chamber at the test stand is ready to be operated again as an atmospheric muon detector, which can be used for a variety of different studies in the future. It should again be noted that the implemented reconstruction algorithm is triggerless, which means that the \ac{DT} chamber could now be operated in stand-alone mode, i.e.\ without an external trigger detector or the full \ac{CMS} online trigger algorithm running. With the results of this thesis, the muon tracking capabilities of the chamber at the test stand could be reestablished for the first time in many years.
@@ -220,9 +225,13 @@ The analysis of the matched \ac{DT} track positions in the detector geometry sho
 
 %As the implemented triggerless \ac{DT} track reconstruction seems to deliver plausible output data, it is now possible to use the \ac{DT} test stand in the future as a reference for other detectors or readout electronics to be tested in the future. Instead of the scintillator, it could be imagined to place another detector in the \ac{DT} chamber acceptance range and use the independently reconstructed \ac{DT} tracks as reference muons for the analysis of the response of the other detector.
 
+%\FloatBarrier
 %\section{Alignment analysis}
 
+%\FloatBarrier
 %\section{Scintillator as DT trigger}
 %\subsection{Recovering DT-specific distributions}
 
-%\section{Efficiency measurement}%\section{}
+%\FloatBarrier
+%\section{Efficiency measurement}%\FloatBarrier
+%\section{}

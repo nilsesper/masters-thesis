@@ -1,10 +1,11 @@
 
 
-\FloatBarrier
+%\FloatBarrier
 \label{sec:DT}
 
 This chapter describes the gaseous detector used in this work, which is a spare drift chamber from the \acf{CMS} experiment \cite{CMS-Main}. After a brief description of the experiment and its context, emphasis is put on the description of the \ac{CMS} drift tube chambers and their readout chain.
 
+\FloatBarrier
 \section{Compact Muon Solenoid experiment}
 \label{sec:CMS-Experiment}
 
@@ -35,7 +36,7 @@ The particle accelerator, which provides the collisions recorded by \ac{CMS} and
 %Here, $\sigma$ is the cross section of the interaction process, which is a measure of probability for the process. An increased luminosity is therefore advantageous to collect more statistics of rare interactions.
 \paragraph{LHC accelerator}
 The \ac{LHC} currently is the largest and most powerful particle accelerator in the world. It is a circular collider, creating proton-proton collisions with a \ac{COME} of up to $\sqrt{s}=\SI{14}{\tera\electronvolt}$. The accelerator has a circumference of \SI{27}{\kilo\meter} and was constructed in the tunnel originally used for the \ac{LEP} \cite{LEP-Main}, which lies around \SI{100}{\meter} below the surface. In order to guide the particles, the machine uses superconducting magnets with field strengths above \SI{8}{\tesla}. Particle acceleration is provided by superconducting cavities. Particle collisions take place with a bunch-crossing frequency of \SI{40}{\mega\hertz}. Originally, the \ac{LHC} was designed to provide an instantaneous luminosity of $\mathcal{L}=10^{34}\;\si{\centi\meter^{-2} \second^{-1}}$ at the interaction points \cite{LHC-Main}. In the context of the \ac{HLLHC} project, the accelerator will be upgraded to reach instantaneous luminosities of $\mathcal{L}=\num{5e34}\;\si{\centi\meter^{-2} \second^{-1}}$ \cite{HLLHC-TDR}. It should be noted that the \ac{LHC} is not only capable of accelerating protons but also heavy ions \cite{LHC-Main}.
-%\FloatBarrier
+%%\FloatBarrier
 %\paragraph{Pre-accelerators}
 %The \ac{LHC} does not accelerate protons starting at rest, but is supplied with pre-accelerated particles from the \acs{CERN} accelerator complex (see fig.\ \ref{fig:LHC-AcceleratorComplex}). Protons are extracted from a hydrogen bottle and first accelerated in a linear accelerator (LINAC 4) to \SI{160}{\mega\electronvolt} \cite{LINAC4-Main}. Then they are injected in a series of circular accelerators (Booster, Proton Synchrotron, Super Proton Synchrotron) and finally injected into the \ac{LHC} at an energy of \SI{450}{\giga\electronvolt} \cite{LHC-Main}.
 \paragraph{LHC operation}
@@ -79,6 +80,7 @@ The \ac{CMS} detector in its Phase-2 configuration will consist of four types of
 \paragraph{Data acquisition and trigger}
 The bunch crossing frequency of the \ac{LHC} of \SI{40}{\mega\hertz} is orders of magnitude higher than the rate of events that can be stored. Therefore, the rate reduction of events is inevitable. \ac{CMS} implements a two-stage trigger system, consisting of the \ac{L1T} and the \ac{HLT}. With the Phase-2 upgrade, the \ac{L1T} acceptance rate is significantly increased from \SI{100}{\kilo\hertz} to \SI{750}{\kilo\hertz}, increasing the input data rate to approximately \SI{63}{\tera\bit/\second}. The \ac{L1T} logic is running on \acp{FPGA} to achieve the desired performance. Depending on the \ac{L1T} accept signal, the readout of the full detector is executed, and the data is further evaluated by the \ac{HLT}. \ac{HLT} algorithms are executed mostly on microprocessors in a computing farm. The final rate of events to be stored by the \ac{DAQ} and analyzed offline is estimated to be up to \SI{7.5}{\kilo\hertz} \cite{CMS-Main,CMS-Phase2L1Trigger,CMS-Phase2DAQHLT}.
 
+\FloatBarrier
 \section{Drift Tube system}
 \label{sec:CMS-DT}
 
@@ -144,7 +146,7 @@ t_\text{drift,max}=\frac{d/2}{v_\text{drift}}\approx\SI{385}{\nano\second}.
 \label{fig:DT-Components}
 \end{figure}
 
-\FloatBarrier
+%\FloatBarrier
 
 \subsection{Performance}
 \label{sec:CMS-DTPerformance}
@@ -158,6 +160,7 @@ The \ac{DT} system provides essential muon detection and reconstruction capabili
 \par For the Phase-2 upgrade (sec.\ \ref{sec:CMS-Overview}), extensive longevity studies were performed to analyze the expected performance of the \ac{DT} system under the tightened radiation environment. The studies show the ageing effects of the chambers. However, acceptable performance is expected for the Phase-2 operations. Therefore, the chambers themselves will not be exchanged during the upgrade \cite{CMS-Phase2Muon}.
 \par The efficiency of a muon to trigger a cell on its track in 2024 was calculated to be $\varepsilon_\text{cell}\approx 96.93\%$ \cite{DT-Performance2024}. The spatial resolution of one cell lies in the order of \SI{250}{\micro\meter}, giving the full chamber a resolution of \SI{100}{\micro\meter} in the $r$-$\phi$-direction \cite{CMS-Main}.
 
+\FloatBarrier
 \section{Phase-2 DT readout electronics}
 \label{sec:CMS-Phase2Readout}
 In the context of the Phase-2 upgrade of \ac{CMS}, the readout electronics of the \ac{DT} system will be almost completely exchanged \cite{CMS-Phase2Muon}. Fig.\ \ref{fig:DT-Phase2Readout} shows an overview of the Phase-2 readout chain of the \ac{DT} system. The new readout chain is described in this section, as with this system, the \ac{DT} chamber data in this thesis was recorded.
@@ -177,7 +180,7 @@ In the context of the Phase-2 upgrade of \ac{CMS}, the readout electronics of th
 \subsection{Frontend electronics}
 \label{sec:CMS-DTFrontend}
 The frontend electronics of the \ac{DT} system are located inside the chamber gas volume. They amplify the analog pulse from the drift cell wire and compare it to an amplitude threshold, providing a digital pulse on the output \cite{CMS-Main,CMS-Muon}. Because of their sufficient radiation hardness and their limited accessibility, these are the only parts of the electronics not to be exchanged in the course of the Phase-2 upgrade \cite{CMS-Phase2Muon}.
-\FloatBarrier
+%\FloatBarrier
 \paragraph{MAD chip}
 A custom \ac{ASIC} called \enquote{MAD} \cite{DT-MADChip} was developed for the frontend electronics, which houses the analog amplification and signal shaping circuits. One chip has inputs for four \ac{DT} wire signals. The charge to voltage conversion gain of the mounted chip is around \SI{3.4}{\milli\volt/\femto\coulomb}. The MAD chip also includes a discriminator stage (sec.\ \ref{sec:ReadoutElectronics-General}), which converts the analog signal into a digital pulse. The threshold of the discriminator can be set externally and usually is in the range of $\mathcal{O}(\SI{30}{\milli\volt})$. Note that the digital output of the MAD chip is not single-ended, but in the form of a \ac{LVDS} pulse \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:MAD-DieShot} shows a die shot of the MAD chip.
 \paragraph{Frontend board}
@@ -277,6 +280,7 @@ Since the Serenity and \ac{BMTL1} hardware is not yet available, a prototyping p
 \end{figure}
 \par The \ac{OBDT} optical links are connected to the backend via \ac{QSFP+} modules \cite{QSFP+-Main} hosted by an \ac{FMC} \cite{FMC-Main}, which is plugged into the \ac{HTG-940} \ac{FPGA} board. The backend is connected to a computer via an optical \SI{10}{\giga\bit/\second} Ethernet connection. The computer can control all devices connected to the box and receive the streamed-out hit data. The \ac{FPGA} firmware and corresponding software \cite{obdt-backend-Main} are developed at \ac{INFN} Padova, Italy. In the context of this work, some elements of the backend firmware were modified to integrate the scintillation detector readout into the backend (sec.\ \ref{sec:Scint-lpGBTMezzanine}).
 
+\FloatBarrier
 \section{DT test stand in Aachen}
 \label{sec:CMS-AachenTestStand}
 %\subsection{MB1 DT chamber}
@@ -351,7 +355,7 @@ Fig.\ \ref{fig:DT-Teststand-Readout} illustrates the readout chain with all curr
 \caption{Overview of the modified Phase-2 readout chain implemented at the test stand.}
 \label{fig:DT-Teststand-Readout}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 \paragraph{Minicrate}
 The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OBDT} theta board (sec.\ \ref{sec:CMS-DTMinicrate}). Fig.\ \ref{fig:MB1Minicrate-Mounted} shows a picture of the minicrate mounted onto the chamber at the test stand. A photo of the minicrate before installation on the chamber was already shown above in fig.\ \ref{fig:Minicrate-MB1}. One \ac{OBDT} is used for the readout of each superlayer. The detailed mapping between the \ac{DT} chamber \acp{FEC} (which are labeled 1A, 1B, 2A, …) and the \ac{OBDT} input connectors is presented in tab.\ \ref{tab:MB1Minicrate-FECMapping} in the appendix. Note that two unused \acp{FEC} on the \ac{OBDT} phi boards (J26, J27) were masked in order to prevent the injection of noise through these unconnected inputs.
 \begin{figure}[htb]
@@ -361,7 +365,7 @@ The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OB
 \label{fig:MB1Minicrate-Mounted}
 \end{figure}
 
-\FloatBarrier
+%\FloatBarrier
 
 \paragraph{Backend}
 The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which is placed next to the test stand and connected to the minicrate. The backend rack is prominently visible in fig.\ \ref{fig:DT-Teststand} above. The \ac{SCTbox} is connected to a server located inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
@@ -378,7 +382,7 @@ The \ac{DT} chamber is oriented horizontally in the test stand.  A local coordin
 \caption{Illustration of the coordinate frame convention in this work. The \ac{SL}, layer (Ly), and wire (Wi) numbering is also indicated \cite[adapted]{DT-LocalReco}.}
 \label{fig:ThisCoordinateFrame}
 \end{figure}
-\FloatBarrier
+%\FloatBarrier
 \paragraph{Timestamp format}
 The \acp{OBDT} naturally send out the hits with a timestamp consisting of two parts:
 \begin{itemize}
