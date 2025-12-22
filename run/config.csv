@@ -21,6 +21,8 @@ usecleardouble,-1
 chaptertopspace,50
 chapterbottomspace,30
 
+parindent,20pt
+
 highestchapter,8
 chapter0,Introduction
 chapter1,Theoretical background

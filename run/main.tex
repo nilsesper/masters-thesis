@@ -198,8 +198,6 @@
 }
 % width of subcaptions (to avoid them being too close to each other)
 \captionsetup[subfigure]{width=0.9\textwidth}
-% configure indent at new paragraph
-\setlength{\parindent}{20pt} %0pt
 % hide boxes around hyperlinks
 \hypersetup{hidelinks}
 
@@ -302,6 +300,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % begin document
 \begin{document}
+
+%%% configure indent at new paragraph
+\setlength{\parindent}{\cparindent} %0pt
+
 % normal chapter heading configuration
 \configchapterheading{\cchaptertopspace}{\cchapterbottomspace}{}
 % no page numbers/headers for title page

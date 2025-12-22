@@ -60,14 +60,14 @@ In the electroweak theory, the force mediator bosons are initially massless. How
 %    \item Neutrino oscillations indicate massive neutrino(s), but massless in SM \cite{NO-Davis}
 %\end{itemize}
 While all particles predicted by the \ac{SM} have now been observed \cite{SM-Gaillard} and the model succeeds in predicting their interaction properties to very high precision \cite{SM-CMSMeasurements}, the model is considered deficient. The incomplete list given here should point out the motivation for future developments in particle physics theory and experiments.
-\newline Firstly, the fourth fundamental interaction observed in nature, gravitation, is not included in the model. While the gravitational interaction is significantly weaker than the three interactions of the \ac{SM} and therefore not relevant for high-energy physics experiments, the model is undoubtedly incomplete without it \cite{SM-Gaillard}. Secondly, the observation of neutrino oscillations \cite{NO-Davis,Book-Thomson} implies non-zero neutrino masses. However, in the \ac{SM}, the neutrinos are considered massless.\footnote{Strictly speaking, not all neutrinos are required to be massive, since the oscillations only imply non-zero mass differences between the neutrino flavors.} Lastly, cosmic observations hint at the existence of dark matter and dark energy, making up $\approx 95\%$ of the matter-energy density of the universe \cite{DM-Trimble, Book-Thomson}. These postulated constituents of the universe are not described by the \ac{SM}, since it only attempts to model the remaining $\approx 5\%$ of baryonic matter. Additional shortcomings of the \ac{SM} are the unsatisfactory large number of parameters (26 parameters chosen from experimental observations) and the unresolved matter-antimatter asymmetry observed in nature \cite{Book-Thomson}.
+\par Firstly, the fourth fundamental interaction observed in nature, gravitation, is not included in the model. While the gravitational interaction is significantly weaker than the three interactions of the \ac{SM} and therefore not relevant for high-energy physics experiments, the model is undoubtedly incomplete without it \cite{SM-Gaillard}. Secondly, the observation of neutrino oscillations \cite{NO-Davis,Book-Thomson} implies non-zero neutrino masses. However, in the \ac{SM}, the neutrinos are considered massless.\footnote{Strictly speaking, not all neutrinos are required to be massive, since the oscillations only imply non-zero mass differences between the neutrino flavors.} Lastly, cosmic observations hint at the existence of dark matter and dark energy, making up around $95\%$ of the matter-energy density of the universe \cite{DM-Trimble, Book-Thomson}. These postulated constituents of the universe are not described by the \ac{SM}, since it only attempts to model the remaining $5\%$ of baryonic matter. Additional shortcomings of the \ac{SM} are the unsatisfactory large number of parameters (26 parameters chosen from experimental observations) and the unresolved matter-antimatter asymmetry observed in nature \cite{Book-Thomson}.
 
 
 \section{Properties of the muon}
 \label{sec:SM-Muon}
 This thesis focuses on the development of a readout system for and the operation of a muon detector. Therefore, the properties of the particle of interest should be presented in this section in short.
 \paragraph{Basic properties}
-The muon ($\mu$) is the second-generation charged lepton. It has a mass of $m_\mu=\SI{105.658}{\mega\electronvolt/c^2}$ and is therefore about $207$ times heavier than its first-generation relative, the electron ($e$). Since the muon is lighter than the lightest existing hadron (the $\pi^0$ meson), it can only decay leptonically \cite{PDG2024}:\footnote{Decays with an associated photon or an additional electron-position pair ($e^+e^-$) are possible but strongly suppressed with branching fractions $\leq\mathcal{O}(10^{-5})$. Therefore, the shown decay mode is by far the dominating one \cite{PDG2024}.}
+The muon ($\mu$) is the second-generation charged lepton. It has a mass of $m_\mu\approx\SI{105.658}{\mega\electronvolt/c^2}$ and is therefore about $207$ times heavier than its first-generation relative, the electron ($e$). Since the muon is lighter than the lightest existing hadron (the $\pi^0$ meson), it can only decay leptonically \cite{PDG2024}:\footnote{Decays with an associated photon or an additional electron-position pair ($e^+e^-$) are possible but strongly suppressed with branching fractions $\leq\mathcal{O}(10^{-5})$. Therefore, the shown decay mode is by far the dominating one \cite{PDG2024}.}
 \stepeqlabel{eq:SM-Muon-MinusDecay}
 \begin{align}
     \mu^- &\rightarrow e^- + \bar{\nu_e} + \nu_\mu,
@@ -76,7 +76,7 @@ The muon ($\mu$) is the second-generation charged lepton. It has a mass of $m_\m
 \tag{\theequation, \theequationadd{1}}
 \end{align}
 \stepeqlabel{eq:SM-Muon-PlusDecay} \hspace{-0.7em}
-The muon lifetime is around $\tau_\mu=\SI{2.196}{\micro\second}$ \cite{PDG2024}. Due to time dilation, high-energy muons can travel significant distances (e.g. in Earth's atmosphere, as discussed in sec.\ \ref{sec:AtmosphericMuons}).
+The muon lifetime is around $\tau_\mu\approx\SI{2.196}{\micro\second}$ \cite{PDG2024}. Due to time dilation, high-energy muons can travel significant distances (e.g. in Earth's atmosphere, as discussed in sec.\ \ref{sec:AtmosphericMuons}).
 \paragraph{History of discovery}
 The muon was initially discovered in cloud chamber experiments with cosmic rays in 1937, where a charged particle more massive than the electron other than the proton was postulated \cite{MuonDiscovery-Anderson,MuonDiscovery-Street}. However, it was initially labeled \enquote{$\mu$-meson} and confused with the charged pions ($\pi^\pm$ mesons). The leptonic nature of the muon and the distinction from the pions were only revealed later, when a decay of pions into muons could be observed \cite{MuonDiscovery-Lee}.
 %These mesons have masses in the same order of magnitude as the muon and were thought to be the mediator particle in Yukawa's theory of strong interactions \cite{MuonDiscovery-Yukawa}.
@@ -103,7 +103,7 @@ Since in this work the muon detector (and its developed readout) is only operate
 Cosmic rays are particles reaching the Earth from space. The first indication of cosmic radiation was through balloon flight experiments of Hess in 1912, who discovered an increasing intensity of ionizing radiation with altitude \cite{Cosmics-Hess,Cosmics-Grupen}. Cosmic rays mainly consist of protons (Hydrogen nuclei), $\alpha$ particles (Helium nuclei), and heavier nuclei of a wide range of energies \cite{PDG2022,Cosmics-Gaisser,Book-Grieder}. These particles can have many origins, ranging from within our solar system to our galaxy or even extragalactic sources. The understanding of cosmic ray sources is still an active field of research today \cite{Cosmics-Gaisser,Cosmics-Bindi}.
 \paragraph{Cosmic ray spectrum}
 The quantity used to describe the spectrum is the differential flux $I=dN/(dE\; d\Omega\; dS\; dt)$, i.e. the expected number $N$ of particles in the energy interval $dE$, the solid angle interval $d\Omega$, the area $dS$, and the time interval $dt$. 
-\newline The flux is highest for particle energies $\mathcal{O}(\SI{1}{\giga\electronvolt})$, but the tail towards high energies extends beyond $\mathcal{O}(\SI{1}{Z\electronvolt})$ \cite{PDG2024}. The energy spectrum of cosmic rays is observed to approximately follow a power law with an energy-dependent spectral index $\gamma\approx 2.5-3.3$ \cite{PDG2024}:
+\par The flux is highest for particle energies $\mathcal{O}(\SI{1}{\giga\electronvolt})$, but the tail towards high energies extends beyond $\mathcal{O}(\SI{1}{Z\electronvolt})$ \cite{PDG2024}. The energy spectrum of cosmic rays is observed to approximately follow a power law with an energy-dependent spectral index $\gamma\approx 2.5-3.3$ \cite{PDG2024}:
 \begin{equation}
     I(E)\propto E^{-\gamma}.
     \label{eq:Cosmics-Flux}
@@ -142,7 +142,7 @@ Similarly, charged kaons can decay to muons in the following process with a bran
 \end{align}
 \stepeqlabel{eq:Cosmics-KPlusDecay} \hspace{-0.7em}
 Note that there are other decay modes, which have lower branching fractions. The decay processes presented above are the most frequent ones \cite{PDG2024}.
-\newline The decay of these particles is the main source of atmospheric muons. Most of the muons are produced at altitudes of $10-15\;\si{\kilo\meter}$ \cite{PDG2022,CosmicMuon-Shukla}.
+\par The decay of these particles is the main source of atmospheric muons. Most of the muons are produced at altitudes of $10-15\;\si{\kilo\meter}$ \cite{PDG2022,CosmicMuon-Shukla}.
 
 %%% spherical coordinate terminology:
 % azimut angle = phi (0, 2pi)
@@ -174,7 +174,7 @@ The expected muon rate $\dot{N}$ for a detector can be obtained by integration o
     \label{eq:CosmicMuon-DetectorRate}
 \end{equation}
 For this calculation, the energy detection threshold $E_\text{thres}$ of the detector must be taken into account. Note that the solution of the solid angle and area integrals is generally non-trivial for arbitrary detector geometries, since the effective detector area usually is a function of the solid angle. A detection efficiency $\varepsilon \leq 1$, which may even depend on the solid angle, must be considered as well.
-\newline A very common approximation is the rate per area of a vertical detector as $\dot{N}/A \approx \SI{1}{\min^{-1}\centi\meter^{-2}}$ \cite{PDG2022}, which can be obtained by factorizing the solid angle and area integral in eq.\ \ref{eq:CosmicMuon-DetectorRate} and using the vertical flux from eq.\ \ref{eq:CosmicMuon-VerticalFlux}. Expectation values of cosmic muon rates will be estimated in different parts of this thesis, where they will be directly compared to the measurement.
+\par A very common approximation is the rate per area of a vertical detector as $\dot{N}/A \approx \SI{1}{\min^{-1}\centi\meter^{-2}}$ \cite{PDG2022}, which can be obtained by factorizing the solid angle and area integral in eq.\ \ref{eq:CosmicMuon-DetectorRate} and using the vertical flux from eq.\ \ref{eq:CosmicMuon-VerticalFlux}. Expectation values of cosmic muon rates will be estimated in different parts of this thesis, where they will be directly compared to the measurement.
 
 
 
