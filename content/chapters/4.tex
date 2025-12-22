@@ -282,7 +282,7 @@ Here, $T_{\text{Ly}=i}$ is the hit timestamp of the respective cell hit in layer
 The algorithm, which was implemented to identify the patterns, is briefly described here. It is capable of finding patterns in the recorded cell hits over a full superlayer and is event-loop-based. First, all hits are sorted by their timestamp. Then, the algorithm loops through the hit list one by one and stores the current hit in a matrix containing the latest hit of each cell. After the matrix was updated with the current hit, all possible patterns that contain the most recently added hit are checked. If any of the checked patterns shows a maximum time difference between all hits $\Delta T_\text{max}$ smaller than the selected maximum timestamp difference $t_\text{drift,max}$, the pattern is constructed and stored.
 \par Note that because this algorithm checks for new patterns with each new hit, it is possible that multiple patterns are constructed in the event of more than four hits lying close in time. This might be the case for noise hits close to the \enquote{real} track, or if a high-energy particle creates showers in the chamber. The fact that there may be several patterns very close in time at the same position in the superlayer is revisited in sec.\ \ref{sec:DTData-SLFitGrouping} later.
 \paragraph{Applied selection criteria}
-The goal of this analysis is to accomplish a track reconstruction algorithm that is simple and can be used for cross-checks with the developed scintillator readout system, and not to conduct precision measurements. Therefore, a not fully complete selection of patterns is considered sufficient. As explained, only superlayer patterns with four hits are accepted and not fewer. In principle (depending on the assumptions), it is also possible to use three-hit patterns for the analysis. However, in this thesis, this is not the case. Also, regarding the pattern shape, only the patterns with indices $0-5$ are considered. The patterns $6-7$ introduce additional difficulties in the reconstruction without a trigger and are therefore neglected here. Tab.\ \ref{tab:DTData-PatternSelection} summarizes the pattern selection criteria used in this work. Running the pattern finder algorithm on the recorded \ac{DT} dataset yields a total of \num{40776293} patterns. Fig.\ \ref{fig:DTData-Hist-PatternType} presents the resulting occupancies of the six analyzed pattern types $0-5$ discussed above.
+The goal of this analysis is to accomplish a track reconstruction algorithm that is simple and can be used for cross-checks with the developed scintillator readout system, and not to conduct precision measurements. Therefore, a not fully complete selection of patterns is considered sufficient. As explained, only superlayer patterns with four hits are accepted and not fewer. In principle (depending on the assumptions), it is also possible to use three-hit patterns for the analysis. However, in this thesis, this is not the case. Also, regarding the pattern shape, only the patterns with indices $0-5$ are considered. The patterns $6-7$ introduce additional difficulties in the reconstruction without a trigger and are therefore neglected here. Tab.\ \ref{tab:DTData-PatternSelection} summarizes the pattern selection criteria used in this work.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c|c|c|} 
@@ -296,13 +296,13 @@ The goal of this analysis is to accomplish a track reconstruction algorithm that
     \label{tab:DTData-PatternSelection}
 \end{table}
 \paragraph{Pattern occupancies}
+Running the pattern finder algorithm on the recorded \ac{DT} dataset yields a total of \num{40776293} patterns. Fig.\ \ref{fig:DTData-Hist-PatternType} presents the resulting occupancies of the six analyzed pattern types $0-5$ discussed above. For all three superlayers, the rate of all pattern types is calculated. Tab.\ \ref{tab:DTData-PatternOccupancies} presents the resulting rates. The observed cumulated pattern rates are in the order of $\SI{700}{\hertz}$ per superlayer. Since the superlayers are approximately similar in area, one would naively expect a similar rate for all of them. Note that due to the distribution of dead cells, some non-uniformity is natural. The lower pattern rate in \ac{SL} 2 might be related to the fact that it has many more dead channels than the other superlayers (tab.\ \ref{tab:DTData-DeadWires}).
 \begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__SL_PATTERNS_HIST_pat_type.pdf}
     \caption{Histogram of pattern occupancy binned by pattern type, cumulated for all patterns in all superlayers.}
     \label{fig:DTData-Hist-PatternType}
 \end{SCfigure}
-\par For all three superlayers, the rate of all pattern types is calculated. Tab.\ \ref{tab:DTData-PatternOccupancies} presents the resulting rates. The observed cumulated pattern rates are in the order of $\SI{700}{\hertz}$ per superlayer. Since the superlayers are approximately similar in area, one would naively expect a similar rate for all of them. Note that due to the distribution of dead cells, some non-uniformity is natural. The lower pattern rate in \ac{SL} 2 might be related to the fact that it has many more dead channels than the other superlayers (tab.\ \ref{tab:DTData-DeadWires}).
 \begin{table}[htb]
     \centering  %% VALUES: WITH FULL DATASET
     \begin{tabular}{|c|c|c|c|} 
@@ -330,7 +330,7 @@ This section further investigates the influence of noise by searching for \enquo
 \paragraph{Influence of noise hits}
 It is clear that the observed noise in the single-cell hits can propagate through the pattern-finding algorithm and generate patterns that do not originate from a muon track. For the track-like patterns, the resulting rate is a combination of \enquote{real} muon tracks and noise. However, the noise will also produce patterns with other geometries that are impossible to create with a muon track.\footnote{In principle, there is a possibility that more exotic patterns are formed from real particle crossings. This may be due to showering of high-energy particles or due to Coulomb scattering (sec.\ \ref{sec:Interactions-CoulombScattering}) inside the \ac{SL}. These effects are considered to have a small influence, and therefore, the fake patterns discussed here are assumed to be generated only by noise.} In the following, these patterns will be called \enquote{fake patterns}.
 \paragraph{SL fake patterns}
-The selected fake patterns are presented in fig.\ \ref{fig:DTData-SLFakePatterns}. It is obvious that none of these patterns can be created by a straight track through the \ac{SL}.\footnote{In fact, fake patterns $(2,3)$ may originate from a muon track which is diagonal and does not trigger the cells between the two hit clusters. However, this is considered very unlikely, and this pattern is also used as a fake pattern here.} The same pattern finding algorithm (sec.\ \ref{sec:DTData-SLHitPatterns-TrackPatterns}) as before is used on the cell hit data, with the task to now identify these fake patterns. In total, \num{2027701} fake patterns are found in the recorded dataset. Fig.\ \ref{fig:DTData-Hist-FakePatternType} presents the pattern occupancies for the different fake pattern types.
+The selected fake patterns are presented in fig.\ \ref{fig:DTData-SLFakePatterns}. It is obvious that none of these patterns can be created by a straight track through the \ac{SL}.\footnote{In fact, fake patterns $(2,3)$ may originate from a muon track which is diagonal and does not trigger the cells between the two hit clusters. However, this is considered very unlikely, and this pattern is also used as a fake pattern here.} The same pattern finding algorithm (sec.\ \ref{sec:DTData-SLHitPatterns-TrackPatterns}) as before is used on the cell hit data, with the task to now identify these fake patterns.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{SL-FakePatterns.pdf}
@@ -338,13 +338,13 @@ The selected fake patterns are presented in fig.\ \ref{fig:DTData-SLFakePatterns
     \label{fig:DTData-SLFakePatterns}
 \end{figure}
 \paragraph{Fake pattern occupancies}
+In total, \num{2027701} fake patterns are found in the recorded dataset. Fig.\ \ref{fig:DTData-Hist-FakePatternType} presents the pattern occupancies for the different fake pattern types. Tab.\ \ref{tab:DTData-FakePatternOccupancies} lists the calculated rates for the fake patterns for all \acp{SL}. The observed fake pattern rates per superlayer are in the order of $ 35 \;\si{\hertz}$, and therefore significantly smaller than the rates of the track-like patterns (which were $\SI{700}{\hertz}$ per superlayer, cf.\ \ref{sec:DTData-SLHitPatterns-TrackPatterns}). This emphasizes that there is actually a track-like signal present in the data, and not only noise is measured.
 \begin{SCfigure}[50][htb]
     \centering
     \includegraphics[width=0.5\textwidth]{large_combined_data_plots/53_comb__SL_FAKE_PATTERNS_HIST_pat_type.pdf}
     \caption{Histogram of fake pattern occupancy binned by pattern type, cumulated for all patterns in all superlayers.}
     \label{fig:DTData-Hist-FakePatternType}
 \end{SCfigure}
-\par Tab.\ \ref{tab:DTData-FakePatternOccupancies} lists the calculated rates for the fake patterns for all \acp{SL}. The observed fake pattern rates per superlayer are in the order of $ 35 \;\si{\hertz}$, and therefore significantly smaller than the rates of the track-like patterns (which were $\SI{700}{\hertz}$ per superlayer, cf.\ \ref{sec:DTData-SLHitPatterns-TrackPatterns}). This emphasizes that there is actually a track-like signal present in the data, and not only noise is measured.
 \begin{table}[htb]
     \centering  %% VALUES: WITH FULL DATASET
     \begin{tabular}{|c|c|c|c|}  
@@ -491,7 +491,7 @@ It is clear that the drift time should be shorter than the maximum drift time $t
     \centering
     \begin{tabular}{|c|c|} 
         \hline
-        \textbf{Variable} & \textbf{Condition} \\ \hline
+        Variable & Condition \\ \hline
         Goodness-of-fit $\chi^2/N_{df}$ & $\chi^2/N_{df} < 10$ \\ \hline
         \multirow{2}{*}{Drift time $t_{ly}$} & $t_{ly} \geq \SI{2}{\nano\second}$ \\
         & $t_{ly} \leq t_\text{drift,max}-\SI{2}{\nano\second}\approx\SI{383}{\nano\second}$ \\ \hline
@@ -678,6 +678,7 @@ The grouping of fitted patterns is executed for all three superlayers separately
     \caption{Histogram of number of fitted patterns $N_\text{fits}(\text{Group})$ in the constructed pattern groups, cumulated for all superlayers.}
     \label{fig:DTData-Hist-SLFitGrouping-Nfit}
 \end{SCfigure}
+\clearpage
 \paragraph{Handling of pattern ambiguities}
 %% sl fits aftercuts: 45472864
 %% sl fit groups: 22123737
@@ -760,7 +761,7 @@ The combined phi superlayer projection (denoted by index $\phi$) and the theta s
 \end{equation}
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.6\textwidth]{GlobalTrack.pdf}
+    \includegraphics[width=0.55\textwidth]{GlobalTrack.pdf}
     \caption{Illustration of the relation of the phi superlayer projection ($x$-$z$-plane) and theta superlayer projection ($y$-$z$-plane) local track angles $\alpha_\phi$ and $\alpha_\theta$ to the global track angles $\theta$ and $\phi$ in the used coordinate frame.}
     \label{fig:DTData-GlobalTrack-Illustration}
 \end{figure}
@@ -772,7 +773,7 @@ The combined phi superlayer projection (denoted by index $\phi$) and the theta s
 \subsection{Illustration with example}
 \label{sec:DTData-GlobalTrackBuilding-Example}
 Fig.\ \ref{fig:DTData-GlobalTrack-Example} presents an event display of an example reconstructed global track. The two subfigures present the track in the $x$-$z$- and the $y$-$z$-view together with the respective superlayer pattern fits. In this example, it is visible that both phi superlayer fits match very well.
-\begin{figure}[htb]
+\begin{figure}[p] %[htb]
     \centering
     \hfill
     \begin{subfigure}[t]{\textwidth}
@@ -789,11 +790,9 @@ Fig.\ \ref{fig:DTData-GlobalTrack-Example} presents an event display of an examp
         \label{fig:DTData-GlobalTrack-Example-theta}
     \end{subfigure}
     \hfill
-    \caption{Example of a global track (green) being reconstructed from the three superlayer pattern fits (red).}
+    \caption{Example of a global track marked in green, being reconstructed from the three superlayer pattern fits marked in red.}
     \label{fig:DTData-GlobalTrack-Example}
 \end{figure}
-
-\FloatBarrier
 
 \subsection{Global track results}
 \label{sec:DTData-GlobalTrackBuilding-Results}

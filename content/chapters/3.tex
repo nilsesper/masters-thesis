@@ -177,6 +177,7 @@ In the context of the Phase-2 upgrade of \ac{CMS}, the readout electronics of th
 \subsection{Frontend electronics}
 \label{sec:CMS-DTFrontend}
 The frontend electronics of the \ac{DT} system are located inside the chamber gas volume. They amplify the analog pulse from the drift cell wire and compare it to an amplitude threshold, providing a digital pulse on the output \cite{CMS-Main,CMS-Muon}. Because of their sufficient radiation hardness and their limited accessibility, these are the only parts of the electronics not to be exchanged in the course of the Phase-2 upgrade \cite{CMS-Phase2Muon}.
+\FloatBarrier
 \paragraph{MAD chip}
 A custom \ac{ASIC} called \enquote{MAD} \cite{DT-MADChip} was developed for the frontend electronics, which houses the analog amplification and signal shaping circuits. One chip has inputs for four \ac{DT} wire signals. The charge to voltage conversion gain of the mounted chip is around \SI{3.4}{\milli\volt/\femto\coulomb}. The MAD chip also includes a discriminator stage (sec.\ \ref{sec:ReadoutElectronics-General}), which converts the analog signal into a digital pulse. The threshold of the discriminator can be set externally and usually is in the range of $\mathcal{O}(\SI{30}{\milli\volt})$. Note that the digital output of the MAD chip is not single-ended, but in the form of a \ac{LVDS} pulse \cite{CMS-Main,CMS-Muon}. Fig.\ \ref{fig:MAD-DieShot} shows a die shot of the MAD chip.
 \paragraph{Frontend board}
@@ -341,6 +342,7 @@ Cathode strip voltage & $-1200\;\si{\volt}$ \\ \hline
 \caption{Settings of the \ac{DT} chamber infrastructure used at the test stand.}
 \label{tab:MB1Chamber-Settings}
 \end{table}
+\FloatBarrier
 \paragraph{Readout chain at test stand}
 Fig.\ \ref{fig:DT-Teststand-Readout} illustrates the readout chain with all currently available Phase-2 readout electronics at the test stand in Aachen. In comparison to the final Phase-2 system (sec.\ \ref{sec:CMS-Phase2Readout} and fig.\ \ref{fig:DT-Phase2Readout}), only the backend systems are different. This is due to the non-availability of the proposed slow control (Serenity) and \ac{DAQ} (\ac{BMTL1}) backend boards, as well as the complete \ac{MONSA} backend.
 \begin{figure}[htb]
@@ -349,6 +351,7 @@ Fig.\ \ref{fig:DT-Teststand-Readout} illustrates the readout chain with all curr
 \caption{Overview of the modified Phase-2 readout chain implemented at the test stand.}
 \label{fig:DT-Teststand-Readout}
 \end{figure}
+\FloatBarrier
 \paragraph{Minicrate}
 The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OBDT} theta board (sec.\ \ref{sec:CMS-DTMinicrate}). Fig.\ \ref{fig:MB1Minicrate-Mounted} shows a picture of the minicrate mounted onto the chamber at the test stand. A photo of the minicrate before installation on the chamber was already shown above in fig.\ \ref{fig:Minicrate-MB1}. One \ac{OBDT} is used for the readout of each superlayer. The detailed mapping between the \ac{DT} chamber \acp{FEC} (which are labeled 1A, 1B, 2A, …) and the \ac{OBDT} input connectors is presented in tab.\ \ref{tab:MB1Minicrate-FECMapping} in the appendix. Note that two unused \acp{FEC} on the \ac{OBDT} phi boards (J26, J27) were masked in order to prevent the injection of noise through these unconnected inputs.
 \begin{figure}[htb]
@@ -357,6 +360,9 @@ The Phase-2 minicrate for the MB1 chamber hosts two \ac{OBDT} phi and one \ac{OB
 \caption{Photo of the minicrate mounted on the \ac{DT} chamber at the test stand. The splitter board does not belong to the minicrate, but to the chamber infrastructure. It provides voltage to the chamber’s \acp{FEB}.}
 \label{fig:MB1Minicrate-Mounted}
 \end{figure}
+
+\FloatBarrier
+
 \paragraph{Backend}
 The available prototype backend is the \ac{SCTbox} (sec.\ \ref{sec:CMS-DTBackend}). It is mounted inside a mobile rack, which is placed next to the test stand and connected to the minicrate. The backend rack is prominently visible in fig.\ \ref{fig:DT-Teststand} above. The \ac{SCTbox} is connected to a server located inside the rack, which controls the data taking and stores the recorded data on its hard disk for later offline analysis.
 \par The \ac{MONSA} system (sec.\ \ref{sec:CMS-DTBackend}) backend is also not available in Aachen, therefore a dedicated emulator executes the functions normally provided by the \ac{MONSA}. This emulator is also controlled by the server.
@@ -372,6 +378,7 @@ The \ac{DT} chamber is oriented horizontally in the test stand.  A local coordin
 \caption{Illustration of the coordinate frame convention in this work. The \ac{SL}, layer (Ly), and wire (Wi) numbering is also indicated \cite[adapted]{DT-LocalReco}.}
 \label{fig:ThisCoordinateFrame}
 \end{figure}
+\FloatBarrier
 \paragraph{Timestamp format}
 The \acp{OBDT} naturally send out the hits with a timestamp consisting of two parts:
 \begin{itemize}
