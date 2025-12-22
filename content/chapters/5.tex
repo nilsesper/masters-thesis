@@ -1,14 +1,16 @@
+
 \FloatBarrier
 \label{sec:Scint}
-This chapter focuses on the second muon detector used in this thesis: A scintillation strip detector with \ac{SiPM} photon readout. The readout electronics and firmware was newly developed for this work, with the intention to connect it to the Phase-2 \ac{DT} backend (sec.\ \ref{sec:CMS-Phase2Readout}). The goal is to provide synchronous operation of the scintillator and the \ac{DT} chamber with this system (sec.\ \ref{sec:Combined}).
-%to read out the scintillator and the \ac{DT} chamber together with this system and to demonstrate that a synchronization could actually be achieved (sec.\ \ref{sec:Combined}).
+This chapter focuses on the second muon detector used in this thesis: A scintillation strip detector with \ac{SiPM} photon readout. The readout electronics and firmware were newly developed for this work, with the intention to connect the readout to the Phase-2 \ac{DT} backend (sec.\ \ref{sec:CMS-Phase2Readout}). The goal is to provide synchronous operation of the scintillator and the \ac{DT} chamber with this system (sec.\ \ref{sec:Combined}).
+%to read out the scintillator and the \ac{DT} chamber together with this system and to demonstrate that synchronization could actually be achieved (sec.\ \ref{sec:Combined}).
+
 
 \section{Detector setup}
 \label{sec:Scint-Setup}
 %Mention self-development of detector at institute \cite{BSc-Ehlert} \cite{MSc-Ehlert}.
-The detector itself was developed at Physics Institute III A in Aachen over the course of past Bachelor's and Master's theses \cite{BSc-Ehlert,MSc-Ehlert}. The development of the detector was already completed as this thesis begun. The device is only briefly described here, as details on the design and construction can be found in the documents cited above.
+The detector itself was developed at Physics Institute III A in Aachen over the course of past Bachelor's and Master's theses \cite{BSc-Ehlert,MSc-Ehlert}. The development of the detector was already completed as this thesis began. The device is only briefly described here, as details on the design and construction can be found in the documents cited above.
 \paragraph{Detector layout}
-The detector consists of two layers of 16 scintillator strips stacked with perpendicular orientation to each other, each measuring \SI{50}{\centi\meter} in length, \SI{3}{\centi\meter} in width and \SI{0.5}{\centi\meter} in thickness. The assembly gives a sensitive detector area of around $50 \times 50 \;\si{\centi\meter^2}$ divided into $16 \times 16 = 256$ quadratic sectors with a side length of $\SI{3}{\centi\meter}$. The detector material itself is an organic plastic scintillator (sec.\ \ref{sec:Scintillators-Scintillators}) referred to as EJ-200 \cite{Scint-PlasticScint}. The strips are wrapped in Tyvek\textsuperscript{\textregistered} 1442R reflective fabric \cite{Scint-Tyvek}. Light guiding and wavelength shifting fibers are glued into both long edges of each scintillator strip. The casing of the detector does not only provide light isolation from external photons, but also includes walls in between each of the strips, to suppress optical crosstalk between layers \cite{BSc-Ehlert,MSc-Ehlert}. Fig.\ \ref{fig:Scint-Setup-Renderings} shows two renderings of the detector.
+The detector consists of two layers of 16 scintillator strips stacked with perpendicular orientation to each other, each measuring \SI{50}{\centi\meter} in length, \SI{3}{\centi\meter} in width, and \SI{0.5}{\centi\meter} in thickness. The assembly gives a sensitive detector area of around $50 \times 50 \;\si{\centi\meter^2}$ divided into $16 \times 16 = 256$ quadratic sectors with a side length of $\SI{3}{\centi\meter}$. The detector material itself is an organic plastic scintillator (sec.\ \ref{sec:Scintillators-Scintillators}) referred to as EJ-200 \cite{Scint-PlasticScint}. The strips are wrapped in Tyvek\textsuperscript{\textregistered} 1442R reflective fabric \cite{Scint-Tyvek}. Light-guiding and wavelength-shifting fibers are glued into both long edges of each scintillator strip. The casing of the detector not only provides light isolation from external photons, but also includes walls in between each of the strips, to suppress optical crosstalk between layers \cite{BSc-Ehlert,MSc-Ehlert}. Fig.\ \ref{fig:Scint-Setup-Renderings} shows two renderings of the detector.
 \begin{figure}[htb]
     \centering
     \hfill
@@ -32,7 +34,7 @@ The detector consists of two layers of 16 scintillator strips stacked with perpe
 \paragraph{Photon detection}
 The photons created in the scintillator are detected by 64 \acp{SiPM} (sec.\ \ref{sec:Scintillators-SiPMs}). One \ac{SiPM} is mounted on both ends of each strip, reading out the photons from the two wavelength-shifting fibers. The \ac{SiPM} model used is the Onsemi\textsuperscript{\texttrademark} J-Series 30035 \cite{Scint-OnsemiSiPM}. The optical coupling between the scintillator and the \ac{SiPM} is accomplished with ELASTOSIL\textsuperscript{\textregistered} RT 604 optical silicon rubber pads \cite{Scint-Elastosil}.
 \paragraph{Channel naming convention}
-Fig.\ \ref{fig:Scint-Channel-Naming} presents the numbering convention of the scintillator layers $0-1$, scintillator strips $0-15$ and the two \acp{SiPM} of each strip. The 256 pixels originating from the crossed strips are indicated in the sketch as well.
+Fig.\ \ref{fig:Scint-Channel-Naming} presents the numbering convention of the scintillator layers $0-1$, scintillator strips $0-15$, and the two \acp{SiPM} of each strip. The 256 pixels originating from the crossed strips are indicated in the sketch as well.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{scint_indexing.pdf}
@@ -49,14 +51,15 @@ Fig.\ \ref{fig:Scint-Readout-Chain} shows an overview of the readout chain of th
 \end{figure}
 
 
+
 \section{Frontend electronics}
 %\begin{itemize}
 %    \item SiPM front-end board with preamplifier
 %    \item Backbone of detector with bias voltage supply
-%    \item Rasperry Pi for backbone control
+%    \item Raspberry Pi for backbone control
 %\end{itemize}
 \label{sec:Scint-Frontend}
-\paragraph{Signal preamplifier} A small frontend board is mounted directly at the scintillator. The \ac{SiPM} itself is mounted on this \ac{PCB}. Additionally, it features a preamplifier with an amplification of $+22\;\si{\decibel}$, which amplifies the  \ac{SiPM} output signal to measurable voltage ranges. With the applied bias voltage of \SI{29}{\volt}, the setup achieves an output amplitude for one \ac{p.e.} (sec.\ \ref{sec:Scintillators-SiPMs}) of $\approx\SI{5}{\milli\volt}$ \cite{MSc-Ehlert}. In addition, the \ac{PCB} hosts a \ac{LED} which may be used to test the photon readout. In this work, this feature is however not used. Fig.\ \ref{fig:Scint-Setup-FrontendPCB} shows a picture of one frontend \ac{PCB}.
+\paragraph{Signal preamplifier} A small frontend board is mounted directly at the scintillator. The \ac{SiPM} itself is mounted on this \ac{PCB}. Additionally, it features a preamplifier with an amplification of $+22\;\si{\decibel}$, which amplifies the  \ac{SiPM} output signal to measurable voltage ranges. With the applied bias voltage of \SI{29}{\volt}, the setup achieves an output amplitude for one \ac{p.e.} (sec.\ \ref{sec:Scintillators-SiPMs}) of $\approx\SI{5}{\milli\volt}$ \cite{MSc-Ehlert}. In addition, the \ac{PCB} hosts a \ac{LED} which may be used to test the photon readout. However, in this work, this feature is not used. Fig.\ \ref{fig:Scint-Setup-FrontendPCB} shows a picture of one frontend \ac{PCB}.
 \paragraph{Frontend infrastructure}
 Around the sides of the detector, a total of eight so-called \enquote{backbone} \acp{PCB} are mounted. Each backbone board directly connects to eight frontend \acp{PCB}, i.e.\ eight \acp{SiPM}. It supplies the bias voltage as well as the operation voltage for the preamplifier. The amplified signals are provided on the backbone \ac{PCB} via \ac{MCX} connectors, in order to be further transmitted to the readout system via coaxial cables. A Raspberry Pi \cite{Raspberry-Pi} is used to control the bias voltage levels of all channels \cite{MSc-Ehlert}.
 \begin{figure}[htb]
@@ -80,7 +83,7 @@ Around the sides of the detector, a total of eight so-called \enquote{backbone} 
     \label{fig:Scint-Setup-FrontendElectronics}
 \end{figure}
 \paragraph{Operating conditions}
-Due to fabrication tolerances, the internal breakdown voltage of the individual \acp{SiPM} varies as much as \SI{0.5}{\volt} for the used model \cite{Scint-OnsemiSiPM}. As the \ac{SiPM} output amplitude varies with the applied bias voltage, one can in principle correct for these fluctuations between \acp{SiPM} by conducting extensive calibration measurements \cite{MSc-Ehlert}. However, measurements in this work do not aim at the characterization of the detector performance or precision determination of the cosmic muon rate. Therefore, these high-precision measurements were omitted and a constant bias voltage of \SI{29}{\volt} was set.
+Due to fabrication tolerances, the internal breakdown voltage of the individual \acp{SiPM} varies as much as \SI{0.5}{\volt} for the used model \cite{Scint-OnsemiSiPM}. As the \ac{SiPM} output amplitude varies with the applied bias voltage, one can, in principle, correct for these fluctuations between \acp{SiPM} by conducting extensive calibration measurements \cite{MSc-Ehlert}. However, measurements in this work do not aim at the characterization of the detector performance or the precision determination of the cosmic muon rate. Therefore, these high-precision measurements were omitted, and a constant bias voltage of \SI{29}{\volt} was set.
 
 
 
@@ -89,9 +92,9 @@ Due to fabrication tolerances, the internal breakdown voltage of the individual 
 
 \section{Readout board and circuitry}
 %\begin{itemize}
-%    \item Mention completely new hardware and firmware development in scope of this thesis, based on previous experience and efforts of our group
+%    \item Mention completely new hardware and firmware development in the scope of this thesis, based on previous experience and efforts of our group
 %    \item AMD Xilinx UltraScale+ ZynqMPSoC
-%    \item Control hardware and firmware from Petalinux running on ARM core of ZynqMPSoC
+%    \item Control hardware and firmware from Petalinux running on the ARM core of ZynqMPSoC
 %    \item Show scheme / overview of readout system
 %\end{itemize}
 \label{sec:Scint-ReadoutBoard}
@@ -100,10 +103,10 @@ To read out the preamplified \ac{SiPM} hits, new readout electronics and firmwar
 \subsection{Overview}
 \label{sec:Scint-ReadoutBoard-Overview}
 \paragraph{General requirements}
-The following requirements were defined for the readout board: It should feature 32 input channels for analog \ac{SiPM} signals. These signals should be discriminated with a given threshold voltage (cf.\ sec.\ \ref{sec:ReadoutElectronics-General}). A timestamp should be assigned to each hit, with a precision of $\mathcal{O}(\SI{1}{\nano\second})$. For calibration and testing purposes, there should also be the capability to send simultaneous testpulses to all input channels. The board should operate synchronously with a central clock, assign global timestamps to all recorded hits and transfer them to the \ac{DT} backend. The compatibility to the \ac{DT} backend is an essential feature, as it is the main goal of this work to interface the \ac{DT} readout chain.
+The following requirements were defined for the readout board: It should feature 32 input channels for analog \ac{SiPM} signals. These signals should be discriminated with a given threshold voltage (cf.\ sec.\ \ref{sec:ReadoutElectronics-General}). A timestamp should be assigned to each hit, with a precision of $\mathcal{O}(\SI{1}{\nano\second})$. For calibration and testing purposes, there should also be the capability to send simultaneous testpulses to all input channels. The board should operate synchronously with a central clock, assign global timestamps to all recorded hits, and transfer them to the \ac{DT} backend. The compatibility with the \ac{DT} backend is an essential feature, as it is the main goal of this work to interface the \ac{DT} readout chain.
 \paragraph{Readout board}
 A new \ac{PCB} was developed to host the readout system according to the requirements listed above. Fig.\ \ref{fig:Scint-Readout-CarrierBoard} shows a picture of the board. It features 32 \ac{MCX} connectors for the \ac{SiPM} input signals. 
-\newline The hit data is processed with an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. A \ac{SoC} is a chip that feature both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. They allow to combine the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. The particular device used is the Trenz Elektronic TE-0820 module which features an AMD\textsuperscript{\texttrademark} Xilinx XCZU3EG-1SFVC784E \ac{SoC} \cite{FPGA-Trenz}.
+\newline The hit data is processed with an AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} MPSoC module \cite{UltraScale-FPGA}. A \ac{SoC} is a chip that features both \ac{PL}, i.e.\ an \ac{FPGA} (sec.\ \ref{sec:ReadoutElectronics-FPGAs}), and a \ac{PS}, i.e.\ one or several microprocessor cores. They allow combining the advantages of \acp{FPGA} with conventional computing and offer fast data interfaces between both units. The particular device used is the Trenz Elektronic TE-0820 module, which features an AMD\textsuperscript{\texttrademark} Xilinx XCZU3EG-1SFVC784E \ac{SoC} \cite{FPGA-Trenz}.
 \newline To forward the acquired data to the \ac{DT} backend and to receive the central clock, another \ac{PCB} was developed, the \ac{lpGBT} mezzanine, which is described in more detail in sec.\ \ref{sec:Scint-lpGBTMezzanine}. The readout board hosts an \ac{FMC} connector to plug the mezzanine onto it.
 %\begin{figure}[htb]
 %    \centering
@@ -144,7 +147,7 @@ The scintillation detector described above has 64 \acp{SiPM}. Therefore, two rea
 %    \item Deserializers for higher time resolution
 %\end{itemize}
 \label{sec:Scint-ReadoutBoard-FPGASampling}
-As described above (sec.\ \ref{sec:Scint-ReadoutBoard-Overview}), the amplified analog \ac{SiPM} signals should be discriminated with an adjustable threshold, to convert them to a digital signal. To implement a discriminator in electronics, one usually uses a comparator. While it is possible to buy and use such comparators as discrete electronic components, in this thesis a different approach is used.
+As described above (sec.\ \ref{sec:Scint-ReadoutBoard-Overview}), the amplified analog \ac{SiPM} signals should be discriminated with an adjustable threshold to convert them to a digital signal. To implement a discriminator in electronics, one usually uses a comparator. While it is possible to buy and use such comparators as discrete electronic components, in this thesis, a different approach is used.
 \paragraph{FPGA IOB resources}
 The \acfp{IOB} of modern \acp{FPGA} also feature comparators (sec.\ \ref{sec:ReadoutElectronics-FPGAs}). The comparators have the purpose of converting differential two-wire digital signals at the chip inputs to single-ended signals used in the \ac{FPGA} fabric itself. In the case of AMD\textsuperscript{\texttrademark} Xilinx Zynq\textsuperscript{\texttrademark} UltraScale+\textsuperscript{\texttrademark} \acp{FPGA}, the hardware primitive which offers this capability is called \texttt{IBUFDS} \cite{UltraScale-FPGA-SelectIO-Resources}.
 \paragraph{Analog signal sampling}
@@ -152,7 +155,7 @@ Our group is among the first to employ these \ac{FPGA}-internal comparator resou
 \newline Using the \ac{FPGA}-internal comparators for sampling can offer several advantages: First, the input circuitry is simplified by eliminating the need for discrete comparators. Furthermore, the \ac{FPGA}-internal comparators offer fast response times, as they are intended to be used for high-speed digital signals. It should be noted that the \ac{FPGA} \acp{IOB} do provide additional hardware primitives which may be useful in the context of signal sampling, such as deserializers, which can be used as \acp{TDC} (sec.\ \ref{sec:Scint-ReadoutFirmware-SamplingTDC}).
 %On the negative side, it is clear that twice the amount of input pins is required to perform analog signal sampling, in comparison to using discrete comparators and only using one single-ended \ac{FPGA} input pin.
 \paragraph{Limitations and challenges}
-The \ac{FPGA}-internal comparators are not specified to operate with analog signals, but only with differential digital signals. Therefore, the injected analog signals to be sampled need to obey several requirements: The \ac{LVDS} comparator inputs require a DC voltage offset. Here, a value of $\approx\SI{900}{\milli\volt}$ is chosen, which is within the electrical requirements. This offset comes as DC-part of the analog input signal (sec.\ \ref{sec:Scint-ReadoutBoard-InputCircuitry}). The input voltage at the comparator pins should not exceed $\SI{1.4}{\volt}$ \cite{UltraScale-FPGA-SelectIO-Switching}.
+The \ac{FPGA}-internal comparators are not specified to operate with analog signals, but only with differential digital signals. Therefore, the injected analog signals to be sampled need to obey several requirements: The \ac{LVDS} comparator inputs require a DC voltage offset. Here, a value of $\approx\SI{900}{\milli\volt}$ is chosen, which is within the electrical requirements. This offset comes as the DC-part of the analog input signal (sec.\ \ref{sec:Scint-ReadoutBoard-InputCircuitry}). The input voltage at the comparator pins should not exceed $\SI{1.4}{\volt}$ \cite{UltraScale-FPGA-SelectIO-Switching}.
 \newline Due to fluctuations during manufacturing, the comparators do not behave ideally, but exhibit a switching bias of up to $\pm 35\;\si{\milli\volt}$ \cite{UltraScale-FPGA-SelectIO-Resources}, which may be different for each individual input. This bias needs to be calibrated before the comparators can be used (sec.\ \ref{sec:ScintData-VoltageBias}).
 
 \subsection{Analog input circuitry}
@@ -171,7 +174,7 @@ The analog circuitry on the readout board should perform the input signal condit
     \label{fig:Scint-ReadoutBoard-AnalogCircuit}
 \end{figure}
 \paragraph{SiPM input}
-The \ac{SiPM} signal is received at the \ac{MCX} connector. As explained, the \ac{FPGA} internal comparators require a DC offset voltage of $V_\text{com}\approx\SI{900}{\milli\volt}$. This voltage is provided commonly for all \ac{SiPM} input channels. The \ac{SiPM} input is connected through a serial capacitor. In this way, the AC-component of the \ac{SiPM} pulse is added to the $V_\text{com}$ offset in the circuit. The resulting signal is connected to the positive comparator input $V_+$.
+The \ac{SiPM} signal is received at the \ac{MCX} connector. As explained, the \ac{FPGA} internal comparators require a DC offset voltage of $V_\text{com}\approx\SI{900}{\milli\volt}$. This voltage is commonly provided for all \ac{SiPM} input channels. The \ac{SiPM} input is connected through a serial capacitor. In this way, the AC-component of the \ac{SiPM} pulse is added to the $V_\text{com}$ offset in the circuit. The resulting signal is connected to the positive comparator input $V_+$.
 \newline The threshold voltage $V_\text{thres}$ for hit discrimination of the input signal is supplied to the negative input $V_-$ of the comparator. The threshold voltage can be set individually for each input with a \ac{DAC}.
 \paragraph{Testpulse generation}
 One of the \ac{FPGA} pins is configured to issue a digital synchronous testpulse signal. This testpulse signal is received simultaneously by all comparator inputs and therefore allows the timing calibration of all inputs relative to each other (sec.\ \ref{sec:ScintData-TimingBias}).
@@ -185,16 +188,16 @@ The \ac{FPGA} firmware of the readout board implements all requirements discusse
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{Scint-Readout-Firmware.pdf}
-    \caption{Functional blocks of the readout board \ac{FPGA} firmware. The external connections are denoted on the top. The dashed blue lines indicate the borders of different clock domains of the logic.}
+    \caption{Functional blocks of the readout board \ac{FPGA} firmware. The external connections are denoted at the top. The dashed blue lines indicate the borders of different clock domains of the logic.}
     \label{fig:Scint-ReadoutFirmware-Overview}
 \end{figure}
 \paragraph{Configuration and control}
-In order to configure the firmware blocks and perform the calibration procedures (secs.\ \ref{sec:ScintData-VoltageBias} and \ref{sec:ScintData-TimingBias}), the \ac{PS} of the employed Zynq\textsuperscript{\texttrademark} MPSoC chip is used. It is possible to read and write registers in the \ac{PL} (the \ac{FPGA} fabric of the module). The processor runs a Petalinux operating system \cite{Xilinx-PetaLinux} which allows a more high-level control with python scripts. The operating system can be accessed remotely over an Ethernet connection to the readout board.
+In order to configure the firmware blocks and perform the calibration procedures (secs.\ \ref{sec:ScintData-VoltageBias} and \ref{sec:ScintData-TimingBias}), the \ac{PS} of the employed Zynq\textsuperscript{\texttrademark} MPSoC chip is used. It is possible to read and write registers in the \ac{PL} (the \ac{FPGA} fabric of the module). The processor runs a Petalinux operating system \cite{Xilinx-PetaLinux}, which allows a higher-level control with Python scripts. The operating system can be accessed remotely over an Ethernet connection to the readout board.
 
 \subsection{Signal sampling and time digitization}
 \label{sec:Scint-ReadoutFirmware-SamplingTDC}
 \paragraph{Overview}
-The first firmware block serves as discriminator and \acf{TDC} for the \ac{SiPM} signals. It receives the comparator input signals $V_+$ and $V_-$ from the analog circuitry (sec.\ \ref{fig:Scint-ReadoutBoard-AnalogCircuit}) and determines whether there is a hit, depending on the voltage levels. Then, the hit is digitized with a \ac{TDC} running inside the \ac{FPGA} and made available to the next firmware block. The different sub-elements of the sampling logic and the working principle is illustrated in fig.\ \ref{fig:Scint-ReadoutFirmware-SamplingTDC-Principle}. The logic block was also packaged as a fully documented, open-source \ac{IP core} which is available on the \ac{CERN} Git \cite{Multichannel-Time-Tagger-IP}.
+The first firmware block serves as a discriminator and \acf{TDC} for the \ac{SiPM} signals. It receives the comparator input signals $V_+$ and $V_-$ from the analog circuitry (sec.\ \ref{fig:Scint-ReadoutBoard-AnalogCircuit}) and determines whether there is a hit, depending on the voltage levels. Then, the hit is digitized with a \ac{TDC} running inside the \ac{FPGA} and made available to the next firmware block. The different sub-elements of the sampling logic and the working principle are illustrated in fig.\ \ref{fig:Scint-ReadoutFirmware-SamplingTDC-Principle}. The logic block was also packaged as a fully documented, open-source \ac{IP core} which is available on the \ac{CERN} Git \cite{Multichannel-Time-Tagger-IP}.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{Scint-Firmware-Sampling-Scheme.pdf}
@@ -204,13 +207,13 @@ The first firmware block serves as discriminator and \acf{TDC} for the \ac{SiPM}
 \paragraph{Signal discrimination}
 The \ac{FPGA} is configured to use the internal comparators for analog input signal sampling (sec.\ \ref{sec:Scint-ReadoutBoard-FPGASampling}). The \texttt{IBUFDS} hardware primitives \cite{UltraScale-FPGA-SelectIO-Resources} of the \ac{FPGA} are instantiated for this purpose. The output of this primitive provides the comparator result determined by the input signals. As explained, the use of the \ac{FPGA}-internal comparators comes at the cost of the unknown bias voltage of each comparator, which is to be measured with a dedicated calibration procedure (sec.\ \ref{sec:ScintData-VoltageBias}).
 \paragraph{Time digitization}
-The comparator output signal is asynchronous, meaning its edges are not related to any clock, but are only determined by the changing input signals. The signal must be made synchronous (i.e.\ aligned with a clock) in order to perform the further computations and transmit the data to the backend. This synchronization is performed by a \ac{TDC} (sec.\ \ref{sec:ReadoutElectronics-General}). While there exist discrete \ac{TDC} chips, in this case the functionality is directly realized in \ac{FPGA} firmware.
-\newline To implement the \ac{TDC}, \texttt{ISERDESE3} deserializer hardware primitives \cite{UltraScale-FPGA-SelectIO-Resources} inside the \ac{FPGA} are used, which are originally designed to interface high-rate serial data transmissions. These components can operate at significantly higher clock frequencies than the \ac{FPGA} fabric itself \cite{UltraScale-FPGA-SelectIO-Resources}, and are provided with the system clock and a faster clock signal. With each system clock cycle, the deserializer outputs a bit vector of signals sampled at each fast clock edge. Of interest are only these cases where the comparator output value switches between \texttt{0} and \texttt{1}. In order to not transmit all data but only these relevant cases, a dedicated logic was implemented which scans the deserializer bit vector for \texttt{..0011..} and \texttt{..1100..} signatures. With a fast clock frequency of \SI{640}{\mega\hertz}, the implemented \ac{TDC} achieves a sampling granularity of \SI{0.78}{\nano\second}. This is the same granularity as in the \ac{OBDT} boards in the \ac{DT} system (sec.\ \ref{sec:CMS-Phase2Readout}).
+The comparator output signal is asynchronous, meaning its edges are not related to any clock, but are only determined by the changing input signals. The signal must be made synchronous (i.e.\ aligned with a clock) in order to perform further computations and transmit the data to the backend. This synchronization is performed by a \ac{TDC} (sec.\ \ref{sec:ReadoutElectronics-General}). While there exist discrete \ac{TDC} chips, in this case, the functionality is directly realized in \ac{FPGA} firmware.
+\newline To implement the \ac{TDC}, \texttt{ISERDESE3} deserializer hardware primitives \cite{UltraScale-FPGA-SelectIO-Resources} inside the \ac{FPGA} are used, which are originally designed to interface high-rate serial data transmissions. These components can operate at significantly higher clock frequencies than the \ac{FPGA} fabric itself \cite{UltraScale-FPGA-SelectIO-Resources}, and are provided with the system clock and a faster clock signal. With each system clock cycle, the deserializer outputs a bit vector of signals sampled at each fast clock edge. Of interest are only these cases where the comparator output value switches between \texttt{0} and \texttt{1}. In order not to transmit all data but only these relevant cases, a dedicated logic was implemented which scans the deserializer bit vector for \texttt{..0011..} and \texttt{..1100..} signatures. With a fast clock frequency of \SI{640}{\mega\hertz}, the implemented \ac{TDC} achieves a sampling granularity of \SI{0.78}{\nano\second}. This is the same granularity as in the \ac{OBDT} boards in the \ac{DT} system (sec.\ \ref{sec:CMS-Phase2Readout}).
 \newline The usage of the \ac{FPGA}-internal deserializers also imposes the need for a dedicated calibration procedure: There are non-deterministic delays between different units of different groups of \ac{FPGA} inputs, which means that the timing of the input channels must be calibrated after each startup of the device (sec.\ \ref{sec:ScintData-TimingBias}).
 
 \subsection{Time-alignment unit}
 \label{sec:Scint-ReadoutFirmware-ProgrammableDelays}
-The firmware offers the possibility to set individual delays for all input channels. This allows to apply the determined timing calibration for the channels (sec.\ \ref{sec:ScintData-TimingBias}) directly \enquote{online} in firmware, eliminating the need for timestamp realignment of the data in offline analysis.\footnote{This feature would be especially relevant if one would like to compute live coincidences or other timing-critical conditions, which is however not the case here.}
+The firmware offers the possibility to set individual delays for all input channels. This allows the application of the determined timing calibration for the channels (sec.\ \ref{sec:ScintData-TimingBias}) directly \enquote{online} in firmware, eliminating the need for timestamp realignment of the data in offline analysis.\footnote{This feature would be especially relevant if one would like to compute live coincidences or other timing-critical conditions, which is, however, not the case here.}
 \paragraph{Programmable delay logic}
 The programmable delay units for each input channel are realized with a data pipeline that has a flexible exit point. The hit data arrives at the pipeline input and is shifted one position forward with each clock cycle. The data output is connected to one of the pipeline positions. A user-writable register determines the position of the exit point of the pipeline to the output. With this setup, it is possible to select the channel delay with a precision equivalent to the system clock period, which in this case is \SI{6.25}{\nano\second}. The maximum delay that can be programmed is 32 clock cycles (\SI{200}{\nano\second}). Fig.\ \ref{fig:Scint-ReadoutFirmware-DelayUnit-Scheme} illustrates the working principle of the described and implemented delay logic. An example for two initially misaligned input signals is presented in fig.\ \ref{fig:Scint-ReadoutFirmware-DelayUnit-Timing}. It is visible that the signals become aligned by delaying both channels by the correct amount.
 \begin{figure}[htb]
@@ -226,7 +229,7 @@ The programmable delay units for each input channel are realized with a data pip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \includegraphics[width=1\textwidth]{Scint-Firmware-DelayUnit-Timing.pdf}
-        \caption{Timing diagram for two signals passing through delay unit, becoming time aligned at the output.}
+        \caption{Timing diagram for two signals passing through a delay unit, becoming time aligned at the output.}
         \label{fig:Scint-ReadoutFirmware-DelayUnit-Timing}
     \end{subfigure}
     \hfill
@@ -236,7 +239,7 @@ The programmable delay units for each input channel are realized with a data pip
 
 \subsection{Dead time unit}
 \label{sec:Scint-ReadoutFirmware-DeadTime}
-To suppress potential afterpulses of a hit propagating through the readout (sec.\ \ref{sec:Scintillators-SiPMs}), a dead time should be applied to each individual channel. These pulses may arise from \ac{SiPM} intrinsic afterpulses or from potential ringing of the analog circuit. Similar to the delay unit, it would be possible to apply such a dead time offline, however it is advantageous to do it already in the \ac{FPGA}, to reduce the data rate transferred to the backend and consequently the required bandwidth of the data link to the backend.
+To suppress potential afterpulses of a hit propagating through the readout (sec.\ \ref{sec:Scintillators-SiPMs}), a dead time should be applied to each individual channel. These pulses may arise from \ac{SiPM} intrinsic afterpulses or from potential ringing of the analog circuit. Similar to the delay unit, it would be possible to apply such a dead time offline. However, it is advantageous to do it already in the \ac{FPGA}, to reduce the data rate transferred to the backend and consequently the required bandwidth of the data link to the backend.
 \paragraph{Programmable dead time logic}
 The dead time is set for each channel individually with a user-writable register. Each time a hit occurs, a counter is set to the dead time value specified in this register. With each clock cycle, the counter decreases its value until it reaches zero. A consecutive hit is only forwarded if the counter value is equal to zero. Note that with this simple logic, the achieved dead time is \enquote{extendable}, meaning it is restarted with each newly arriving hit. The granularity of the selectable dead time is again \SI{6.25}{\nano\second}. Fig.\ \ref{fig:Scint-ReadoutFirmware-DeadTimeUnit-Timing} illustrates the working principle of the dead time unit with a timing diagram.
 \begin{figure}[htb]
@@ -252,9 +255,9 @@ The dead time is set for each channel individually with a user-writable register
 %    \item Same format as ODBT hits
 %\end{itemize}
 \label{sec:Scint-ReadoutFirmware-TimestampAssignment}
-Up to this point in the firmware, the hits are pipelined through the logic, but are not yet associated with a global timestamp. The transmission to the backend implies non-deterministic latencies of the hits, e.g.\ because of the buffering and funneling logic which is performed later in the firmware (sec.\ \ref{sec:Scint-ReadoutFirmware-Funneling}) and in the backend itself. As soon as these non-deterministic latencies appear, the hit timing information would be lost when it is not associated with a timestamp. The firmware block described in this section is responsible to assign such a global timestamp to the hits in order to keep the hit timing information under the described circumstances.
+Up to this point in the firmware, the hits are pipelined through the logic, but are not yet associated with a global timestamp. The transmission to the backend implies non-deterministic latencies of the hits, e.g.\ because of the buffering and funneling logic which is performed later in the firmware (sec.\ \ref{sec:Scint-ReadoutFirmware-Funneling}) and in the backend itself. As soon as these non-deterministic latencies appear, the hit timing information would be lost when it is not associated with a timestamp. The firmware block described in this section is responsible for assigning such a global timestamp to the hits in order to keep the hit timing information under the described circumstances.
 \paragraph{Timestamp format}
-The chosen timestamp format is the same as the timestamp format of the \acp{OBDT} in the \ac{DT} system (sec.\ \ref{sec:CMS-Phase2Readout}). This similarity simplifies the integration of the scintillator readout into the \ac{DT} readout chain. As introduced in sec.\ \ref{sec:CoordinateFrame-TimestampFormat}, there are three timing variables $TDC$ (TDC value), $BX$ (bunch crossing number) and $OC$ (orbit number). Only the first two are transmitted by the readout board, while the orbit number is added in the backend firmware. The width of one hit word with assigned timestamp is \SI{32}{\bit}, the bit mapping is presented in tab.\ \ref{tab:Scint-ReadoutFirmware-Timestamp-Bits}.
+The chosen timestamp format is the same as the timestamp format of the \acp{OBDT} in the \ac{DT} system (sec.\ \ref{sec:CMS-Phase2Readout}). This similarity simplifies the integration of the scintillator readout into the \ac{DT} readout chain. As introduced in sec.\ \ref{sec:CoordinateFrame-TimestampFormat}, there are three timing variables $TDC$ (TDC value), $BX$ (bunch crossing number), and $OC$ (orbit number). Only the first two are transmitted by the readout board, while the orbit number is added in the backend firmware. The width of one hit word with assigned timestamp is \SI{32}{\bit}, the bit mapping is presented in tab.\ \ref{tab:Scint-ReadoutFirmware-Timestamp-Bits}.
 \begin{table}[htb]
     \centering
     \begin{tabular}{|c||c|c|c|c|c|c|} 
@@ -267,7 +270,7 @@ The chosen timestamp format is the same as the timestamp format of the \acp{OBDT
 \end{table}
 \paragraph{Synchronization with backend}
 The clock of the readout system can be assumed to be synchronous with the \ac{DT} backend system, because the \ac{lpGBT} chip is used to recover the clock from the backend. More details on this are discussed in sec.\ \ref{sec:Scint-lpGBTMezzanine}.
-\newline However, not only the clock, but also the timestamp values should be the same for all readout devices connected to the backend. To achieve this, one needs to receive a synchronization signal from the backend. The \ac{DT} backend sends a $BX$ reset signal (\texttt{BC0} signal) via the \ac{lpGBT} downlink to the readout board, which is received by the \ac{FPGA} firmware.\footnote{In \ac{CMS}, this \texttt{BC0} reset signal comes from the timing control system and is coupled to the clock of the \ac{LHC} accelerator. In the case of the test stand used in this work, it is simply emulated by the \ac{DT} backend system.} A dedicated logic block (the TTC receiver) was developed which reconstructs a timestamp which is aligned with this reset signal. This aligned timestamp is then used when timing information is assigned to the recorded scintillator hits. In this way, it is ensured that the timestamps assigned to all events recorded by the \ac{DT} readout (\ac{OBDT} boards) and the scintillator readout board are the aligned in time and \enquote{count up} synchronously.
+\newline However, not only the clock, but also the timestamp values should be the same for all readout devices connected to the backend. To achieve this, one needs to receive a synchronization signal from the backend. The \ac{DT} backend sends a $BX$ reset signal (\texttt{BC0} signal) via the \ac{lpGBT} downlink to the readout board, which is received by the \ac{FPGA} firmware.\footnote{In \ac{CMS}, this \texttt{BC0} reset signal comes from the timing control system and is coupled to the clock of the \ac{LHC} accelerator. In the case of the test stand used in this work, it is simply emulated by the \ac{DT} backend system.} A dedicated logic block (the TTC receiver) was developed, which reconstructs a timestamp that is aligned with this reset signal. This aligned timestamp is then used when timing information is assigned to the recorded scintillator hits. In this way, it is ensured that the timestamps assigned to all events recorded by the \ac{DT} readout (\ac{OBDT} boards) and the scintillator readout board are aligned in time and \enquote{count up} synchronously.
 
 %\FloatBarrier
 %\subsection{Online coincidence evaluation}
@@ -282,8 +285,8 @@ The clock of the readout system can be assumed to be synchronous with the \ac{DT
 %    \item Reduces possible hit rate compared to no funnel
 %\end{itemize}
 \label{sec:Scint-ReadoutFirmware-Funneling}
-The bandwidth to transmit hit data from the readout board to the backend is limited. Therefore, one cannot send the hit information of all 32 channels at the same time. It is required to develop logic which funnels the parallel hit data of all channels to sequential transmission of hits. In order to not lose any hits when they can not all be sent in real time, they must be temporarily buffered. This hit buffering introduces a non-deterministic latency (mentioned already above in sec.\ \ref{sec:Scint-ReadoutFirmware-TimestampAssignment}): The time it takes to transmit a hit depends on the current filling state of the buffers, which itself depends on the number of hits that have arrived before the current one.
-\newline While the buffering and sequential transmission can mitigate hit loss for few occurring simultaneous hits, it is clear that as soon as the buffers are filled, hits will start to get lost. Since this thesis deals with a cosmic muon detector and not with extremely high data rates, one can accept this limitation.
+The bandwidth to transmit hit data from the readout board to the backend is limited. Therefore, one cannot send the hit information of all 32 channels at the same time. It is required to develop logic that funnels the parallel hit data of all channels to sequential transmission of hits. In order not to lose any hits when they can not all be sent in real time, they must be temporarily buffered. This hit buffering introduces a non-deterministic latency (mentioned already above in sec.\ \ref{sec:Scint-ReadoutFirmware-TimestampAssignment}): The time it takes to transmit a hit depends on the current filling state of the buffers, which itself depends on the number of hits that have arrived before the current one.
+\newline While the buffering and sequential transmission can mitigate hit loss for a few occurring simultaneous hits, it is clear that as soon as the buffers are filled, hits will start to get lost. Since this thesis deals with a cosmic muon detector and not with extremely high data rates, one can accept this limitation.
 \newline The working principle of the developed buffering and funneling logic is illustrated in fig.\ \ref{fig:Scint-ReadoutFirmware-Funneling-Scheme} and discussed in the following paragraphs.
 \begin{figure}[htb]
     \centering
@@ -292,11 +295,12 @@ The bandwidth to transmit hit data from the readout board to the backend is limi
     \label{fig:Scint-ReadoutFirmware-Funneling-Scheme}
 \end{figure}
 \paragraph{Separate hit buffering}
-For all 32 input channels, an individual hit buffer is employed in the firmware. This buffer is implemented as so-called \ac{FIFO} unit. As the name suggests, this unit stores the incoming data and outputs them in the order of arrival. The depth of the used \ac{FIFO} is 128 hits for each channel. The \ac{FIFO} logic employs the \texttt{XPM\_FIFO\_ASYNC} macro, which is part of the \ac{XPM} library provided by the \ac{FPGA} vendor AMD\textsuperscript{\texttrademark} Xilinx \cite{Xilinx-XPM}.
+For all 32 input channels, an individual hit buffer is employed in the firmware. This buffer is implemented as a so-called \ac{FIFO} unit. As the name suggests, this unit stores the incoming data and outputs them in the order of arrival. The depth of the used \ac{FIFO} is 128 hits for each channel. The \ac{FIFO} logic employs the \texttt{XPM\_FIFO\_ASYNC} macro, which is part of the \ac{XPM} library provided by the \ac{FPGA} vendor AMD\textsuperscript{\texttrademark} Xilinx \cite{Xilinx-XPM}.
 \paragraph{Intelligent data funneling}
 The desired funneling ratio is $32:1$, meaning that only one hit should be transmitted at a time. The funnel logic is realized with a demultiplexer, which selects one of the 32 \ac{FIFO} outputs and connects them to the next firmware block, the data transmission unit (fig.\ \ref{fig:Scint-ReadoutFirmware-Overview}).
-\newline There are different approaches to select the active \ac{FIFO} for transmission and cycle through the input channels. The easiest approach is to use a counter for the \ac{FIFO} selector to create a \enquote{rotating funnel}, giving all channels equal weight during hit transmission. However, if some channels experience higher rates than others, or only few channels are used at all, this \ac{FIFO} selection is inefficient. Potentially empty \acp{FIFO} would still take away transmission time which leads to less optimal usage of the available transmission bandwidth.
-\newline The funneling logic implemented in the readout firmware does not use this simple approach. It rather selects only the \acp{FIFO} which have at least one hit stored in them. The result is improved rate capability and therefore better performance, at the cost of increased complexity and therefore more used logic elements on the \ac{FPGA}.
+\newline There are different approaches to select the active \ac{FIFO} for transmission and cycle through the input channels. The easiest approach is to use a counter for the \ac{FIFO} selector to create a \enquote{rotating funnel}, giving all channels equal weight during hit transmission. However, if some channels experience higher rates than others, or only a few channels are used at all, this \ac{FIFO} selection is inefficient. Potentially empty \acp{FIFO} would still take away transmission time, which leads to less optimal usage of the available transmission bandwidth.
+\newline The funneling logic implemented in the readout firmware does not use this simple approach. It rather selects only the \acp{FIFO} that have at least one hit stored in them. The result is improved rate capability and therefore better performance, at the cost of increased complexity and therefore more used logic elements on the \ac{FPGA}.
+
 
 
 
@@ -306,9 +310,9 @@ The desired funneling ratio is $32:1$, meaning that only one hit should be trans
 %    \item Hardware interface between scintillator readout system and DT backend
 %    \item OBDTs use lpGBT as well therefore compatible format
 %    \item Synchronous clock (with backend) supplied by lpGBT chip
-%\end{itemize}
+%\end{itemize\
 \label{sec:Scint-lpGBTMezzanine}
-As already mentioned above (sec.\ \ref{sec:Scint-Setup}), a second board was developed for the readout system, the \ac{lpGBT} mezzanine \ac{PCB}, which is build around the \ac{lpGBT} \ac{ASIC}. Its purpose is to create an interface from the \ac{FPGA} on the readout board to the \ac{DT} backend. The \ac{lpGBT} mezzanine board transmits the data via an optical fiber to the backend in a compatible format. The following sections should describe the \ac{ASIC} itself as well as the developed mezzanine board.
+As already mentioned above (sec.\ \ref{sec:Scint-Setup}), a second board was developed for the readout system, the \ac{lpGBT} mezzanine \ac{PCB}, which is built around the \ac{lpGBT} \ac{ASIC}. Its purpose is to create an interface from the \ac{FPGA} on the readout board to the \ac{DT} backend. The \ac{lpGBT} mezzanine board transmits the data via an optical fiber to the backend in a compatible format. The following sections should describe the \ac{ASIC} itself as well as the developed mezzanine board.
 
 \subsection{lpGBT ASIC}
 %\begin{itemize}
@@ -321,10 +325,10 @@ As already mentioned above (sec.\ \ref{sec:Scint-Setup}), a second board was dev
 \label{sec:Scint-lpGBTMezzanine-lpGBT}
 The \acf{lpGBT} \cite{lpGBT-Main} is an \ac{ASIC} developed by the \ac{CERN} electronics department for bidirectional data transfer via optical links in radiation environments. The chip is extensively used in the Phase-2 electronics of the \ac{CMS} detector, including the \ac{OBDT} boards of the \ac{DT} readout system (sec.\ \ref{sec:CMS-Phase2Readout}). This is the reason why the chip is also used in the self-developed readout electronics for the scintillator: The interface to the \ac{DT} backend can be realized on the basis of the existing hardware and software infrastructure. The central features of the chip are described in this section.
 \paragraph{Optical links}
-The \ac{lpGBT} \ac{ASIC} relies on two optical links: The \SI{2.56}{\giga\bit/\second} downlink which receives data from the backend, and the \SI{5.12}{\giga\bit/\second} uplink which is transmits data to the backend. The data frames are received and transmitted with a frequency of \SI{40}{\mega\hertz}, which corresponds to the \ac{LHC} bunch crossing frequency (sec.\ \ref{sec:CMS-LHC}). The available data width of one uplink (downlink) frame is \SI{96}{\bit} (\SI{32}{\bit}). Depending on the operation mode of the chip, different data rates and frame widths are possible \cite{lpGBT-Main}.
+The \ac{lpGBT} \ac{ASIC} relies on two optical links: The \SI{2.56}{\giga\bit/\second} downlink, which receives data from the backend, and the \SI{5.12}{\giga\bit/\second} uplink, which transmits data to the backend. The data frames are received and transmitted with a frequency of \SI{40}{\mega\hertz}, which corresponds to the \ac{LHC} bunch crossing frequency (sec.\ \ref{sec:CMS-LHC}). The available data width of one uplink (downlink) frame is \SI{96}{\bit} (\SI{32}{\bit}). Depending on the operation mode of the chip, different data rates and frame widths are possible \cite{lpGBT-Main}.
 \paragraph{Backend clock recovery}
-The \ac{lpGBT} chip has the capability to recover the \SI{40}{\mega\hertz} clock of the backend directly from the optical downlink data \cite{lpGBT-Main}. This capability is a key feature, as it allows to operate multiple independent electronic readout components in synchronization with each other. For the developed scintillator readout system, it ensures that the clock is in fact synchronous with the \ac{DT} backend and the \acp{OBDT} in the \ac{DT} minicrate, which is desired for simultaneous readout of the \ac{DT} chamber and the scintillator \cite{lpGBT-Main}.
-% The electric-to-optical conversion of the data is not handled by the chip itself, one needs to connect it to an optical transmitter and receiver device.
+The \ac{lpGBT} chip has the capability to recover the \SI{40}{\mega\hertz} clock of the backend directly from the optical downlink data \cite{lpGBT-Main}. This capability is a key feature, as it allows the operation of multiple independent electronic readout components in synchronization with each other. For the developed scintillator readout system, it ensures that the clock is in fact synchronous with the \ac{DT} backend and the \acp{OBDT} in the \ac{DT} minicrate, which is desired for simultaneous readout of the \ac{DT} chamber and the scintillator \cite{lpGBT-Main}.
+% The electric-to-optical conversion of the data is not handled by the chip itself; one needs to connect it to an optical transmitter and receiver device.
 \paragraph{eLink connections}
 The connection of the chip to the readout electronics of the detector is implemented with regular electrical connections. The chip employs specific differential digital pairs to transfer data, which are called eLinks. In the uplink (downlink) direction, there are seven (four) groups containing four eLinks each. Each eLink receives or transmits a slice of the full data sequentially with a multiple of the \SI{40}{\mega\hertz} data frame frequency. The number of active eLinks and their frequency can be configured by the user \cite{lpGBT-Main}.
 \newline Apart from eLinks, the \ac{lpGBT} also features programmable differential clock outputs called eClocks. These output clocks with a programmable frequency operate in synchronization with the recovered \SI{40}{\mega\hertz} clock from the backend \cite{lpGBT-Main}.
@@ -353,7 +357,7 @@ For this thesis, a new \ac{PCB} was designed to host the \ac{lpGBT} \ac{ASIC}: T
 \paragraph{Interface to readout FPGA}
 To interface the eLinks of the \ac{lpGBT}, which are connected to the readout \ac{FPGA} via the \ac{FMC} connector, a custom firmware block was developed (lpGBT stream interface). The developed logic splits the uplink data generated on the \ac{FPGA} fabric and transmits it sequentially over the uplink eLinks. Similarly, it can deserialize the data coming from the downlink eLinks of the \ac{lpGBT}.
 \paragraph{Interface to DT backend}
-As explained, the basic functionalities for communication with an \ac{lpGBT} chip were already implemented in the \ac{DT} backend, as the \ac{OBDT} boards also host such a chip (sec.\ \ref{fig:DT-Phase2Readout}). In the \acp{OBDT}, the slow control and clock recovery and the hit data are handled by two different optical links. The \ac{lpGBT} mezzanine however only has one uplink path, for slow control and hit data (as indicated in fig.\ \ref{fig:Scint-Readout-Chain}). Therefore, modifications had to be implemented in the \ac{DT} backend firmware to connect the data upstream of the \ac{lpGBT} mezzanine into the readout funnel of the backend.
+As explained, the basic functionalities for communication with an \ac{lpGBT} chip were already implemented in the \ac{DT} backend, as the \ac{OBDT} boards also host such a chip (sec.\ \ref{fig:DT-Phase2Readout}). In the \acp{OBDT}, the slow control and clock recovery and the hit data are handled by two different optical links. The \ac{lpGBT} mezzanine, however, only has one uplink path, for slow control and hit data (as indicated in fig.\ \ref{fig:Scint-Readout-Chain}). Therefore, modifications had to be implemented in the \ac{DT} backend firmware to connect the data upstream of the \ac{lpGBT} mezzanine into the readout funnel of the backend.
 \paragraph{Demonstration of operation}
 Stable operation of the board could be achieved, and the clock recovery was demonstrated. An oscilloscope screenshot of the \SI{40}{\mega\hertz} recovered from the backend is presented in fig.\ \ref{fig:Scint-lpGBTMezzanine-40MHz}.
 %\begin{figure}[htb]
@@ -368,14 +372,16 @@ Stable operation of the board could be achieved, and the clock recovery was demo
     \caption{Oscilloscope screenshot of the \SI{40}{\mega\hertz} clock output of the \ac{lpGBT} recovered from the downlink optical fiber. The signal is monitored over one of the available test outputs of the \ac{lpGBT} chip.}
     \label{fig:Scint-lpGBTMezzanine-40MHz}
 \end{SCfigure}
-\newline The \ac{lpGBT} chip has several built-in testing features to monitor the operation and data transfer. One of these features is a pattern checker and error counter, which can count bit errors of a received \ac{PRBS7}. Such a sequence is a periodic stream of bits which is generated by a deterministic algorithm and is commonly used in telecommunications to evaluate errors in data transfers. In the readout \ac{FPGA} firmware, a sequence generator was implemented which can transmit these sequence over the uplink eLinks. By reading out the error count on the \ac{lpGBT}, one can evaluate the data transfer quality between the readout board and the \ac{lpGBT} mezzanine. A performed scan for all uplink eLinks for one \ac{lpGBT} mezzanine boards is presented in fig.\ \ref{fig:Scint-lpGBTMezzanine-UplinkPRBS7Error}. The estimated bit error rate is of the order of $\mathcal{O}(1\%)$. Although the observed error rate is not negligible, it is considered acceptable for the application.
+\newline The \ac{lpGBT} chip has several built-in testing features to monitor the operation and data transfer. One of these features is a pattern checker and error counter, which can count bit errors of a received \ac{PRBS7}. Such a sequence is a periodic stream of bits that is generated by a deterministic algorithm and is commonly used in telecommunications to evaluate errors in data transfers. In the readout \ac{FPGA} firmware, a sequence generator was implemented that can transmit these sequences over the uplink eLinks. By reading out the error count on the \ac{lpGBT}, one can evaluate the data transfer quality between the readout board and the \ac{lpGBT} mezzanine. A performed scan for all uplink eLinks for one \ac{lpGBT} mezzanine boards is presented in fig.\ \ref{fig:Scint-lpGBTMezzanine-UplinkPRBS7Error}. The estimated bit error rate is of the order of $\mathcal{O}(1\%)$. Although the observed error rate is not negligible, it is considered acceptable for the application.
 % It should be noted that the eLink wires are not specifically shielded on the readout board, which might contribute to the observed bit error rate.
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{lpgbt_mezzanine/bit_error_rate.pdf}
     \caption{Estimated bit error fraction of a \ac{PRBS7} scan of all uplink eLinks for one \ac{lpGBT} mezzanine board.}
     \label{fig:Scint-lpGBTMezzanine-UplinkPRBS7Error}
 \end{figure}
+
 
 %\FloatBarrier
 %\subsection{Readout FPGA interface}
@@ -388,6 +394,14 @@ Stable operation of the board could be achieved, and the clock recovery was demo
 %    \item (Show received counter data by backend)
 %\end{itemize}
 %\label{sec:Scint-lpGBTMezzanine-DTBackendInterface}
+
+
+
+
+
+
+
+
 
 
 
