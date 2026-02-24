@@ -6,28 +6,41 @@ Title of the thesis:
 **Integration of an SiPM-Based Scintillation Detector into the Phase-2 CMS Drift Tube Readout Chain Using the lpGBT ASIC**  
 
 Submission:  
-Monday, 22th December 2025
+Monday, 22th December 2025  
 
 The PDF version of the submitted version of the thesis can be found at:  
 [`run/main.pdf`](run/main.pdf)
 
-Defense:
-Friday, 19th December 2025
+Defense:  
+Friday, 19th December 2025  
 
 The PDF version of the defense / talk can be found at:  
-[`talk/nils_master_talk_19-12-2025.pdf`](talk/nils_master_talk_19-12-2025.pdf)
+[`talk/nils_master_talk_19-12-2025.pdf`](talk/nils_master_talk_19-12-2025.pdf)  
 
+<br>
+<br>
 ---
+<br>
+<br>
 
-Software & firmware used for data recording & analysis:  
-- Firmware on Zynq: Custom-built Vivado project using several self-developed IP cores at repo `ref-detector-tdc-array`, branch `new-carrier_testing` ( https://git.rwth-aachen.de/muon-hodoscope/ref-detector-tdc-array/-/commit/7001c6a0 )
-- Software on Zynq: Repo `zynq_read-out_software` ( https://gitlab.cern.ch/nesper/zynq_read-out_software/-/commit/2c7bfc1d )
-- Offline software for analysis: Repo `dt_scint_analysis_tools` ( https://gitlab.cern.ch/nesper/dt_scint_analysis_tools/-/commit/9408d4b1 )
+Hardware, software & firmware used for data recording & analysis:  
+- Scintillator SiPM detector: Designed by E. Ehlert, C. Presser, D. Eliseev in previous thesis projects ( https://web.physik.rwth-aachen.de/user/hebbeker/theses/ehlert_bachelor.pdf , https://www.institut3a.physik.rwth-aachen.de/global/show_document.asp?id=aaaaaaaacvdhcay )  
+    - Hardware casing & Scintillator  
+    - SiPM frontend board for one device ( https://git.rwth-aachen.de/muon-hodoscope/hardware/sipm-front-end )  
+    - Backbone board to power 8 frontends ( https://git.rwth-aachen.de/muon-hodoscope/hardware/back_bone )  
+- Scintillator readout system:  
+    - Trenz SoM: Commerical AMD Xilinx Zynq SoM with FPGA - Trentz TE0820 Rev3 ( https://wiki.trenz-electronic.de/display/PD/TE0820+TRM )  
+    - Carrier board: Newly developed by C. Presser, D. Eliseev ( https://git.rwth-aachen.de/muon-hodoscope/hardware/hodoscope_fpga_carrier )  
+    - lpGBT Mezzanine: Newly developed by D. Eliseev, C. Presser ( https://git.rwth-aachen.de/muon-hodoscope/hardware/lpgbt-mezzanine )  
+- Firmware on Zynq: Custom-built Vivado project using several self-developed IP cores at repo `ref-detector-tdc-array`, branch `new-carrier_testing` ( https://git.rwth-aachen.de/muon-hodoscope/ref-detector-tdc-array/-/commit/7001c6a0 )  
+- Software on Zynq: Repo `zynq_read-out_software` ( https://gitlab.cern.ch/nesper/zynq_read-out_software/-/commit/2c7bfc1d )  
+- Offline software for analysis: Repo `dt_scint_analysis_tools` ( https://gitlab.cern.ch/nesper/dt_scint_analysis_tools/-/commit/9408d4b1 )  
 
 Data presented in thesis:  
-The presented data directories are not included in the repository but offline due to their size.  
-Also see the file `thesis_commands.txt` inside the `dt_scint_analysis_tools` repo, where all executed commands for analysis and plotting are documented.  
-- Main dataset: `thesis_data_files/large_combined_data_run/` (data config file: `thesis_data_files/large_combined_data_run/data_config_file_finished.txt`)
-- Small dataset to illustrate scintillator readout systematic effects: `thesis_data_files/scint_testing/` (data config file: `thesis_data_files/scint_testingdata_config_file_dead0.txt`)
-- Simulated dataset: `thesis_data_files/sim` (data config file: `data_config_file_finished.txt`)
+See the file `thesis_commands.txt` inside the [`dt_scint_analysis_data/`](dt_scint_analysis_data/) directory, where all executed commands for analysis and plotting are documented.  
+The actual raw data is included in the repository as zip file `raw_data_files.zip`.  
+- Main dataset: `thesis_data_files/large_combined_data_run/` (data config file: `thesis_data_files/large_combined_data_run/data_config_file_finished.txt`)  
+- Small dataset to illustrate scintillator readout systematic effects: `thesis_data_files/scint_testing/` (data config file: `thesis_data_files/scint_testingdata_config_file_dead0.txt`)  
+- Simulated dataset: `thesis_data_files/sim` (data config file: `data_config_file_finished.txt`)  
+- Plus small other datasets & calibration measurements which are included in the zip file  
 
